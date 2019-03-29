@@ -18,7 +18,7 @@ import es.deusto.computing.sd.util.gui.WindowManager;
 import es.deusto.computing.sd.util.observer.RMI.IRemoteObserver;
 import es.deusto.computing.sd.util.observer.RMI.RemoteObservable;
 
-public class CarRentingServer extends UnicastRemoteObject implements ICollector, ActionListener {
+public class CarRentingServer extends UnicastRemoteObject implements ICarRenting, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private RemoteObservable remoteObservable;

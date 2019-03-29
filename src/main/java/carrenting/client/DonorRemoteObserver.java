@@ -1,17 +1,17 @@
-package donations.client;
+package carrenting.client;
 
 import java.rmi.RemoteException;
 
-import donations.server.ICollector;
+import carrenting.server.ICarRenting;
 import es.deusto.computing.sd.util.observer.RMI.RemoteObserver;
 
 public class DonorRemoteObserver extends RemoteObserver {
 	
 	private static final long serialVersionUID = 1L;
-	private ICollector collector;
+	private ICarRenting collector;
 	private Donor donor;
 
-	public DonorRemoteObserver(ICollector collector, Donor donor) throws RemoteException {
+	public DonorRemoteObserver(ICarRenting collector, Donor donor) throws RemoteException {
 		super();
 		this.collector = collector;
 		this.donor = donor;

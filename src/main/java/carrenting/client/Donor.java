@@ -1,6 +1,7 @@
-package donations.client;
+package carrenting.client;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.Naming;
@@ -12,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import donations.server.ICollector;
+import carrenting.server.ICarRenting;
 import es.deusto.computing.sd.util.gui.WindowManager;
 
 public class Donor implements ActionListener {
@@ -22,7 +23,7 @@ public class Donor implements ActionListener {
 	private JTextField donation;
 	private JTextField total;
 	private JLabel message;
-	private ICollector don_collector;
+	private ICarRenting don_collector;
 	private DonorRemoteObserver remoteDonor;
 
 	public Donor() {				
@@ -77,7 +78,7 @@ public class Donor implements ActionListener {
 
 		try {
 			String URL = "//" + args[0] + ":" + args[1] + "/" + args[2];
-			this.don_collector = (ICollector) Naming.lookup(URL);
+			this.don_collector = (ICarRenting) Naming.lookup(URL);
 		} catch (Exception e) {
 			System.err.println(" *# Error connecting to Donation Collector: " + e.getMessage());
 			e.printStackTrace();
