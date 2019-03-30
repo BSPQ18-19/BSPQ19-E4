@@ -28,7 +28,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/SoftLabs/SD/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus-api-jdo-5.1.2.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus-cache-5.1.0-release.jar"/>
 	<classpathentry kind="lib" path="lib/datanucleus-core-5.1.2.jar"/>

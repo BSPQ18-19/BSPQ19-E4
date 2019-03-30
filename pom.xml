@@ -112,7 +112,7 @@
 				<version>1.2.1</version>
 
 				<configuration>
-					<mainClass>org.datanucleus.samples.jdo.tutorial.Main</mainClass>
+					<mainClass>carrenting.db.Main</mainClass>
 					<systemProperties>
 						<systemProperty>
 							<key>log4j.configuration</key>
