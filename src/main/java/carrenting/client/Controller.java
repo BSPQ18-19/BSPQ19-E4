@@ -29,9 +29,10 @@ public class Controller{
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
 		ICarRenting connection = rsl.getService();
-		return connection.loginStaff(user, password);
-		
+		return connection.loginStaff(user, password);	
 	}
+	
+
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 

@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import carrenting.client.Controller;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class WelcomeGUI extends JFrame {
 
@@ -37,8 +40,6 @@ public class WelcomeGUI extends JFrame {
 //	}
 	
 	public WelcomeGUI(Controller controller) {
-		
-		
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;
@@ -61,6 +62,16 @@ public class WelcomeGUI extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(48, 111, 46, 14);
 		getContentPane().add(lblPassword);
+		
+		JButton btnSignIn = new JButton("Sign In");
+		btnSignIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		btnSignIn.setBounds(79, 188, 89, 23);
+		getContentPane().add(btnSignIn);
 	}
 
 	/**
