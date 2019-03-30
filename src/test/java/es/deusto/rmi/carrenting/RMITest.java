@@ -12,8 +12,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import carrenting.client.Donor;
-import carrenting.server.CarRentingServer;
 import carrenting.server.ICarRenting;
 import junit.framework.JUnit4TestAdapter;
 

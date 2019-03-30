@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import carrenting.gui.WelcomeGUI;
 import carrenting.server.ICarRenting;
 
 
@@ -20,7 +21,7 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		//new Login(this);
+		new WelcomeGUI(this);
 		
 		//Pruebas
 		loginStaff("alvaroh@opendeusto.es", "Patata");
