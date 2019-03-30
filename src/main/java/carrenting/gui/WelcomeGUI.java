@@ -32,10 +32,13 @@ public class WelcomeGUI extends JFrame {
 //					e.printStackTrace();
 //				}
 //			}
+	
 //		});
 //	}
 	
 	public WelcomeGUI(Controller controller) {
+		
+		
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;
