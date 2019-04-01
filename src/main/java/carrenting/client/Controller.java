@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import carrenting.gui.WelcomeGUI;
+import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.ICarRenting;
 
 
