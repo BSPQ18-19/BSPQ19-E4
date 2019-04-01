@@ -2,18 +2,15 @@ package carrenting.server.jdo;
 
 public class Staff {
 	
-	protected String type=null;
-	protected String password=null;
-	protected String email=null;
+	protected String type;
+	protected String password;
+	protected String username;
 	
-	protected Staff(){
-		
-	}
 	
-	public Staff(String type, String password, String email){
+	public Staff(String type, String password, String username){
 		this.type=type;
 		this.password=password;
-		this.email=email;
+		this.username=username;
 	}
 	
 	public String getType(){
@@ -32,17 +29,17 @@ public class Staff {
 		this.password=password;
 	}
 	
-	public String getEmail(){
-		return email;
+	public String getUsername(){
+		return username;
 	}
 	
-	public void setEmail(String email){
-		this.email=email;
+	public void setUsername(String username){
+		this.username=username;
 	}
-	
-	public String toString(){
-		return "Staff: "+ type +", "+ password +", "+email;
+
+	@Override
+	public String toString() {
+		return "Staff [type=" + type + ", password=" + password + ", username=" + username + "]";
 	}
-	
 
 }

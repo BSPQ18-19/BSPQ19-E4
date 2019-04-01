@@ -60,7 +60,10 @@ public class Car {
 		this.pricePerDay=pricePerDay;
 	}
 	
-	public String toString(){
-		return "Car: "+ availability + ", "+ model +", "+ brand+", "+numPlate+", "+pricePerDay;
+	@Override
+	public String toString() {
+		return "Car [availability=" + availability + ", model=" + model + ", brand=" + brand + ", numPlate=" + numPlate
+				+ ", pricePerDay=" + pricePerDay + "]";
 	}
+	
 }

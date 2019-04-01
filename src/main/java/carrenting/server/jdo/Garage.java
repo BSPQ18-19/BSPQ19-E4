@@ -1,31 +1,35 @@
 package carrenting.server.jdo;
 
-public class Garage extends Car{
+import java.util.ArrayList;
+import java.util.List;
 
-	private String city;
-	//los coches disponibles los cogemos de la clase "Car"
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+
+public class Garage{
+	@PrimaryKey
+	private String location;
+	@Persistent(mappedBy="garage", dependentElement="true")
+	@Join  
+	private List<Car> cars = new ArrayList<>();
 	
-	protected Garage(){
+	public Garage(String location){
+		this.location=location;	
+	}
+	
+	public String getLocation(){
+		return location;
+	}
+	
+	public void setLocation(String location){
+		this.location=location;
+	}
+
+	@Override
+	public String toString() {
+		return "Garage [location=" + location + ", cars=" + cars + "]";
+	}
 		
-	}
-	
-	public Garage(String city, String availability){
-		this.city=city;
-		//la disponibilidad la cogemos de la clase coche
-		this.availability=availability;
-	}
-	
-	public String getCity(){
-		return city;
-	}
-	
-	public void setCity(String city){
-		this.city=city;
-	}
-	
-	public String toString(){
-		return "Garage: "+ city +", "+availability;
-	}
-	
-	
 }
