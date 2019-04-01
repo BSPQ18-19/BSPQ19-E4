@@ -1,4 +1,4 @@
-package carrenting.jdo;
+package carrenting.server.jdo;
 
 import java.util.ArrayList;
 

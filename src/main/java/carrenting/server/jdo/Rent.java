@@ -1,5 +1,4 @@
-package carrenting.jdo;
-
+package carrenting.server.jdo;
 import java.sql.Date;
 
 public class Rent extends Garage{

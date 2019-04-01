@@ -1,4 +1,4 @@
-package carrenting.jdo;
+package carrenting.server.jdo;
 
 public class Staff {
 	
