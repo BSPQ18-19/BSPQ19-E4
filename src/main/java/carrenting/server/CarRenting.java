@@ -19,6 +19,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 		return false;
 	}
+
+	public void registerUser (String username) throws RemoteException{
+		System.out.println("Username: " + username);
+		
+	}
+
 	
 	
 }

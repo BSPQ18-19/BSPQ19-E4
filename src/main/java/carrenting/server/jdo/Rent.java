@@ -21,7 +21,7 @@ public class Rent extends Garage{
 		this.totalPrice=totalPrice;
 		this.paymentSystem=paymentSystem;
 		//trying to get the garage from the class "garage"
-		this.city=garage;
+		//this.city=garage;
 	}
 
 	public int getUserId() {

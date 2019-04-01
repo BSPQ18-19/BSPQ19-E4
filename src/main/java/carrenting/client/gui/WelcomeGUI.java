@@ -13,14 +13,16 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 public class WelcomeGUI extends JFrame {
 
 	private JPanel contentPane;
 	private Controller controller;
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfUsername;
+	private JTextField tfPassword;
+	private JButton boton;
 
 	/**
 	 * Launch the application.
@@ -43,35 +45,6 @@ public class WelcomeGUI extends JFrame {
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;
-		getContentPane().setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(47, 81, 86, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(47, 136, 86, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(48, 58, 85, 14);
-		getContentPane().add(lblUsername);
-		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(48, 111, 46, 14);
-		getContentPane().add(lblPassword);
-		
-		JButton btnSignIn = new JButton("Sign In");
-		btnSignIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		btnSignIn.setBounds(79, 188, 89, 23);
-		getContentPane().add(btnSignIn);
 	}
 
 	/**
@@ -85,5 +58,45 @@ public class WelcomeGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		frame.setContentPane(contentPane);
+		frame.getContentPane().setLayout(null);
+		
+		
+		tfUsername = new JTextField();
+		tfUsername.setBounds(47, 69, 86, 20);
+		frame.getContentPane().add(tfUsername);
+		tfUsername.setColumns(10);
+		
+		tfPassword = new JTextField();
+		tfPassword.setBounds(47, 136, 86, 20);
+		frame.getContentPane().add(tfPassword);
+		tfPassword.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(47, 44, 85, 14);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(48, 111, 46, 14);
+		frame.getContentPane().add(lblPassword);
+		
+		JButton btnSignIn = new JButton("Sign In");
+		btnSignIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(tfUsername.getText().equals("")) {
+					
+					
+				}else {
+					try {
+						controller.register(tfUsername.getText());
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		btnSignIn.setBounds(79, 188, 89, 23);
+		frame.getContentPane().add(btnSignIn);
 	}
 }

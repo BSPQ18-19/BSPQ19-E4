@@ -1,0 +1,11 @@
+/* DELETE 'inventorydb' database*/
+DROP SCHEMA IF EXISTS carrenting;
+/* DELETE USER 'sd' AT LOCAL SERVER*/
+DROP USER IF EXISTS 'sd'@'%';
+
+/* CREATE ''inventorydb' DATABASE */
+CREATE SCHEMA carrenting;
+/* CREATE THE USER 'sd' AT LOCAL SERVER WITH PASSWORD 'sd' */
+CREATE USER IF NOT EXISTS 'sd'@'%' IDENTIFIED BY 'sd';
+/* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'sd' AT LOCAL SERVER*/
+GRANT ALL ON carrenting.* TO 'sd'@'%';
