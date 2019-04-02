@@ -7,6 +7,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.ICarRenting;
@@ -21,7 +23,23 @@ public class Controller{
 	private RMIServiceLocator rsl;
 	private String username;
 	
-	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
+	private ResourceBundle resourceBundle; //el que gestiona los diomas
+	private Locale currentLocale; //variable para decirle que idioma queremos
+	
+	
+	public Controller(String[] args, int language) throws RemoteException, MalformedURLException, NotBoundException{
+		
+		//asigno la variable currentLocale a uno de los idiiomas que tenemos
+		if(language==0){
+			currentLocale = new Locale("en", "EU");
+		}else if(language==1){
+			currentLocale = new Locale("es", "ES");
+		}if(language==2){
+			currentLocale = new Locale("eu", "ES");
+		}
+		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
+		resourceBundle=ResourceBundle.getBundle("/CarRenting/src/main/resources/security", currentLocale);
+		
 		rsl = new RMIServiceLocator();
 		rsl.setService(args[0], args[1], args[2]);
 		
@@ -72,7 +90,7 @@ public class Controller{
 	}
 
 	
-	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
-		new Controller(args);
+	public static void main(String[] args, int language) throws RemoteException, MalformedURLException, NotBoundException {
+		new Controller(args, language);
 	}
 }
