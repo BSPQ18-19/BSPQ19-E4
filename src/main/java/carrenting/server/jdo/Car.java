@@ -1,18 +1,20 @@
 package carrenting.server.jdo;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable{
 	
-	protected String availability=null;
-	protected String model=null;
-	protected String brand=null;
-	protected String numPlate=null;
-	protected double pricePerDay=0.0;
+	protected int availability;
+	protected String model;
+	protected String brand;
+	protected String numPlate;
+	protected double pricePerDay;
 	
 	protected Car(){
 		
 	}
 	
-	public Car(String availability, String model, String brand, String numPlate, double pricePerDay){
+	public Car(int availability, String model, String brand, String numPlate, double pricePerDay){
 		this.availability=availability;
 		this.model=model;
 		this.brand=brand;
@@ -20,11 +22,11 @@ public class Car {
 		this.pricePerDay=pricePerDay;
 	}
 	
-	public String getAvailability(){
+	public int getAvailability(){
 		return availability;
 	}
 	
-	public void setAvailability(String availability){
+	public void setAvailability(int availability){
 		this.availability=availability;
 	}
 	

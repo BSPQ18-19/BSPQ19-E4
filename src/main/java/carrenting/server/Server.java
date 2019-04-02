@@ -20,10 +20,9 @@ public class Server{
 		try {
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
-			//TODO - ESTO POR QUE COÑO HACE QUE FUNCIONE
-			while(true) {
-				
-			}
+			//TODO - We must keep the thread open, so the server keeps open
+			while(true) {}
+			
 		} catch (RemoteException re) {
 			System.err.println(" # Collector RemoteException: " + re.getMessage());
 			re.printStackTrace();

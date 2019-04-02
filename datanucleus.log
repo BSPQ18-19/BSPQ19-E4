@@ -1340,3 +1340,466 @@ java.sql.SQLSyntaxErrorException: Unknown database 'productsdb'
 18:45:08,336 (carrenting.db.Main.main()) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por el Catalogo "", el Esquema "", 1 tablas, tiempo = 4 ms
 18:45:08,336 (carrenting.db.Main.main()) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por la tabla "BOOK" : hemos encontrado 4 columnas
 18:45:08,337 (carrenting.db.Main.main()) DEBUG [DataNucleus.Datastore.Schema] - ALTER TABLE `BOOK` ADD CONSTRAINT `BOOK_FK1` FOREIGN KEY (`BOOK_ID`) REFERENCES `PRODUCT` (`PRODUCT_ID`) 
+13:45:49,678 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+13:45:49,745 (main) DEBUG [DataNucleus.General] - Registering bundle org.sonatype.inject version 2.3.0 at URL file:/C:/Users/Pope/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar.
+13:45:49,804 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Pope/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+13:45:49,814 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.2.0.release at URL file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-core/5.2.0-release/datanucleus-core-5.2.0-release.jar.
+13:45:49,821 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-core/5.2.0-release/datanucleus-core-5.2.0-release.jar!/plugin.xml.
+13:45:49,837 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.2.0.release at URL file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.2.0-release/datanucleus-api-jdo-5.2.0-release.jar.
+13:45:49,858 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.2.0-release/datanucleus-api-jdo-5.2.0-release.jar!/plugin.xml.
+13:45:49,867 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.2.0.release at URL file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-rdbms/5.2.0-release/datanucleus-rdbms-5.2.0-release.jar.
+13:45:49,879 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Pope/.m2/repository/org/datanucleus/datanucleus-rdbms/5.2.0-release/datanucleus-rdbms-5.2.0-release.jar!/plugin.xml.
+13:45:49,945 (main) DEBUG [DataNucleus.Persistence] - Tipos de Java inicializando ...
+13:45:50,069 (main) DEBUG [DataNucleus.Persistence] - Soporte para tipos de Java listo : tipos soportados = [B, [C, [D, [F, [I, [J, [Ljava.lang.Boolean;, [Ljava.lang.Byte;, [Ljava.lang.Character;, [Ljava.lang.Double;, [Ljava.lang.Enum;, [Ljava.lang.Float;, [Ljava.lang.Integer;, [Ljava.lang.Long;, [Ljava.lang.Number;, [Ljava.lang.Object;, [Ljava.lang.Short;, [Ljava.lang.String;, [Ljava.math.BigDecimal;, [Ljava.math.BigInteger;, [Ljava.util.Date;, [Ljava.util.Locale;, [S, [Z, boolean, byte, char, double, float, int, java.awt.Color, java.awt.image.BufferedImage, java.lang.Boolean, java.lang.Byte, java.lang.Character, java.lang.Class, java.lang.Double, java.lang.Enum, java.lang.Float, java.lang.Integer, java.lang.Long, java.lang.Number, java.lang.Short, java.lang.String, java.lang.StringBuffer, java.lang.StringBuilder, java.math.BigDecimal, java.math.BigInteger, java.net.URI, java.net.URL, java.sql.Date, java.sql.Time, java.sql.Timestamp, java.time.Duration, java.time.Instant, java.time.LocalDate, java.time.LocalDateTime, java.time.LocalTime, java.time.MonthDay, java.time.OffsetDateTime, java.time.OffsetTime, java.time.Period, java.time.Year, java.time.YearMonth, java.time.ZonedDateTime, java.time.ZoneId, java.time.ZoneOffset, java.util.ArrayList, java.util.Arrays$ArrayList, java.util.BitSet, java.util.Calendar, java.util.Collection, java.util.Currency, java.util.Date, java.util.GregorianCalendar, java.util.HashMap, java.util.HashSet, java.util.Hashtable, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.List, java.util.Locale, java.util.Map, java.util.Optional, java.util.PriorityQueue, java.util.Properties, java.util.Queue, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.Stack, java.util.TimeZone, java.util.TreeMap, java.util.TreeSet, java.util.UUID, java.util.Vector, long, short
+13:45:50,069 (main) DEBUG [DataNucleus.Persistence] - Inicializando TypeConverters ...
+13:45:50,158 (main) DEBUG [DataNucleus.Persistence] - TypeConverters listo
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for byte[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for char[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for double[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for float[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for int[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for long[] to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for [Ljava.math.BigDecimal; to : java.nio.ByteBuffer
+13:45:50,159 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for [Ljava.math.BigInteger; to : java.nio.ByteBuffer
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for short[] to : java.nio.ByteBuffer
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for boolean[] to : java.nio.ByteBuffer
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.awt.Color to : int[],java.lang.String
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.awt.image.BufferedImage to : java.nio.ByteBuffer,byte[]
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.io.Serializable to : java.nio.ByteBuffer,java.lang.String,byte[]
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Boolean to : java.lang.Character,java.lang.Integer
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Character to : java.lang.String
+13:45:50,160 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Class to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Integer to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Long to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.StringBuffer to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.StringBuilder to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.math.BigDecimal to : java.lang.String,java.lang.Double
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.math.BigInteger to : java.lang.Long,java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.net.URI to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.net.URL to : java.lang.String
+13:45:50,161 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Date to : java.lang.Long,java.util.Date,java.lang.String
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Time to : java.lang.Long,java.util.Date,java.lang.String
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Timestamp to : java.lang.Long,java.util.Date,java.lang.String
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Duration to : java.lang.Long,java.lang.String,java.lang.Double
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Instant to : java.lang.Long,java.util.Date,java.lang.String,java.sql.Timestamp
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalDate to : java.util.Date,java.sql.Date,java.lang.String
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalDateTime to : java.util.Date,java.lang.String,java.sql.Timestamp
+13:45:50,162 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalTime to : java.lang.Long,java.util.Date,java.lang.String,java.sql.Time
+13:45:50,163 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.MonthDay to : java.util.Date,java.sql.Date,int[],java.lang.String
+13:45:50,163 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.OffsetDateTime to : java.util.Date,java.lang.String,java.sql.Timestamp
+13:45:50,163 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.OffsetTime to : java.lang.Long,java.lang.String,java.sql.Time
+13:45:50,163 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Period to : int[],java.lang.String
+13:45:50,163 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Year to : java.lang.String,java.lang.Integer
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.YearMonth to : java.util.Date,java.sql.Date,int[],java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZonedDateTime to : java.lang.String,java.sql.Timestamp
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZoneId to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZoneOffset to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.BitSet to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Calendar to : java.util.Date,[Ljava.lang.Object;,java.lang.String,java.sql.Timestamp
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Currency to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Date to : java.lang.Long,java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Locale to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.TimeZone to : java.lang.String
+13:45:50,164 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.UUID to : java.lang.String
+13:45:50,167 (main) DEBUG [DataNucleus.MetaData] - MetaDataManager : Input=(XML,Annotations), XML-Validation=false, XML-Suffices=(persistence=*.jdo, orm=orm, query=*.jdoquery), JDO-listener=false
+13:45:50,168 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.0.release) para el API "JDO" utilisando el JRE "{2}"
+13:45:50,168 (main) DEBUG [DataNucleus.Enhancer] - DataNucleus Enhancer : Classpath
+13:45:50,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.2\datanucleus-maven-plugin-5.0.2.jar
+13:45:50,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar
+13:45:50,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar
+13:45:50,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar
+13:45:50,171 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar
+13:45:50,171 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar
+13:45:50,171 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar
+13:45:50,171 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\SoftLabs\SD\BSPQ19-E4\target\classes
+13:45:50,172 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\datanucleus\datanucleus-core\5.2.0-release\datanucleus-core-5.2.0-release.jar
+13:45:50,173 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\datanucleus\datanucleus-api-jdo\5.2.0-release\datanucleus-api-jdo-5.2.0-release.jar
+13:45:50,173 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\datanucleus\datanucleus-rdbms\5.2.0-release\datanucleus-rdbms-5.2.0-release.jar
+13:45:50,173 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\org\datanucleus\javax.jdo\3.2.0-m11\javax.jdo-3.2.0-m11.jar
+13:45:50,173 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\javax\transaction\transaction-api\1.1\transaction-api-1.1.jar
+13:45:50,173 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar
+13:45:50,174 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar
+13:45:50,174 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\Pope\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar
+13:45:50,174 (main) DEBUG [DataNucleus.Enhancer] - Reading fileListFile: C:\Users\Pope\AppData\Local\Temp\enhancer-6152979229563260931.flf
+13:45:50,177 (main) DEBUG [DataNucleus.Enhancer] - Enhancing classes
+13:45:50,202 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Carga de Metadata de las clases "[carrenting.client.Controller, carrenting.client.gui.WelcomeGUI$1, carrenting.client.gui.WelcomeGUI, carrenting.client.RMIServiceLocator, carrenting.db.Book, carrenting.db.Main, carrenting.db.Product, carrenting.payment.gui.PaypalPayment$1, carrenting.payment.gui.PaypalPayment, carrenting.payment.gui.VisaPayment$1, carrenting.payment.gui.VisaPayment, carrenting.server.CarRenting, carrenting.server.ICarRenting, carrenting.server.jdo.Car, carrenting.server.jdo.CarDAO, carrenting.server.jdo.Garage, carrenting.server.jdo.GarageDAO, carrenting.server.jdo.ILogin, carrenting.server.jdo.Login, carrenting.server.jdo.Rent, carrenting.server.jdo.Staff, carrenting.server.Server]" ...
+13:45:50,210 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /META-INF/package.jdo
+13:45:50,211 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /WEB-INF/package.jdo
+13:45:50,211 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /package.jdo
+13:45:50,212 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /carrenting/package.jdo
+13:45:50,212 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /carrenting/client/package.jdo
+13:45:50,213 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.Controller" en /carrenting/client/Controller.jdo
+13:45:50,213 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.client.Controller"
+13:45:50,213 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.client.Controller" no tener Meta-Data
+13:45:50,213 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.client.Controller" no tiene MetaData o annotaciones.
+13:45:50,216 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /META-INF/package.jdo
+13:45:50,217 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /WEB-INF/package.jdo
+13:45:50,217 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /package.jdo
+13:45:50,217 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /carrenting/package.jdo
+13:45:50,218 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /carrenting/client/package.jdo
+13:45:50,218 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /carrenting/client/gui/package.jdo
+13:45:50,219 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1" en /carrenting/client/gui/WelcomeGUI$1.jdo
+13:45:50,219 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI$1"
+13:45:50,219 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.client.gui.WelcomeGUI$1" no tener Meta-Data
+13:45:50,219 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.client.gui.WelcomeGUI$1" no tiene MetaData o annotaciones.
+13:45:50,229 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /META-INF/package.jdo
+13:45:50,229 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /WEB-INF/package.jdo
+13:45:50,230 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /package.jdo
+13:45:50,230 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /carrenting/package.jdo
+13:45:50,231 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /carrenting/client/package.jdo
+13:45:50,231 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /carrenting/client/gui/package.jdo
+13:45:50,232 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI" en /carrenting/client/gui/WelcomeGUI.jdo
+13:45:50,232 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.client.gui.WelcomeGUI"
+13:45:50,232 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.client.gui.WelcomeGUI" no tener Meta-Data
+13:45:50,232 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.client.gui.WelcomeGUI" no tiene MetaData o annotaciones.
+13:45:50,233 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /META-INF/package.jdo
+13:45:50,234 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /WEB-INF/package.jdo
+13:45:50,234 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /package.jdo
+13:45:50,235 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /carrenting/package.jdo
+13:45:50,235 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /carrenting/client/package.jdo
+13:45:50,236 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator" en /carrenting/client/RMIServiceLocator.jdo
+13:45:50,237 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.client.RMIServiceLocator"
+13:45:50,237 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.client.RMIServiceLocator" no tener Meta-Data
+13:45:50,237 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.client.RMIServiceLocator" no tiene MetaData o annotaciones.
+13:45:50,319 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" tiene anotaciones de JDO y vamos a usarlas.
+13:45:50,322 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /META-INF/package.jdo
+13:45:50,323 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /WEB-INF/package.jdo
+13:45:50,323 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /package.jdo
+13:45:50,324 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /carrenting/package.jdo
+13:45:50,324 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /carrenting/db/package.jdo
+13:45:50,325 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.db.Main" en /carrenting/db/Main.jdo
+13:45:50,325 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.db.Main"
+13:45:50,325 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.db.Main" no tener Meta-Data
+13:45:50,325 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.db.Main" no tiene MetaData o annotaciones.
+13:45:50,325 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" tiene anotaciones de JDO y vamos a usarlas.
+13:45:50,327 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /META-INF/package.jdo
+13:45:50,327 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /WEB-INF/package.jdo
+13:45:50,328 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /package.jdo
+13:45:50,328 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /carrenting/package.jdo
+13:45:50,329 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /carrenting/payment/package.jdo
+13:45:50,329 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /carrenting/payment/gui/package.jdo
+13:45:50,329 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1" en /carrenting/payment/gui/PaypalPayment$1.jdo
+13:45:50,329 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment$1"
+13:45:50,330 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.payment.gui.PaypalPayment$1" no tener Meta-Data
+13:45:50,330 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.payment.gui.PaypalPayment$1" no tiene MetaData o annotaciones.
+13:45:50,331 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /META-INF/package.jdo
+13:45:50,331 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /WEB-INF/package.jdo
+13:45:50,332 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /package.jdo
+13:45:50,332 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /carrenting/package.jdo
+13:45:50,332 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /carrenting/payment/package.jdo
+13:45:50,333 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /carrenting/payment/gui/package.jdo
+13:45:50,333 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment" en /carrenting/payment/gui/PaypalPayment.jdo
+13:45:50,333 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.PaypalPayment"
+13:45:50,334 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.payment.gui.PaypalPayment" no tener Meta-Data
+13:45:50,334 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.payment.gui.PaypalPayment" no tiene MetaData o annotaciones.
+13:45:50,335 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /META-INF/package.jdo
+13:45:50,335 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /WEB-INF/package.jdo
+13:45:50,335 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /package.jdo
+13:45:50,336 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /carrenting/package.jdo
+13:45:50,336 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /carrenting/payment/package.jdo
+13:45:50,336 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /carrenting/payment/gui/package.jdo
+13:45:50,337 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1" en /carrenting/payment/gui/VisaPayment$1.jdo
+13:45:50,337 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment$1"
+13:45:50,337 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.payment.gui.VisaPayment$1" no tener Meta-Data
+13:45:50,337 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.payment.gui.VisaPayment$1" no tiene MetaData o annotaciones.
+13:45:50,339 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /META-INF/package.jdo
+13:45:50,340 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /WEB-INF/package.jdo
+13:45:50,340 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /package.jdo
+13:45:50,341 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /carrenting/package.jdo
+13:45:50,341 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /carrenting/payment/package.jdo
+13:45:50,341 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /carrenting/payment/gui/package.jdo
+13:45:50,342 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment" en /carrenting/payment/gui/VisaPayment.jdo
+13:45:50,342 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.payment.gui.VisaPayment"
+13:45:50,342 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.payment.gui.VisaPayment" no tener Meta-Data
+13:45:50,342 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.payment.gui.VisaPayment" no tiene MetaData o annotaciones.
+13:45:50,344 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /META-INF/package.jdo
+13:45:50,345 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /WEB-INF/package.jdo
+13:45:50,345 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /package.jdo
+13:45:50,346 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /carrenting/package.jdo
+13:45:50,346 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /carrenting/server/package.jdo
+13:45:50,346 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting" en /carrenting/server/CarRenting.jdo
+13:45:50,346 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.CarRenting"
+13:45:50,346 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.CarRenting" no tener Meta-Data
+13:45:50,347 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.CarRenting" no tiene MetaData o annotaciones.
+13:45:50,347 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /META-INF/package.jdo
+13:45:50,347 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /WEB-INF/package.jdo
+13:45:50,348 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /package.jdo
+13:45:50,348 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /carrenting/package.jdo
+13:45:50,348 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /carrenting/server/package.jdo
+13:45:50,349 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting" en /carrenting/server/ICarRenting.jdo
+13:45:50,349 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.ICarRenting"
+13:45:50,349 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.ICarRenting" no tener Meta-Data
+13:45:50,349 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.ICarRenting" no tiene MetaData o annotaciones.
+13:45:50,350 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /META-INF/package.jdo
+13:45:50,351 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /WEB-INF/package.jdo
+13:45:50,351 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /package.jdo
+13:45:50,351 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /carrenting/package.jdo
+13:45:50,352 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /carrenting/server/package.jdo
+13:45:50,352 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /carrenting/server/jdo/package.jdo
+13:45:50,353 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car" en /carrenting/server/jdo/Car.jdo
+13:45:50,353 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Car"
+13:45:50,353 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.Car" no tener Meta-Data
+13:45:50,353 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.Car" no tiene MetaData o annotaciones.
+13:45:50,354 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /META-INF/package.jdo
+13:45:50,355 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /WEB-INF/package.jdo
+13:45:50,356 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /package.jdo
+13:45:50,356 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /carrenting/package.jdo
+13:45:50,357 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /carrenting/server/package.jdo
+13:45:50,357 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /carrenting/server/jdo/package.jdo
+13:45:50,357 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO" en /carrenting/server/jdo/CarDAO.jdo
+13:45:50,357 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.CarDAO"
+13:45:50,357 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.CarDAO" no tener Meta-Data
+13:45:50,358 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.CarDAO" no tiene MetaData o annotaciones.
+13:45:50,359 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /META-INF/package.jdo
+13:45:50,359 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /WEB-INF/package.jdo
+13:45:50,359 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /package.jdo
+13:45:50,360 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /carrenting/package.jdo
+13:45:50,360 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /carrenting/server/package.jdo
+13:45:50,361 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /carrenting/server/jdo/package.jdo
+13:45:50,361 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage" en /carrenting/server/jdo/Garage.jdo
+13:45:50,361 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Garage"
+13:45:50,361 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.Garage" no tener Meta-Data
+13:45:50,361 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.Garage" no tiene MetaData o annotaciones.
+13:45:50,362 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /META-INF/package.jdo
+13:45:50,363 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /WEB-INF/package.jdo
+13:45:50,363 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /package.jdo
+13:45:50,364 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /carrenting/package.jdo
+13:45:50,364 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /carrenting/server/package.jdo
+13:45:50,364 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /carrenting/server/jdo/package.jdo
+13:45:50,365 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO" en /carrenting/server/jdo/GarageDAO.jdo
+13:45:50,365 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.GarageDAO"
+13:45:50,365 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.GarageDAO" no tener Meta-Data
+13:45:50,365 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.GarageDAO" no tiene MetaData o annotaciones.
+13:45:50,366 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /META-INF/package.jdo
+13:45:50,366 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /WEB-INF/package.jdo
+13:45:50,367 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /package.jdo
+13:45:50,367 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /carrenting/package.jdo
+13:45:50,367 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /carrenting/server/package.jdo
+13:45:50,368 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /carrenting/server/jdo/package.jdo
+13:45:50,368 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin" en /carrenting/server/jdo/ILogin.jdo
+13:45:50,368 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.ILogin"
+13:45:50,368 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.ILogin" no tener Meta-Data
+13:45:50,368 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.ILogin" no tiene MetaData o annotaciones.
+13:45:50,369 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /META-INF/package.jdo
+13:45:50,370 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /WEB-INF/package.jdo
+13:45:50,370 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /package.jdo
+13:45:50,371 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /carrenting/package.jdo
+13:45:50,371 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /carrenting/server/package.jdo
+13:45:50,371 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /carrenting/server/jdo/package.jdo
+13:45:50,372 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login" en /carrenting/server/jdo/Login.jdo
+13:45:50,372 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Login"
+13:45:50,372 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.Login" no tener Meta-Data
+13:45:50,372 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.Login" no tiene MetaData o annotaciones.
+13:45:50,373 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /META-INF/package.jdo
+13:45:50,374 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /WEB-INF/package.jdo
+13:45:50,374 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /package.jdo
+13:45:50,375 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /carrenting/package.jdo
+13:45:50,375 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /carrenting/server/package.jdo
+13:45:50,376 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /carrenting/server/jdo/package.jdo
+13:45:50,376 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent" en /carrenting/server/jdo/Rent.jdo
+13:45:50,376 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Rent"
+13:45:50,383 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.Rent" no tener Meta-Data
+13:45:50,383 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.Rent" no tiene MetaData o annotaciones.
+13:45:50,384 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /META-INF/package.jdo
+13:45:50,385 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /WEB-INF/package.jdo
+13:45:50,385 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /package.jdo
+13:45:50,386 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /carrenting/package.jdo
+13:45:50,386 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /carrenting/server/package.jdo
+13:45:50,387 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /carrenting/server/jdo/package.jdo
+13:45:50,387 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff" en /carrenting/server/jdo/Staff.jdo
+13:45:50,387 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.jdo.Staff"
+13:45:50,387 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.jdo.Staff" no tener Meta-Data
+13:45:50,388 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.jdo.Staff" no tiene MetaData o annotaciones.
+13:45:50,389 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /META-INF/package.jdo
+13:45:50,389 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /WEB-INF/package.jdo
+13:45:50,390 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /package.jdo
+13:45:50,390 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /carrenting/package.jdo
+13:45:50,390 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /carrenting/server/package.jdo
+13:45:50,391 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "carrenting.server.Server" en /carrenting/server/Server.jdo
+13:45:50,391 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "carrenting.server.Server"
+13:45:50,391 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "carrenting.server.Server" no tener Meta-Data
+13:45:50,391 (main) DEBUG [DataNucleus.MetaData] - La clase "carrenting.server.Server" no tiene MetaData o annotaciones.
+13:45:50,391 (main) DEBUG [DataNucleus.MetaData] - Populación del MetaData ...
+13:45:50,392 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" : Populando Meta-Data
+13:45:50,393 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" : Populando Meta-Data
+13:45:50,398 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" campo "name" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,398 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" campo "description" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,398 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" campo "price" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,400 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" campo "author" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,400 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" campo "isbn" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,400 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" campo "publisher" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+13:45:50,400 (main) DEBUG [DataNucleus.MetaData] - Inicialisación del MetaData ...
+13:45:50,401 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Product" : Inicializando Meta-Data
+13:45:50,403 (main) DEBUG [DataNucleus.MetaData] - Clase "carrenting.db.Book" : Inicializando Meta-Data
+13:45:50,403 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Carga de Metadata ya ha terminado
+13:45:50,410 (main) DEBUG [DataNucleus.Enhancer] - Enhance de la clase "carrenting.db.Book" empezando ...
+13:45:50,422 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no implementa el interfaz "org.datanucleus.enhancement.Persistable"!
+13:45:50,422 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el campo "dnInheritedFieldCount" pero lo necesita
+13:45:50,422 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el campo "dnFieldNames" pero lo necesita
+13:45:50,422 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnReplaceField" pero lo necesita
+13:45:50,422 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnIsDetached" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnCopyField" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnCopyFields" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "__dnGetInheritedFieldCount" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnNewInstance" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnNewInstance" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "___dn$loadClass" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnGetManagedFieldCount" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "dnProvideField" pero lo necesita
+13:45:50,423 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Book" no tiene el metodo "__dnFieldNamesInit" pero lo necesita
+13:45:50,447 (main) DEBUG [DataNucleus.Enhancer] - Agregando el interfaz: org.datanucleus.enhancement.Persistable
+13:45:50,459 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.author"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.isbn"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.publisher"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.author"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.isbn"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.publisher"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.author"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.isbn"
+13:45:50,460 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.<init> : ignorando enhance de set del campo "carrenting.db.Book.publisher"
+13:45:50,461 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.getAuthor, cambiando el uso del campo "carrenting.db.Book.author" para utilisar "dnGetauthor()"
+13:45:50,461 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.getIsbn, cambiando el uso del campo "carrenting.db.Book.isbn" para utilisar "dnGetisbn()"
+13:45:50,461 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.getPublisher, cambiando el uso del campo "carrenting.db.Book.publisher" para utilisar "dnGetpublisher()"
+13:45:50,462 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.setAuthor, cambiando el uso del campo "carrenting.db.Book.author" para utilisar "dnSetauthor()"
+13:45:50,463 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.setIsbn, cambiando el uso del campo "carrenting.db.Book.isbn" para utilisar "dnSetisbn()"
+13:45:50,463 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.setPublisher, cambiando el uso del campo "carrenting.db.Book.publisher" para utilisar "dnSetpublisher()"
+13:45:50,464 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.toString, cambiando el uso del campo "carrenting.db.Book.author" para utilisar "dnGetauthor()"
+13:45:50,464 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Book.toString, cambiando el uso del campo "carrenting.db.Product.name" para utilisar "dnGetname()"
+13:45:50,464 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "[Ljava.lang.String; dnFieldNames"
+13:45:50,464 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "int dnInheritedFieldCount"
+13:45:50,466 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void <clinit>()"
+13:45:50,467 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsDetached()"
+13:45:50,467 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+13:45:50,469 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+13:45:50,470 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnReplaceField(int index)"
+13:45:50,471 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnProvideField(int index)"
+13:45:50,472 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyField(carrenting.db.Book obj, int index)"
+13:45:50,474 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyFields(java.lang.Object obj, [I indices)"
+13:45:50,475 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "[Ljava.lang.String; __dnFieldNamesInit()"
+13:45:50,475 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "int __dnGetInheritedFieldCount()"
+13:45:50,475 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "int dnGetManagedFieldCount()"
+13:45:50,477 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Class ___dn$loadClass(java.lang.String className)"
+13:45:50,479 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.String dnGetauthor(carrenting.db.Book objPC)"
+13:45:50,480 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetauthor(carrenting.db.Book objPC, java.lang.String val)"
+13:45:50,481 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.String dnGetisbn(carrenting.db.Book objPC)"
+13:45:50,481 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetisbn(carrenting.db.Book objPC, java.lang.String val)"
+13:45:50,481 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.String dnGetpublisher(carrenting.db.Book objPC)"
+13:45:50,482 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetpublisher(carrenting.db.Book objPC, java.lang.String val)"
+13:45:50,483 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\SoftLabs\SD\BSPQ19-E4\target\classes\carrenting\db\Book.class" con definicion enhanced
+13:45:50,495 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : carrenting.db.Book
+13:45:50,496 (main) DEBUG [DataNucleus.Enhancer] - Enhance de la clase "carrenting.db.Book" ha terminado
+13:45:50,496 (main) DEBUG [DataNucleus.Enhancer] - Enhance de la clase "carrenting.db.Product" empezando ...
+13:45:50,516 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no implementa el interfaz "org.datanucleus.enhancement.Persistable"!
+13:45:50,516 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el campo "dnStateManager" pero lo necesita
+13:45:50,516 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el campo "dnInheritedFieldCount" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el campo "dnFlags" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el campo "dnFieldNames" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnReplaceField" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetStateManager" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsTransactional" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnNewInstance" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnNewInstance" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnProvideFields" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "___dn$loadClass" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetManagedFieldCount" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsDirty" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnReplaceStateManager" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnReplaceFlags" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsDetached" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnMakeDirty" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsDeleted" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnProvideField" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnPreSerialize" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetObjectId" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetVersion" pero lo necesita
+13:45:50,517 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetTransactionalObjectId" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsNew" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyKeyFieldsToObjectId" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyKeyFieldsToObjectId" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyField" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyKeyFieldsFromObjectId" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyKeyFieldsFromObjectId" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnGetExecutionContext" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnCopyFields" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "__dnGetInheritedFieldCount" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnNewObjectIdInstance" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnNewObjectIdInstance" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnIsPersistent" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "dnReplaceFields" pero lo necesita
+13:45:50,518 (main) DEBUG [DataNucleus.Enhancer] - La clase "carrenting.db.Product" no tiene el metodo "__dnFieldNamesInit" pero lo necesita
+13:45:50,519 (main) DEBUG [DataNucleus.Enhancer] - Agregando el interfaz: org.datanucleus.enhancement.Persistable
+13:45:50,519 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.name"
+13:45:50,519 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.description"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.price"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.name"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.description"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.price"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.name"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.description"
+13:45:50,520 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.<init> : ignorando enhance de set del campo "carrenting.db.Product.price"
+13:45:50,521 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.getName, cambiando el uso del campo "carrenting.db.Product.name" para utilisar "dnGetname()"
+13:45:50,521 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.getDescription, cambiando el uso del campo "carrenting.db.Product.description" para utilisar "dnGetdescription()"
+13:45:50,521 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.getPrice, cambiando el uso del campo "carrenting.db.Product.price" para utilisar "dnGetprice()"
+13:45:50,521 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.setName, cambiando el uso del campo "carrenting.db.Product.name" para utilisar "dnSetname()"
+13:45:50,521 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.setDescription, cambiando el uso del campo "carrenting.db.Product.description" para utilisar "dnSetdescription()"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.setPrice, cambiando el uso del campo "carrenting.db.Product.price" para utilisar "dnSetprice()"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.toString, cambiando el uso del campo "carrenting.db.Product.name" para utilisar "dnGetname()"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Enhancing metodo original carrenting.db.Product.toString, cambiando el uso del campo "carrenting.db.Product.description" para utilisar "dnGetdescription()"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "org.datanucleus.enhancement.StateManager dnStateManager"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "byte dnFlags"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "[Ljava.lang.String; dnFieldNames"
+13:45:50,522 (main) DEBUG [DataNucleus.Enhancer] - Agregando el campo "int dnInheritedFieldCount"
+13:45:50,523 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void <clinit>()"
+13:45:50,523 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyKeyFieldsFromObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldConsumer fc, java.lang.Object oid)"
+13:45:50,523 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyKeyFieldsFromObjectId(java.lang.Object oid)"
+13:45:50,523 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyKeyFieldsToObjectId(java.lang.Object oid)"
+13:45:50,523 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyKeyFieldsToObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldSupplier fs, java.lang.Object oid)"
+13:45:50,524 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Object dnGetObjectId()"
+13:45:50,524 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Object dnGetVersion()"
+13:45:50,524 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnPreSerialize()"
+13:45:50,524 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.ExecutionContextReference dnGetExecutionContext()"
+13:45:50,525 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.StateManager dnGetStateManager()"
+13:45:50,525 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Object dnGetTransactionalObjectId()"
+13:45:50,525 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsDeleted()"
+13:45:50,525 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsDirty()"
+13:45:50,525 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsNew()"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsPersistent()"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsTransactional()"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnMakeDirty(java.lang.String fieldName)"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Object dnNewObjectIdInstance()"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Object dnNewObjectIdInstance(java.lang.Object key)"
+13:45:50,526 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnProvideFields([I indices)"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnReplaceFields([I indices)"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnReplaceFlags()"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnReplaceStateManager(org.datanucleus.enhancement.StateManager sm)"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "boolean dnIsDetached()"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+13:45:50,528 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+13:45:50,529 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnReplaceField(int index)"
+13:45:50,529 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnProvideField(int index)"
+13:45:50,529 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyField(carrenting.db.Product obj, int index)"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnCopyFields(java.lang.Object obj, [I indices)"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "[Ljava.lang.String; __dnFieldNamesInit()"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "int __dnGetInheritedFieldCount()"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "int dnGetManagedFieldCount()"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.Class ___dn$loadClass(java.lang.String className)"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.String dnGetdescription(carrenting.db.Product objPC)"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetdescription(carrenting.db.Product objPC, java.lang.String val)"
+13:45:50,530 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "java.lang.String dnGetname(carrenting.db.Product objPC)"
+13:45:50,531 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetname(carrenting.db.Product objPC, java.lang.String val)"
+13:45:50,531 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "double dnGetprice(carrenting.db.Product objPC)"
+13:45:50,531 (main) DEBUG [DataNucleus.Enhancer] - Agregando el metodo "void dnSetprice(carrenting.db.Product objPC, double val)"
+13:45:50,532 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\SoftLabs\SD\BSPQ19-E4\target\classes\carrenting\db\Product.class" con definicion enhanced
+13:45:50,544 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : carrenting.db.Product
+13:45:50,545 (main) DEBUG [DataNucleus.Enhancer] - Enhance de la clase "carrenting.db.Product" ha terminado
+13:45:50,546 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 2 clases. Tiempos : input=226 ms, enhance=142 ms, total=368 ms. Compruebe el LOG para los detalles
