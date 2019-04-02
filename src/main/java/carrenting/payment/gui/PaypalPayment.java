@@ -5,18 +5,38 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import carrenting.client.Controller;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class PaypalPayment extends JFrame{
 	private JTextField textFieldEmail;
 	private JTextField textFieldPass;
+	private JFrame frame;
+	private Controller controller;
 	
-	public PaypalPayment() {
+
+	public PaypalPayment(Controller controller) {
+		initialize();
+		frame.setVisible(true);
+		this.controller=controller;
+	}
+	
+	public void initialize(){
+		
+	    JFrame f = new JFrame("PayPalFrame");
+	      f.setSize(250, 250);
+	      f.setLocation(300,200);
+	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
+	      f.setVisible(true);
+		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelNorth = new JPanel();
@@ -69,20 +89,24 @@ public class PaypalPayment extends JFrame{
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Payment done correctly!");
+					try {
+						controller.register(textFieldEmail.getText());
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+				
 			}
 		});
 		btnFinishPay.setBounds(165, 179, 110, 23);
 		panelCentre.add(btnFinishPay);
 	}
 	
-	 public static void main(String[] args) {
-	      
-	      JFrame f = new JFrame("PayPalFrame");
-	      f.setSize(250, 250);
-	      f.setLocation(300,200);
-	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
-	      f.setVisible(true);
-	      
-	    }
+	
+//	 public static void main(String[] args) {
+//	      
+//	  
+//	      
+//	    }
 }

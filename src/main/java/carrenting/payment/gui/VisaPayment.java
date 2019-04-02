@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import carrenting.client.Controller;
+
 import javax.swing.JPanel;
 
 public class VisaPayment extends JFrame{
@@ -18,8 +22,22 @@ public class VisaPayment extends JFrame{
 	private JTextField textFieldCreditCard;
 	private JTextField textFieldExpirationMonth;
 	private JTextField textFieldExpirationYear;
+	private Controller controller;
+	private JFrame frame;
 	
-	public VisaPayment() {
+	public VisaPayment(Controller controller) {
+		initialize();
+		frame.setVisible(true);
+		this.controller=controller;
+		
+	}
+	public void initialize(){
+		JFrame f = new JFrame("PayPalFrame");
+	      f.setSize(250, 250);
+	      f.setLocation(300,200);
+	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
+	      f.setVisible(true);
+	      
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelNorth = new JPanel();
@@ -65,6 +83,12 @@ public class VisaPayment extends JFrame{
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Payment done correctly!");
+					try {
+						controller.register(textFieldCreditCard.getText());
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -91,14 +115,10 @@ public class VisaPayment extends JFrame{
 		panelCentre.add(label);
 	}
 	
-	 public static void main(String[] args) {
-	      
-	      JFrame f = new JFrame("PayPalFrame");
-	      f.setSize(250, 250);
-	      f.setLocation(300,200);
-	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
-	      f.setVisible(true);
-	      
-	    }
+//	 public static void main(String[] args) {
+//	      
+//	      
+//	      
+//	 }
 
 }
