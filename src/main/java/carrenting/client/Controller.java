@@ -39,7 +39,7 @@ public class Controller{
 	public String[] getGarageNames() throws RemoteException {
 		String[] ret;
 		ret = rsl.getService().getGarageNames();
-		
+		System.out.println("List of Garages:");
 		for(int i = 0; i < ret.length; i++) {
 			System.out.println(ret[i]);
 		}
@@ -48,11 +48,12 @@ public class Controller{
 	}
 	
 	
-	public List<Car> getCars(String garages) throws RemoteException{
+	public List<Car> getCars(String garage) throws RemoteException{
 		List<Car> ret = new ArrayList<>();
 		
-		ret = rsl.getService().getCars(garages);
+		ret = rsl.getService().getCars(garage);
 		
+		System.out.println("Cars in " + garage +":");
 		for(Car c : ret) {
 			System.out.println(c.toString());	
 		}
