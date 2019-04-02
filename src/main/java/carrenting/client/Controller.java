@@ -27,18 +27,18 @@ public class Controller{
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	
 	
-	public Controller(String[] args, int language) throws RemoteException, MalformedURLException, NotBoundException{
+	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiiomas que tenemos
-		if(language==0){
+		if(args[3]=="0"){
 			currentLocale = new Locale("en", "EU");
-		}else if(language==1){
+		}else if(args[3]=="1"){
 			currentLocale = new Locale("es", "ES");
-		}if(language==2){
+		}else if(args[3]=="2"){
 			currentLocale = new Locale("eu", "ES");
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
-		resourceBundle=ResourceBundle.getBundle("/CarRenting/src/main/resources/security", currentLocale);
+		//resourceBundle = ResourceBundle.getBundle("BSPQ19/src/main/resources/security", currentLocale);
 		
 		rsl = new RMIServiceLocator();
 		rsl.setService(args[0], args[1], args[2]);
@@ -90,7 +90,7 @@ public class Controller{
 	}
 
 	
-	public static void main(String[] args, int language) throws RemoteException, MalformedURLException, NotBoundException {
-		new Controller(args, language);
+	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
+		new Controller(args);
 	}
 }
