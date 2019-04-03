@@ -1,14 +1,21 @@
 package carrenting.server;
 
 import java.rmi.RemoteException;
+
+
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Garage;
+
 
 
 
@@ -17,8 +24,16 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	private List<Garage> garageList;
 	private List<Car> cars;
 	private HashMap<String, Garage> garages; 
+	private static final long serialVersionUID = 1L;
+	private PersistenceManager pm=null;
+	private Transaction tx=null;
+
 	
 	public CarRenting() throws RemoteException {
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		this.pm = pmf.getPersistenceManager();
+		this.tx = pm.currentTransaction();
+		
 		garageList = new ArrayList<>();
 		garages = new HashMap<>();
 		List<Car> carsB = new ArrayList<>();
@@ -30,8 +45,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		carsM.add(new Car(0, "A7", "Audi", "3223 GVV", 30));
 		carsB.add(new Car(0, "A8", "Audi", "3223 GVV", 30));
 		
-		garageList.add(new Garage("Bilbao", carsB));
-		garageList.add(new Garage("Madrid", carsM));
+		garageList.add(new Garage("Bilbao"));
+		garageList.add(new Garage("Madrid"));
 		
 		for(Garage g : garageList) {
 			garages.put(g.getLocation(), g);
@@ -72,7 +87,16 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 	}
 	
+	protected void finalize() throws Throwable {
+		if (tx.isActive()) {
+            tx.rollback();
+        }
+        pm.close();
+	}
 
+
+	
+	
 	
 	
 }

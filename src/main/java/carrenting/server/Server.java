@@ -3,9 +3,8 @@ package carrenting.server;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
-import javax.swing.JFrame;
+import carrenting.server.jdo.DataDAO;
 
 public class Server{
 
@@ -20,6 +19,8 @@ public class Server{
 		try {
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
+
+			DataDAO.getInstance();
 			//TODO - We must keep the thread open, so the server keeps open
 			while(true) {}
 			
@@ -32,6 +33,7 @@ public class Server{
 			murle.printStackTrace();
 			System.exit(-1);
 		}
+		
 	}
 
 

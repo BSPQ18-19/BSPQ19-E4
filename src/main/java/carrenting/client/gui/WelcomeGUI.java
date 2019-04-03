@@ -84,8 +84,7 @@ public class WelcomeGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(tfUsername.getText().equals("")) {
-					
-					
+
 				}else {
 					try {
 						controller.register(tfUsername.getText());

@@ -93,4 +93,5 @@ public class Controller{
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}
+	
 }
