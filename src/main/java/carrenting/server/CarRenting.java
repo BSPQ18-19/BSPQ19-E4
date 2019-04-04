@@ -40,8 +40,6 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		List<Car> carsB = new ArrayList<>();
 		List<Car> carsM = new ArrayList<>();
 		
-		//Create Test Garages
-		
 		//Create Test Cars
 		carsM.add(new Car(0, "A7", "Audi", "3223 GVV", 30));
 		carsB.add(new Car(0, "A8", "Audi", "3223 GVV", 30));
@@ -72,6 +70,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		DataDAO.getInstance().storeGarage(location);;
 	}
 	
+
+	public ArrayList<String> getGarages() throws RemoteException{
+		return DataDAO.getInstance().getGarages();
+	}
 	
 //	public List<Car> getCars(String garages) throws RemoteException{
 //		List<Car> ret = new ArrayList<>();
@@ -100,6 +102,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
         }
         pm.close();
 	}
+
+
 
 //	@Override
 //	public List<Car> getCars(String garages) throws RemoteException {

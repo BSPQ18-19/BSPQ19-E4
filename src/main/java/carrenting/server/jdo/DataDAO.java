@@ -27,6 +27,7 @@ public class DataDAO {
 		
 //		storeCars();
 		storeStaff();
+		initializeGarages();
 	}
 
 	public static DataDAO getInstance() {
@@ -34,6 +35,20 @@ public class DataDAO {
 	}
 	
 //Initialize garages
+	public void initializeGarages(){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			pm.makePersistent(new Garage("Madrid"));
+			pm.makePersistent(new Garage("Barcelona"));
+			pm.makePersistent(new Garage("Castro Urdiales"));
+		
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing garage: " + ex.getMessage());
+		} finally {
+			pm.close();
+		}
+		System.out.println("ENTRÉ EN STORAGE GARAGES");
+	}
 
 	public void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -75,7 +90,7 @@ public class DataDAO {
 			ArrayList<Garage> garages = new ArrayList<Garage>((List<Garage>) query.execute());
 			tx.commit();
 			for (Garage a : garages){
-				preparedGarages.add(a.toString());
+				preparedGarages.add(a.getLocation().toString());
 			}
 			return preparedGarages;
 
@@ -85,7 +100,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
+			System.out.println("Entré en GET GARAGES");
 			pm.close();
 		}
 		return null;

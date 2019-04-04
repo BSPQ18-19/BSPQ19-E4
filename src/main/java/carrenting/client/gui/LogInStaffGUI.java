@@ -1,8 +1,5 @@
 package carrenting.client.gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +15,7 @@ import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
 
+@SuppressWarnings("serial")
 public class LogInStaffGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -25,7 +23,6 @@ public class LogInStaffGUI extends JFrame {
 	private JFrame frame;
 	private JTextField tfUsername;
 	private JTextField tfPassword;
-	private JButton boton;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**

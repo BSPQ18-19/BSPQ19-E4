@@ -3,6 +3,7 @@ package carrenting.client;
 import java.net.MalformedURLException;
 
 
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import carrenting.client.gui.LogInStaffGUI;
+import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.ICarRenting;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Garage;
@@ -44,10 +46,11 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		new LogInStaffGUI(this);
+		//new LogInStaffGUI(this);
+		new WelcomeGUI(this);
 		
 		//Pruebas
-		loginStaff("alvaroh@opendeusto.es", "Patata");
+		loginStaff("staff", "password");
 		getGarageNames();
 //		getCars("Bilbao");
 	}
@@ -82,6 +85,11 @@ public class Controller{
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
 	}
+	
+	public ArrayList<String> getGarages() throws RemoteException{
+		return RMIServiceLocator.getService().getGarages();
+	}
+	
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
 		ICarRenting connection = RMIServiceLocator.getService();

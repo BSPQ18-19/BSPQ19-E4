@@ -2,6 +2,7 @@ package carrenting.server;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import carrenting.server.jdo.Car;
@@ -14,6 +15,7 @@ public interface ICarRenting extends Remote  {
 //	public List<Car> getCars(String garages) throws RemoteException;
 	public String[] getGarageNames() throws RemoteException;
 	public void storeGarage(String location) throws RemoteException;
+	public ArrayList<String> getGarages() throws RemoteException;
 	
 	
 }
