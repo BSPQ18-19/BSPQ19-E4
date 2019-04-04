@@ -10,20 +10,20 @@ import carrenting.server.ICarRenting;
 
 public class RMIServiceLocator {
 
-	private ICarRenting service;
+	private static ICarRenting service;
 	
 	public RMIServiceLocator() {
 		
 	}
 	
-	public void setService(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
+	public static void setService(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
 		
 		String name = "//" + ip + ":" + port + "/" + serviceName;
 		service = (ICarRenting) java.rmi.Naming.lookup(name);
 		
 	}
 	
-	public ICarRenting getService() {
+	public static ICarRenting getService() {
 		return service;
 		
 	}

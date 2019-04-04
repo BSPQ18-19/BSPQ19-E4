@@ -40,8 +40,7 @@ public class Controller{
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 		//resourceBundle = ResourceBundle.getBundle("BSPQ19/src/main/resources/security", currentLocale);
 		
-		rsl = new RMIServiceLocator();
-		rsl.setService(args[0], args[1], args[2]);
+		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		//Inicializar GUI
 		
@@ -56,7 +55,7 @@ public class Controller{
 	
 	public String[] getGarageNames() throws RemoteException {
 		String[] ret;
-		ret = rsl.getService().getGarageNames();
+		ret=RMIServiceLocator.getService().getGarageNames();
 		System.out.println("List of Garages:");
 		for(int i = 0; i < ret.length; i++) {
 			System.out.println(ret[i]);
@@ -69,7 +68,7 @@ public class Controller{
 	public List<Car> getCars(String garage) throws RemoteException{
 		List<Car> ret = new ArrayList<>();
 		
-		ret = rsl.getService().getCars(garage);
+		ret = RMIServiceLocator.getService().getCars(garage);
 		
 		System.out.println("Cars in " + garage +":");
 		for(Car c : ret) {
@@ -81,12 +80,12 @@ public class Controller{
 	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
-		ICarRenting connection = rsl.getService();
+		ICarRenting connection = RMIServiceLocator.getService();
 		return connection.loginStaff(user, password);	
 	}
 	
 	public void register ( String username) throws RemoteException {
-		rsl.getService().registerUser(username);
+		RMIServiceLocator.getService().registerUser(username);
 	}
 
 	

@@ -19,8 +19,9 @@ public class Server{
 		try {
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
-
 			DataDAO.getInstance();
+			
+			
 			//TODO - We must keep the thread open, so the server keeps open
 			while(true) {}
 			
