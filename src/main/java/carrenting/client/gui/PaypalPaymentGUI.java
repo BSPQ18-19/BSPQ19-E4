@@ -16,14 +16,14 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
-public class PaypalPayment extends JFrame{
+public class PaypalPaymentGUI extends JFrame{
 	private JTextField textFieldEmail;
 	private JTextField textFieldPass;
 	private JFrame frame;
 	private Controller controller;
 	
 
-	public PaypalPayment(Controller controller) {
+	public PaypalPaymentGUI(Controller controller) {
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;

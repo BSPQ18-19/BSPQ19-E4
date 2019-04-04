@@ -17,7 +17,7 @@ import carrenting.client.Controller;
 
 import javax.swing.JPanel;
 
-public class VisaPayment extends JFrame{
+public class VisaPaymentGUI extends JFrame{
 
 	private JTextField textFieldCreditCard;
 	private JTextField textFieldExpirationMonth;
@@ -25,7 +25,7 @@ public class VisaPayment extends JFrame{
 	private Controller controller;
 	private JFrame frame;
 	
-	public VisaPayment(Controller controller) {
+	public VisaPaymentGUI(Controller controller) {
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;

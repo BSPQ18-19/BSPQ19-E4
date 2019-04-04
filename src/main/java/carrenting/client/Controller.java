@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import carrenting.client.gui.WelcomeGUI;
+import carrenting.client.gui.LogInStaffGUI;
 import carrenting.server.ICarRenting;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Garage;
@@ -44,7 +44,7 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		new WelcomeGUI(this);
+		new LogInStaffGUI(this);
 		
 		//Pruebas
 		loginStaff("alvaroh@opendeusto.es", "Patata");
