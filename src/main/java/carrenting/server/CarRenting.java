@@ -73,13 +73,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 	
 	
-	public List<Car> getCars(String garages) throws RemoteException{
-		List<Car> ret = new ArrayList<>();
-		
-		ret.addAll(this.garages.get(garages).getCars());
-		
-		return ret;
-	}
+//	public List<Car> getCars(String garages) throws RemoteException{
+//		List<Car> ret = new ArrayList<>();
+//		
+//		ret.addAll(this.garages.get(garages).getCars());
+//		
+//		return ret;
+//	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException{
 	
@@ -100,6 +100,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
         }
         pm.close();
 	}
+
+//	@Override
+//	public List<Car> getCars(String garages) throws RemoteException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 	

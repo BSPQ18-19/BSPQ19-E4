@@ -10,6 +10,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+import javax.jdo.annotations.PersistenceCapable;
 
 import carrenting.db.Book;
 
@@ -25,6 +26,7 @@ public class DataDAO {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		storeCars();
+		storeStaff();
 	}
 
 	public static DataDAO getInstance() {
@@ -45,7 +47,21 @@ public class DataDAO {
 		}
 		System.out.println("ENTRÉ EN STORAGE GARAGES");
 	}
-
+	
+	private void storeStaff(){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			pm.makePersistent(new Staff("administrator","admin1", "admin1"));
+			pm.makePersistent(new Staff("administrator","admin2", "admin2"));
+			pm.makePersistent(new Staff("employee","employee1", "employee1"));
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing staff: " + ex.getMessage());
+		} finally {
+			pm.close();
+		}
+		System.out.println("ENTRÉ EN STORAGE STAFF");
+	}
+	
 	public ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -75,6 +91,8 @@ public class DataDAO {
 		return null;
 	}
 
+	
+	
 	
 	
 	public ArrayList<String> getLocations() {

@@ -1,16 +1,24 @@
 package carrenting.server.jdo;
 
-public class Staff {
+import java.io.Serializable;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
+@SuppressWarnings("serial")
+public class Staff implements Serializable {
 	
 	protected String type;
-	protected String password;
+	@PrimaryKey
 	protected String username;
+	protected String password;
 	
 	
-	public Staff(String type, String password, String username){
+	public Staff(String type, String username, String password){
 		this.type=type;
-		this.password=password;
 		this.username=username;
+		this.password=password;
 	}
 	
 	public String getType(){

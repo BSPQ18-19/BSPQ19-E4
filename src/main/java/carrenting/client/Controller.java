@@ -49,7 +49,7 @@ public class Controller{
 		//Pruebas
 		loginStaff("alvaroh@opendeusto.es", "Patata");
 		getGarageNames();
-		getCars("Bilbao");
+//		getCars("Bilbao");
 	}
 	
 	
@@ -65,19 +65,19 @@ public class Controller{
 	}
 	
 	
-	public List<Car> getCars(String garage) throws RemoteException{
-		List<Car> ret = new ArrayList<>();
-		
-		ret = RMIServiceLocator.getService().getCars(garage);
-		
-		System.out.println("Cars in " + garage +":");
-		for(Car c : ret) {
-			System.out.println(c.toString());	
-		}
-		
-		return ret;
-		
-	}
+//	public List<Car> getCars(String garage) throws RemoteException{
+//		List<Car> ret = new ArrayList<>();
+//		
+//		ret = RMIServiceLocator.getService().getCars(garage);
+//		
+//		System.out.println("Cars in " + garage +":");
+//		for(Car c : ret) {
+//			System.out.println(c.toString());	
+//		}
+//		
+//		return ret;
+//		
+//	}
 	
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);

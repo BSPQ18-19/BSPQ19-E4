@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import javax.swing.JRadioButton;
+import java.awt.Font;
 
 public class WelcomeGUI extends JFrame {
 
@@ -53,30 +55,30 @@ public class WelcomeGUI extends JFrame {
 	public void initialize() {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 303, 312);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		frame.setContentPane(contentPane);
 		frame.getContentPane().setLayout(null);
+		contentPane.setLayout(null);
 		
 		
 		tfUsername = new JTextField();
-		tfUsername.setBounds(47, 69, 86, 20);
+		tfUsername.setBounds(21, 143, 108, 20);
 		frame.getContentPane().add(tfUsername);
 		tfUsername.setColumns(10);
 		
 		tfPassword = new JTextField();
-		tfPassword.setBounds(47, 136, 86, 20);
+		tfPassword.setBounds(21, 199, 108, 20);
 		frame.getContentPane().add(tfPassword);
 		tfPassword.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(47, 44, 85, 14);
+		lblUsername.setBounds(21, 118, 85, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(48, 111, 46, 14);
+		lblPassword.setBounds(21, 174, 46, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		JButton btnSignIn = new JButton("Sign In");
@@ -86,7 +88,7 @@ public class WelcomeGUI extends JFrame {
 				if(tfUsername.getText().equals("")) {
 
 				}else {
-					//controller.register(tfUsername.getText());
+//					controller.register(tfUsername.getText());
 					try {
 						controller.storeGarage(tfUsername.getText());
 					} catch (RemoteException e1) {
@@ -96,7 +98,24 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		btnSignIn.setBounds(79, 188, 89, 23);
+		btnSignIn.setBounds(171, 239, 89, 23);
 		frame.getContentPane().add(btnSignIn);
+		
+		JRadioButton rdbtnAdministrator = new JRadioButton("Administrator");
+		rdbtnAdministrator.setBounds(26, 84, 109, 23);
+		contentPane.add(rdbtnAdministrator);
+		
+		JRadioButton rdbtnEmployee = new JRadioButton("Employee");
+		rdbtnEmployee.setBounds(151, 84, 109, 23);
+		contentPane.add(rdbtnEmployee);
+		
+		JLabel lblStaffLoginArea = new JLabel("Staff login");
+		lblStaffLoginArea.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblStaffLoginArea.setBounds(93, 27, 142, 20);
+		contentPane.add(lblStaffLoginArea);
+		
+		JLabel lblIAmAn = new JLabel("I am an:");
+		lblIAmAn.setBounds(26, 63, 46, 14);
+		contentPane.add(lblIAmAn);
 	}
 }

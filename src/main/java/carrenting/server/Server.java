@@ -21,7 +21,7 @@ public class Server{
 		try {
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
-		
+			DataDAO.getInstance();
 //			garages= DataDAO.getInstance().getGarages();
 //			for (String garage : garages) {
 //				System.out.println(garage);
