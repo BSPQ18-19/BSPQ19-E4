@@ -23,7 +23,6 @@ public class DataDAO {
 
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		storeGarages();
 		
 //		storeCars();
 	}
@@ -33,10 +32,11 @@ public class DataDAO {
 	}
 	
 //Initialize garages
-	private void storeGarages(){
+
+	public void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
-			pm.makePersistent(new Garage("sadfg"));
+			pm.makePersistent(new Garage(location));
 
 		} catch (Exception ex) {
 			System.out.println("   $ Error storing garage: " + ex.getMessage());

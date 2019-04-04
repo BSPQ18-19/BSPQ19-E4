@@ -44,7 +44,7 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		//new WelcomeGUI(this);
+		new WelcomeGUI(this);
 		
 		//Pruebas
 		loginStaff("alvaroh@opendeusto.es", "Patata");
@@ -77,6 +77,10 @@ public class Controller{
 		
 		return ret;
 		
+	}
+	
+	public void storeGarage(String location) throws RemoteException {
+		RMIServiceLocator.getService().storeGarage(location);
 	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {

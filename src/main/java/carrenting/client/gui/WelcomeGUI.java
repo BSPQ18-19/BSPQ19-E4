@@ -86,8 +86,9 @@ public class WelcomeGUI extends JFrame {
 				if(tfUsername.getText().equals("")) {
 
 				}else {
+					//controller.register(tfUsername.getText());
 					try {
-						controller.register(tfUsername.getText());
+						controller.storeGarage(tfUsername.getText());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

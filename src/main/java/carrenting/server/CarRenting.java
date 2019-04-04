@@ -14,6 +14,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
 
 
@@ -66,6 +67,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return ret;
 	}
 
+	
+	public void storeGarage(String location) {
+		DataDAO.getInstance().storeGarage(location);;
+	}
+	
+	
 	public List<Car> getCars(String garages) throws RemoteException{
 		List<Car> ret = new ArrayList<>();
 		
@@ -95,6 +102,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 
+	
 	
 	
 	
