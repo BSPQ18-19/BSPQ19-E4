@@ -85,8 +85,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	
 	public boolean loginStaff(String user, String password) throws RemoteException{
 	
-		System.out.println("Recieved user: " + user);
-		System.out.println("Recieved password: " + password);
+		System.out.println("Received user: " + user);
+		System.out.println("Received password: " + password);
 		
 		return false;
 	}

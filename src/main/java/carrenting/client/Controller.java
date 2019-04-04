@@ -46,7 +46,7 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		//new LogInStaffGUI(this);
+		new LogInStaffGUI(this);
 		new WelcomeGUI(this);
 		
 		//Pruebas
