@@ -3,11 +3,13 @@ package carrenting.server;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import carrenting.server.jdo.DataDAO;
 
 public class Server{
-
+	private static ArrayList<String> garages= new ArrayList();
+	
 	public static void main(String[] args) {
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
@@ -20,8 +22,11 @@ public class Server{
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
 			DataDAO.getInstance();
-			
-			
+//			garages= DataDAO.getInstance().getGarages();
+//			for (String garage : garages) {
+//				System.out.println(garage);
+//			}
+//			
 			//TODO - We must keep the thread open, so the server keeps open
 			while(true) {}
 			
