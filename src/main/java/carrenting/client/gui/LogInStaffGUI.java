@@ -14,6 +14,8 @@ import java.rmi.RemoteException;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class LogInStaffGUI extends JFrame {
@@ -42,7 +44,7 @@ public class LogInStaffGUI extends JFrame {
 //		});
 //	}
 	
-	public LogInStaffGUI(Controller controller) {
+	public LogInStaffGUI(Controller controller) throws RemoteException{
 		initialize();
 		frame.setVisible(true);
 		this.controller=controller;
@@ -51,10 +53,10 @@ public class LogInStaffGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void initialize() {
+	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 303, 312);
+		frame.setBounds(100, 100, 297, 324);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -97,7 +99,7 @@ public class LogInStaffGUI extends JFrame {
 				}
 			}
 		});
-		btnSignIn.setBounds(171, 239, 89, 23);
+		btnSignIn.setBounds(75, 254, 89, 23);
 		frame.getContentPane().add(btnSignIn);
 		
 		JRadioButton rdbtnAdministrator = new JRadioButton("Administrator");
@@ -119,5 +121,22 @@ public class LogInStaffGUI extends JFrame {
 		JLabel lblIAmAn = new JLabel("I am an:");
 		lblIAmAn.setBounds(26, 63, 46, 14);
 		contentPane.add(lblIAmAn);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new WelcomeGUI(controller);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		btnCancel.setBounds(186, 254, 85, 23);
+		contentPane.add(btnCancel);
 	}
 }

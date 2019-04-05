@@ -21,6 +21,8 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class WelcomeGUI extends JFrame {
@@ -73,6 +75,18 @@ public class WelcomeGUI extends JFrame {
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
 		JLabel lblStaffArea = new JLabel("<html><u>STAFF area");
+		lblStaffArea.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				welcomeFrame.dispose();
+				try {
+					new LogInStaffGUI(controller);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		lblStaffArea.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
 		lblStaffArea.setForeground(Color.BLUE);
 		lblStaffArea.setBounds(329, 0, 69, 22);

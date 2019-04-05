@@ -2,26 +2,51 @@ package carrenting.server.jdo;
 
 import java.io.Serializable;
 
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class Car implements Serializable{
-	
+	private static final long serialVersionUID = 1L;
 	protected int availability;
-	protected String model;
-	protected String brand;
+//	@ForeignKey
+//	@Column(name="location")
+	private String garage; 
+	@PrimaryKey
 	protected String numPlate;
-	protected double pricePerDay;
+	protected String brand;
+	protected String model;
+	protected int pricePerDay;
+
 	
 	protected Car(){
 		
 	}
 	
-	public Car(int availability, String model, String brand, String numPlate, double pricePerDay){
-		this.availability=availability;
-		this.model=model;
-		this.brand=brand;
-		this.numPlate=numPlate;
-		this.pricePerDay=pricePerDay;
-	}
+
 	
+	public Car(int availability, String garage, String numPlate, String brand, String model, int pricePerDay) {
+		super();
+		this.availability = availability;
+		this.garage = garage;
+		this.numPlate = numPlate;
+		this.brand = brand;
+		this.model = model;
+		this.pricePerDay = pricePerDay;
+	}
+
+
+
+	public String getGarage() {
+		return garage;
+	}
+
+	public void setGarage(String garage) {
+		this.garage = garage;
+	}
+
 	public int getAvailability(){
 		return availability;
 	}
@@ -58,14 +83,10 @@ public class Car implements Serializable{
 		return pricePerDay;
 	}
 	
-	public void setPricePerDay(double pricePerDay){
+	public void setPricePerDay(int pricePerDay){
 		this.pricePerDay=pricePerDay;
 	}
 	
-	@Override
-	public String toString() {
-		return "Car [availability=" + availability + ", model=" + model + ", brand=" + brand + ", numPlate=" + numPlate
-				+ ", pricePerDay=" + pricePerDay + "]";
-	}
+
 	
 }

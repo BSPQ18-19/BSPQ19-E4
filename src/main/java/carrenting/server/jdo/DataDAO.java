@@ -2,7 +2,6 @@ package carrenting.server.jdo;
 
 import java.util.ArrayList;
 
-
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -10,9 +9,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-import javax.jdo.annotations.PersistenceCapable;
-
-import carrenting.db.Book;
 
 
 
@@ -20,34 +16,26 @@ public class DataDAO {
 	
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
- 
-
+	private Garage garage1= new Garage("Madrid");
+	private Garage garage2= new Garage("Barcelona");
+	private Garage garage3= new Garage("Bilbao");
+	
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
-//		storeCars();
+//		Initializing staff, garages, cars
 		storeStaff();
-		initializeGarages();
+//		storeGarage(garage1.getLocation());
+//		storeGarage(garage2.getLocation());
+		storeGarage("Bilbao");
+//		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
 	}
 
 	public static DataDAO getInstance() {
 		return instance;
-	}
-	
-//Initialize garages
-	public void initializeGarages(){
-		PersistenceManager pm = pmf.getPersistenceManager();
-		try {
-			pm.makePersistent(new Garage("Madrid"));
-			pm.makePersistent(new Garage("Barcelona"));
-			pm.makePersistent(new Garage("Castro Urdiales"));
-		
-		} catch (Exception ex) {
-			System.out.println("   $ Error storing garage: " + ex.getMessage());
-		} finally {
-			pm.close();
-		}
-		System.out.println("ENTRÉ EN STORAGE GARAGES");
 	}
 
 	public void storeGarage(String location){
@@ -60,7 +48,7 @@ public class DataDAO {
 		} finally {
 			pm.close();
 		}
-		System.out.println("ENTRÉ EN STORAGE GARAGES");
+		System.out.println("Initializing garages");
 	}
 	
 	private void storeStaff(){
@@ -74,8 +62,22 @@ public class DataDAO {
 		} finally {
 			pm.close();
 		}
-		System.out.println("ENTRÉ EN STORAGE STAFF");
+		System.out.println("Initializing STAFF");
 	}
+	
+	public void storeCar(int availability,String garage,String numPlate, String brand, String model,int pricePerDay){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			pm.makePersistent(new Car(availability, garage, numPlate, brand, model, pricePerDay));
+			
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing staff: " + ex.getMessage());
+		} finally {
+			pm.close();
+		}
+		System.out.println("Initializing cars");
+	}
+	
 	
 	public ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
@@ -105,38 +107,10 @@ public class DataDAO {
 		}
 		return null;
 	}
-
 	
 	
 	
 	
-	public ArrayList<String> getLocations() {
-		ArrayList<String> locations = new ArrayList<>();
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
-		Transaction tx = pm.currentTransaction();
 
-		try {
-			tx.begin();
-			Query<Garage> query = pm.newQuery(Garage.class);
-			@SuppressWarnings("unchecked")
-			ArrayList<Garage> garages = new ArrayList<Garage>((List<Garage>) query.execute());
-			tx.commit();
-			for (Garage a : garages){
-				locations.add(a.getLocation());
-			}
-			return locations;
-
-		} catch (Exception ex) {
-			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-		return null;
-	}
 	
 }

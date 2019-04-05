@@ -40,17 +40,17 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		List<Car> carsB = new ArrayList<>();
 		List<Car> carsM = new ArrayList<>();
 		
-		//Create Test Cars
-		carsM.add(new Car(0, "A7", "Audi", "3223 GVV", 30));
-		carsB.add(new Car(0, "A8", "Audi", "3223 GVV", 30));
+//		//Create Test Cars
+//		carsM.add(new Car(0, "A7", "Audi", "3223 GVV", 30));
+//		carsB.add(new Car(0, "A8", "Audi", "3223 GVV", 30));
 		
 		garageList.add(new Garage("Bilbao"));
 		garageList.add(new Garage("Madrid"));
 		
-		for(Garage g : garageList) {
-			garages.put(g.getLocation(), g);
-		}
-		
+//		for(Garage g : garageList) {
+//			garages.put(g.getLocation(), g);
+//		}
+//		
 	}
 	
 	public String[] getGarageNames() throws RemoteException {

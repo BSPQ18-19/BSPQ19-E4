@@ -24,7 +24,7 @@ public class Controller{
 
 	private RMIServiceLocator rsl;
 	private String username;
-	
+	public String selectedGarageOrigin;
 	private ResourceBundle resourceBundle; //el que gestiona los diomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	
@@ -46,7 +46,7 @@ public class Controller{
 		
 		//Inicializar GUI
 		
-		new LogInStaffGUI(this);
+		//new LogInStaffGUI(this);
 		new WelcomeGUI(this);
 		
 		//Pruebas
