@@ -51,22 +51,22 @@ public class Controller{
 		
 		//Pruebas
 		loginStaff("staff", "password");
-		getGarageNames();
+//		getGarageNames();
 //		getCars("Bilbao");
 	}
 	
-	
-	public String[] getGarageNames() throws RemoteException {
-		String[] ret;
-		ret=RMIServiceLocator.getService().getGarageNames();
-		System.out.println("List of Garages:");
-		for(int i = 0; i < ret.length; i++) {
-			System.out.println(ret[i]);
-		}
-		
-		return ret;
-	}
-	
+//	
+//	public String[] getGarageNames() throws RemoteException {
+//		String[] ret;
+//		ret=RMIServiceLocator.getService().getGarageNames();
+//		System.out.println("List of Garages:");
+//		for(int i = 0; i < ret.length; i++) {
+//			System.out.println(ret[i]);
+//		}
+//		
+//		return ret;
+//	}
+//	
 	
 //	public List<Car> getCars(String garage) throws RemoteException{
 //		List<Car> ret = new ArrayList<>();
@@ -90,6 +90,9 @@ public class Controller{
 		return RMIServiceLocator.getService().getGarages();
 	}
 	
+	public ArrayList<Car> getCars() throws RemoteException{
+		return RMIServiceLocator.getService().getCars();
+	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
 		ICarRenting connection = RMIServiceLocator.getService();

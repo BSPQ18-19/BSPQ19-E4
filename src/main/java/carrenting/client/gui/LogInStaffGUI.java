@@ -45,9 +45,10 @@ public class LogInStaffGUI extends JFrame {
 //	}
 	
 	public LogInStaffGUI(Controller controller) throws RemoteException{
+		this.controller=controller;
 		initialize();
 		frame.setVisible(true);
-		this.controller=controller;
+
 	}
 
 	/**

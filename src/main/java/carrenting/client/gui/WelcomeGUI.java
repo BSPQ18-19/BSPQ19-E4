@@ -155,9 +155,16 @@ public class WelcomeGUI extends JFrame {
 		lblSelectFinishingDate.setBounds(235, 181, 133, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
-		JButton btnContinue = new JButton("Continue");
+		JButton btnContinue = new JButton("Next");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				welcomeFrame.dispose();
+				try {
+					new SelectCarGUI(controller);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnContinue.setBounds(297, 263, 89, 23);

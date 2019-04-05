@@ -67,7 +67,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 
 	
 	public void storeGarage(String location) {
-		DataDAO.getInstance().storeGarage(location);;
+		DataDAO.getInstance().storeGarage(location);
 	}
 	
 
@@ -104,12 +104,9 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 
-
-//	@Override
-//	public List<Car> getCars(String garages) throws RemoteException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	public ArrayList<Car> getCars() throws RemoteException {
+		return DataDAO.getInstance().getCars();
+	}
 
 
 	

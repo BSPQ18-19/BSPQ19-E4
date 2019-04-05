@@ -25,8 +25,8 @@ public class DataDAO {
 		
 //		Initializing staff, garages, cars
 		storeStaff();
-//		storeGarage(garage1.getLocation());
-//		storeGarage(garage2.getLocation());
+		storeGarage(garage1.getLocation());
+		storeGarage(garage2.getLocation());
 		storeGarage("Bilbao");
 //		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
 		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
@@ -82,7 +82,7 @@ public class DataDAO {
 	public ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
+		//pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 
 		try {
@@ -107,6 +107,35 @@ public class DataDAO {
 		}
 		return null;
 	}
+	
+	public ArrayList<Car> getCars() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(2);
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Car> query = pm.newQuery(Car.class);
+			@SuppressWarnings("unchecked")
+			ArrayList<Car> cars = new ArrayList<Car>((List<Car>) query.execute());
+			tx.commit();
+			for (Car a : cars){
+			System.out.println(a.toString());
+		}
+			return cars;
+		} catch (Exception ex) {
+			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en GET CARS");
+			
+			pm.close();
+		}
+		return null;
+	}
+	
+	
 	
 	
 	
