@@ -24,6 +24,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
+/*TODO
+ * Make the dates only selectable from today's date. And make sure return is after start
+ * 
+ */
 @SuppressWarnings("serial")
 public class WelcomeGUI extends JFrame {
 

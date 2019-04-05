@@ -115,8 +115,8 @@ public class LogInStaffGUI extends JFrame {
 		contentPane.add(rdbtnEmployee);
 		
 		JLabel lblStaffLoginArea = new JLabel("Staff login");
-		lblStaffLoginArea.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblStaffLoginArea.setBounds(93, 27, 142, 20);
+		lblStaffLoginArea.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		lblStaffLoginArea.setBounds(99, 23, 85, 20);
 		contentPane.add(lblStaffLoginArea);
 		
 		JLabel lblIAmAn = new JLabel("I am an:");

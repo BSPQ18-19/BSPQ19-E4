@@ -21,6 +21,8 @@ import carrenting.server.jdo.Car;
 
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SelectCarGUI extends JFrame {
 
@@ -104,6 +106,16 @@ public class SelectCarGUI extends JFrame {
 		tableCars.setShowVerticalLines(false);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new WelcomeGUI(controller);
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnBack.setBounds(412, 240, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
