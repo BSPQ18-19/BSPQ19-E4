@@ -1,11 +1,9 @@
 package carrenting.server.jdo;
 import java.io.Serializable;
 
-
-
 import javax.jdo.annotations.PrimaryKey;
 
-import org.datanucleus.store.types.wrappers.Date;
+
 
 @SuppressWarnings("serial")
 public class Rent implements Serializable{
@@ -13,8 +11,8 @@ public class Rent implements Serializable{
 	@PrimaryKey
 	private String numberPlate;
 	@PrimaryKey
-	private Date startingDate;
-	private Date finishingDate;
+	private java.util.Date startingDate;
+	private java.util.Date finishingDate;
 	private String garageOrigin;
 	private String garageDestination;
 	private String paymentSystem;
@@ -34,17 +32,17 @@ public class Rent implements Serializable{
 		this.numberPlate = numberPlate;
 	}
 	
-	public Date getStartingDate() {
+	public java.util.Date getStartingDate() {
 		return startingDate;
 	}
-	public void setStartingDate(Date startingDate) {
-		this.startingDate = startingDate;
+	public void setStartingDate(java.util.Date startingDate2) {
+		this.startingDate = startingDate2;
 	}
 	
-	public Date getFinishingDate() {
+	public java.util.Date getFinishingDate() {
 		return finishingDate;
 	}
-	public void setFinishingDate(Date finishingDate) {
+	public void setFinishingDate(java.util.Date finishingDate) {
 		this.finishingDate = finishingDate;
 	}
 	

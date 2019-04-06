@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-import org.datanucleus.store.types.wrappers.Date;
+
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
@@ -20,7 +20,7 @@ import carrenting.server.jdo.Rent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.rmi.RemoteException;
-
+import java.sql.Date;
 import java.util.ArrayList;
 
 import java.awt.Color;
@@ -301,17 +301,21 @@ public class WelcomeGUI extends JFrame {
 		
 		JButton btnContinue = new JButton("Next");
 		btnContinue.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				welcomeFrame.dispose();
 				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
 				String garageDestination=(String) listGarageDestination.getSelectedValue();
-				Date startingDate= (Date) dateChooserStart.getDate();
-				Date finishingDate = (Date) dateChooserFinish.getDate();
+				java.util.Date startingDate=  dateChooserStart.getDate();
+				java.util.Date finishingDate =  dateChooserFinish.getDate();
+				//java.sql.Date startingDateSQL  = new java.sql.Date(startingDate.getTime()); 
 				try {
 					rent.setGarageOrigin(garageOrigin);
 					rent.setGarageDestination(garageDestination);
-//					rent.setStartingDate(startingDate);
-//					rent.setFinishingDate(finishingDate);
+					rent.setStartingDate(startingDate);
+					System.out.println(startingDate);
+					System.out.println(startingDate);
+					rent.setFinishingDate(finishingDate);
 					System.out.println(rent.toString());
 					new SelectCarGUI(controller, garageOrigin,rent);
 				} catch (RemoteException e1) {
