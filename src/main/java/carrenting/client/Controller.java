@@ -40,7 +40,7 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		getRents();
-		//getGarageDestination("0352HTQ");
+		getGarageDestination("0352HTQ");
 		//Inicializar GUI
 		new WelcomeGUI(this, this.rent);
 	}
@@ -78,6 +78,7 @@ public class Controller{
 		Date currentDate= new Date();
 		Date latestDate = new Date();
 		for (Rent rent: rents) {
+			System.out.println(rent);
 			if(rent.getNumberPlate().equals(numberPlate)) {
 				System.out.println(rent);
 				rentsByNumPlate.add(rent);
@@ -105,11 +106,12 @@ public class Controller{
 	}
 	
 	public void getRents() throws RemoteException {
-		ArrayList<Rent> rents = new ArrayList<>();
-		rents=RMIServiceLocator.getService().getRents();
-		for(Rent rent:rents){
-			System.out.println(rent.toString());
-		}
+//		ArrayList<Rent> rents = new ArrayList<>();
+//		rents=RMIServiceLocator.getService().getRents();
+//		for(Rent rent:rents){
+//			System.out.println(rent.toString());
+//		}
+		RMIServiceLocator.getService().getRents();
 	}
 
 	

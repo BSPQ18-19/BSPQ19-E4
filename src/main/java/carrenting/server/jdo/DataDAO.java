@@ -145,7 +145,9 @@ public class DataDAO {
 			@SuppressWarnings("unchecked")
 			ArrayList<Rent> rents = new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
-
+			for (Rent rent: rents) {
+				System.out.println(rent);
+			}
 			return rents;
 
 		} catch (Exception ex) {
