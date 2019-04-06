@@ -29,11 +29,11 @@ public class Staff implements Serializable {
 		this.type=type;
 	}
 	
-	public String getPass(){
+	public String getPassword(){
 		return password;
 	}
 	
-	public void setPass(String password){
+	public void setPassword(String password){
 		this.password=password;
 	}
 	

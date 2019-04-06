@@ -53,7 +53,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 		Staff staff = DataDAO.getInstance().getStaff(user);
 		
-		if(staff.getPass().equals(password)) {
+		if(staff.getPassword().equals(password)) {
 			System.out.println("Login successful");
 			return true;	
 		}
@@ -66,7 +66,11 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		System.out.println("Username: " + username);
 		
 	}
-	
+
+	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
+		return DataDAO.getInstance().getCars(garage,availability);
+	}
+
 	protected void finalize() throws Throwable {
 		if (tx.isActive()) {
             tx.rollback();
@@ -75,12 +79,6 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 
-	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
-		return DataDAO.getInstance().getCars(garage,availability);
-	}
-
-
-	
 	
 	
 	

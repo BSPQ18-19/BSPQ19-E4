@@ -121,23 +121,23 @@ public class DataDAO {
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
-			query.setFilter("garage=='" + garage + "'");
+			//query.setFilter("garage=='" + garage + "'");
 			//query.setFilter("availability==" + availability+ "");
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
-			System.out.println("Cars by garage");
-			for (Car a : carsByGarage){
-				System.out.println(a.toString());
-			}
-			System.out.println("Cars fully filtered");
-			for(Car car: carsByGarage) {
-				if (car.getAvailability()==availability) {
-					carsFiltered.add(car);
-					System.out.println(car.toString());
-				}
-			}
+//			System.out.println("Cars by garage");
+//			for (Car a : carsByGarage){
+//				System.out.println(a.toString());
+//			}
+//			System.out.println("Cars fully filtered");
+//			for(Car car: carsByGarage) {
+//				if (car.getAvailability()==availability) {
+//					carsFiltered.add(car);
+//					System.out.println(car.toString());
+//				}
+//			}
 			tx.commit();
-			return carsFiltered;
+			return carsByGarage;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
 		} finally {

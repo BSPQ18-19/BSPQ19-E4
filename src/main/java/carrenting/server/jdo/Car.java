@@ -12,7 +12,7 @@ public class Car implements Serializable{
 	private static final long serialVersionUID = 1L;
 	protected int availability;
 	//TODO DEELTE ON CASCADE
-	@ForeignKey
+//	@ForeignKey
 //	@Column(name="location")
 	private String garage; 
 	@PrimaryKey

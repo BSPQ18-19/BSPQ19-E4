@@ -93,7 +93,7 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 	        ArrayList<Car> cars =controller.getCars("Bilbao", 1);
-	        Object rowData[] = new Object[4];
+	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < cars.size(); i++)
 	        {
 	            rowData[0] = cars.get(i).getBrand();

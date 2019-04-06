@@ -58,7 +58,13 @@ public class Controller{
 	}
 	
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
+		ArrayList<Car> cars = new ArrayList<>();
+		cars=RMIServiceLocator.getService().getCars(garage,availability);
+		for(Car car:cars){
+			System.out.println(car.toString());
+		}
 		return RMIServiceLocator.getService().getCars(garage,availability);
+		
 	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
