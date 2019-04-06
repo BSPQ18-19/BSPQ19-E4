@@ -16,9 +16,9 @@ import javax.jdo.annotations.PrimaryKey;
 public class Garage implements Serializable{
 	@PrimaryKey
 	private String location;
-	@Persistent(mappedBy="garage", dependentElement="true")
-	@Join  
-	private List<Car> cars = new ArrayList<>();
+//	@Persistent(mappedBy="garage", dependentElement="true")
+//	@Join  
+//	private List<Car> cars = new ArrayList<>();
 	
 	public Garage(String location){
 		this.location=location;	
@@ -32,22 +32,22 @@ public class Garage implements Serializable{
 		this.location=location;
 	}
 
-	public List<Car> getCars(){
-		return cars;
-	}
-	
-	
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
-	}
-	
-	public void addCar(Car car) {
-		cars.add(car);
-	}
+//	public List<Car> getCars(){
+//		return cars;
+//	}
+//	
+//	
+//	public void setCars(List<Car> cars) {
+//		this.cars = cars;
+//	}
+//	
+//	public void addCar(Car car) {
+//		cars.add(car);
+//	}
 
 	@Override
 	public String toString() {
-		return "Garage [location=" + location + ", cars=" + cars + "]";
+		return "Garage [location=" + location + ", cars=" + "]";
 	}
 
 

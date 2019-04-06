@@ -110,7 +110,7 @@ public class DataDAO {
 	
 	public ArrayList<Car> getCars() {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
+		pm.getFetchPlan().setMaxFetchDepth(3);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
