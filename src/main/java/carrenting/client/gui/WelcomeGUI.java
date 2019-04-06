@@ -68,8 +68,7 @@ public class WelcomeGUI extends JFrame {
 		
 	}
 	
-	//ALTERNATIVA PARA EL TEMA DEL IDIOMA JUNTO CON LA CLASE LANGUAGE
-	
+	//ALTERNATIVA PARA EL TEMA DEL IDIOMA JUNTO CON LA CLASE LANGUAGE	
 //	public void cambiarIdioma(String nameLanguage){
 //		 
 //        Language language=new Language(nameLanguage);
