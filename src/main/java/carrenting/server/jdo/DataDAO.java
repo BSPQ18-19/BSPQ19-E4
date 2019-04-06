@@ -28,7 +28,9 @@ public class DataDAO {
 		storeGarage(garage1.getLocation());
 		storeGarage(garage2.getLocation());
 		storeGarage("Bilbao");
-//		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
 		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
 		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
 		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
@@ -108,13 +110,14 @@ public class DataDAO {
 		return null;
 	}
 	
-	public ArrayList<Car> getCars() {
+	public ArrayList<Car> getCars(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
+		pm.getFetchPlan().setMaxFetchDepth(3);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
+			query.setFilter("garage=='" + garage + "'");
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> cars = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();

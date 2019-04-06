@@ -12,15 +12,10 @@ public class Car implements Serializable{
 	private static final long serialVersionUID = 1L;
 	protected int availability;
 	//TODO
-	
-	
 //	@ForeignKey
 //	@Column(name="location")
 	private String garage; 
-	
-	
-	
-	
+
 	
 	@PrimaryKey
 	protected String numPlate;
@@ -28,13 +23,6 @@ public class Car implements Serializable{
 	protected String model;
 	protected int pricePerDay;
 
-	
-	protected Car(){
-		
-	}
-	
-
-	
 	public Car(int availability, String garage, String numPlate, String brand, String model, int pricePerDay) {
 		super();
 		this.availability = availability;
@@ -44,8 +32,6 @@ public class Car implements Serializable{
 		this.model = model;
 		this.pricePerDay = pricePerDay;
 	}
-
-
 
 	public String getGarage() {
 		return garage;
@@ -97,4 +83,9 @@ public class Car implements Serializable{
 	
 
 	
+	@Override
+	public String toString() {
+		return "Car [availability=" + availability + ", garage=" + garage + ", numPlate=" + numPlate + ", brand="
+				+ brand + ", model=" + model + ", pricePerDay=" + pricePerDay + "]";
+	}
 }

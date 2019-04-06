@@ -16,6 +16,6 @@ public interface ICarRenting extends Remote  {
 	public String[] getGarageNames() throws RemoteException;
 	public void storeGarage(String location) throws RemoteException;
 	public ArrayList<String> getGarages() throws RemoteException;
-	public ArrayList<Car> getCars() throws RemoteException;
+	public ArrayList<Car> getCars(String garage) throws RemoteException;
 	
 }
