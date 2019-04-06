@@ -98,22 +98,22 @@ public class LogInStaffGUI extends JFrame {
 		btnSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String type;
+				if(rdbtnAdministrator.isSelected())
+					type = "administrator";
+				else
+					type = "employee";
 				
 				try {
-					if(rdbtnAdministrator.isSelected() && controller.loginStaff(tfUsername.getText(), tfPassword.getText())) {
+					if(controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type)) {
 						//TODO - Que Staff Panel reciba Controller
 						System.out.println("Staff login successfull");
 						//new StaffPanel();
-						
-					}else if(rdbtnEmployee.isSelected() && controller.loginEmployee(tfUsername.getText(), tfPassword.getText())){
-						//TODO - Algo
-						System.out.println("Employee login successfull");
-						
 					}else {
 						System.out.println("Login unsuccesfull");
 					}
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}		
 				

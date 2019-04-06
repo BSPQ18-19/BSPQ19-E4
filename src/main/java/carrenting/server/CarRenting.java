@@ -48,30 +48,17 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 	
 	
-	public boolean loginStaff(String user, String password) throws RemoteException{
+	public boolean loginStaff(String user, String password, String type) throws RemoteException{
 	
 		Staff staff = DataDAO.getInstance().getStaff(user);
 		System.out.println(staff.toString());
-		if(staff.getPassword().equals(password) && staff.getType().equals("administrator")) {
+		if(staff.getPassword().equals(password) && staff.getType().equals(type)) {
 			System.out.println("Login successful");
-			return true;	
+			return true;
 		}
 		System.out.println("Login unsuccessful");
 		return false;
 	}
-	
-	public boolean loginEmployee(String user, String password) throws RemoteException {
-
-		Staff staff = DataDAO.getInstance().getStaff(user);
-		System.out.println(staff.toString());
-		if(staff.getPassword().equals(password) && staff.getType().equals("employee")) {
-			System.out.println("Login successful");
-			return true;	
-		}
-		System.out.println("Login unsuccessful");
-		return false;
-	}
-	
 
 	public void registerUser (String username) throws RemoteException{
 		System.out.println("Username: " + username);

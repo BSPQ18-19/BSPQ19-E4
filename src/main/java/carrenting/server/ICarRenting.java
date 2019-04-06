@@ -10,8 +10,7 @@ import carrenting.server.jdo.Garage;
 
 
 public interface ICarRenting extends Remote  {
-	public boolean loginStaff(String user, String password) throws RemoteException;
-	public boolean loginEmployee(String user, String password) throws RemoteException;
+	public boolean loginStaff(String user, String password, String type) throws RemoteException;
 	public void registerUser(String username) throws RemoteException;
 	public void storeGarage(String location) throws RemoteException;
 	public ArrayList<String> getGarages() throws RemoteException;
