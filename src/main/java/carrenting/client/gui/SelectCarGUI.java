@@ -92,7 +92,7 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-	        ArrayList<Car> cars =controller.getCars();
+	        ArrayList<Car> cars =controller.getCars("Bilbao");
 	        Object rowData[] = new Object[4];
 	        for(int i = 0; i < cars.size(); i++)
 	        {
@@ -120,6 +120,18 @@ public class SelectCarGUI extends JFrame {
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnNext = new JButton("Next");
+		btnNext.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new ClientDataGUI(controller);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNext.setBounds(313, 240, 89, 23);
 		frame.getContentPane().add(btnNext);
 	}

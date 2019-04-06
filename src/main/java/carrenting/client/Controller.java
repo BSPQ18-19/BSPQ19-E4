@@ -17,9 +17,6 @@ import carrenting.server.ICarRenting;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Garage;
 
-
-
-
 public class Controller{
 
 	private RMIServiceLocator rsl;
@@ -45,42 +42,12 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		//Inicializar GUI
-		
-		//new LogInStaffGUI(this);
 		new WelcomeGUI(this);
-		
-		//Pruebas
+
 		loginStaff("staff", "password");
-//		getGarageNames();
-//		getCars("Bilbao");
+
 	}
 	
-//	
-//	public String[] getGarageNames() throws RemoteException {
-//		String[] ret;
-//		ret=RMIServiceLocator.getService().getGarageNames();
-//		System.out.println("List of Garages:");
-//		for(int i = 0; i < ret.length; i++) {
-//			System.out.println(ret[i]);
-//		}
-//		
-//		return ret;
-//	}
-//	
-	
-//	public List<Car> getCars(String garage) throws RemoteException{
-//		List<Car> ret = new ArrayList<>();
-//		
-//		ret = RMIServiceLocator.getService().getCars(garage);
-//		
-//		System.out.println("Cars in " + garage +":");
-//		for(Car c : ret) {
-//			System.out.println(c.toString());	
-//		}
-//		
-//		return ret;
-//		
-//	}
 	
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
@@ -90,8 +57,8 @@ public class Controller{
 		return RMIServiceLocator.getService().getGarages();
 	}
 	
-	public ArrayList<Car> getCars() throws RemoteException{
-		return RMIServiceLocator.getService().getCars();
+	public ArrayList<Car> getCars(String garage) throws RemoteException{
+		return RMIServiceLocator.getService().getCars(garage);
 	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
