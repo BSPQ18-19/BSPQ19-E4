@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -26,6 +28,7 @@ public class LogInStaffGUI extends JFrame {
 	private JTextField tfUsername;
 	private JTextField tfPassword;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private Rent rent;
 
 	/**
 	 * Launch the application.
@@ -44,8 +47,9 @@ public class LogInStaffGUI extends JFrame {
 //		});
 //	}
 	
-	public LogInStaffGUI(Controller controller) throws RemoteException{
+	public LogInStaffGUI(Controller controller,Rent rent) throws RemoteException{
 		this.controller=controller;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
 
@@ -143,7 +147,7 @@ public class LogInStaffGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 				try {
-					new WelcomeGUI(controller);
+					new WelcomeGUI(controller,rent);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

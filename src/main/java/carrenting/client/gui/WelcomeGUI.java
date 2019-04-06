@@ -3,6 +3,7 @@ package carrenting.client.gui;
 
 
 import javax.swing.AbstractListModel;
+
 import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -11,12 +12,17 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
+import org.datanucleus.store.types.wrappers.Date;
+
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.rmi.RemoteException;
+
 import java.util.ArrayList;
+
 import java.awt.Color;
 import javax.swing.JList;
 import com.toedter.calendar.JDateChooser;
@@ -43,6 +49,7 @@ public class WelcomeGUI extends JFrame {
 	JButton btnChange= new JButton();
 	JLabel lblHi=new JLabel();
 	JComboBox selectLanguage = new JComboBox<>();
+	private Rent rent;
 
 	/**
 	 * Launch the application.
@@ -60,8 +67,9 @@ public class WelcomeGUI extends JFrame {
 //			}
 //		});
 //	}
-	public WelcomeGUI(Controller controller) throws RemoteException{
+	public WelcomeGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
+		this.rent=rent;
 		initialize();
 		welcomeFrame.setVisible(true);
 		//initComponents(); (descomentar con lo de abajo(alternativa para el tema del idioma))
@@ -216,7 +224,7 @@ public class WelcomeGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				welcomeFrame.dispose();
 				try {
-					new LogInStaffGUI(controller);
+					new LogInStaffGUI(controller,rent);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -275,13 +283,13 @@ public class WelcomeGUI extends JFrame {
 		listGarageDestination.setSelectedIndex(0);
 		
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(20, 198, 126, 29);
-		contentPane.add(dateChooser);
+		JDateChooser dateChooserStart = new JDateChooser();
+		dateChooserStart.setBounds(20, 198, 126, 29);
+		contentPane.add(dateChooserStart);
 		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(235, 198, 126, 29);
-		contentPane.add(dateChooser_1);
+		JDateChooser dateChooserFinish = new JDateChooser();
+		dateChooserFinish.setBounds(235, 198, 126, 29);
+		contentPane.add(dateChooserFinish);
 		
 		JLabel lblSelectAS = new JLabel("Select starting date:");
 		lblSelectAS.setBounds(20, 181, 133, 14);
@@ -296,9 +304,16 @@ public class WelcomeGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				welcomeFrame.dispose();
 				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
+				String garageDestination=(String) listGarageDestination.getSelectedValue();
+				Date startingDate= (Date) dateChooserStart.getDate();
+				Date finishingDate = (Date) dateChooserFinish.getDate();
 				try {
-					
-					new SelectCarGUI(controller, garageOrigin);
+					rent.setGarageOrigin(garageOrigin);
+					rent.setGarageDestination(garageDestination);
+//					rent.setStartingDate(startingDate);
+//					rent.setFinishingDate(finishingDate);
+					System.out.println(rent.toString());
+					new SelectCarGUI(controller, garageOrigin,rent);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

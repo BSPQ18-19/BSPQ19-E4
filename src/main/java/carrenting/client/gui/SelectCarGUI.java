@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -31,11 +32,13 @@ public class SelectCarGUI extends JFrame {
 	private Controller controller;
 	private JFrame frame;
 	private String garageOrigin;
+	private Rent rent;
 
 	
-	public SelectCarGUI(Controller controller, String garageOrigin) throws RemoteException{
+	public SelectCarGUI(Controller controller, String garageOrigin, Rent rent) throws RemoteException{
 		this.controller=controller;
 		this.garageOrigin=garageOrigin;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
 
@@ -112,7 +115,7 @@ public class SelectCarGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 				try {
-					new WelcomeGUI(controller);
+					new WelcomeGUI(controller, rent);
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 				}

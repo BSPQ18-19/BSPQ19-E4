@@ -2,26 +2,21 @@ package carrenting.client;
 
 import java.net.MalformedURLException;
 
-
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import carrenting.client.gui.LogInStaffGUI;
 import carrenting.client.gui.WelcomeGUI;
-import carrenting.server.ICarRenting;
 import carrenting.server.jdo.Car;
-import carrenting.server.jdo.Garage;
+import carrenting.server.jdo.Rent;
+
+
 
 public class Controller{
 
-	private RMIServiceLocator rsl;
-	private String username;
-	public String selectedGarageOrigin;
+	private Rent rent = new Rent();
 	private ResourceBundle resourceBundle; //el que gestiona los diomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	
@@ -42,10 +37,7 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		//Inicializar GUI
-		new WelcomeGUI(this);
-
-		//loginStaff("admin1", "admin1");
-
+		new WelcomeGUI(this, this.rent);
 	}
 	
 	
@@ -75,7 +67,18 @@ public class Controller{
 		RMIServiceLocator.getService().registerUser(username);
 	}
 
+
 	
+	public Rent getRent() {
+		return rent;
+	}
+
+
+	public void setRent(Rent rent) {
+		this.rent = rent;
+	}
+
+
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}
