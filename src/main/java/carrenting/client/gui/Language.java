@@ -1,3 +1,4 @@
+
 package carrenting.client.gui;
 
 import java.io.IOException;
@@ -34,3 +35,4 @@ public class Language extends Properties{
         }
    }
 }
+
