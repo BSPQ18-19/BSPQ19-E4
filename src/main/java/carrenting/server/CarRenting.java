@@ -16,6 +16,7 @@ import javax.jdo.Transaction;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
+import carrenting.server.jdo.Staff;
 
 
 
@@ -51,6 +52,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 //			garages.put(g.getLocation(), g);
 //		}
 //		
+		
+		loginStaff("admin1", "admin1");
 	}
 	
 	public String[] getGarageNames() throws RemoteException {
@@ -88,8 +91,16 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		System.out.println("Received user: " + user);
 		System.out.println("Received password: " + password);
 		
+		Staff staff = DataDAO.getInstance().getStaff(user);
+		
+		if(staff.getPass().equals(password)) {
+			System.out.println("Login successful");
+			return true;	
+		}
+		System.out.println("Login unsuccessful");
 		return false;
 	}
+	
 
 	public void registerUser (String username) throws RemoteException{
 		System.out.println("Username: " + username);

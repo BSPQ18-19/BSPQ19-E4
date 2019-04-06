@@ -24,16 +24,17 @@ public class DataDAO {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		Initializing staff, garages, cars
-		storeStaff();
-		storeGarage(garage1.getLocation());
-		storeGarage(garage2.getLocation());
-		storeGarage("Bilbao");
-		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
-		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
-		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+		
+//		storeStaff();
+//		storeGarage(garage1.getLocation());
+//		storeGarage(garage2.getLocation());
+//		storeGarage("Bilbao");
+//		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+//		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
+//		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
+//		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+//		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+//		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
 	}
 
 	public static DataDAO getInstance() {
@@ -122,8 +123,8 @@ public class DataDAO {
 			ArrayList<Car> cars = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
 			for (Car a : cars){
-			System.out.println(a.toString());
-		}
+				System.out.println(a.toString());
+			}
 			return cars;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
@@ -132,6 +133,38 @@ public class DataDAO {
 				tx.rollback();
 			}
 			System.out.println("Entré en GET CARS");
+			
+			pm.close();
+		}
+		return null;
+	}
+	
+	public Staff getStaff(String user) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(3);
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Staff> query = pm.newQuery(Staff.class);
+			query.setFilter("username=='" + user +"'");
+			
+			//TODO - Hacer que esto solo saque uno y no e un arraylist
+			@SuppressWarnings("unchecked")
+			ArrayList<Staff> staff = new ArrayList<Staff>((List<Staff>) query.execute());
+			tx.commit();
+			for(Staff s : staff) {
+				System.out.println(s.toString());
+				return s;
+			}
+			
+			
+		} catch (Exception ex) {
+			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en GET STAFF");
 			
 			pm.close();
 		}
