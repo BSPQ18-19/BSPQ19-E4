@@ -23,18 +23,20 @@ public class DataDAO {
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
-//		Initializing staff, garages, cars
-		
-//		storeStaff();
-//		storeGarage(garage1.getLocation());
-//		storeGarage(garage2.getLocation());
-//		storeGarage("Bilbao");
-//		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
-//		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
-//		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-//		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-//		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-//		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+//		Initializing staff, garages, cars	
+		storeStaff();
+		storeGarage(garage1.getLocation());
+		storeGarage(garage2.getLocation());
+		storeGarage(garage3.getLocation());
+		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
 	}
 
 	public static DataDAO getInstance() {
@@ -78,14 +80,14 @@ public class DataDAO {
 		} finally {
 			pm.close();
 		}
-		System.out.println("Initializing cars");
+		System.out.println("Storing cars cars");
 	}
 	
 	
 	public ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
-		//pm.getFetchPlan().setMaxFetchDepth(2);
+		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 
 		try {
@@ -111,21 +113,31 @@ public class DataDAO {
 		return null;
 	}
 	
-	public ArrayList<Car> getCars(String garage) {
+	public ArrayList<Car> getCars(String garage,int availability) {
+		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
+		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
 			query.setFilter("garage=='" + garage + "'");
+			//query.setFilter("availability==" + availability+ "");
 			@SuppressWarnings("unchecked")
-			ArrayList<Car> cars = new ArrayList<Car>((List<Car>) query.execute());
-			tx.commit();
-			for (Car a : cars){
+			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
+			System.out.println("Cars by garage");
+			for (Car a : carsByGarage){
 				System.out.println(a.toString());
 			}
-			return cars;
+			System.out.println("Cars fully filtered");
+			for(Car car: carsByGarage) {
+				if (car.getAvailability()==availability) {
+					carsFiltered.add(car);
+					System.out.println(car.toString());
+				}
+			}
+			tx.commit();
+			return carsFiltered;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
 		} finally {
@@ -141,23 +153,18 @@ public class DataDAO {
 	
 	public Staff getStaff(String user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(3);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
 			Query<Staff> query = pm.newQuery(Staff.class);
+			query.setUnique(true);
 			query.setFilter("username=='" + user +"'");
-			
 			//TODO - Hacer que esto solo saque uno y no e un arraylist
 			@SuppressWarnings("unchecked")
-			ArrayList<Staff> staff = new ArrayList<Staff>((List<Staff>) query.execute());
+			Staff staff = (Staff) query.execute();
 			tx.commit();
-			for(Staff s : staff) {
-				System.out.println(s.toString());
-				return s;
-			}
-			
-			
+			System.out.println( staff.toString());
+			return staff;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
 		} finally {

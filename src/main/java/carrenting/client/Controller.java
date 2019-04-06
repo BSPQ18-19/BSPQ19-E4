@@ -57,13 +57,12 @@ public class Controller{
 		return RMIServiceLocator.getService().getGarages();
 	}
 	
-	public ArrayList<Car> getCars(String garage) throws RemoteException{
-		return RMIServiceLocator.getService().getCars(garage);
+	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
+		return RMIServiceLocator.getService().getCars(garage,availability);
 	}
 	
 	public boolean loginStaff(String user, String password) throws RemoteException {
-		ICarRenting connection = RMIServiceLocator.getService();
-		return connection.loginStaff(user, password);	
+		return RMIServiceLocator.getService().loginStaff(user, password);	
 	}
 	
 	public void register ( String username) throws RemoteException {
