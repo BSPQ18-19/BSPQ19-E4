@@ -295,8 +295,10 @@ public class WelcomeGUI extends JFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				welcomeFrame.dispose();
+				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
 				try {
-					new SelectCarGUI(controller);
+					
+					new SelectCarGUI(controller, garageOrigin);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -30,10 +30,12 @@ public class SelectCarGUI extends JFrame {
 	private JTable tableCars;
 	private Controller controller;
 	private JFrame frame;
+	private String garageOrigin;
 
 	
-	public SelectCarGUI(Controller controller) throws RemoteException{
+	public SelectCarGUI(Controller controller, String garageOrigin) throws RemoteException{
 		this.controller=controller;
+		this.garageOrigin=garageOrigin;
 		initialize();
 		frame.setVisible(true);
 
@@ -92,7 +94,7 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-	        ArrayList<Car> cars =controller.getCars("Bilbao", 1);
+	        ArrayList<Car> cars =controller.getCars(garageOrigin, 1);
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < cars.size(); i++)
 	        {
