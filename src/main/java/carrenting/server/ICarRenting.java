@@ -7,6 +7,7 @@ import java.util.List;
 
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Garage;
+import carrenting.server.jdo.Rent;
 
 
 public interface ICarRenting extends Remote  {
@@ -15,5 +16,5 @@ public interface ICarRenting extends Remote  {
 	public void storeGarage(String location) throws RemoteException;
 	public ArrayList<String> getGarages() throws RemoteException;
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException;
-	
+	public ArrayList<Rent> getRents() throws RemoteException;
 }

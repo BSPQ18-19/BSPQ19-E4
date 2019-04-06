@@ -113,7 +113,7 @@ public class LogInStaffGUI extends JFrame {
 						//TODO - Que Staff Panel reciba Controller
 						frame.dispose();
 						try {
-							new StaffPanelGUI(controller,type);
+							new StaffPanelGUI(controller,type,rent);
 						} catch (RemoteException e1) {
 							e1.printStackTrace();
 						}

@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JButton;
 
@@ -24,6 +25,7 @@ public class ClientDataGUI extends JFrame {
 	private JPanel contentPane;
 	private Controller controller;
 	private JFrame frame;
+	private Rent rent;
 	private final ButtonGroup buttonGroupClient = new ButtonGroup();
 	private JTextField textField;
 	private JTextField textField_1;
@@ -51,7 +53,7 @@ public class ClientDataGUI extends JFrame {
 //			}
 //		});
 //	}
-	public ClientDataGUI(Controller controller) throws RemoteException{
+	public ClientDataGUI(Controller controller,Rent rent) throws RemoteException{
 		this.controller=controller;
 		initialize();
 		frame.setVisible(true);

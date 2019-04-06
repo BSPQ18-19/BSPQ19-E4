@@ -1,7 +1,9 @@
 package carrenting.server.jdo;
 
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -18,11 +20,14 @@ public class DataDAO {
 	private Garage garage1= new Garage("Madrid");
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
+	private Date date= new Date(System.currentTimeMillis());  
+	private Date date1=new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
+	private Date date2=new GregorianCalendar(2017, Calendar.FEBRUARY, 11).getTime();
 	
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
-//		Initializing staff, garages, cars	
+//		Initializing staff, garages, cars, rent
 		storeStaff();
 		storeGarage(garage1.getLocation());
 		storeGarage(garage2.getLocation());
@@ -36,6 +41,10 @@ public class DataDAO {
 		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
 		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
 		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
+		storeRent("12345678A", "0352HTQ",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12345678A", "0352HTQ",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12345678A", "1234QWE",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		
 	}
 
 	public static DataDAO getInstance() {
@@ -49,6 +58,21 @@ public class DataDAO {
 
 		} catch (Exception ex) {
 			System.out.println("   $ Error storing garage: " + ex.getMessage());
+		} finally {
+			pm.close();
+		}
+		System.out.println("Initializing garages");
+	}
+	
+	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+			String garageDestination, String paymentSystem, int totalPrice){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			pm.makePersistent(new Rent(userId, numberPlate, startingDate, finishingDate, garageOrigin,
+					 garageDestination,paymentSystem,  totalPrice));
+
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing rent: " + ex.getMessage());
 		} finally {
 			pm.close();
 		}
@@ -106,6 +130,31 @@ public class DataDAO {
 				tx.rollback();
 			}
 			System.out.println("Entré en GET GARAGES");
+			pm.close();
+		}
+		return null;
+	}
+	
+	public ArrayList<Rent> getRents() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(2);
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Rent> query = pm.newQuery(Rent.class);
+			@SuppressWarnings("unchecked")
+			ArrayList<Rent> rents = new ArrayList<Rent>((List<Rent>) query.execute());
+			tx.commit();
+
+			return rents;
+
+		} catch (Exception ex) {
+			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en GET RENTS");
 			pm.close();
 		}
 		return null;

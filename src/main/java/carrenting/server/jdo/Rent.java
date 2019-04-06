@@ -1,13 +1,15 @@
 package carrenting.server.jdo;
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 
-
+@PersistenceCapable
 @SuppressWarnings("serial")
 public class Rent implements Serializable{
-	private int userId;
+	private String userId;
 	@PrimaryKey
 	private String numberPlate;
 	@PrimaryKey
@@ -19,12 +21,31 @@ public class Rent implements Serializable{
 	private int totalPrice;
 	
 	
-	public int getUserId() {
+	
+	public Rent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+			String garageDestination, String paymentSystem, int totalPrice) {
+		super();
+		this.userId = userId;
+		this.numberPlate = numberPlate;
+		this.startingDate = startingDate;
+		this.finishingDate = finishingDate;
+		this.garageOrigin = garageOrigin;
+		this.garageDestination = garageDestination;
+		this.paymentSystem = paymentSystem;
+		this.totalPrice = totalPrice;
+	}
+	
+
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+
+
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+
 	public String getNumberPlate() {
 		return numberPlate;
 	}

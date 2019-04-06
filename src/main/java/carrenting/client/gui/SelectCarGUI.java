@@ -104,6 +104,7 @@ public class SelectCarGUI extends JFrame {
 	            rowData[0] = cars.get(i).getBrand();
 	            rowData[1] = cars.get(i).getModel();
 	            rowData[2] = cars.get(i).getPricePerDay();
+
 	            model.addRow(rowData);
 	        }
 		scrollPane.setViewportView(tableCars);
@@ -130,7 +131,7 @@ public class SelectCarGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 				try {
-					new ClientDataGUI(controller);
+					new ClientDataGUI(controller,rent);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

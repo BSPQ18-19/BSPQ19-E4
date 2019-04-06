@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -31,11 +32,13 @@ public class StaffPanelGUI extends JFrame {
 	private JFrame frame;
 	private String staffType;
 	private ArrayList<Car> cars = new ArrayList<>();
+	private Rent rent;
 
 	
-	public StaffPanelGUI(Controller controller, String StaffType) throws RemoteException{
+	public StaffPanelGUI(Controller controller, String StaffType, Rent rent) throws RemoteException{
 		this.controller=controller;
 		this.staffType=staffType;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
 
@@ -69,21 +72,21 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Brand", "Model", "Price per day"
+				"Garage of origin", "Garage of destination", "Brand", "Model", "Price per day"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, true, true
+				true, true, false, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
 		tableCars.getColumnModel().getColumn(0).setPreferredWidth(100);
-		tableCars.getColumnModel().getColumn(0).setMinWidth(30);
-		tableCars.getColumnModel().getColumn(1).setPreferredWidth(80);
-		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
+		tableCars.getColumnModel().getColumn(1).setPreferredWidth(118);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
+		tableCars.getColumnModel().getColumn(4).setPreferredWidth(76);
+		tableCars.getColumnModel().getColumn(4).setMinWidth(30);
 		DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 		 ArrayList<String> garages = controller.getGarages();
 		 for(String garage:garages) {
@@ -92,9 +95,14 @@ public class StaffPanelGUI extends JFrame {
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < cars.size(); i++)
 	        {
-	            rowData[0] = cars.get(i).getBrand();
-	            rowData[1] = cars.get(i).getModel();
-	            rowData[2] = cars.get(i).getPricePerDay();
+	            rowData[0] = cars.get(i).getGarage();
+	            rowData[0] = controller.getGarageDestination(cars.get(i).getNumPlate());
+	            rowData[1] = cars.get(i).getBrand();
+	            rowData[2] = cars.get(i).getModel();
+	            rowData[3] = cars.get(i).getPricePerDay();
+//TODO EN EL CONTROLLER SACAR CON LA MATRICULA EL GRAGE DE DESTINATION
+
+	            
 	            model.addRow(rowData);
 	        }
 		scrollPane.setViewportView(tableCars);
@@ -105,13 +113,7 @@ public class StaffPanelGUI extends JFrame {
 		btnReturnedCar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-				try {
-					new ClientDataGUI(controller);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				//TODO UPDATE DE LA DB garage de destino y availability 1
 			}
 		});
 		btnReturnedCar.setBounds(390, 232, 109, 23);

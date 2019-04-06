@@ -17,6 +17,7 @@ import carrenting.client.RMIServiceLocator;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
+import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
 
 
@@ -34,7 +35,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		this.tx = pm.currentTransaction();
 		//PRUEBAS
 		//loginStaff("admin1", "admin1");
-		getCars("Bilbao",1);
+		//getCars("Bilbao",1);
 	}
 	
 	
@@ -68,6 +69,11 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
 		return DataDAO.getInstance().getCars(garage,availability);
 	}
+	
+	public ArrayList<Rent> getRents() throws RemoteException {
+		return DataDAO.getInstance().getRents();
+	}
+	
 
 	protected void finalize() throws Throwable {
 		if (tx.isActive()) {
