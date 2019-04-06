@@ -23,6 +23,7 @@ public class DataDAO {
 	private Date date= new Date(System.currentTimeMillis());  
 	private Date date1=new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
 	private Date date2=new GregorianCalendar(2017, Calendar.FEBRUARY, 11).getTime();
+	private Date date3=new GregorianCalendar(2015, Calendar.FEBRUARY, 11).getTime();
 	
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -41,9 +42,15 @@ public class DataDAO {
 		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
 		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
 		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
-		storeRent("12345678A", "0352HTQ",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12345678A", "0352HTQ",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12345678A", "1234QWE",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12005678A", "0352HTQ",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12349578A", "0352HTQ",date1,date,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1234QWE",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12367678A", "0252HJH",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0252HJH",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784QWE",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784QWE",date2,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784QWE",date3,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		
 		
 	}
 
@@ -137,7 +144,6 @@ public class DataDAO {
 	
 	public ArrayList<Rent> getRents() {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
@@ -145,9 +151,10 @@ public class DataDAO {
 			@SuppressWarnings("unchecked")
 			ArrayList<Rent> rents = new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
-			for (Rent rent: rents) {
-				System.out.println(rent);
-			}
+			
+//			for (Rent rent: rents) {
+//				System.out.println(rent);
+//			}
 			return rents;
 
 		} catch (Exception ex) {

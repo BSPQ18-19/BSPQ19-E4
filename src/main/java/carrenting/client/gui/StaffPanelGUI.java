@@ -52,7 +52,7 @@ public class StaffPanelGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 559, 332);
+		frame.setBounds(100, 100, 624, 332);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -64,7 +64,7 @@ public class StaffPanelGUI extends JFrame {
 		frame.getContentPane().add(lblSelectACar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 53, 471, 139);
+		scrollPane.setBounds(21, 53, 561, 139);
 		frame.getContentPane().add(scrollPane);
 		
 		tableCars = new JTable();
@@ -72,35 +72,38 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Garage of origin", "Garage of destination", "Brand", "Model", "Price per day"
+				"Garage of origin", "Garage of destination", "NumberPlate", "Brand", "Model", "Price per day"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, true, false, true, true
+				true, true, true, false, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
-		tableCars.getColumnModel().getColumn(0).setPreferredWidth(100);
-		tableCars.getColumnModel().getColumn(1).setPreferredWidth(118);
-		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
-		tableCars.getColumnModel().getColumn(4).setPreferredWidth(76);
-		tableCars.getColumnModel().getColumn(4).setMinWidth(30);
+		tableCars.getColumnModel().getColumn(0).setPreferredWidth(115);
+		tableCars.getColumnModel().getColumn(1).setPreferredWidth(130);
+		tableCars.getColumnModel().getColumn(2).setPreferredWidth(85);
+		tableCars.getColumnModel().getColumn(3).setMinWidth(30);
+		tableCars.getColumnModel().getColumn(5).setPreferredWidth(76);
+		tableCars.getColumnModel().getColumn(5).setMinWidth(30);
 		DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 		 ArrayList<String> garages = controller.getGarages();
 		 for(String garage:garages) {
 			 cars.addAll(controller.getCars(garage, 0));
 		 }
-	        Object rowData[] = new Object[3];
+	        Object rowData[] = new Object[6];
 	        for(int i = 0; i < cars.size(); i++)
 	        {
 	            rowData[0] = cars.get(i).getGarage();
-	            rowData[0] = controller.getGarageDestination(cars.get(i).getNumPlate());
-	            rowData[1] = cars.get(i).getBrand();
-	            rowData[2] = cars.get(i).getModel();
-	            rowData[3] = cars.get(i).getPricePerDay();
+	            rowData[1] = controller.getGarageDestination(cars.get(i).getNumPlate());
+	            rowData[2] = cars.get(i).getNumPlate();
+	            rowData[3] = cars.get(i).getBrand();
+	            rowData[4] = cars.get(i).getModel();
+	            rowData[5] = cars.get(i).getPricePerDay();
 //TODO EN EL CONTROLLER SACAR CON LA MATRICULA EL GRAGE DE DESTINATION
+	         //   controller.getGarageDestination(cars.get(i).getNumPlate())
 
 	            
 	            model.addRow(rowData);
