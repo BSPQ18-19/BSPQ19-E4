@@ -21,6 +21,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 
 import java.awt.Color;
@@ -33,6 +37,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import com.toedter.calendar.JCalendar;
 
 
 /*TODO
@@ -50,6 +55,9 @@ public class WelcomeGUI extends JFrame {
 	JLabel lblHi=new JLabel();
 	JComboBox selectLanguage = new JComboBox<>();
 	private Rent rent;
+	private JDateChooser dateChooserFinish = new JDateChooser();
+	private JDateChooser dateChooserStart = new JDateChooser();
+
 
 	/**
 	 * Launch the application.
@@ -206,7 +214,7 @@ public class WelcomeGUI extends JFrame {
 	public void initialize() throws RemoteException {
 		welcomeFrame = new JFrame();
 		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		welcomeFrame.setBounds(100, 100, 424, 335);
+		welcomeFrame.setBounds(100, 100, 450, 360);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		welcomeFrame.setContentPane(contentPane);
@@ -282,13 +290,30 @@ public class WelcomeGUI extends JFrame {
 		});
 		listGarageDestination.setSelectedIndex(0);
 		
+
 		
-		JDateChooser dateChooserStart = new JDateChooser();
-		dateChooserStart.setBounds(20, 198, 126, 29);
+		
+
+		Date date = new Date(System.currentTimeMillis());  
+		dateChooserStart.setMinSelectableDate(date);
+		dateChooserStart.getCalendarButton().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dateChooserStart.setMaxSelectableDate(dateChooserFinish.getDate());
+			}
+		});
+		dateChooserStart.setBounds(20, 206, 151, 20);
 		contentPane.add(dateChooserStart);
 		
-		JDateChooser dateChooserFinish = new JDateChooser();
-		dateChooserFinish.setBounds(235, 198, 126, 29);
+		
+		dateChooserFinish.getCalendarButton().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dateChooserFinish.setMinSelectableDate(dateChooserStart.getDate());
+			}
+		});
+
+		dateChooserFinish.setBounds(235, 206, 151, 20);
 		contentPane.add(dateChooserFinish);
 		
 		JLabel lblSelectAS = new JLabel("Select starting date:");
@@ -308,7 +333,6 @@ public class WelcomeGUI extends JFrame {
 				String garageDestination=(String) listGarageDestination.getSelectedValue();
 				java.util.Date startingDate=  dateChooserStart.getDate();
 				java.util.Date finishingDate =  dateChooserFinish.getDate();
-				//java.sql.Date startingDateSQL  = new java.sql.Date(startingDate.getTime()); 
 				try {
 					rent.setGarageOrigin(garageOrigin);
 					rent.setGarageDestination(garageDestination);
@@ -324,7 +348,9 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		btnContinue.setBounds(297, 263, 89, 23);
+		btnContinue.setBounds(329, 261, 89, 23);
 		contentPane.add(btnContinue);
+
+
 	}
 }
