@@ -71,6 +71,10 @@ public class Controller{
 		return RMIServiceLocator.getService().loginStaff(user, password);	
 	}
 	
+	public boolean loginEmployee(String user, String password) throws RemoteException{
+		return RMIServiceLocator.getService().loginEmployee(user, password);
+	}
+	
 	public void register ( String username) throws RemoteException {
 		RMIServiceLocator.getService().registerUser(username);
 	}

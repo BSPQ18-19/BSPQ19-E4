@@ -83,26 +83,6 @@ public class LogInStaffGUI extends JFrame {
 		lblPassword.setBounds(21, 174, 64, 14);
 		frame.getContentPane().add(lblPassword);
 		
-		JButton btnSignIn = new JButton("Sign In");
-		btnSignIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(tfUsername.getText().equals("")) {
-
-				}else {
-//					controller.register(tfUsername.getText());
-					try {
-						controller.storeGarage(tfUsername.getText());
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-		});
-		btnSignIn.setBounds(75, 254, 89, 23);
-		frame.getContentPane().add(btnSignIn);
-		
 		JRadioButton rdbtnAdministrator = new JRadioButton("Administrator");
 		buttonGroup.add(rdbtnAdministrator);
 		rdbtnAdministrator.setBounds(26, 84, 109, 23);
@@ -113,6 +93,34 @@ public class LogInStaffGUI extends JFrame {
 		buttonGroup.add(rdbtnEmployee);
 		rdbtnEmployee.setBounds(151, 84, 109, 23);
 		contentPane.add(rdbtnEmployee);
+		
+		JButton btnSignIn = new JButton("Sign In");
+		btnSignIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					if(rdbtnAdministrator.isSelected() && controller.loginStaff(tfUsername.getText(), tfPassword.getText())) {
+						//TODO - Que Staff Panel reciba Controller
+						System.out.println("Staff login successfull");
+						//new StaffPanel();
+						
+					}else if(rdbtnEmployee.isSelected() && controller.loginEmployee(tfUsername.getText(), tfPassword.getText())){
+						//TODO - Algo
+						System.out.println("Employee login successfull");
+						
+					}else {
+						System.out.println("Login unsuccesfull");
+					}
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
+				
+			}
+		});
+		btnSignIn.setBounds(75, 254, 89, 23);
+		frame.getContentPane().add(btnSignIn);
 		
 		JLabel lblStaffLoginArea = new JLabel("Staff login");
 		lblStaffLoginArea.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));

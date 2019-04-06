@@ -23,19 +23,19 @@ public class DataDAO {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		Initializing staff, garages, cars	
-//		storeStaff();
-//		storeGarage(garage1.getLocation());
-//		storeGarage(garage2.getLocation());
-//		storeGarage(garage3.getLocation());
-//		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
-//		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
-//		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-//		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-//		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-//		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
-//		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
-//		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
-//		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
+		storeStaff();
+		storeGarage(garage1.getLocation());
+		storeGarage(garage2.getLocation());
+		storeGarage(garage3.getLocation());
+		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
 	}
 
 	public static DataDAO getInstance() {
