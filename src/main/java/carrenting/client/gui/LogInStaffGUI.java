@@ -107,6 +107,12 @@ public class LogInStaffGUI extends JFrame {
 				try {
 					if(controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type)) {
 						//TODO - Que Staff Panel reciba Controller
+						frame.dispose();
+						try {
+							new StaffPanelGUI(controller,type);
+						} catch (RemoteException e1) {
+							e1.printStackTrace();
+						}
 						System.out.println("Staff login successfull");
 						//new StaffPanel();
 					}else {

@@ -27,8 +27,8 @@ public class DataDAO {
 		storeGarage(garage1.getLocation());
 		storeGarage(garage2.getLocation());
 		storeGarage(garage3.getLocation());
-		storeCar(1,"Madrid","1234QWE","Ford", "Fiesta", 50);
-		storeCar(1,"Madrid","1784QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Madrid","1784QWE","Ford", "Fiesta", 50);
 		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
 		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
 		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);

@@ -66,13 +66,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
-		ArrayList<Car> cars = new ArrayList<>();
-		cars=DataDAO.getInstance().getCars(garage,availability);
-		for(Car car:cars){
-			System.out.println(car.toString());
-		}
-		return cars;
-//		return DataDAO.getInstance().getCars(garage,availability);
+		return DataDAO.getInstance().getCars(garage,availability);
 	}
 
 	protected void finalize() throws Throwable {
