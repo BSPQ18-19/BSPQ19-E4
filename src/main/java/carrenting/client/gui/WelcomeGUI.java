@@ -3,6 +3,8 @@ package carrenting.client.gui;
 
 
 import javax.swing.AbstractListModel;
+import javax.swing.ButtonModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,6 +21,8 @@ import java.awt.Color;
 import javax.swing.JList;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -36,6 +40,9 @@ public class WelcomeGUI extends JFrame {
 	private Controller controller;
 	private JFrame welcomeFrame;
 	private JScrollPane scrollPaneDestination;
+	JButton btnChange= new JButton();
+	JLabel lblHi=new JLabel();
+	JComboBox selectLanguage = new JComboBox<>();
 
 	/**
 	 * Launch the application.
@@ -57,8 +64,132 @@ public class WelcomeGUI extends JFrame {
 		this.controller=controller;
 		initialize();
 		welcomeFrame.setVisible(true);
+		//initComponents(); (descomentar con lo de abajo(alternativa para el tema del idioma))
 		
 	}
+	
+	//ALTERNATIVA PARA EL TEMA DEL IDIOMA JUNTO CON LA CLASE LANGUAGE	
+//	public void cambiarIdioma(String nameLanguage){
+//		 
+//        Language language=new Language(nameLanguage);
+// 
+//        btnChange.setText(language.getProperty("change"));
+//        this.setTitle(language.getProperty("title"));
+//        lblHi.setText(language.getProperty("saludo"));
+// 
+//        selectLanguage.removeAllItems();
+// 
+//        String languages[]={
+//                          language.getProperty("espanol"),
+//                          language.getProperty("ingles"),
+//                          language.getProperty("frances")
+//                          };
+// 
+//        for(int i=0;i<languages.length;i++){
+//            selectLanguage.addItem(languages[i]);
+//        }
+// 
+//    }
+//
+//	private void initComponents() {
+//		// TODO Auto-generated method stub		
+//		
+//		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+//		 
+//        btnChange.setText("Prueba");
+//        btnChange.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                btnChangeActionPerformed(evt);
+//            }
+//        });
+// 
+//        lblHi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+//        lblHi.setText("jLabel1");
+// 
+//        btnChange.setModel((ButtonModel) new DefaultComboBoxModel(new String[] { "Español", "Ingles", "Euskera" }));
+//        
+//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+//        getContentPane().setLayout(layout);
+//        layout.setHorizontalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(layout.createSequentialGroup()
+//                .addGap(145, 145, 145)
+//                .addComponent(btnChange)
+//                .addContainerGap(120, Short.MAX_VALUE))
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                    .addComponent(lblHi, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+//                    .addComponent(selectLanguage, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                .addGap(75, 75, 75))
+//        );
+//        layout.setVerticalGroup(
+//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                .addGap(35, 35, 35)
+//                .addComponent(lblHi, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(44, 44, 44)
+//                .addComponent(selectLanguage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addGap(35, 35, 35)
+//                .addComponent(btnChange)
+//                .addContainerGap(67, Short.MAX_VALUE))
+//        );
+// 
+//        pack();
+//    }
+//		
+//
+//	private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {                                          
+//		 
+//	    switch(selectLanguage.getSelectedIndex()){
+//	
+//	        case 0:
+//	            cambiarIdioma("Español");
+//	            break;
+//	        case 1:
+//	            cambiarIdioma("Ingles");
+//	            break;
+//	        case 2:
+//	            cambiarIdioma("Euskera");
+//	            break;
+//	
+//	    }
+//	
+//	}
+//	
+//	
+//	public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+// 
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new WelcomeGUI(controller).setVisible(true);
+//            }
+//        });
+//    }
+	
 
 	/**
 	 * Create the frame.
