@@ -125,6 +125,7 @@ public class DataDAO {
 			//query.setFilter("availability==" + availability+ "");
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
+			tx.commit();
 			System.out.println("Cars by garage");
 			for (Car a : carsByGarage){
 				System.out.println(a.toString());
@@ -136,7 +137,7 @@ public class DataDAO {
 //					System.out.println(car.toString());
 //				}
 //			}
-			tx.commit();
+
 			return carsByGarage;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
