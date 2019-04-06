@@ -8,12 +8,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
+@SuppressWarnings("serial")
 public class Car implements Serializable{
-	private static final long serialVersionUID = 1L;
 	protected int availability;
 	//TODO DEELTE ON CASCADE
-//	@ForeignKey
-//	@Column(name="location")
+	@ForeignKey
+	//@Column(name="location")
 	private String garage; 
 	@PrimaryKey
 	protected String numPlate;

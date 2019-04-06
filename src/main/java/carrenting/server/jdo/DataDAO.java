@@ -121,14 +121,14 @@ public class DataDAO {
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
-			//query.setFilter("garage=='" + garage + "'");
+			query.setFilter("garage=='" + garage + "'");
 			//query.setFilter("availability==" + availability+ "");
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
-//			System.out.println("Cars by garage");
-//			for (Car a : carsByGarage){
-//				System.out.println(a.toString());
-//			}
+			System.out.println("Cars by garage");
+			for (Car a : carsByGarage){
+				System.out.println(a.toString());
+			}
 //			System.out.println("Cars fully filtered");
 //			for(Car car: carsByGarage) {
 //				if (car.getAvailability()==availability) {
@@ -153,17 +153,17 @@ public class DataDAO {
 	
 	public Staff getStaff(String user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
+		
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
 			Query<Staff> query = pm.newQuery(Staff.class);
-			query.setUnique(true);
 			query.setFilter("username=='" + user +"'");
-			//TODO - Hacer que esto solo saque uno y no e un arraylist
+			query.setUnique(true);
 			@SuppressWarnings("unchecked")
 			Staff staff = (Staff) query.execute();
 			tx.commit();
-			System.out.println( staff.toString());
+			System.out.println(staff.toString());
 			return staff;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());

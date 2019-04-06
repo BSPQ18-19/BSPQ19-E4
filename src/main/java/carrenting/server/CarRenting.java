@@ -13,6 +13,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import carrenting.client.RMIServiceLocator;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
@@ -32,7 +33,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		this.pm = pmf.getPersistenceManager();
 		this.tx = pm.currentTransaction();
 		//PRUEBAS
-		loginStaff("admin1", "admin1");
+		//loginStaff("admin1", "admin1");
+		getCars("Bilbao",1);
 	}
 	
 	
@@ -52,7 +54,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		System.out.println("Received password: " + password);
 		
 		Staff staff = DataDAO.getInstance().getStaff(user);
-		
+		System.out.println(staff.toString());
 		if(staff.getPassword().equals(password)) {
 			System.out.println("Login successful");
 			return true;	
@@ -68,7 +70,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
-		return DataDAO.getInstance().getCars(garage,availability);
+		ArrayList<Car> cars = new ArrayList<>();
+		cars=DataDAO.getInstance().getCars(garage,availability);
+		for(Car car:cars){
+			System.out.println(car.toString());
+		}
+		return cars;
+//		return DataDAO.getInstance().getCars(garage,availability);
 	}
 
 	protected void finalize() throws Throwable {
