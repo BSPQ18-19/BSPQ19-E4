@@ -22,7 +22,7 @@ import carrenting.server.jdo.Rent;
 public class Controller{
 
 	private Rent rent = new Rent(null, null, null, null, null, null, null, 0);
-	private ResourceBundle resourceBundle; //el que gestiona los diomas
+	private ResourceBundle myBundle; //el que gestiona los diomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
 	
@@ -37,7 +37,8 @@ public class Controller{
 			currentLocale = new Locale("eu", "ES");
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
-		//resourceBundle = ResourceBundle.getBundle("BSPQ19/src/main/resources/security", currentLocale);
+		myBundle = ResourceBundle.getBundle("src/main/resources/security", currentLocale);
+		System.out.println("Example of a text in english: "+ myBundle.getString("starting_msg")); //esto coge el texto que tiene la string que le paso. (Debería salir: Starting...)
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
