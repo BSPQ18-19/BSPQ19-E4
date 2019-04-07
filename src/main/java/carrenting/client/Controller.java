@@ -59,10 +59,10 @@ public class Controller{
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
 		cars=RMIServiceLocator.getService().getCars(garage,availability);
-		System.out.println("CONTROLLER");
-		for(Car car:cars){
-			System.out.println(car.toString());
-		}
+//		System.out.println("CONTROLLER");
+//		for(Car car:cars){
+//			System.out.println(car.toString());
+//		}
 		return cars;
 		//return RMIServiceLocator.getService().getCars(garage,availability);
 		
@@ -116,8 +116,8 @@ public class Controller{
 		return rents;
 	}
 
-	public void updateAvailability(String numberPlate, int newAvailability) throws RemoteException{
-		RMIServiceLocator.getService().updateAvailability(numberPlate, newAvailability);
+	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) throws RemoteException{
+		RMIServiceLocator.getService().updateAvailability(numberPlate, newAvailability, garageDestination);
 	}
 
     public int daysBetween(Date d1, Date d2){

@@ -99,10 +99,10 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 	        ArrayList<Car> carsAvailable =controller.getCars(garageOrigin, 1);
-	        System.out.println("soy la gui y estos son los coches:");
-	        for(Car car :carsAvailable) {
-	        	System.out.println(car);
-	        }
+//	        System.out.println("soy la gui y estos son los coches:");
+//	        for(Car car :carsAvailable) {
+//	        	System.out.println(car);
+//	        }
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {

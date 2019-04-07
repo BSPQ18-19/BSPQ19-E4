@@ -54,7 +54,7 @@ public class StaffPanelGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1084, 332);
+		frame.setBounds(100, 100, 1084, 396);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -124,8 +124,11 @@ public class StaffPanelGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String selectednumberPlate=cars.get(tableCars.getSelectedRow()).getNumPlate();
+				String garageDestination = (String) tableCars.getValueAt(tableCars.getSelectedRow(), 6);
+				//cars.remove((tableCars.getSelectedRow()));
 				try {
-					controller.updateAvailability(selectednumberPlate, 1);
+					controller.updateAvailability(selectednumberPlate, 1, garageDestination);
+					tableCars.repaint();
 					
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
@@ -133,7 +136,22 @@ public class StaffPanelGUI extends JFrame {
 				}
 			}
 		});
-		btnReturnedCar.setBounds(693, 227, 109, 23);
+		btnReturnedCar.setBounds(900, 228, 109, 23);
 		frame.getContentPane().add(btnReturnedCar);
+		
+		JButton btnReturnToStartpage = new JButton("Return to Startpage");
+		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new WelcomeGUI(controller, rent);
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnReturnToStartpage.setForeground(Color.BLACK);
+		btnReturnToStartpage.setBounds(851, 283, 158, 23);
+		contentPane.add(btnReturnToStartpage);
 	}
 }

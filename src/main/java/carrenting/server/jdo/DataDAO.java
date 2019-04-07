@@ -151,7 +151,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			System.out.println("Entré en GET GARAGES");
+			System.out.println("GETTING GARAGES");
 			pm.close();
 		}
 		return null;
@@ -178,7 +178,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			System.out.println("Entré en GET RENTS");
+			System.out.println("GETTING RENTS");
 			pm.close();
 		}
 		return null;
@@ -214,7 +214,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			System.out.println("Entré en GET CARS");
+			System.out.println("GETTING CARS");
 			
 			pm.close();
 		}
@@ -241,7 +241,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			System.out.println("Entré en GET STAFF");
+			System.out.println("GETTING STAFF");
 			
 			pm.close();
 		}
@@ -249,15 +249,20 @@ public class DataDAO {
 	}
 	
 	
-	public void updateAvailability(String numberPlate, int newAvailability) {
+	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " WHERE NUMPLATE='" + numberPlate + "'");
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " , GARAGE ='"+ garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
 			q.execute();
 			tx.commit();
-
+			
+//			tx.begin();
+//			Query q2 =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET GARAGE'"+garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
+//			q2.execute();
+//			tx.commit();
+	
 //			for(Rent rent:rents) {
 //				System.out.println("DAO");
 //				System.out.println(rent);
@@ -268,7 +273,7 @@ public class DataDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			System.out.println("Entré en update availability");
+			System.out.println("Updating availability and garage");
 			pm.close();
 		}
 	}
