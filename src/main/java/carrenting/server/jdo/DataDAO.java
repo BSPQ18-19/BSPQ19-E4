@@ -149,12 +149,12 @@ public class DataDAO {
 			tx.begin();
 			Query<Rent> query = pm.newQuery(Rent.class);
 			@SuppressWarnings("unchecked")
-			ArrayList<Rent> rents = new ArrayList<Rent>((List<Rent>) query.execute());
+			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
-			
-//			for (Rent rent: rents) {
-//				System.out.println(rent);
-//			}
+			for(Rent rent:rents) {
+				System.out.println("DAO");
+				System.out.println(rent);
+			}
 			return rents;
 
 		} catch (Exception ex) {

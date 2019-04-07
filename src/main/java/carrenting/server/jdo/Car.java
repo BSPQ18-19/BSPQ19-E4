@@ -2,6 +2,7 @@ package carrenting.server.jdo;
 
 import java.io.Serializable;
 
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;

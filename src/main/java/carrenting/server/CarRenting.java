@@ -36,6 +36,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		//PRUEBAS
 		//loginStaff("admin1", "admin1");
 		//getCars("Bilbao",1);
+		getRents();
 	}
 	
 	
@@ -73,10 +74,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	public ArrayList<Rent> getRents() throws RemoteException {
 		ArrayList<Rent> rents= new ArrayList<>();
 		rents.addAll(DataDAO.getInstance().getRents());
+		System.out.println("SERVER");
 		for(Rent rent: rents) {
 			System.out.println(rent);
 		}
-		return DataDAO.getInstance().getRents();
+		return rents;
+		//return DataDAO.getInstance().getRents();
 	}
 	
 

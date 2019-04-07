@@ -5,9 +5,11 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -22,7 +24,7 @@ public class Controller{
 	private Rent rent = new Rent(null, null, null, null, null, null, null, 0);
 	private ResourceBundle resourceBundle; //el que gestiona los diomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
-	
+	private ArrayList<Rent> rents = new ArrayList<>();
 	
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
@@ -73,10 +75,9 @@ public class Controller{
 	}
 
 	public String getGarageDestination(String numberPlate) throws RemoteException{
-		ArrayList<Rent> rents =RMIServiceLocator.getService().getRents();
 		ArrayList<Rent> rentsByNumPlate = new ArrayList<>();
 		Date currentDate= new Date();
-		Date latestDate = new Date();
+		Date latestDate = new GregorianCalendar(1970, Calendar.FEBRUARY, 11).getTime();
 		for (Rent rent: rents) {
 			//System.out.println(rent);
 			if(rent.getNumberPlate().equals(numberPlate)) {
@@ -86,30 +87,31 @@ public class Controller{
 		}
 		for(int i=0; i<rentsByNumPlate.size() ; i++) {
 			currentDate= rentsByNumPlate.get(i).getStartingDate();
-			System.out.println(currentDate);
-			if(currentDate.compareTo(latestDate)< 0) {
+			System.out.println("CURRENT DATE  " + currentDate);
+			System.out.println("LATEST DATE   " +latestDate);
+			if(currentDate.compareTo(latestDate)> 0) {
+				System.out.println(currentDate +"es más reciente que" + latestDate);
 				latestDate= currentDate;
-				//System.out.println(latestDate);
+
 			}	
 		}
 		for(Rent rent: rentsByNumPlate) {
-			System.out.println(rent);
+			//System.out.println(rent);
 			if(latestDate.equals(rent.getStartingDate())) {
-				System.out.println(latestDate);
-				System.out.println(rent.getGarageDestination());
+				//System.out.println(latestDate);
+				//System.out.println(rent.getGarageDestination());
 				return rent.getGarageDestination();
 			}
 		}
 		return null;
 	}
 	
-	public void getRents() throws RemoteException {
-		ArrayList<Rent> rents = new ArrayList<>();
+	public ArrayList<Rent> getRents() throws RemoteException {
 		rents=RMIServiceLocator.getService().getRents();
 		for(Rent rent:rents){
 			System.out.println(rent.toString());
 		}
-		RMIServiceLocator.getService().getRents();
+		return rents= RMIServiceLocator.getService().getRents();
 	}
 
 	

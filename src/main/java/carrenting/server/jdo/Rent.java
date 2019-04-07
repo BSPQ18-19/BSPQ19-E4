@@ -1,10 +1,10 @@
 package carrenting.server.jdo;
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
-
 
 @PersistenceCapable
 @SuppressWarnings("serial")
