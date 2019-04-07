@@ -36,7 +36,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		//PRUEBAS
 		//loginStaff("admin1", "admin1");
 		//getCars("Bilbao",1);
-		getRents();
+		//getRents();
 	}
 	
 	

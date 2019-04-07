@@ -21,37 +21,44 @@ public class DataDAO {
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
 	private Date date= new Date(System.currentTimeMillis());  
-	private Date date1=new GregorianCalendar(2014, Calendar.FEBRUARY, 11).getTime();
-	private Date date2=new GregorianCalendar(2017, Calendar.FEBRUARY, 11).getTime();
-	private Date date3=new GregorianCalendar(2015, Calendar.FEBRUARY, 11).getTime();
+	private Date date1=new GregorianCalendar(2018, Calendar.AUGUST, 20).getTime();
+	private Date date2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
+	private Date date3=new GregorianCalendar(2018, Calendar.AUGUST, 11).getTime();
+	private Date date4=new GregorianCalendar(2018, Calendar.FEBRUARY, 11).getTime();
+	private Date date5=new GregorianCalendar(2017, Calendar.JUNE, 11).getTime();
+	private Date date6=new GregorianCalendar(2015, Calendar.AUGUST, 11).getTime();
+	private Date date7=new GregorianCalendar(2014, Calendar.JULY, 11).getTime();
+	
 	
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		Initializing staff, garages, cars, rent
-		storeStaff();
-		storeGarage(garage1.getLocation());
-		storeGarage(garage2.getLocation());
-		storeGarage(garage3.getLocation());
-		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
-		storeCar(0,"Madrid","1784QWE","Ford", "Fiesta", 50);
-		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
-		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
-		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
-		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
-		storeRent("12005678A", "0352HTQ",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12349578A", "0352HTQ",date1,date,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1234QWE",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12367678A", "0252HJH",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0252HJH",date1,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784QWE",date,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784QWE",date2,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784QWE",date3,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		
-		
+//		storeStaff();
+//		storeGarage(garage1.getLocation());
+//		storeGarage(garage2.getLocation());
+//		storeGarage(garage3.getLocation());
+//		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
+//		storeCar(0,"Madrid","1784GSE","Ford", "Fiesta", 50);
+//		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
+//		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+//		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+//		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+//		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
+//		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
+//		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
+//		storeRent("12005678A", "0352HTQ",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+//		storeRent("12349578A", "0352HTQ",date7,date6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "1234QWE",date6,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12367678A", "0252HJH",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "0252HJH",date7,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "1784GSE",date6,date5,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "1784GSE",date7,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "1784GSE",date5,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "0987KJH",date3,date2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "0987KJH",date2,date1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+//		storeRent("12365678A", "0987KJH",date1,date, garage2.getLocation(), garage3.getLocation(), "paypal", 500);
+
 	}
 
 	public static DataDAO getInstance() {
@@ -83,7 +90,7 @@ public class DataDAO {
 		} finally {
 			pm.close();
 		}
-		System.out.println("Initializing garages");
+		System.out.println("Initializing RENTS");
 	}
 	
 	private void storeStaff(){
@@ -151,10 +158,10 @@ public class DataDAO {
 			@SuppressWarnings("unchecked")
 			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
-			for(Rent rent:rents) {
-				System.out.println("DAO");
-				System.out.println(rent);
-			}
+//			for(Rent rent:rents) {
+//				System.out.println("DAO");
+//				System.out.println(rent);
+//			}
 			return rents;
 
 		} catch (Exception ex) {

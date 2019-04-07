@@ -111,7 +111,7 @@ public class Controller{
 		for(Rent rent:rents){
 			System.out.println(rent.toString());
 		}
-		return rents= RMIServiceLocator.getService().getRents();
+		return rents;
 	}
 
 	
