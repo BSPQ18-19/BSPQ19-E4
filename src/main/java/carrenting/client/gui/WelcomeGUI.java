@@ -246,11 +246,11 @@ public class WelcomeGUI extends JFrame {
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
 		JLabel lblSelectAGarage = new JLabel("Select a garage of origin");
-		lblSelectAGarage.setBounds(20, 57, 133, 14);
+		lblSelectAGarage.setBounds(20, 57, 166, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage);
 		
 		JLabel lblSelectAGarage_1 = new JLabel("Select a garage of destination");
-		lblSelectAGarage_1.setBounds(235, 57, 151, 14);
+		lblSelectAGarage_1.setBounds(235, 57, 183, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage_1);
 		
 		JScrollPane scrollPaneOrigin = new JScrollPane();

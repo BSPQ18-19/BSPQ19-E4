@@ -76,7 +76,7 @@ public class Controller{
 		RMIServiceLocator.getService().registerUser(username);
 	}
 
-	public String getGarageDestination(String numberPlate) throws RemoteException{
+	public Rent getLatestRent(String numberPlate) throws RemoteException{
 		ArrayList<Rent> rentsByNumPlate = new ArrayList<>();
 		Date currentDate= new Date();
 		Date latestDate = new GregorianCalendar(1970, Calendar.FEBRUARY, 11).getTime();
@@ -102,7 +102,7 @@ public class Controller{
 			if(latestDate.equals(rent.getStartingDate())) {
 				//System.out.println(latestDate);
 				//System.out.println(rent.getGarageDestination());
-				return rent.getGarageDestination();
+				return rent;
 			}
 		}
 		return null;
@@ -120,7 +120,9 @@ public class Controller{
 		RMIServiceLocator.getService().updateAvailability(numberPlate, newAvailability);
 	}
 
-	
+    public int daysBetween(Date d1, Date d2){
+        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+}
 
 	
 	

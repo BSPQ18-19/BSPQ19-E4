@@ -1,5 +1,10 @@
 package carrenting.server.jdo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.Calendar;
@@ -249,7 +254,7 @@ public class DataDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " WHERE NUMBERPLATE='" + numberPlate + "'");
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " WHERE NUMPLATE='" + numberPlate + "'");
 			q.execute();
 			tx.commit();
 
@@ -268,6 +273,8 @@ public class DataDAO {
 		}
 	}
 	
+
+
 	
 	
 	
