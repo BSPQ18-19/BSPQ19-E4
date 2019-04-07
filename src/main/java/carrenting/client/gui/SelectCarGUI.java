@@ -38,6 +38,7 @@ public class SelectCarGUI extends JFrame {
 	public SelectCarGUI(Controller controller, String garageOrigin, Rent rent) throws RemoteException{
 		this.controller=controller;
 		this.garageOrigin=garageOrigin;
+		System.out.println(this.garageOrigin);
 		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
@@ -97,13 +98,17 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-	        ArrayList<Car> cars =controller.getCars(garageOrigin, 1);
+	        ArrayList<Car> carsAvailable =controller.getCars(garageOrigin, 1);
+	        System.out.println("soy la gui y estos son los coches:");
+	        for(Car car :carsAvailable) {
+	        	System.out.println(car);
+	        }
 	        Object rowData[] = new Object[3];
-	        for(int i = 0; i < cars.size(); i++)
+	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {
-	            rowData[0] = cars.get(i).getBrand();
-	            rowData[1] = cars.get(i).getModel();
-	            rowData[2] = cars.get(i).getPricePerDay();
+	            rowData[0] = carsAvailable.get(i).getBrand();
+	            rowData[1] = carsAvailable.get(i).getModel();
+	            rowData[2] = carsAvailable.get(i).getPricePerDay();
 
 	            model.addRow(rowData);
 	        }

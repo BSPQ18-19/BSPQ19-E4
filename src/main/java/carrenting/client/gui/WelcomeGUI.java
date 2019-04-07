@@ -57,6 +57,7 @@ public class WelcomeGUI extends JFrame {
 	private Rent rent;
 	private JDateChooser dateChooserFinish = new JDateChooser();
 	private JDateChooser dateChooserStart = new JDateChooser();
+	
 
 
 	/**

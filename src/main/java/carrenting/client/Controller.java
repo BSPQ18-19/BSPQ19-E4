@@ -42,6 +42,7 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		getRents();
+		getCars("Bilbao", 1);
 		//getGarageDestination("0352HTQ");
 		//Inicializar GUI
 		new WelcomeGUI(this, this.rent);
@@ -57,12 +58,14 @@ public class Controller{
 	}
 	
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
-//		ArrayList<Car> cars = new ArrayList<>();
-//		cars=RMIServiceLocator.getService().getCars(garage,availability);
-//		for(Car car:cars){
-//			System.out.println(car.toString());
-//		}
-		return RMIServiceLocator.getService().getCars(garage,availability);
+		ArrayList<Car> cars = new ArrayList<>();
+		cars=RMIServiceLocator.getService().getCars(garage,availability);
+		System.out.println("CONTROLLER");
+		for(Car car:cars){
+			System.out.println(car.toString());
+		}
+		return cars;
+		//return RMIServiceLocator.getService().getCars(garage,availability);
 		
 	}
 	
@@ -87,10 +90,10 @@ public class Controller{
 		}
 		for(int i=0; i<rentsByNumPlate.size() ; i++) {
 			currentDate= rentsByNumPlate.get(i).getStartingDate();
-			System.out.println("CURRENT DATE  " + currentDate);
-			System.out.println("LATEST DATE   " +latestDate);
+//			System.out.println("CURRENT DATE  " + currentDate);
+//			System.out.println("LATEST DATE   " +latestDate);
 			if(currentDate.compareTo(latestDate)> 0) {
-				System.out.println(currentDate +"es más reciente que" + latestDate);
+//				System.out.println(currentDate +"es más reciente que" + latestDate);
 				latestDate= currentDate;
 
 			}	

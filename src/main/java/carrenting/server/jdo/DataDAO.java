@@ -36,30 +36,30 @@ public class DataDAO {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		Initializing staff, garages, cars, rent
-//		storeStaff();
-//		storeGarage(garage1.getLocation());
-//		storeGarage(garage2.getLocation());
-//		storeGarage(garage3.getLocation());
-//		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
-//		storeCar(0,"Madrid","1784GSE","Ford", "Fiesta", 50);
-//		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-//		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-//		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-//		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
-//		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
-//		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
-//		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
-//		storeRent("12005678A", "0352HTQ",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-//		storeRent("12349578A", "0352HTQ",date7,date6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "1234QWE",date6,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12367678A", "0252HJH",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "0252HJH",date7,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "1784GSE",date6,date5,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "1784GSE",date7,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "1784GSE",date5,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "0987KJH",date3,date2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "0987KJH",date2,date1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-//		storeRent("12365678A", "0987KJH",date1,date, garage2.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeStaff();
+		storeGarage(garage1.getLocation());
+		storeGarage(garage2.getLocation());
+		storeGarage(garage3.getLocation());
+		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Madrid","1784GSE","Ford", "Fiesta", 50);
+		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
+		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
+		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
+		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
+		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
+		storeRent("12005678A", "0352HTQ",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12349578A", "0352HTQ",date7,date6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1234QWE",date6,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12367678A", "0252HJH",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0252HJH",date7,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",date6,date5,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",date7,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",date5,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",date3,date2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",date2,date1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",date1,date, garage2.getLocation(), garage3.getLocation(), "paypal", 500);
 
 	}
 
@@ -182,7 +182,7 @@ public class DataDAO {
 	public ArrayList<Car> getCars(String garage,int availability) {
 		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
+//		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
@@ -249,7 +249,7 @@ public class DataDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE car SET AVAILABILITY =" + newAvailability + " WHERE NUMBERPLATE='" + numberPlate + "'");
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " WHERE NUMBERPLATE='" + numberPlate + "'");
 			q.execute();
 			tx.commit();
 
