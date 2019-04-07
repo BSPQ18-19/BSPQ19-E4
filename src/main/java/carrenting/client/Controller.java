@@ -42,13 +42,12 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		getRents();
-		getCars("Bilbao", 1);
+		//getCars("Bilbao", 1);
 		//getGarageDestination("0352HTQ");
 		//Inicializar GUI
 		new WelcomeGUI(this, this.rent);
 	}
-	
-	
+
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
 	}
