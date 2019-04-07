@@ -125,10 +125,12 @@ public class StaffPanelGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String selectednumberPlate=cars.get(tableCars.getSelectedRow()).getNumPlate();
 				String garageDestination = (String) tableCars.getValueAt(tableCars.getSelectedRow(), 6);
-				//cars.remove((tableCars.getSelectedRow()));
+				tableCars.removeRowSelectionInterval(tableCars.getSelectedRow(), tableCars.getSelectedRow());
+
 				try {
 					controller.updateAvailability(selectednumberPlate, 1, garageDestination);
-					tableCars.repaint();
+					model.fireTableDataChanged();
+					tableCars.repaint(); 
 					
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
