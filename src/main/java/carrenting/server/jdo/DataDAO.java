@@ -1,6 +1,7 @@
 package carrenting.server.jdo;
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -11,6 +12,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+
 
 
 public class DataDAO {
@@ -81,10 +83,12 @@ public class DataDAO {
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
 			String garageDestination, String paymentSystem, int totalPrice){
 		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
 		try {
+			tx.begin();
 			pm.makePersistent(new Rent(userId, numberPlate, startingDate, finishingDate, garageOrigin,
 					 garageDestination,paymentSystem,  totalPrice));
-
+			tx.commit();
 		} catch (Exception ex) {
 			System.out.println("   $ Error storing rent: " + ex.getMessage());
 		} finally {
@@ -107,17 +111,17 @@ public class DataDAO {
 		System.out.println("Initializing STAFF");
 	}
 	
-	public void storeCar(int availability,String garage,String numPlate, String brand, String model,int pricePerDay){
+	public void storeCar(int availability,String garage,String numberPlate, String brand, String model,int pricePerDay){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
-			pm.makePersistent(new Car(availability, garage, numPlate, brand, model, pricePerDay));
+			pm.makePersistent(new Car(availability, garage, numberPlate, brand, model, pricePerDay));
 			
 		} catch (Exception ex) {
 			System.out.println("   $ Error storing staff: " + ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		System.out.println("Storing cars cars");
+		System.out.println("Storing cars");
 	}
 	
 	
@@ -125,7 +129,6 @@ public class DataDAO {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			Query<Garage> query = pm.newQuery(Garage.class);
@@ -199,7 +202,6 @@ public class DataDAO {
 //					System.out.println(car.toString());
 				}
 			}
-
 			return carsFiltered;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
@@ -241,6 +243,30 @@ public class DataDAO {
 		return null;
 	}
 	
+	
+	public void updateAvailability(String numberPlate, int newAvailability) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE car SET AVAILABILITY =" + newAvailability + " WHERE NUMBERPLATE='" + numberPlate + "'");
+			q.execute();
+			tx.commit();
+
+//			for(Rent rent:rents) {
+//				System.out.println("DAO");
+//				System.out.println(rent);
+//			}
+		} catch (Exception ex) {
+			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en update availability");
+			pm.close();
+		}
+	}
 	
 	
 	

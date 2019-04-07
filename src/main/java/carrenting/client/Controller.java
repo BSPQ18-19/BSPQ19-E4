@@ -108,23 +108,20 @@ public class Controller{
 	
 	public ArrayList<Rent> getRents() throws RemoteException {
 		rents=RMIServiceLocator.getService().getRents();
-		for(Rent rent:rents){
-			System.out.println(rent.toString());
-		}
+//		for(Rent rent:rents){
+//			System.out.println(rent.toString());
+//		}
 		return rents;
 	}
 
+	public void updateAvailability(String numberPlate, int newAvailability) throws RemoteException{
+		RMIServiceLocator.getService().updateAvailability(numberPlate, newAvailability);
+	}
+
 	
-	public Rent getRent() {
-		return rent;
-	}
 
-
-	public void setRent(Rent rent) {
-		this.rent = rent;
-	}
-
-
+	
+	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}

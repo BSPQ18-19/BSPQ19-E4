@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import carrenting.client.Controller;
+import carrenting.client.RMIServiceLocator;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 
@@ -76,7 +77,7 @@ public class StaffPanelGUI extends JFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, true, true, false, true, true
+					false,false,false, false,false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -101,11 +102,7 @@ public class StaffPanelGUI extends JFrame {
 	            rowData[2] = cars.get(i).getNumPlate();
 	            rowData[3] = cars.get(i).getBrand();
 	            rowData[4] = cars.get(i).getModel();
-	            rowData[5] = cars.get(i).getPricePerDay();
-//TODO EN EL CONTROLLER SACAR CON LA MATRICULA EL GRAGE DE DESTINATION
-	         //   controller.getGarageDestination(cars.get(i).getNumPlate())
-
-	            
+	            rowData[5] = cars.get(i).getPricePerDay();            
 	            model.addRow(rowData);
 	        }
 		scrollPane.setViewportView(tableCars);
@@ -116,10 +113,18 @@ public class StaffPanelGUI extends JFrame {
 		btnReturnedCar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO UPDATE DE LA DB garage de destino y availability 1
+				String selectednumberPlate=cars.get(tableCars.getSelectedRow()).getNumPlate();
+				cars.remove(tableCars.getSelectedRow());
+				try {
+					controller.updateAvailability(selectednumberPlate, 1);
+					
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnReturnedCar.setBounds(390, 232, 109, 23);
+		btnReturnedCar.setBounds(473, 231, 109, 23);
 		frame.getContentPane().add(btnReturnedCar);
 	}
 }
