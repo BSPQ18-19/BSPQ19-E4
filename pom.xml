@@ -15,7 +15,7 @@
 		<server.IP>127.0.0.1</server.IP>
 		<server.port>1099</server.port>
 		<server.Name>CarRenting</server.Name>
-		<client.language>0</client.language>
+		<client.language>es</client.language>
 		<policy.file>${basedir}/src/main/resources/security/java.policy</policy.file>
 		<config.files.dir>${basedir}/src/main/resources</config.files.dir>
 	</properties>

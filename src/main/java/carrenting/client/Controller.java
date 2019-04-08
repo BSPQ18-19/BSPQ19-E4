@@ -29,15 +29,15 @@ public class Controller{
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiiomas que tenemos
-		if(args[3]=="0"){
+		if(args[3].equals("en")){
 			currentLocale = new Locale("en", "EU");
-		}else if(args[3]=="1"){
+		}else if(args[3].equals("es")){
 			currentLocale = new Locale("es", "ES");
-		}else if(args[3]=="2"){
+		}else if(args[3].equals("eu")){
 			currentLocale = new Locale("eu", "ES");
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
-		myBundle = ResourceBundle.getBundle("src/main/resources/security", currentLocale);
+		myBundle = ResourceBundle.getBundle("src/main/resources", currentLocale);
 		System.out.println("Example of a text in english: "+ myBundle.getString("starting_msg")); //esto coge el texto que tiene la string que le paso. (Debería salir: Starting...)
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
