@@ -1,5 +1,6 @@
 package carrenting.server;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -10,7 +11,7 @@ import carrenting.server.jdo.DataDAO;
 public class Server{
 	private static ArrayList<String> garages= new ArrayList();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
 		}
@@ -22,13 +23,17 @@ public class Server{
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
 			DataDAO.getInstance();
+			
 //			garages= DataDAO.getInstance().getGarages();
 //			for (String garage : garages) {
 //				System.out.println(garage);
 //			}
 //			
-			//TODO - We must keep the thread open, so the server keeps open
-			while(true) {}
+			java.io.InputStreamReader inputStreamReader = new java.io.InputStreamReader ( System.in );
+			java.io.BufferedReader stdin = new java.io.BufferedReader ( inputStreamReader );
+			@SuppressWarnings("unused")
+			String line  = stdin.readLine();
+			
 			
 		} catch (RemoteException re) {
 			System.err.println(" # Collector RemoteException: " + re.getMessage());
