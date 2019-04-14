@@ -20,7 +20,7 @@ import javax.jdo.Transaction;
 
 
 
-public class DataDAO {
+public class DataDAO{
 	
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
