@@ -48,6 +48,10 @@ public class Controller{
 		//Inicializar GUI
 		new WelcomeGUI(this, this.rent);
 	}
+	
+	public Controller() {
+		
+	}
 
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
@@ -59,7 +63,7 @@ public class Controller{
 	
 	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
-		cars=RMIServiceLocator.getService().getCars(garage,availability);
+		cars = RMIServiceLocator.getService().getCars(garage,availability);
 //		System.out.println("CONTROLLER");
 //		for(Car car:cars){
 //			System.out.println(car.toString());
@@ -125,7 +129,13 @@ public class Controller{
         return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 }
 
+	public void storeCar(int availability, String garage, String numberPlate, String brand, String model, int pricePerDay) throws RemoteException{
+		RMIServiceLocator.getService().storeCar(availability, garage, numberPlate, brand, model, pricePerDay);
+	}
 	
+	public void deleteCar(String numberPlate) throws RemoteException {
+		RMIServiceLocator.getService().deleteCar(numberPlate);
+	}
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);

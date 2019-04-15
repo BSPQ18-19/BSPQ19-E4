@@ -27,6 +27,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	private static final long serialVersionUID = 1L;
 	private PersistenceManager pm=null;
 	private Transaction tx=null;
+	
 
 	
 	public CarRenting() throws RemoteException {
@@ -37,6 +38,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		//loginStaff("admin1", "admin1");
 		//getCars("Bilbao",1);
 		//getRents();
+		deleteCar("0252HJH");
 	}
 	
 	
@@ -49,6 +51,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return DataDAO.getInstance().getGarages();
 	}
 	
+	public void storeCar(int availability, String garage, String numberPlate, String brand, String model, int pricePerDay) {
+		DataDAO.getInstance().storeCar(availability, garage, numberPlate, brand, model, pricePerDay);
+	}
+	
+	public void deleteCar(String numberPlate) throws RemoteException {
+		DataDAO.getInstance().deleteCar(numberPlate);
+	}
 	
 	public boolean loginStaff(String user, String password, String type) throws RemoteException{
 	

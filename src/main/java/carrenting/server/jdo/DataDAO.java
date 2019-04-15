@@ -184,6 +184,26 @@ public class DataDAO{
 		return null;
 	}
 	
+	public void deleteCar(String numberPlate) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(2);
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Car> query = pm.newQuery(Car.class);
+			
+			query.setUnique(true);
+			Car carToDelete = (Car) pm.getObjectById(Car.class, numberPlate);			
+			//pm.deletePersistent(carToDelete);
+			
+			tx.commit();
+		}catch (Exception ex){
+			System.out.println("   $ Error deleting data from the database: " + ex.getMessage());
+		}finally {
+			System.out.println("DELETED CAR");
+			pm.close();
+		}
+	}
 	public ArrayList<Car> getCars(String garage,int availability) {
 		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
