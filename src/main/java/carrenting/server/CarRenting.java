@@ -34,11 +34,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		this.pm = pmf.getPersistenceManager();
 		this.tx = pm.currentTransaction();
+		
 		//PRUEBAS
 		//loginStaff("admin1", "admin1");
 		//getCars("Bilbao",1);
 		//getRents();
-		deleteCar("0252HJH");
+		//deleteCar("0252HJH");
 	}
 	
 	
@@ -57,6 +58,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	
 	public void deleteCar(String numberPlate) throws RemoteException {
 		DataDAO.getInstance().deleteCar(numberPlate);
+	}
+	
+	public void deleteGarage(String garage) throws RemoteException{
+		DataDAO.getInstance().deleteGarage(garage);
 	}
 	
 	public boolean loginStaff(String user, String password, String type) throws RemoteException{

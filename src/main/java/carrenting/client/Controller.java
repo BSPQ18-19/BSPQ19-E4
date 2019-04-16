@@ -57,6 +57,10 @@ public class Controller{
 		RMIServiceLocator.getService().storeGarage(location);
 	}
 	
+	public void deleteGarage(String garage) throws RemoteException {
+		RMIServiceLocator.getService().deleteGarage(garage);
+	}
+	
 	public ArrayList<String> getGarages() throws RemoteException{
 		return RMIServiceLocator.getService().getGarages();
 	}

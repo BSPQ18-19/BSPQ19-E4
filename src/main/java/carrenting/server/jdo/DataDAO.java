@@ -191,10 +191,11 @@ public class DataDAO{
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
-			
 			query.setUnique(true);
-			Car carToDelete = (Car) pm.getObjectById(Car.class, numberPlate);			
-			//pm.deletePersistent(carToDelete);
+			
+			Car carToDelete = (Car) pm.getObjectById(Car.class, numberPlate);	
+			
+			pm.deletePersistent(carToDelete);
 			
 			tx.commit();
 		}catch (Exception ex){
@@ -204,6 +205,28 @@ public class DataDAO{
 			pm.close();
 		}
 	}
+	
+	public void deleteGarage(String garage) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			
+			Query<Garage> query = pm.newQuery(Garage.class);
+			query.setUnique(true);
+			
+			Garage garageToDelete = (Garage) pm.getObjectById(Garage.class, garage);
+			pm.deletePersistent(garageToDelete);
+			
+			tx.commit();
+		}catch (Exception ex){
+			System.out.println("   $ Error deleting data from the database: " + ex.getMessage());
+		}finally {
+			System.out.println("DELETED GARAGE");
+			pm.close();
+		}
+	}
+	
 	public ArrayList<Car> getCars(String garage,int availability) {
 		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
