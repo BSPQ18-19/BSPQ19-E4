@@ -58,24 +58,23 @@ public class DAOTest {
 		
 	}
 	
-	@Test
-	public void testGetGarages() throws RemoteException {
-		
-		ArrayList<String> a = new ArrayList<>();
-		a.add("Portugalete");
-		
-		when(DataDAO.getInstance().getGarages()).thenReturn(a);
-		
-		ArrayList<String> garages = c.getGarages();
-		
-		for(String s : garages) {
-			if(s.equals("Portugalete")) {
-				assert(true);
-			}
-		}
-		
-		
-	}
+//	@Test
+//	public void testGetGarages() throws RemoteException {
+//		
+//		ArrayList<String> a = new ArrayList<>();
+//		a.add("Portugalete");
+//		
+//		when(DataDAO.getInstance().getGarages()).thenReturn(a);
+//		
+//		ArrayList<String> garages = c.getGarages();
+//		
+//		for(String s : garages) {
+//			if(s.equals("Portugalete")) {
+//				assert(true);
+//			}
+//		}
+//	}
+	
 	
 	@After
 	public void after() {
