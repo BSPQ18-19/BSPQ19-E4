@@ -1,18 +1,18 @@
 package carrenting.server.jdo;
 import java.io.Serializable;
-
 import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Persistent;
+
 
 @PersistenceCapable
 @SuppressWarnings("serial")
 public class Rent implements Serializable{
 	private String userId;
-	@PrimaryKey
+	@Persistent(primaryKey="true")
 	private String numberPlate;
-	@PrimaryKey
+	@Persistent(primaryKey="true")
 	private java.util.Date startingDate;
 	private java.util.Date finishingDate;
 	private String garageOrigin;

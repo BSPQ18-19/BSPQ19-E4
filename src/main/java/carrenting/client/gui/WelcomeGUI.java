@@ -297,6 +297,7 @@ public class WelcomeGUI extends JFrame {
 		
 
 		Date date = new Date(System.currentTimeMillis());  
+//		dateChooserStart.setDate(new Date(System.currentTimeMillis()));
 		dateChooserStart.setMinSelectableDate(date);
 		dateChooserStart.getCalendarButton().addMouseListener(new MouseAdapter() {
 			@Override
@@ -307,7 +308,7 @@ public class WelcomeGUI extends JFrame {
 		dateChooserStart.setBounds(143, 286, 151, 20);
 		contentPane.add(dateChooserStart);
 		
-		
+//		dateChooserFinish.setDate(new Date(System.currentTimeMillis()));
 		dateChooserFinish.getCalendarButton().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -328,26 +329,26 @@ public class WelcomeGUI extends JFrame {
 		
 		JButton btnContinue = new JButton("Next");
 		btnContinue.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				welcomeFrame.dispose();
-				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
-				String garageDestination=(String) listGarageDestination.getSelectedValue();
-				java.util.Date startingDate=  dateChooserStart.getDate();
-				java.util.Date finishingDate =  dateChooserFinish.getDate();
-				try {
-					rent.setGarageOrigin(garageOrigin);
-					rent.setGarageDestination(garageDestination);
-					rent.setStartingDate(startingDate);
-					System.out.println(startingDate);
-					System.out.println(startingDate);
-					rent.setFinishingDate(finishingDate);
-					System.out.println(rent.toString());
-					new SelectCarGUI(controller, garageOrigin,rent);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					welcomeFrame.dispose();
+					String garageOrigin = (String) listGarageOrigin.getSelectedValue();
+					String garageDestination=(String) listGarageDestination.getSelectedValue();
+					java.util.Date startingDate=  dateChooserStart.getDate();
+					java.util.Date finishingDate =  dateChooserFinish.getDate();
+					try {
+						rent.setGarageOrigin(garageOrigin);
+						rent.setGarageDestination(garageDestination);
+						rent.setStartingDate(startingDate);
+						System.out.println(startingDate);
+						System.out.println(startingDate);
+						rent.setFinishingDate(finishingDate);
+						System.out.println(rent.toString());
+						new SelectCarGUI(controller, rent, garageOrigin);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	
 			}
 		});
 		btnContinue.setBounds(495, 365, 89, 23);
@@ -368,7 +369,7 @@ public class WelcomeGUI extends JFrame {
 				
 			}
 		});
-		chckbxSameGarage.setBounds(488, 114, 145, 60);
+		chckbxSameGarage.setBounds(488, 127, 145, 37);
 		contentPane.add(chckbxSameGarage);
 
 

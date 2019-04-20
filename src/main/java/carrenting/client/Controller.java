@@ -27,8 +27,8 @@ public class Controller{
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
 	private ArrayList<Car> carsAvailable = new ArrayList<>();
-	private Date date6 = new GregorianCalendar(2021, Calendar.AUGUST, 20).getTime();
-	private Date date5 = new GregorianCalendar(2021, Calendar.AUGUST, 25).getTime();
+	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 20).getTime();
+	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 25).getTime();
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiiomas que tenemos
@@ -45,13 +45,17 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
-		this.getRents();
+//		this.getRents();
 //		getCars("Bilbao");
 		//getGarageDestination("0352HTQ");
 		//Inicializar GUI
-//		new WelcomeGUI(this, this.rent);
+		System.out.println("controller");		
+//		getCars("Bilbao");
+//		System.out.println("CONTROLLER 2ª VEZ");
+//		getCars("Bilbao");
+		new WelcomeGUI(this, this.rent);
 
-		this.getCarsAvailable("Bilbao", date6, date5);
+//		this.getCarsAvailable("Bilbao", date6, date5);
 //		for (Car car: carsAvailable) {
 //			System.out.println(car.toString());
 //		}
@@ -79,7 +83,7 @@ public class Controller{
 			System.out.println(car.toString());
 		}
 		return cars;
-		//return RMIServiceLocator.getService().getCars(garage,availability);
+		//return RMIServiceLocator.getService().getCars(garage);
 		
 	}
 	
@@ -131,7 +135,7 @@ public class Controller{
 		return rents;
 	}
 
-
+//TODO
     public int daysBetween(Date d1, Date d2){
         return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -152,23 +156,14 @@ public class Controller{
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
 		ArrayList<Car> carsAvailable = new ArrayList<>();
 		for(Rent rent: rents) {
-//			System.out.println(rent.getGarageOrigin());
 			if (rent.getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
-//				if(!(rent.getStartingDate().after(startingDate) && rent.getStartingDate().before(finishingDate)) ||
-//					(rent.getFinishingDate().after(startingDate) && rent.getFinishingDate().before(finishingDate)))	{
-//					try {
+//				if(!(startingDate.after(rent.getStartingDate())&& startingDate.before(rent.getFinishingDate())) ||
+//				    (finishingDate.after(rent.getStartingDate()) && finishingDate.before(rent.getFinishingDate()))){
+////					if (!(carsAvailable.contains(getCar(rent.getNumberPlate())))){
 //						carsAvailable.add(getCar(rent.getNumberPlate()));
-//
-//						
-//					} catch (RemoteException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+////					}
 //				}
-				if(!(startingDate.after(rent.getStartingDate())&& startingDate.before(rent.getFinishingDate())) ){
-					
-				}
-				
+
 			}
 		}
 		for(Car car: carsAvailable) {

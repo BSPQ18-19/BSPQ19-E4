@@ -1,8 +1,5 @@
 package carrenting.client.gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -25,20 +22,20 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class SelectCarGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableCars;
 	private Controller controller;
 	private JFrame frame;
-	private String garageOrigin;
 	private Rent rent;
+	private String garageOrigin;
 
 	
-	public SelectCarGUI(Controller controller, String garageOrigin, Rent rent) throws RemoteException{
+	public SelectCarGUI(Controller controller, Rent rent,String garageOrigin) throws RemoteException{
 		this.controller=controller;
-		this.garageOrigin=garageOrigin;
-		System.out.println(this.garageOrigin);
+		this.garageOrigin= garageOrigin;
 		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
@@ -49,7 +46,6 @@ public class SelectCarGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("serial")
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,7 +82,7 @@ public class SelectCarGUI extends JFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, true, true
+				false,false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -98,7 +94,8 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(garageOrigin, rent.getStartingDate(), rent.getFinishingDate());
+//	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
+		 	ArrayList<Car> carsAvailable =controller.getCars(garageOrigin);
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {

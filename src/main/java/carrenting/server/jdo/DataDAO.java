@@ -56,6 +56,7 @@ public class DataDAO{
 		storeCar("Madrid","1234QWE","Ford", "Fiesta", 50);
 		storeCar("Madrid","1784GSE","Ford", "Fiesta", 50);
 		storeCar("Madrid","1934QWE","Ford", "Fiesta", 50);
+		
 		storeCar("Bilbao","0987KJH","Ford", "Fiesta", 50);
 		storeCar("Bilbao","5764DFG","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","7653GYU","Mercedes", "Clase A", 200);
@@ -77,7 +78,7 @@ public class DataDAO{
 		//Future rents
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
 		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		
+		storeRent("12365678A", "1234QWE",date,date5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		
 		//Current rents
 		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
@@ -185,10 +186,6 @@ public class DataDAO{
 			@SuppressWarnings("unchecked")
 			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
-//			for(Rent rent:rents) {
-//				System.out.println("DAO");
-//				System.out.println(rent);
-//			}
 			return rents;
 
 		} catch (Exception ex) {
@@ -205,7 +202,6 @@ public class DataDAO{
 	
 	public void deleteCar(String numberPlate) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
@@ -247,7 +243,6 @@ public class DataDAO{
 	}
 	
 	public ArrayList<Car> getCars(String garage) {
-		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -257,12 +252,11 @@ public class DataDAO{
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
-			for(Car car: carsByGarage) {
-					carsFiltered.add(car);
-
-
-			}
-			return carsFiltered;
+//			for(Car car: carsByGarage) {
+//				System.out.println(car.toString());
+//			}
+			return carsByGarage;
+			
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
 		} finally {
@@ -304,14 +298,12 @@ public class DataDAO{
 	
 	public Staff getStaff(String user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
 			Query<Staff> query = pm.newQuery(Staff.class);
 			query.setFilter("username=='" + user +"'");
 			query.setUnique(true);
-			@SuppressWarnings("unchecked")
 			Staff staff = (Staff) query.execute();
 			tx.commit();
 			System.out.println(staff.toString());
