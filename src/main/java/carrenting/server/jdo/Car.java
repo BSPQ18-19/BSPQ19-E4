@@ -11,7 +11,6 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 @SuppressWarnings("serial")
 public class Car implements Serializable{
-	protected int availability;
 	//TODO DEELTE ON CASCADE
 	@ForeignKey
 	//@Column(name="location")
@@ -22,9 +21,8 @@ public class Car implements Serializable{
 	protected String model;
 	protected int pricePerDay;
 
-	public Car(int availability, String garage, String numPlate, String brand, String model, int pricePerDay) {
+	public Car(String garage, String numPlate, String brand, String model, int pricePerDay) {
 		super();
-		this.availability = availability;
 		this.garage = garage;
 		this.numPlate = numPlate;
 		this.brand = brand;
@@ -38,14 +36,6 @@ public class Car implements Serializable{
 
 	public void setGarage(String garage) {
 		this.garage = garage;
-	}
-
-	public int getAvailability(){
-		return availability;
-	}
-	
-	public void setAvailability(int availability){
-		this.availability=availability;
 	}
 	
 	public String getModel(){
@@ -84,7 +74,7 @@ public class Car implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Car [availability=" + availability + ", garage=" + garage + ", numPlate=" + numPlate + ", brand="
+		return "Car [garage=" + garage + ", numPlate=" + numPlate + ", brand="
 				+ brand + ", model=" + model + ", pricePerDay=" + pricePerDay + "]";
 	}
 }

@@ -38,6 +38,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import com.toedter.calendar.JCalendar;
+import javax.swing.JCheckBox;
 
 
 /*TODO
@@ -215,7 +216,7 @@ public class WelcomeGUI extends JFrame {
 	public void initialize() throws RemoteException {
 		welcomeFrame = new JFrame();
 		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		welcomeFrame.setBounds(100, 100, 450, 360);
+		welcomeFrame.setBounds(100, 100, 686, 452);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		welcomeFrame.setContentPane(contentPane);
@@ -224,7 +225,7 @@ public class WelcomeGUI extends JFrame {
 		
 		JLabel lblWelcomeToCar = new JLabel("Welcome to MyCarRenting");
 		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblWelcomeToCar.setBounds(98, 23, 230, 22);
+		lblWelcomeToCar.setBounds(208, 50, 230, 22);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
 		JLabel lblStaffArea = new JLabel("<html><u>STAFF area");
@@ -242,19 +243,19 @@ public class WelcomeGUI extends JFrame {
 		});
 		lblStaffArea.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
 		lblStaffArea.setForeground(Color.BLUE);
-		lblStaffArea.setBounds(329, 0, 69, 22);
+		lblStaffArea.setBounds(564, 11, 69, 22);
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
 		JLabel lblSelectAGarage = new JLabel("Select a garage of origin");
-		lblSelectAGarage.setBounds(20, 57, 166, 14);
+		lblSelectAGarage.setBounds(143, 106, 166, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage);
 		
 		JLabel lblSelectAGarage_1 = new JLabel("Select a garage of destination");
-		lblSelectAGarage_1.setBounds(235, 57, 183, 14);
+		lblSelectAGarage_1.setBounds(342, 106, 183, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage_1);
 		
 		JScrollPane scrollPaneOrigin = new JScrollPane();
-		scrollPaneOrigin.setBounds(20, 79, 151, 80);
+		scrollPaneOrigin.setBounds(143, 128, 151, 80);
 		contentPane.add(scrollPaneOrigin);
 		
 		JList<Object> listGarageOrigin = new JList<Object>();
@@ -273,11 +274,11 @@ public class WelcomeGUI extends JFrame {
 		listGarageOrigin.setSelectedIndex(0);
 		
 		scrollPaneDestination = new JScrollPane();
-		scrollPaneDestination.setBounds(235, 82, 141, 77);
+		scrollPaneDestination.setBounds(342, 131, 141, 77);
 		contentPane.add(scrollPaneDestination);
 		
 		JList<String> listGarageDestination = new JList<String>();
-		scrollPaneDestination.setViewportView(listGarageDestination);
+		scrollPaneDestination.setColumnHeaderView(listGarageDestination);
 		listGarageDestination.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listGarageDestination.setModel(new AbstractListModel<String>() {
 			private static final long serialVersionUID = 1L;
@@ -303,7 +304,7 @@ public class WelcomeGUI extends JFrame {
 				dateChooserStart.setMaxSelectableDate(dateChooserFinish.getDate());
 			}
 		});
-		dateChooserStart.setBounds(20, 206, 151, 20);
+		dateChooserStart.setBounds(143, 286, 151, 20);
 		contentPane.add(dateChooserStart);
 		
 		
@@ -314,15 +315,15 @@ public class WelcomeGUI extends JFrame {
 			}
 		});
 
-		dateChooserFinish.setBounds(235, 206, 151, 20);
+		dateChooserFinish.setBounds(342, 286, 151, 20);
 		contentPane.add(dateChooserFinish);
 		
 		JLabel lblSelectAS = new JLabel("Select starting date:");
-		lblSelectAS.setBounds(20, 181, 133, 14);
+		lblSelectAS.setBounds(140, 265, 133, 14);
 		contentPane.add(lblSelectAS);
 		
 		JLabel lblSelectFinishingDate = new JLabel("Select finishing date:");
-		lblSelectFinishingDate.setBounds(235, 181, 133, 14);
+		lblSelectFinishingDate.setBounds(342, 265, 133, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
 		JButton btnContinue = new JButton("Next");
@@ -349,8 +350,26 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		btnContinue.setBounds(329, 261, 89, 23);
+		btnContinue.setBounds(495, 365, 89, 23);
 		contentPane.add(btnContinue);
+		
+		JCheckBox chckbxSameGarage = new JCheckBox("<html>Same as garage <p> of origin<html>");
+		chckbxSameGarage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (chckbxSameGarage.isSelected()) {
+					rent.setGarageDestination((String) listGarageOrigin.getSelectedValue());
+					listGarageDestination.setSelectedIndex(listGarageOrigin.getSelectedIndex());
+					listGarageDestination.setEnabled(false);
+				}
+				else {
+					listGarageDestination.setEnabled(true);
+				}
+				
+			}
+		});
+		chckbxSameGarage.setBounds(488, 114, 145, 60);
+		contentPane.add(chckbxSameGarage);
 
 
 	}

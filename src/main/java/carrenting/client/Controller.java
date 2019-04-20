@@ -65,9 +65,9 @@ public class Controller{
 		return RMIServiceLocator.getService().getGarages();
 	}
 	
-	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException{
+	public ArrayList<Car> getCars(String garage) throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
-		cars = RMIServiceLocator.getService().getCars(garage,availability);
+		cars = RMIServiceLocator.getService().getCars(garage);
 //		System.out.println("CONTROLLER");
 //		for(Car car:cars){
 //			System.out.println(car.toString());
@@ -125,16 +125,13 @@ public class Controller{
 		return rents;
 	}
 
-	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) throws RemoteException{
-		RMIServiceLocator.getService().updateAvailability(numberPlate, newAvailability, garageDestination);
-	}
 
     public int daysBetween(Date d1, Date d2){
         return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-	public void storeCar(int availability, String garage, String numberPlate, String brand, String model, int pricePerDay) throws RemoteException{
-		RMIServiceLocator.getService().storeCar(availability, garage, numberPlate, brand, model, pricePerDay);
+	public void storeCar(String garage, String numberPlate, String brand, String model, int pricePerDay) throws RemoteException{
+		RMIServiceLocator.getService().storeCar( garage, numberPlate, brand, model, pricePerDay);
 	}
 	
 	public void deleteCar(String numberPlate) throws RemoteException {
@@ -143,6 +140,12 @@ public class Controller{
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
+	}
+	
+	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate){
+		
+		return null;
+		
 	}
 	
 }

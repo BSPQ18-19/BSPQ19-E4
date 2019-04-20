@@ -37,7 +37,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 		//PRUEBAS
 		//loginStaff("admin1", "admin1");
-		//getCars("Bilbao",1);
+		//getCars("Bilbao");
 		//getRents();
 		//deleteCar("0252HJH");
 	}
@@ -52,8 +52,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return DataDAO.getInstance().getGarages();
 	}
 	
-	public void storeCar(int availability, String garage, String numberPlate, String brand, String model, int pricePerDay) {
-		DataDAO.getInstance().storeCar(availability, garage, numberPlate, brand, model, pricePerDay);
+	public void storeCar(String garage, String numberPlate, String brand, String model, int pricePerDay) {
+		DataDAO.getInstance().storeCar( garage, numberPlate, brand, model, pricePerDay);
 	}
 	
 	public void deleteCar(String numberPlate) throws RemoteException {
@@ -81,9 +81,9 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 	}
 
-	public ArrayList<Car> getCars(String garage,int availability) throws RemoteException {
+	public ArrayList<Car> getCars(String garage) throws RemoteException {
 		ArrayList<Car>cars = new ArrayList<>();
-		cars=DataDAO.getInstance().getCars(garage,availability);
+		cars=DataDAO.getInstance().getCars(garage);
 		for(Car car: cars) {
 			System.out.println(car);
 		}
@@ -100,10 +100,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 //		return rents;
 		return DataDAO.getInstance().getRents();
 	}
-	
-	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) throws RemoteException {
-		DataDAO.getInstance().updateAvailability(numberPlate, newAvailability, garageDestination);
-	}
+
 	
 
 	protected void finalize() throws Throwable {

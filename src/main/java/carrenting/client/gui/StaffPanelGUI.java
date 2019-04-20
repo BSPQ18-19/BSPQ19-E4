@@ -60,9 +60,9 @@ public class StaffPanelGUI extends JFrame {
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblSelectACar = new JLabel("Select a car");
+		JLabel lblSelectACar = new JLabel("Rents");
 		lblSelectACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblSelectACar.setBounds(333, 21, 94, 22);
+		lblSelectACar.setBounds(399, 21, 94, 22);
 		frame.getContentPane().add(lblSelectACar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -96,7 +96,7 @@ public class StaffPanelGUI extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 		 ArrayList<String> garages = controller.getGarages();
 		 for(String garage:garages) {
-			 cars.addAll(controller.getCars(garage, 0));
+			 cars.addAll(controller.getCars(garage));
 		 }
 	        Object rowData[] = new Object[11];
 	        for(int i = 0; i < cars.size(); i++)
@@ -118,28 +118,6 @@ public class StaffPanelGUI extends JFrame {
 		scrollPane.setViewportView(tableCars);
 		tableCars.setShowGrid(false);
 		tableCars.setShowVerticalLines(false);
-		
-		JButton btnReturnedCar = new JButton("Car returned");
-		btnReturnedCar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String selectednumberPlate=cars.get(tableCars.getSelectedRow()).getNumPlate();
-				String garageDestination = (String) tableCars.getValueAt(tableCars.getSelectedRow(), 6);
-				tableCars.removeRowSelectionInterval(tableCars.getSelectedRow(), tableCars.getSelectedRow());
-
-				try {
-					controller.updateAvailability(selectednumberPlate, 1, garageDestination);
-					model.fireTableDataChanged();
-					tableCars.repaint(); 
-					
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnReturnedCar.setBounds(900, 228, 109, 23);
-		frame.getContentPane().add(btnReturnedCar);
 		
 		JButton btnReturnToStartpage = new JButton("Return to Startpage");
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {

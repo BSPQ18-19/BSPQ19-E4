@@ -45,15 +45,15 @@ public class DataDAO{
 		storeGarage(garage1.getLocation());
 		storeGarage(garage2.getLocation());
 		storeGarage(garage3.getLocation());
-		storeCar(0,"Madrid","1234QWE","Ford", "Fiesta", 50);
-		storeCar(0,"Madrid","1784GSE","Ford", "Fiesta", 50);
-		storeCar(1,"Madrid","1934QWE","Ford", "Fiesta", 50);
-		storeCar(0,"Bilbao","0987KJH","Ford", "Fiesta", 50);
-		storeCar(1,"Bilbao","5764DFG","Mercedes", "Clase A", 200);
-		storeCar(1,"Bilbao","7653GYU","Mercedes", "Clase A", 200);
-		storeCar(1,"Bilbao","0932HJH","Audi", "A7", 180);
-		storeCar(0,"Bilbao","0252HJH","Audi", "A7", 180);
-		storeCar(0,"Bilbao","0352HTQ","Audi", "A7", 180);
+		storeCar("Madrid","1234QWE","Ford", "Fiesta", 50);
+		storeCar("Madrid","1784GSE","Ford", "Fiesta", 50);
+		storeCar("Madrid","1934QWE","Ford", "Fiesta", 50);
+		storeCar("Bilbao","0987KJH","Ford", "Fiesta", 50);
+		storeCar("Bilbao","5764DFG","Mercedes", "Clase A", 200);
+		storeCar("Bilbao","7653GYU","Mercedes", "Clase A", 200);
+		storeCar("Bilbao","0932HJH","Audi", "A7", 180);
+		storeCar("Bilbao","0252HJH","Audi", "A7", 180);
+		storeCar("Bilbao","0352HTQ","Audi", "A7", 180);
 		storeRent("12005678A", "0352HTQ",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		storeRent("12349578A", "0352HTQ",date7,date6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1234QWE",date6,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
@@ -116,10 +116,10 @@ public class DataDAO{
 		System.out.println("Initializing STAFF");
 	}
 	
-	public void storeCar(int availability,String garage,String numberPlate, String brand, String model,int pricePerDay){
+	public void storeCar(String garage,String numberPlate, String brand, String model,int pricePerDay){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
-			pm.makePersistent(new Car(availability, garage, numberPlate, brand, model, pricePerDay));
+			pm.makePersistent(new Car(garage, numberPlate, brand, model, pricePerDay));
 			
 		} catch (Exception ex) {
 			System.out.println("   $ Error storing staff: " + ex.getMessage());
@@ -227,10 +227,9 @@ public class DataDAO{
 		}
 	}
 	
-	public ArrayList<Car> getCars(String garage,int availability) {
+	public ArrayList<Car> getCars(String garage) {
 		ArrayList<Car> carsFiltered = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
-//		pm.getFetchPlan().setMaxFetchDepth(2);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
@@ -239,16 +238,10 @@ public class DataDAO{
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
-//			System.out.println("Cars by garage");
-//			for (Car a : carsByGarage){
-//				System.out.println(a.toString());
-//			}
-//			System.out.println("Cars fully filtered");
 			for(Car car: carsByGarage) {
-				if (car.getAvailability()==availability) {
 					carsFiltered.add(car);
-//					System.out.println(car.toString());
-				}
+
+
 			}
 			return carsFiltered;
 		} catch (Exception ex) {
