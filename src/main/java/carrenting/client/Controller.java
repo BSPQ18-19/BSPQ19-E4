@@ -27,8 +27,8 @@ public class Controller{
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
 	private ArrayList<Car> carsAvailable = new ArrayList<>();
-	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 20).getTime();
-	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 25).getTime();
+	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
+	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiiomas que tenemos
@@ -45,20 +45,20 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
-//		this.getRents();
+		this.getRents();
 //		getCars("Bilbao");
 		//getGarageDestination("0352HTQ");
 		//Inicializar GUI
-		System.out.println("controller");		
+//		System.out.println("controller");		
 //		getCars("Bilbao");
 //		System.out.println("CONTROLLER 2ª VEZ");
 //		getCars("Bilbao");
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 
-//		this.getCarsAvailable("Bilbao", date6, date5);
-//		for (Car car: carsAvailable) {
-//			System.out.println(car.toString());
-//		}
+		carsAvailable=getCarsAvailable("Bilbao", date6, date5);
+		for (Car car: carsAvailable) {
+			System.out.println(car.toString());
+		}
 
 //		System.out.println("Searching by numplate" +getCar("0352HTQ").toString());
 	}
@@ -155,22 +155,38 @@ public class Controller{
 	
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
 		ArrayList<Car> carsAvailable = new ArrayList<>();
-		for(Rent rent: rents) {
-			if (rent.getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
-//				if(!(startingDate.after(rent.getStartingDate())&& startingDate.before(rent.getFinishingDate())) ||
-//				    (finishingDate.after(rent.getStartingDate()) && finishingDate.before(rent.getFinishingDate()))){
-////					if (!(carsAvailable.contains(getCar(rent.getNumberPlate())))){
-//						carsAvailable.add(getCar(rent.getNumberPlate()));
-////					}
-//				}
+		ArrayList<String>numPlatesAdded = new ArrayList<>();
+		Boolean added = false;
+//		carsAvailable= getCars("Bilbao");
+		for(int i=0; i<rents.size(); i++) {
+//			System.out.println(rent.toString());
+			if (rents.get(i).getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
+				if(!((startingDate.after(rents.get(i).getStartingDate())&& startingDate.before(rents.get(i).getFinishingDate())) ||
+				    (finishingDate.after(rents.get(i).getStartingDate()) && finishingDate.before(rents.get(i).getFinishingDate())))){
+					System.out.println("Start date " + rents.get(i).getStartingDate() + "\n Finish date " + rents.get(i).getFinishingDate() + 
+							"\n startingDate.after(rent.getStartingDate()" +startingDate.after(rents.get(i).getStartingDate()) + 
+							"\n startingDate.before(rent.getFinishingDate())" +startingDate.before(rents.get(i).getFinishingDate()));
+					for (int j=0; j<numPlatesAdded.size(); j++) {
+						if(numPlatesAdded.get(j).equals(rents.get(i).getNumberPlate())) {
+							added=true;
+						}
+					}
+					if (added ==false) {
+						numPlatesAdded.add(rents.get(i).getNumberPlate());
+					}
+					if (!added){
+						carsAvailable.add(getCar(rents.get(i).getNumberPlate()));
+						System.out.println(rents.get(i).getUserId());
+					}
+					added=false;
+				}
 
 			}
 		}
-		for(Car car: carsAvailable) {
-			System.out.println(car.toString());
-		}
-		return null;
-
+//		for(Car car: carsAvailable) {
+//			System.out.println(car.toString());
+//		}
+		return carsAvailable;
 	}
 	
 	

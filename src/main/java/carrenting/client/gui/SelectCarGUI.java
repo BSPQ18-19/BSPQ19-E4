@@ -94,8 +94,8 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-//	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
-		 	ArrayList<Car> carsAvailable =controller.getCars(garageOrigin);
+	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
+//		 	ArrayList<Car> carsAvailable =controller.getCars(garageOrigin);
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {

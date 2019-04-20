@@ -65,7 +65,7 @@ public class DataDAO{
 		storeCar("Bilbao","0352HTQ","Audi", "A5", 50);
 		//Hystorical rents
 		storeRent("12005678A", "0352HTQ",datePast5,date2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12349578A", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12349578B", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1234QWE",datePast6,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12367678A", "0252HJH",datePast5,date3,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0252HJH",datePast7,date3,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
@@ -186,6 +186,9 @@ public class DataDAO{
 			@SuppressWarnings("unchecked")
 			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
+			for (Rent rent: rents) {
+				System.out.println(rent.toString());
+			}
 			return rents;
 
 		} catch (Exception ex) {
