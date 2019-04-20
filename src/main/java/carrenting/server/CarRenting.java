@@ -40,6 +40,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		//getCars("Bilbao");
 		//getRents();
 		//deleteCar("0252HJH");
+		System.out.println(this.getCar("0352HTQ").toString());
 	}
 	
 	
@@ -88,6 +89,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 			System.out.println(car);
 		}
 		return cars;
+	}
+	
+	public Car getCar(String numPlate) throws RemoteException{
+		return DataDAO.getInstance().getCar(numPlate);
 	}
 	
 	public ArrayList<Rent> getRents() throws RemoteException {

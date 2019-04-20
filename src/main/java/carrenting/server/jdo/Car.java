@@ -11,9 +11,6 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 @SuppressWarnings("serial")
 public class Car implements Serializable{
-	//TODO DEELTE ON CASCADE
-	@ForeignKey
-	//@Column(name="location")
 	private String garage; 
 	@PrimaryKey
 	protected String numPlate;

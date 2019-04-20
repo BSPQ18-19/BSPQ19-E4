@@ -1,6 +1,7 @@
 package carrenting.server.jdo;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -28,13 +29,20 @@ public class DataDAO{
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
 	private Date date= new Date(System.currentTimeMillis());  
-	private Date date1=new GregorianCalendar(2018, Calendar.AUGUST, 20).getTime();
-	private Date date2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
-	private Date date3=new GregorianCalendar(2018, Calendar.AUGUST, 11).getTime();
-	private Date date4=new GregorianCalendar(2018, Calendar.FEBRUARY, 11).getTime();
-	private Date date5=new GregorianCalendar(2017, Calendar.JUNE, 11).getTime();
-	private Date date6=new GregorianCalendar(2015, Calendar.AUGUST, 11).getTime();
-	private Date date7=new GregorianCalendar(2014, Calendar.JULY, 11).getTime();
+	private Date datePast1=new GregorianCalendar(2018, Calendar.AUGUST, 20).getTime();
+	private Date datePast2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
+	private Date datePast3=new GregorianCalendar(2018, Calendar.AUGUST, 11).getTime();
+	private Date datePast5=new GregorianCalendar(2017, Calendar.JUNE, 11).getTime();
+	private Date datePast6=new GregorianCalendar(2015, Calendar.AUGUST, 11).getTime();
+	private Date datePast7=new GregorianCalendar(2014, Calendar.JULY, 11).getTime();
+	
+	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 20).getTime();
+	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 25).getTime();
+	private Date date4 = new GregorianCalendar(2019, Calendar.SEPTEMBER, 20).getTime();
+	private Date date3 = new GregorianCalendar(2019, Calendar.SEPTEMBER, 27).getTime();
+	private Date date2 = new GregorianCalendar(2019, Calendar.JULY, 1).getTime();
+	private Date date1 = new GregorianCalendar(2020, Calendar.JULY, 1).getTime();
+	
 	
 	
 	private DataDAO(){
@@ -53,19 +61,30 @@ public class DataDAO{
 		storeCar("Bilbao","7653GYU","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","0932HJH","Audi", "A7", 180);
 		storeCar("Bilbao","0252HJH","Audi", "A7", 180);
-		storeCar("Bilbao","0352HTQ","Audi", "A7", 180);
-		storeRent("12005678A", "0352HTQ",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12349578A", "0352HTQ",date7,date6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1234QWE",date6,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12367678A", "0252HJH",date5,date,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0252HJH",date7,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784GSE",date6,date5,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784GSE",date7,date5,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784GSE",date5,date,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0987KJH",date3,date2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0987KJH",date2,date1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0987KJH",date1,date, garage2.getLocation(), garage3.getLocation(), "paypal", 500);
-
+		storeCar("Bilbao","0352HTQ","Audi", "A5", 50);
+		//Hystorical rents
+		storeRent("12005678A", "0352HTQ",datePast5,date2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12349578A", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1234QWE",datePast6,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12367678A", "0252HJH",datePast5,date3,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0252HJH",datePast7,date3,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",datePast6,datePast5,garage1.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",datePast7,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",datePast5,date2,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",datePast3,datePast2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",datePast2,datePast1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",datePast3,date2, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		//Future rents
+		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
+		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		
+		
+		//Current rents
+		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		
+		
+//		System.out.println(getCar("0352HTQ").toString());
 	}
 
 	public static DataDAO getInstance() {
@@ -251,6 +270,32 @@ public class DataDAO{
 				tx.rollback();
 			}
 			System.out.println("GETTING CARS");
+			
+			pm.close();
+		}
+		return null;
+	}
+	
+	public Car getCar(String numPlate) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Car> query = pm.newQuery(Car.class);
+			query.setFilter("numPlate=='" + numPlate + "'");
+			query.setUnique(true);
+			Car car = ((Car) query.execute());
+			tx.commit();
+			System.out.println("GETTING CAR by numplate"+ car.toString());
+			return car;
+		} catch (Exception ex) {
+			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+//			System.out.println("GETTING CAR by numplate");
+			
 			
 			pm.close();
 		}

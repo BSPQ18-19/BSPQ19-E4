@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 
 
@@ -25,7 +26,9 @@ public class Controller{
 	private ResourceBundle myBundle; //el que gestiona los diomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
-	
+	private ArrayList<Car> carsAvailable = new ArrayList<>();
+	private Date date6 = new GregorianCalendar(2021, Calendar.AUGUST, 20).getTime();
+	private Date date5 = new GregorianCalendar(2021, Calendar.AUGUST, 25).getTime();
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiiomas que tenemos
@@ -42,17 +45,20 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
-		getRents();
-		//getCars("Bilbao", 1);
+		this.getRents();
+//		getCars("Bilbao");
 		//getGarageDestination("0352HTQ");
 		//Inicializar GUI
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
+
+		this.getCarsAvailable("Bilbao", date6, date5);
+//		for (Car car: carsAvailable) {
+//			System.out.println(car.toString());
+//		}
+
+//		System.out.println("Searching by numplate" +getCar("0352HTQ").toString());
 	}
 	
-	public Controller() {
-		
-	}
-
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
 	}
@@ -68,10 +74,10 @@ public class Controller{
 	public ArrayList<Car> getCars(String garage) throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
 		cars = RMIServiceLocator.getService().getCars(garage);
-//		System.out.println("CONTROLLER");
-//		for(Car car:cars){
-//			System.out.println(car.toString());
-//		}
+		System.out.println("CONTROLLER");
+		for(Car car:cars){
+			System.out.println(car.toString());
+		}
 		return cars;
 		//return RMIServiceLocator.getService().getCars(garage,availability);
 		
@@ -138,14 +144,44 @@ public class Controller{
 		RMIServiceLocator.getService().deleteCar(numberPlate);
 	}
 	
+
+	public Car getCar(String numPlate) throws RemoteException{
+		return RMIServiceLocator.getService().getCar(numPlate);
+	}
+	
+	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
+		ArrayList<Car> carsAvailable = new ArrayList<>();
+		for(Rent rent: rents) {
+//			System.out.println(rent.getGarageOrigin());
+			if (rent.getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
+//				if(!(rent.getStartingDate().after(startingDate) && rent.getStartingDate().before(finishingDate)) ||
+//					(rent.getFinishingDate().after(startingDate) && rent.getFinishingDate().before(finishingDate)))	{
+//					try {
+//						carsAvailable.add(getCar(rent.getNumberPlate()));
+//
+//						
+//					} catch (RemoteException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+				if(!(startingDate.after(rent.getStartingDate())&& startingDate.before(rent.getFinishingDate())) ){
+					
+				}
+				
+			}
+		}
+		for(Car car: carsAvailable) {
+			System.out.println(car.toString());
+		}
+		return null;
+
+	}
+	
+	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}
 	
-	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate){
-		
-		return null;
-		
-	}
 	
 }
