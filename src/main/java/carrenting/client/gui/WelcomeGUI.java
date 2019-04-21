@@ -29,6 +29,8 @@ import java.util.ArrayList;
 
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -313,6 +315,7 @@ public class WelcomeGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dateChooserFinish.setMinSelectableDate(dateChooserStart.getDate());
+
 			}
 		});
 
@@ -330,6 +333,10 @@ public class WelcomeGUI extends JFrame {
 		JButton btnContinue = new JButton("Next");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(dateChooserStart.getDate()==(null)|| dateChooserFinish.getDate()==(null)) {
+					JOptionPane.showConfirmDialog(null, "Both starting and finishing dates must be specified", "Careful!", JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+				}
+				else {
 					welcomeFrame.dispose();
 					String garageOrigin = (String) listGarageOrigin.getSelectedValue();
 					String garageDestination=(String) listGarageDestination.getSelectedValue();
@@ -343,12 +350,12 @@ public class WelcomeGUI extends JFrame {
 						System.out.println(startingDate);
 						rent.setFinishingDate(finishingDate);
 						System.out.println(rent.toString());
-						new SelectCarGUI(controller, rent, garageOrigin);
+						new SelectCarGUI(controller, rent);
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-	
+				}
 			}
 		});
 		btnContinue.setBounds(495, 365, 89, 23);

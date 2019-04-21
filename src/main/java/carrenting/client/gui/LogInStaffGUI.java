@@ -29,7 +29,7 @@ public class LogInStaffGUI extends JFrame {
 	private JTextField tfPassword;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private Rent rent;
-
+	private String type;
 	/**
 	 * Launch the application.
 	 */
@@ -102,7 +102,7 @@ public class LogInStaffGUI extends JFrame {
 		btnSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String type;
+
 				if(rdbtnAdministrator.isSelected())
 					type = "administrator";
 				else
@@ -110,7 +110,6 @@ public class LogInStaffGUI extends JFrame {
 				
 				try {
 					if(controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type)) {
-						//TODO - Que Staff Panel reciba Controller
 						frame.dispose();
 						try {
 							new StaffPanelGUI(controller,type,rent);
@@ -118,7 +117,6 @@ public class LogInStaffGUI extends JFrame {
 							e1.printStackTrace();
 						}
 						System.out.println("Staff login successfull");
-						//new StaffPanel();
 					}else {
 						System.out.println("Login unsuccesfull");
 					}

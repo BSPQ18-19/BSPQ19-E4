@@ -135,7 +135,7 @@ public class Controller{
 
 //TODO
     public int daysBetween(Date d1, Date d2){
-        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+        return (int)( ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24))+1);
 }
 
 	public void storeCar(String garage, String numberPlate, String brand, String model, int pricePerDay) throws RemoteException{

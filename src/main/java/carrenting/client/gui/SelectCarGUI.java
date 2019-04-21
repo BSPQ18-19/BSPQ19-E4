@@ -30,13 +30,13 @@ public class SelectCarGUI extends JFrame {
 	private Controller controller;
 	private JFrame frame;
 	private Rent rent;
-	private String garageOrigin;
+	private double price;
+	private boolean carSelected=false;
 	
 
 	
-	public SelectCarGUI(Controller controller, Rent rent,String garageOrigin) throws RemoteException{
+	public SelectCarGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
-		this.garageOrigin= garageOrigin;
 		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
@@ -67,14 +67,25 @@ public class SelectCarGUI extends JFrame {
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
-		textPane.setBounds(88, 217, 116, 20);
-		frame.getContentPane().add(textPane);
+		textPane.setBounds(97, 217, 107, 20);
+		
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 53, 471, 139);
 		frame.getContentPane().add(scrollPane);
 		
 		tableCars = new JTable();
+		tableCars.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textPane.setText(String.valueOf(controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2)));
+				price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
+				System.out.println(price);
+				
+				
+			}
+		});
 		tableCars.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -96,7 +107,6 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
-//		 	ArrayList<Car> carsAvailable =controller.getCars(garageOrigin);
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {
@@ -109,6 +119,12 @@ public class SelectCarGUI extends JFrame {
 		scrollPane.setViewportView(tableCars);
 		tableCars.setShowGrid(false);
 		tableCars.setShowVerticalLines(false);
+		tableCars.changeSelection(0, 0, false, false);
+		textPane.setText(String.valueOf(controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2)));
+		
+		frame.getContentPane().add(textPane);
+		
+		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addMouseListener(new MouseAdapter() {
@@ -121,7 +137,7 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnBack.setBounds(412, 240, 89, 23);
+		btnBack.setBounds(310, 240, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnNext = new JButton("Next");
@@ -137,7 +153,7 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnNext.setBounds(313, 240, 89, 23);
+		btnNext.setBounds(420, 240, 89, 23);
 		frame.getContentPane().add(btnNext);
 	}
 }
