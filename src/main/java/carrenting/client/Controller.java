@@ -7,16 +7,15 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import carrenting.client.gui.PaymentGUI;
+import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.jdo.Car;
-import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 
 
@@ -27,7 +26,6 @@ public class Controller{
 	private ResourceBundle myBundle; //el que gestiona los idiomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
-	private ArrayList<Car> carsAvailable = new ArrayList<>();
 	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 	
@@ -55,9 +53,8 @@ public class Controller{
 		getCars("Bilbao");
 		System.out.println("CONTROLLER 2ª VEZ");
 		getCars("Bilbao");
-		//new WelcomeGUI(this, this.rent);
+		new WelcomeGUI(this, this.rent);
 
-		carsAvailable=getCarsAvailable("Bilbao", date6, date5);
 		
 
 //		System.out.println("Searching by numplate" +getCar("0352HTQ").toString());

@@ -32,6 +32,8 @@ public class SelectCarGUI extends JFrame {
 	private JFrame frame;
 	private Rent rent;
 	private double price;
+	private double totalPrice;
+	private String numberPlate;
 	
 	public SelectCarGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
@@ -53,7 +55,7 @@ public class SelectCarGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
 		JLabel lblSelectACar = new JLabel(controller.getResourcebundle().getString("select_car"));
 		lblSelectACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblSelectACar.setBounds(206, 22, 94, 22);
@@ -77,9 +79,13 @@ public class SelectCarGUI extends JFrame {
 		tableCars.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textPane.setText(String.valueOf(controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2)));
 				price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
 				System.out.println(price);
+				totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
+				textPane.setText(String.valueOf(totalPrice));
+				frame.getContentPane().add(textPane);
+				numberPlate=carsAvailable.get(tableCars.getSelectedRow()).getNumPlate();
+				System.out.println("number plate  " + numberPlate);
 				
 				
 			}
@@ -105,7 +111,7 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
 
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
-	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
+	        
 	        Object rowData[] = new Object[3];
 	        for(int i = 0; i < carsAvailable.size(); i++)
 	        {
@@ -119,11 +125,9 @@ public class SelectCarGUI extends JFrame {
 		tableCars.setShowGrid(false);
 		tableCars.setShowVerticalLines(false);
 		tableCars.changeSelection(0, 0, false, false);
-		textPane.setText(String.valueOf(controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2)));
-		
-		frame.getContentPane().add(textPane);
-		
-		
+		price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
+		totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
+		textPane.setText(String.valueOf(totalPrice));
 		
 		JButton btnBack = new JButton(controller.getResourcebundle().getString("back"));
 		btnBack.addMouseListener(new MouseAdapter() {
@@ -145,6 +149,8 @@ public class SelectCarGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 				try {
+					rent.setNumberPlate(numberPlate);
+					rent.setTotalPrice(totalPrice);
 					new ClientDataGUI(controller,rent);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block

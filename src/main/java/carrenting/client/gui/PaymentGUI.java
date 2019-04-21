@@ -9,13 +9,21 @@ import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import com.toedter.calendar.JDateChooser;
+
+import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class PaymentGUI extends JFrame {
@@ -27,10 +35,21 @@ public class PaymentGUI extends JFrame {
 	private JTextField textFieldCardNumber;
 	private JTextField textFieldNameCard;
 	private JTextField textFieldCVV;
+	private Controller controller;
+	private Rent rent;
+	private JFrame frame;
+	private JPanel panelVisa;
+	private JPanel panelPaypal;
+	private JButton btnFinishAndPay;
+	private String paymentType="visa";
 
 
-	public PaymentGUI() {
-		
+
+	public PaymentGUI(Controller controller, Rent rent) {
+		this.controller=controller;
+		this.rent=rent;
+		initialize();
+		frame.setVisible(true);
 	}
 	
 	/**
@@ -38,20 +57,21 @@ public class PaymentGUI extends JFrame {
 	 * @return 
 	 */
 	public void initialize() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 468, 385);
+		frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 468, 385);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panelPaypal = new JPanel();
+		frame.setContentPane(contentPane);
+		frame.getContentPane().setLayout(null);
+		panelPaypal = new JPanel();
 		panelPaypal.setBounds(39, 93, 363, 108);
-		contentPane.add(panelPaypal);
+		frame.getContentPane().add(panelPaypal);
 		panelPaypal.setLayout(null);
+
 		
 		JLabel lblEmail = new JLabel("email");
-		lblEmail.setBounds(10, 24, 74, 14);
+		lblEmail.setBounds(10, 24, 111, 14);
 		panelPaypal.add(lblEmail);
 		
 		textFieldEmail = new JTextField();
@@ -60,7 +80,7 @@ public class PaymentGUI extends JFrame {
 		textFieldEmail.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("password");
-		lblPassword.setBounds(10, 64, 46, 14);
+		lblPassword.setBounds(10, 64, 109, 14);
 		panelPaypal.add(lblPassword);
 		
 		textFieldPassword = new JTextField();
@@ -69,44 +89,69 @@ public class PaymentGUI extends JFrame {
 		textFieldPassword.setColumns(10);
 		
 		JLabel lblPaymentType = new JLabel("Payment type:");
-		lblPaymentType.setBounds(39, 64, 148, 18);
-		contentPane.add(lblPaymentType);
+		lblPaymentType.setBounds(46, 65, 141, 18);
+		frame.getContentPane().add(lblPaymentType);
 		
 		JRadioButton rdbtnVisa = new JRadioButton("Visa");
 		rdbtnVisa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				panelPaypal.setVisible(false);
+				panelVisa.setVisible(true);
+				btnFinishAndPay.setBounds(261, 315, 181, 23);
+				frame.setBounds(100, 100, 468, 385);
+				paymentType="visa";
 				
 			}
 		});
 		buttonGroup.add(rdbtnVisa);
 		rdbtnVisa.setSelected(true);
 		rdbtnVisa.setBounds(193, 63, 74, 23);
-		contentPane.add(rdbtnVisa);
+		frame.getContentPane().add(rdbtnVisa);
 		
 		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
 		rdbtnPaypal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				panelPaypal.setVisible(true);
+				panelVisa.setVisible(false);
+				btnFinishAndPay.setBounds(261,205,181,23);
+				frame.setBounds(100, 100, 468, 300);
+				paymentType="paypal";
 			}
 		});
 		buttonGroup.add(rdbtnPaypal);
 		rdbtnPaypal.setBounds(284, 63, 109, 23);
-		contentPane.add(rdbtnPaypal);
+		frame.getContentPane().add(rdbtnPaypal);
 		
 		JLabel lblPayment = new JLabel("Payment");
 		lblPayment.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblPayment.setBounds(171, 29, 164, 24);
-		contentPane.add(lblPayment);
+		frame.getContentPane().add(lblPayment);
 		
-		JButton btnFinishAndPay = new JButton("Finish and pay");
-		btnFinishAndPay.setBounds(261, 315, 141, 23);
-		contentPane.add(btnFinishAndPay);
+		btnFinishAndPay = new JButton("Finish and pay");
+		btnFinishAndPay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(paymentType.equalsIgnoreCase("paypal")) {
+					if(textFieldEmail.getText().equals("")|| textFieldPassword.getText().equals("")) {
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("All fields must be filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					}
+				}else if(paymentType.equalsIgnoreCase("visa")) {
+					
+				}
+				else {
+					rent.setPaymentSystem(paymentType);
+
+				}
+				
+			}
+		});
+		btnFinishAndPay.setBounds(261, 312, 181, 23);
+		frame.getContentPane().add(btnFinishAndPay);
 		
-		JPanel panelVisa = new JPanel();
+		panelVisa = new JPanel();
 		panelVisa.setBounds(39, 93, 363, 193);
-		contentPane.add(panelVisa);
+		frame.getContentPane().add(panelVisa);
 		panelVisa.setLayout(null);
 		
 		JLabel lblCardNumber = new JLabel("Card number");
@@ -132,7 +177,7 @@ public class PaymentGUI extends JFrame {
 		panelVisa.add(dateChooserExpirationDate);
 		
 		JLabel lblExpirationDate = new JLabel("Expiration date");
-		lblExpirationDate.setBounds(10, 114, 108, 14);
+		lblExpirationDate.setBounds(10, 114, 127, 14);
 		panelVisa.add(lblExpirationDate);
 		
 		JLabel lblCvv = new JLabel("CVV");
@@ -143,5 +188,8 @@ public class PaymentGUI extends JFrame {
 		textFieldCVV.setBounds(155, 153, 143, 20);
 		panelVisa.add(textFieldCVV);
 		textFieldCVV.setColumns(10);
+		
+		panelVisa.setVisible(true);
+		panelPaypal.setVisible(false);
 	}
 }

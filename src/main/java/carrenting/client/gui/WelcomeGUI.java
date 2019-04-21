@@ -193,7 +193,7 @@ public class WelcomeGUI extends JFrame {
 		contentPane.add(lblSelectAS);
 		
 		JLabel lblSelectFinishingDate = new JLabel(controller.getResourcebundle().getString("Select_finishing_date"));
-		lblSelectFinishingDate.setBounds(390, 265, 133, 14);
+		lblSelectFinishingDate.setBounds(390, 265, 293, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
 		JButton btnContinue = new JButton("Next");

@@ -18,7 +18,7 @@ public class Rent implements Serializable{
 	private String garageOrigin;
 	private String garageDestination;
 	private String paymentSystem;
-	private int totalPrice;
+	private double totalPrice;
 	
 	
 	
@@ -88,11 +88,11 @@ public class Rent implements Serializable{
 		this.paymentSystem = paymentSystem;
 	}
 	
-	public int getTotalPrice() {
+	public double getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotalPrice(double totalPrice2) {
+		this.totalPrice = totalPrice2;
 	}
 	
 	@Override
