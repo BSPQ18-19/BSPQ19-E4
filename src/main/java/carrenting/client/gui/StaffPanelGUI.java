@@ -25,6 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 
 public class StaffPanelGUI extends JFrame {
 
@@ -79,5 +80,15 @@ public class StaffPanelGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(72, 139, 923, 234);
 		contentPane.add(scrollPane);
+		
+		JLabel lblRents = new JLabel("Rents");
+		lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		lblRents.setBounds(529, 52, 81, 22);
+		contentPane.add(lblRents);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(24, 11, 388, 108);
+		contentPane.add(panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	}
 }
