@@ -87,18 +87,18 @@ public class LogInStaffGUI extends JFrame {
 		lblPassword.setBounds(21, 174, 64, 14);
 		frame.getContentPane().add(lblPassword);
 		
-		JRadioButton rdbtnAdministrator = new JRadioButton("Administrator");
+		JRadioButton rdbtnAdministrator = new JRadioButton(controller.getResourcebundle().getString("admin"));
 		buttonGroup.add(rdbtnAdministrator);
 		rdbtnAdministrator.setBounds(26, 84, 109, 23);
 		contentPane.add(rdbtnAdministrator);
 		
-		JRadioButton rdbtnEmployee = new JRadioButton("Employee");
+		JRadioButton rdbtnEmployee = new JRadioButton(controller.getResourcebundle().getString("employee"));
 		rdbtnEmployee.setSelected(true);
 		buttonGroup.add(rdbtnEmployee);
 		rdbtnEmployee.setBounds(151, 84, 109, 23);
 		contentPane.add(rdbtnEmployee);
 		
-		JButton btnSignIn = new JButton("Sign In");
+		JButton btnSignIn = new JButton(controller.getResourcebundle().getString("sign_in"));
 		btnSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -116,9 +116,9 @@ public class LogInStaffGUI extends JFrame {
 						} catch (RemoteException e1) {
 							e1.printStackTrace();
 						}
-						System.out.println("Staff login successfull");
+						System.out.println(controller.getResourcebundle().getString("staff_login_successful"));
 					}else {
-						System.out.println("Login unsuccesfull");
+						System.out.println(controller.getResourcebundle().getString("login_unsuccessful"));
 					}
 				} catch (RemoteException e1) {
 					
@@ -130,16 +130,16 @@ public class LogInStaffGUI extends JFrame {
 		btnSignIn.setBounds(75, 254, 89, 23);
 		frame.getContentPane().add(btnSignIn);
 		
-		JLabel lblStaffLoginArea = new JLabel("Staff login");
+		JLabel lblStaffLoginArea = new JLabel(controller.getResourcebundle().getString("staff_login"));
 		lblStaffLoginArea.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblStaffLoginArea.setBounds(99, 23, 85, 29);
 		contentPane.add(lblStaffLoginArea);
 		
-		JLabel lblIAmAn = new JLabel("I am an:");
+		JLabel lblIAmAn = new JLabel(controller.getResourcebundle().getString("i_am_an"));
 		lblIAmAn.setBounds(26, 63, 46, 14);
 		contentPane.add(lblIAmAn);
 		
-		JButton btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton(controller.getResourcebundle().getString("cancel"));
 		btnCancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

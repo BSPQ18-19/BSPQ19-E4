@@ -56,12 +56,12 @@ public class SelectCarGUI extends JFrame {
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblSelectACar = new JLabel("Select a car");
+		JLabel lblSelectACar = new JLabel(controller.getResourcebundle().getString("select_car"));
 		lblSelectACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblSelectACar.setBounds(206, 22, 94, 22);
 		frame.getContentPane().add(lblSelectACar);
 		
-		JLabel lblTotalPrice = new JLabel("Total price:");
+		JLabel lblTotalPrice = new JLabel(controller.getResourcebundle().getString("total_price"));
 		lblTotalPrice.setBounds(28, 223, 76, 14);
 		frame.getContentPane().add(lblTotalPrice);
 		
@@ -90,7 +90,7 @@ public class SelectCarGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Brand", "Model", "Price per day"
+				controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -126,7 +126,7 @@ public class SelectCarGUI extends JFrame {
 		
 		
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton(controller.getResourcebundle().getString("back"));
 		btnBack.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
@@ -140,7 +140,7 @@ public class SelectCarGUI extends JFrame {
 		btnBack.setBounds(310, 240, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
-		JButton btnNext = new JButton("Next");
+		JButton btnNext = new JButton(controller.getResourcebundle().getString("next"));
 		btnNext.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -88,127 +88,7 @@ public class WelcomeGUI extends JFrame {
 		
 	}
 	
-	//ALTERNATIVA PARA EL TEMA DEL IDIOMA JUNTO CON LA CLASE LANGUAGE	
-//	public void cambiarIdioma(String nameLanguage){
-//		 
-//        Language language=new Language(nameLanguage);
-// 
-//        btnChange.setText(language.getProperty("change"));
-//        this.setTitle(language.getProperty("title"));
-//        lblHi.setText(language.getProperty("saludo"));
-// 
-//        selectLanguage.removeAllItems();
-// 
-//        String languages[]={
-//                          language.getProperty("espanol"),
-//                          language.getProperty("ingles"),
-//                          language.getProperty("frances")
-//                          };
-// 
-//        for(int i=0;i<languages.length;i++){
-//            selectLanguage.addItem(languages[i]);
-//        }
-// 
-//    }
-//
-//	private void initComponents() {
-//		// TODO Auto-generated method stub		
-//		
-//		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-//		 
-//        btnChange.setText("Prueba");
-//        btnChange.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btnChangeActionPerformed(evt);
-//            }
-//        });
-// 
-//        lblHi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//        lblHi.setText("jLabel1");
-// 
-//        btnChange.setModel((ButtonModel) new DefaultComboBoxModel(new String[] { "Español", "Ingles", "Euskera" }));
-//        
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-//        getContentPane().setLayout(layout);
-//        layout.setHorizontalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(layout.createSequentialGroup()
-//                .addGap(145, 145, 145)
-//                .addComponent(btnChange)
-//                .addContainerGap(120, Short.MAX_VALUE))
-//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                    .addComponent(lblHi, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-//                    .addComponent(selectLanguage, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                .addGap(75, 75, 75))
-//        );
-//        layout.setVerticalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                .addGap(35, 35, 35)
-//                .addComponent(lblHi, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(44, 44, 44)
-//                .addComponent(selectLanguage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                .addGap(35, 35, 35)
-//                .addComponent(btnChange)
-//                .addContainerGap(67, Short.MAX_VALUE))
-//        );
-// 
-//        pack();
-//    }
-//		
-//
-//	private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {                                          
-//		 
-//	    switch(selectLanguage.getSelectedIndex()){
-//	
-//	        case 0:
-//	            cambiarIdioma("Español");
-//	            break;
-//	        case 1:
-//	            cambiarIdioma("Ingles");
-//	            break;
-//	        case 2:
-//	            cambiarIdioma("Euskera");
-//	            break;
-//	
-//	    }
-//	
-//	}
-//	
-//	
-//	public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(WelcomeGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-// 
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new WelcomeGUI(controller).setVisible(true);
-//            }
-//        });
-//    }
+	
 	
 
 	/**
@@ -225,7 +105,7 @@ public class WelcomeGUI extends JFrame {
 		contentPane.setLayout(null);
 
 		
-		JLabel lblWelcomeToCar = new JLabel("Welcome to MyCarRenting");
+		JLabel lblWelcomeToCar = new JLabel(controller.getResourcebundle().getString("welcome_car_msg"));
 		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblWelcomeToCar.setBounds(208, 50, 230, 22);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
@@ -248,11 +128,11 @@ public class WelcomeGUI extends JFrame {
 		lblStaffArea.setBounds(564, 11, 69, 22);
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
-		JLabel lblSelectAGarage = new JLabel("Select a garage of origin");
+		JLabel lblSelectAGarage = new JLabel(controller.getResourcebundle().getString("Select_garage_origin"));
 		lblSelectAGarage.setBounds(143, 106, 166, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage);
 		
-		JLabel lblSelectAGarage_1 = new JLabel("Select a garage of destination");
+		JLabel lblSelectAGarage_1 = new JLabel(controller.getResourcebundle().getString("Select_garage_destination"));
 		lblSelectAGarage_1.setBounds(342, 106, 183, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage_1);
 		
@@ -322,11 +202,11 @@ public class WelcomeGUI extends JFrame {
 		dateChooserFinish.setBounds(342, 286, 151, 20);
 		contentPane.add(dateChooserFinish);
 		
-		JLabel lblSelectAS = new JLabel("Select starting date:");
+		JLabel lblSelectAS = new JLabel(controller.getResourcebundle().getString("Select_starting_date"));
 		lblSelectAS.setBounds(140, 265, 133, 14);
 		contentPane.add(lblSelectAS);
 		
-		JLabel lblSelectFinishingDate = new JLabel("Select finishing date:");
+		JLabel lblSelectFinishingDate = new JLabel(controller.getResourcebundle().getString("Select_finishing_date"));
 		lblSelectFinishingDate.setBounds(342, 265, 133, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
@@ -334,7 +214,7 @@ public class WelcomeGUI extends JFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(dateChooserStart.getDate()==(null)|| dateChooserFinish.getDate()==(null)) {
-					JOptionPane.showConfirmDialog(null, "Both starting and finishing dates must be specified", "Careful!", JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("date_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					welcomeFrame.dispose();

@@ -62,7 +62,7 @@ public class StaffPanelGUI extends JFrame {
 		
 		
 		
-		JButton btnReturnToStartpage = new JButton("Return to Startpage");
+		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
@@ -81,7 +81,7 @@ public class StaffPanelGUI extends JFrame {
 		scrollPane.setBounds(72, 139, 923, 234);
 		contentPane.add(scrollPane);
 		
-		JLabel lblRents = new JLabel("Rents");
+		JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
 		lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblRents.setBounds(529, 52, 81, 22);
 		contentPane.add(lblRents);

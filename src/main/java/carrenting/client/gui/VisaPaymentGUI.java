@@ -56,33 +56,33 @@ public class VisaPaymentGUI extends JFrame{
 		getContentPane().add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(null);
 		
-		JLabel lblVisaPayment = new JLabel("Visa payment");
+		JLabel lblVisaPayment = new JLabel(controller.getResourcebundle().getString("visa_payment"));
 		lblVisaPayment.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblVisaPayment.setBounds(64, 47, 123, 22);
 		panelCentre.add(lblVisaPayment);
 		
-		JLabel lblCreditCard = new JLabel("Credit card number:");
+		JLabel lblCreditCard = new JLabel(controller.getResourcebundle().getString("credit_card_number"));
 		lblCreditCard.setBounds(64, 104, 104, 14);
 		panelCentre.add(lblCreditCard);
 		
-		JLabel lblExpirationDate = new JLabel("Expiration Date:");
+		JLabel lblExpirationDate = new JLabel(controller.getResourcebundle().getString("expiration_date"));
 		lblExpirationDate.setBounds(64, 132, 104, 14);
 		panelCentre.add(lblExpirationDate);
 		
-		JButton btnFinishPay = new JButton("Finish and pay");
+		JButton btnFinishPay = new JButton(controller.getResourcebundle().getString("finish_and_pay"));
 		btnFinishPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldCreditCard.getText().equals("")){
-					JOptionPane.showConfirmDialog(null, "You must enter the credit card number", "Careful!", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("credit_card_number_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else if(textFieldExpirationMonth.getText().equals("")){
-					JOptionPane.showConfirmDialog(null, "You must enter the expiration month", "Careful!", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("expiration_month_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else if(textFieldExpirationYear.getText().equals("")){
-					JOptionPane.showConfirmDialog(null, "You must enter the expiration year", "Careful!", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("expiration_year_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Payment done correctly!");
+					JOptionPane.showMessageDialog(null, controller.getResourcebundle().getString("payment_correctly"));
 					try {
 						controller.register(textFieldCreditCard.getText());
 					} catch (RemoteException e1) {

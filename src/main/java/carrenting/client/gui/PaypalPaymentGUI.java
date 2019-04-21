@@ -31,7 +31,7 @@ public class PaypalPaymentGUI extends JFrame{
 	
 	public void initialize(){
 		
-	    JFrame f = new JFrame("PayPalFrame");
+	    JFrame f = new JFrame(controller.getResourcebundle().getString("paypal_frame"));
 	      f.setSize(250, 250);
 	      f.setLocation(300,200);
 	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
@@ -55,16 +55,16 @@ public class PaypalPaymentGUI extends JFrame{
 		getContentPane().add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(null);
 		
-		JLabel lblPaypalPayment = new JLabel("Paypal payment");
+		JLabel lblPaypalPayment = new JLabel(controller.getResourcebundle().getString("paypal_payment"));
 		lblPaypalPayment.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblPaypalPayment.setBounds(75, 47, 123, 22);
 		panelCentre.add(lblPaypalPayment);
 		
-		JLabel lblEmail = new JLabel("email:");
+		JLabel lblEmail = new JLabel(controller.getResourcebundle().getString("email"));
 		lblEmail.setBounds(75, 104, 66, 14);
 		panelCentre.add(lblEmail);
 		
-		JLabel lblPassword = new JLabel("password:");
+		JLabel lblPassword = new JLabel(controller.getResourcebundle().getString("password"));
 		lblPassword.setBounds(75, 132, 66, 14);
 		panelCentre.add(lblPassword);
 		
@@ -78,17 +78,17 @@ public class PaypalPaymentGUI extends JFrame{
 		panelCentre.add(textFieldPass);
 		textFieldPass.setColumns(10);
 		
-		JButton btnFinishPay = new JButton("Finish and pay");
+		JButton btnFinishPay = new JButton(controller.getResourcebundle().getString("finish_and_pay"));
 		btnFinishPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldEmail.getText().equals("")){
-					JOptionPane.showConfirmDialog(null, "You must enter an email", "Careful!", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("email_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else if(textFieldPass.getText().equals("")){
-					JOptionPane.showConfirmDialog(null, "You must enter a password", "Careful!", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("password_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Payment done correctly!");
+					JOptionPane.showMessageDialog(null, controller.getResourcebundle().getString("payment_correctly"));
 					try {
 						controller.register(textFieldEmail.getText());
 					} catch (RemoteException e1) {
