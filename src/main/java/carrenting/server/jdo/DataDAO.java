@@ -2,6 +2,7 @@ package carrenting.server.jdo;
 
 import java.sql.Connection;
 
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,6 +19,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+import org.apache.log4j.Logger;
+
+import carrenting.server.logger.ServerLogger;
 
 
 
@@ -25,6 +29,7 @@ public class DataDAO{
 	
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
+	private Logger log;
 	private Garage garage1= new Garage("Madrid");
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
@@ -45,6 +50,7 @@ public class DataDAO{
 	
 	
 	
+	
 	private DataDAO(){
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
@@ -61,20 +67,18 @@ public class DataDAO{
 		storeCar("Bilbao","5764DFG","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","7653GYU","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","0932HJH","Audi", "A7", 180);
-		storeCar("Bilbao","0252HJH","Audi", "A7", 180);
+		storeCar("Bilbao","0252HJH","Audi", "A4", 180);
 		storeCar("Bilbao","0352HTQ","Audi", "A5", 50);
 		//Hystorical rents
-		storeRent("12005678A", "0352HTQ",datePast5,date2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		storeRent("12005678A", "0352HTQ",datePast5,datePast2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		storeRent("12349578B", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1234QWE",datePast6,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12367678A", "0252HJH",datePast5,date3,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0252HJH",datePast7,date3,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0252HJH",datePast7,datePast3,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1784GSE",datePast6,datePast5,garage1.getLocation(), garage1.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784GSE",datePast7,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "1784GSE",datePast5,date2,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
+		storeRent("12365678A", "1784GSE",datePast3,datePast2,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast3,datePast2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast2,datePast1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0987KJH",datePast3,date2, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
+		storeRent("12365678A", "0987KJH",datePast3,datePast2, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		//Future rents
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
 		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "paypal", 500);
@@ -103,6 +107,10 @@ public class DataDAO{
 			pm.close();
 		}
 		System.out.println("Initializing garages");
+		System.out.println("Initializing garages");
+		System.out.println("Initializing garages");
+		System.out.println("Initializing garages");
+		ServerLogger.getLogger().info("   * Retrieving an Extent for Hotels.");
 	}
 	
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
@@ -123,6 +131,7 @@ public class DataDAO{
 	}
 	
 	private void storeStaff(){
+		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
 			pm.makePersistent(new Staff("administrator","admin1", "admin1"));
@@ -255,9 +264,9 @@ public class DataDAO{
 			@SuppressWarnings("unchecked")
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
-//			for(Car car: carsByGarage) {
-//				System.out.println(car.toString());
-//			}
+			for(Car car: carsByGarage) {
+				System.out.println(car.toString());
+			}
 			return carsByGarage;
 			
 		} catch (Exception ex) {
@@ -267,7 +276,6 @@ public class DataDAO{
 				tx.rollback();
 			}
 			System.out.println("GETTING CARS");
-			
 			pm.close();
 		}
 		return null;
@@ -284,6 +292,7 @@ public class DataDAO{
 			Car car = ((Car) query.execute());
 			tx.commit();
 			System.out.println("GETTING CAR by numplate"+ car.toString());
+
 			return car;
 		} catch (Exception ex) {
 			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
@@ -291,7 +300,6 @@ public class DataDAO{
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-//			System.out.println("GETTING CAR by numplate");
 			
 			
 			pm.close();

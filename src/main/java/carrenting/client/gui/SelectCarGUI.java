@@ -31,6 +31,7 @@ public class SelectCarGUI extends JFrame {
 	private JFrame frame;
 	private Rent rent;
 	private String garageOrigin;
+	
 
 	
 	public SelectCarGUI(Controller controller, Rent rent,String garageOrigin) throws RemoteException{
