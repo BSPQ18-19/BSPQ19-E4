@@ -33,19 +33,6 @@ public class LogInStaffGUI extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					WelcomeGUI frame = new WelcomeGUI();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-	
-//		});
-//	}
 	
 	public LogInStaffGUI(Controller controller,Rent rent) throws RemoteException{
 		this.controller=controller;
@@ -61,7 +48,7 @@ public class LogInStaffGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 297, 324);
+		frame.setBounds(100, 100, 385, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -70,12 +57,12 @@ public class LogInStaffGUI extends JFrame {
 		
 		
 		tfUsername = new JTextField();
-		tfUsername.setBounds(21, 143, 108, 20);
+		tfUsername.setBounds(21, 143, 164, 20);
 		frame.getContentPane().add(tfUsername);
 		tfUsername.setColumns(10);
 		
 		tfPassword = new JTextField();
-		tfPassword.setBounds(21, 199, 108, 20);
+		tfPassword.setBounds(21, 199, 164, 20);
 		frame.getContentPane().add(tfPassword);
 		tfPassword.setColumns(10);
 		
@@ -102,7 +89,6 @@ public class LogInStaffGUI extends JFrame {
 		btnSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
 				if(rdbtnAdministrator.isSelected())
 					type = "administrator";
 				else
@@ -127,16 +113,16 @@ public class LogInStaffGUI extends JFrame {
 				
 			}
 		});
-		btnSignIn.setBounds(75, 254, 89, 23);
+		btnSignIn.setBounds(90, 311, 119, 23);
 		frame.getContentPane().add(btnSignIn);
 		
 		JLabel lblStaffLoginArea = new JLabel(controller.getResourcebundle().getString("staff_login"));
 		lblStaffLoginArea.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblStaffLoginArea.setBounds(99, 23, 85, 29);
+		lblStaffLoginArea.setBounds(30, 23, 230, 29);
 		contentPane.add(lblStaffLoginArea);
 		
 		JLabel lblIAmAn = new JLabel(controller.getResourcebundle().getString("i_am_an"));
-		lblIAmAn.setBounds(26, 63, 46, 14);
+		lblIAmAn.setBounds(26, 63, 119, 14);
 		contentPane.add(lblIAmAn);
 		
 		JButton btnCancel = new JButton(controller.getResourcebundle().getString("cancel"));
@@ -153,7 +139,7 @@ public class LogInStaffGUI extends JFrame {
 			}
 		});
 
-		btnCancel.setBounds(186, 254, 85, 23);
+		btnCancel.setBounds(219, 311, 124, 23);
 		contentPane.add(btnCancel);
 	}
 }

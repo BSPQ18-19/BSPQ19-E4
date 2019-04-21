@@ -7,35 +7,38 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
-public class PaypalPaymentGUI extends JFrame{
+@SuppressWarnings("serial")
+public class PaypalGUINO extends JFrame{
 	private JTextField textFieldEmail;
 	private JTextField textFieldPass;
 	private JFrame frame;
 	private Controller controller;
-	
+	private Rent rent;
 
-	public PaypalPaymentGUI(Controller controller) {
+
+	public PaypalGUINO(Controller controller, Rent rent) {
+		this.controller=controller;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
-		this.controller=controller;
 	}
 	
 	public void initialize(){
 		
-	    JFrame f = new JFrame(controller.getResourcebundle().getString("paypal_frame"));
-	      f.setSize(250, 250);
-	      f.setLocation(300,200);
-	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
-	      f.setVisible(true);
+	      frame = new JFrame(controller.getResourcebundle().getString("paypal_frame"));
+	      frame.setSize(250, 250);
+	      frame.setLocation(300,200);
+	      frame.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
+	      frame.setVisible(true);
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -89,12 +92,7 @@ public class PaypalPaymentGUI extends JFrame{
 				}
 				else{
 					JOptionPane.showMessageDialog(null, controller.getResourcebundle().getString("payment_correctly"));
-					try {
-						controller.register(textFieldEmail.getText());
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+
 				}
 				
 			}

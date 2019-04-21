@@ -2,6 +2,7 @@ package carrenting.client;
 
 import java.net.MalformedURLException;
 
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class Controller{
 		getCars("Bilbao");
 		System.out.println("CONTROLLER 2ª VEZ");
 		getCars("Bilbao");
-		new WelcomeGUI(this, this.rent);
+		//new WelcomeGUI(this, this.rent);
 
 		carsAvailable=getCarsAvailable("Bilbao", date6, date5);
 		

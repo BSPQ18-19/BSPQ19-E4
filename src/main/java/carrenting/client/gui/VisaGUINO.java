@@ -14,29 +14,32 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
 
 import javax.swing.JPanel;
 
-public class VisaPaymentGUI extends JFrame{
+public class VisaGUINO extends JFrame{
 
 	private JTextField textFieldCreditCard;
 	private JTextField textFieldExpirationMonth;
 	private JTextField textFieldExpirationYear;
 	private Controller controller;
+	private Rent rent;
 	private JFrame frame;
 	
-	public VisaPaymentGUI(Controller controller) {
+	public VisaGUINO(Controller controller, Rent rent) {
+		this.controller=controller;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
-		this.controller=controller;
 		
 	}
 	public void initialize(){
-		JFrame f = new JFrame("PayPalFrame");
-	      f.setSize(250, 250);
-	      f.setLocation(300,200);
-	      f.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
-	      f.setVisible(true);
+		  frame = new JFrame("PayPalFrame");
+	      frame.setSize(250, 250);
+	      frame.setLocation(300,200);
+	      frame.getContentPane().add(BorderLayout.CENTER, new JTextArea(10, 40));
+	      frame.setVisible(true);
 	      
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -58,15 +61,15 @@ public class VisaPaymentGUI extends JFrame{
 		
 		JLabel lblVisaPayment = new JLabel(controller.getResourcebundle().getString("visa_payment"));
 		lblVisaPayment.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblVisaPayment.setBounds(64, 47, 123, 22);
+		lblVisaPayment.setBounds(68, 40, 245, 22);
 		panelCentre.add(lblVisaPayment);
 		
 		JLabel lblCreditCard = new JLabel(controller.getResourcebundle().getString("credit_card_number"));
-		lblCreditCard.setBounds(64, 104, 104, 14);
+		lblCreditCard.setBounds(20, 101, 138, 14);
 		panelCentre.add(lblCreditCard);
 		
 		JLabel lblExpirationDate = new JLabel(controller.getResourcebundle().getString("expiration_date"));
-		lblExpirationDate.setBounds(64, 132, 104, 14);
+		lblExpirationDate.setBounds(20, 129, 138, 14);
 		panelCentre.add(lblExpirationDate);
 		
 		JButton btnFinishPay = new JButton(controller.getResourcebundle().getString("finish_and_pay"));
@@ -83,20 +86,14 @@ public class VisaPaymentGUI extends JFrame{
 				}
 				else{
 					JOptionPane.showMessageDialog(null, controller.getResourcebundle().getString("payment_correctly"));
-					try {
-						controller.register(textFieldCreditCard.getText());
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 				}
 			}
 		});
-		btnFinishPay.setBounds(168, 179, 110, 23);
+		btnFinishPay.setBounds(168, 179, 189, 23);
 		panelCentre.add(btnFinishPay);
 		
 		textFieldCreditCard = new JTextField();
-		textFieldCreditCard.setBounds(168, 101, 110, 20);
+		textFieldCreditCard.setBounds(168, 101, 145, 20);
 		panelCentre.add(textFieldCreditCard);
 		textFieldCreditCard.setColumns(10);
 		
@@ -115,10 +112,5 @@ public class VisaPaymentGUI extends JFrame{
 		panelCentre.add(label);
 	}
 	
-//	 public static void main(String[] args) {
-//	      
-//	      
-//	      
-//	 }
 
 }

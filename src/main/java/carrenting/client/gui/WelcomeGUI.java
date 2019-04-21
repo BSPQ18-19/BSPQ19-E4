@@ -2,45 +2,33 @@ package carrenting.client.gui;
 
 
 
-import javax.swing.AbstractListModel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.ArrayList;
 
-import javax.swing.ButtonModel;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.AbstractListModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-
+import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.rmi.RemoteException;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.ArrayList;
-
-import java.awt.Color;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import com.toedter.calendar.JCalendar;
-import javax.swing.JCheckBox;
 
 
 /*TODO
@@ -98,7 +86,7 @@ public class WelcomeGUI extends JFrame {
 	public void initialize() throws RemoteException {
 		welcomeFrame = new JFrame();
 		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		welcomeFrame.setBounds(100, 100, 686, 452);
+		welcomeFrame.setBounds(100, 100, 740, 442);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		welcomeFrame.setContentPane(contentPane);
@@ -107,7 +95,7 @@ public class WelcomeGUI extends JFrame {
 		
 		JLabel lblWelcomeToCar = new JLabel(controller.getResourcebundle().getString("welcome_car_msg"));
 		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblWelcomeToCar.setBounds(208, 50, 230, 22);
+		lblWelcomeToCar.setBounds(253, 51, 230, 22);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
 		JLabel lblStaffArea = new JLabel("<html><u>STAFF area");
@@ -125,19 +113,19 @@ public class WelcomeGUI extends JFrame {
 		});
 		lblStaffArea.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
 		lblStaffArea.setForeground(Color.BLUE);
-		lblStaffArea.setBounds(564, 11, 69, 22);
+		lblStaffArea.setBounds(569, 11, 170, 22);
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
 		JLabel lblSelectAGarage = new JLabel(controller.getResourcebundle().getString("Select_garage_origin"));
-		lblSelectAGarage.setBounds(143, 106, 166, 14);
+		lblSelectAGarage.setBounds(88, 106, 230, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage);
 		
 		JLabel lblSelectAGarage_1 = new JLabel(controller.getResourcebundle().getString("Select_garage_destination"));
-		lblSelectAGarage_1.setBounds(342, 106, 183, 14);
+		lblSelectAGarage_1.setBounds(390, 106, 183, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage_1);
 		
 		JScrollPane scrollPaneOrigin = new JScrollPane();
-		scrollPaneOrigin.setBounds(143, 128, 151, 80);
+		scrollPaneOrigin.setBounds(88, 131, 185, 80);
 		contentPane.add(scrollPaneOrigin);
 		
 		JList<Object> listGarageOrigin = new JList<Object>();
@@ -156,11 +144,11 @@ public class WelcomeGUI extends JFrame {
 		listGarageOrigin.setSelectedIndex(0);
 		
 		scrollPaneDestination = new JScrollPane();
-		scrollPaneDestination.setBounds(342, 131, 141, 77);
+		scrollPaneDestination.setBounds(390, 131, 194, 77);
 		contentPane.add(scrollPaneDestination);
 		
 		JList<String> listGarageDestination = new JList<String>();
-		scrollPaneDestination.setColumnHeaderView(listGarageDestination);
+		scrollPaneDestination.setViewportView(listGarageDestination);
 		listGarageDestination.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listGarageDestination.setModel(new AbstractListModel<String>() {
 			private static final long serialVersionUID = 1L;
@@ -179,7 +167,6 @@ public class WelcomeGUI extends JFrame {
 		
 
 		Date date = new Date(System.currentTimeMillis());  
-//		dateChooserStart.setDate(new Date(System.currentTimeMillis()));
 		dateChooserStart.setMinSelectableDate(date);
 		dateChooserStart.getCalendarButton().addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,10 +174,9 @@ public class WelcomeGUI extends JFrame {
 				dateChooserStart.setMaxSelectableDate(dateChooserFinish.getDate());
 			}
 		});
-		dateChooserStart.setBounds(143, 286, 151, 20);
+		dateChooserStart.setBounds(88, 286, 151, 20);
 		contentPane.add(dateChooserStart);
-		
-//		dateChooserFinish.setDate(new Date(System.currentTimeMillis()));
+
 		dateChooserFinish.getCalendarButton().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -199,15 +185,15 @@ public class WelcomeGUI extends JFrame {
 			}
 		});
 
-		dateChooserFinish.setBounds(342, 286, 151, 20);
+		dateChooserFinish.setBounds(390, 286, 151, 20);
 		contentPane.add(dateChooserFinish);
 		
 		JLabel lblSelectAS = new JLabel(controller.getResourcebundle().getString("Select_starting_date"));
-		lblSelectAS.setBounds(140, 265, 133, 14);
+		lblSelectAS.setBounds(88, 265, 216, 14);
 		contentPane.add(lblSelectAS);
 		
 		JLabel lblSelectFinishingDate = new JLabel(controller.getResourcebundle().getString("Select_finishing_date"));
-		lblSelectFinishingDate.setBounds(342, 265, 133, 14);
+		lblSelectFinishingDate.setBounds(390, 265, 133, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
 		JButton btnContinue = new JButton("Next");
@@ -238,7 +224,7 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		btnContinue.setBounds(495, 365, 89, 23);
+		btnContinue.setBounds(537, 353, 151, 23);
 		contentPane.add(btnContinue);
 		
 		JCheckBox chckbxSameGarage = new JCheckBox("<html>Same as garage <p> of origin<html>");
@@ -256,7 +242,7 @@ public class WelcomeGUI extends JFrame {
 				
 			}
 		});
-		chckbxSameGarage.setBounds(488, 127, 145, 37);
+		chckbxSameGarage.setBounds(598, 129, 145, 37);
 		contentPane.add(chckbxSameGarage);
 
 

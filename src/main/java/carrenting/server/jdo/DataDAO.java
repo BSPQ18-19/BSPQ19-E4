@@ -69,6 +69,8 @@ public class DataDAO{
 		storeCar("Bilbao","0932HJH","Audi", "A7", 180);
 		storeCar("Bilbao","0252HJH","Audi", "A4", 180);
 		storeCar("Bilbao","0352HTQ","Audi", "A5", 50);
+		
+		storeCar("Barcelona","8765BCN","Volvo", "XC60", 50);
 		//Hystorical rents
 		storeRent("12005678A", "0352HTQ",datePast5,datePast2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		storeRent("12349578B", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);

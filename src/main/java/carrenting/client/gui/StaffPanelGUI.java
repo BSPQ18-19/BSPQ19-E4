@@ -1,43 +1,34 @@
 package carrenting.client.gui;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.swing.JTable;
-import javax.swing.JTextPane;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-
-import carrenting.client.Controller;
-import carrenting.client.RMIServiceLocator;
-import carrenting.server.jdo.Car;
-import carrenting.server.jdo.Rent;
-
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
+import java.rmi.RemoteException;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+
+import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
+
+
+@SuppressWarnings("serial")
 public class StaffPanelGUI extends JFrame {
-
 	private JPanel contentPane;
 	private Controller controller;
 	private JFrame frame;
 	private String staffType;
-	private ArrayList<Car> cars = new ArrayList<>();
 	private Rent rent;
 
 	
-	public StaffPanelGUI(Controller controller, String StaffType, Rent rent) throws RemoteException{
+	public StaffPanelGUI(Controller controller, String staffType, Rent rent) throws RemoteException{
 		this.controller=controller;
 		this.staffType=staffType;
 		this.rent=rent;
@@ -50,11 +41,10 @@ public class StaffPanelGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("serial")
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1084, 471);
+		frame.setBounds(100, 100, 1084, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -74,21 +64,52 @@ public class StaffPanelGUI extends JFrame {
 			}
 		});
 		btnReturnToStartpage.setForeground(Color.BLACK);
-		btnReturnToStartpage.setBounds(900, 398, 158, 23);
+		btnReturnToStartpage.setBounds(726, 398, 332, 23);
 		contentPane.add(btnReturnToStartpage);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(72, 139, 923, 234);
+		scrollPane.setBounds(70, 114, 923, 273);
 		contentPane.add(scrollPane);
 		
-		JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
-		lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblRents.setBounds(529, 52, 81, 22);
-		contentPane.add(lblRents);
+	
+		JPanel panelAdmin = new JPanel();
+		panelAdmin.setBounds(24, 11, 984, 48);
+		contentPane.add(panelAdmin);
+		panelAdmin.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(24, 11, 388, 108);
-		contentPane.add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JButton btnAddCars = new JButton("Add cars");
+		btnAddCars.setBounds(10, 11, 144, 23);
+		panelAdmin.add(btnAddCars);
+		
+		JButton btnAddGarages = new JButton("Add garages");
+		btnAddGarages.setBounds(407, 11, 144, 23);
+		panelAdmin.add(btnAddGarages);
+		
+		JButton btnRemoveCars = new JButton("Remove cars");
+		btnRemoveCars.setBounds(185, 11, 160, 23);
+		panelAdmin.add(btnRemoveCars);
+		
+		JButton btnNewButton = new JButton("Remove garages");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton.setBounds(588, 11, 160, 23);
+		panelAdmin.add(btnNewButton);
+		
+		JButton btnViewStatistics = new JButton("View statistics");
+		btnViewStatistics.setBounds(814, 11, 160, 23);
+		panelAdmin.add(btnViewStatistics);
+		
+		JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
+		lblRents.setBounds(482, 81, 245, 22);
+		contentPane.add(lblRents);
+		lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		if (staffType.equalsIgnoreCase("employee")) {
+			panelAdmin.setVisible(false);
+		}else {
+			panelAdmin.setVisible(true);
+		}
+		
 	}
 }

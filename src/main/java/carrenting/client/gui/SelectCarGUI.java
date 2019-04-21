@@ -1,6 +1,7 @@
 package carrenting.client.gui;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -31,9 +32,6 @@ public class SelectCarGUI extends JFrame {
 	private JFrame frame;
 	private Rent rent;
 	private double price;
-	private boolean carSelected=false;
-	
-
 	
 	public SelectCarGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
@@ -105,6 +103,7 @@ public class SelectCarGUI extends JFrame {
 		tableCars.getColumnModel().getColumn(1).setPreferredWidth(80);
 		tableCars.getColumnModel().getColumn(2).setPreferredWidth(76);
 		tableCars.getColumnModel().getColumn(2).setMinWidth(30);
+
 		 DefaultTableModel model = (DefaultTableModel) tableCars.getModel();
 	        ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
 	        Object rowData[] = new Object[3];
