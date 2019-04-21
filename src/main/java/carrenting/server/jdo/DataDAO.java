@@ -81,6 +81,7 @@ public class DataDAO{
 		storeRent("12365678A", "0987KJH",datePast3,datePast2, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		//Future rents
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
+		storeRent("12365678A", "0352HTQ",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
 		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1234QWE",date,date5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		

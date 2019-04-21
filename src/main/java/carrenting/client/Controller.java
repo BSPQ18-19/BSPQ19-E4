@@ -53,7 +53,7 @@ public class Controller{
 		getCars("Bilbao");
 		System.out.println("CONTROLLER 2ª VEZ");
 		getCars("Bilbao");
-//		new WelcomeGUI(this, this.rent);
+		new WelcomeGUI(this, this.rent);
 
 		carsAvailable=getCarsAvailable("Bilbao", date6, date5);
 		
@@ -153,35 +153,47 @@ public class Controller{
 	
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
 		ArrayList<Car> carsAvailable = new ArrayList<>();
-		ArrayList<Car>carsNotAvailable = new ArrayList<>();
-		carsAvailable=getCars(garageOrigin);
+		ArrayList<String>carsNotAvailable = new ArrayList<>();
+		ArrayList<Car>allCars= new ArrayList<>();
+		allCars=getCars(garageOrigin);
 //		carsAvailable= getCars("Bilbao");
 		for(int i=0; i<rents.size(); i++) {
 //			System.out.println(rent.toString());
 			if (rents.get(i).getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
-				if(((startingDate.after(rents.get(i).getStartingDate())&& startingDate.before(rents.get(i).getFinishingDate())) ||
-				    (finishingDate.after(rents.get(i).getStartingDate()) && finishingDate.before(rents.get(i).getFinishingDate())))){
-					System.out.println("Start date " + rents.get(i).getStartingDate() + "\n Finish date " + rents.get(i).getFinishingDate() + 
-							"\n startingDate.after(rent.getStartingDate()" +startingDate.after(rents.get(i).getStartingDate()) + 
-							"\n startingDate.before(rent.getFinishingDate())" +startingDate.before(rents.get(i).getFinishingDate()));
-					carsNotAvailable.add(getCar(rents.get(i).getNumberPlate()));
+				if(!(finishingDate.before(rents.get(i).getStartingDate()) || startingDate.after(rents.get(i).getFinishingDate()))){
+//					System.out.println("Start date " + startingDate + "\n Finish date " + finishingDate + 
+//							"\n startingDateRENT" +rents.get(i).getStartingDate()+ 
+//							"\n finishingdateRENT" +rents.get(i).getFinishingDate());
+					carsNotAvailable.add(rents.get(i).getNumberPlate());
 					System.out.println("NOT AVAILABLE");
 					System.out.println(getCar(rents.get(i).getNumberPlate()));
 				}
+
+			}
+			
+			
+		}
+		
+		for (Car car: allCars) {
+			if(!(carsNotAvailable.contains(car.getNumPlate()))) {
+				carsAvailable.add(car);
 			}
 		}
-		for(Car carAv: carsAvailable) {
-			for (Car carNotAv: carsNotAvailable) {
-				if (carAv.getNumPlate().equals(carNotAv.getNumPlate()) && carsAvailable.contains(carNotAv)){
-					System.out.println("Removing this car " + carAv.toString());
-					carsAvailable.remove(carAv);
-				}
-			}
-		}
+		
+		
+//		for(Car carAv: carsAvailable) {
+//			for (Car carNotAv: carsNotAvailable) {
+//				if (carAv.getNumPlate().equals(carNotAv.getNumPlate())){
+//					System.out.println("Removing this car " + carAv.toString());
+//					//carsAvailable.remove(carAv);
+//				}
+//			}
+//		}
 		System.out.println("Cars available!!");
 		for (Car car: carsAvailable) {
 			System.out.println(car.toString());
 		}
+
 		return carsAvailable;
 	}
 	
