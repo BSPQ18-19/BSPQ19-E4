@@ -23,7 +23,7 @@ import carrenting.server.jdo.Rent;
 public class Controller{
 
 	private Rent rent = new Rent(null, null, null, null, null, null, null, 0);
-	private ResourceBundle myBundle; //el que gestiona los diomas
+	private ResourceBundle myBundle; //el que gestiona los idiomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
 	private ArrayList<Car> carsAvailable = new ArrayList<>();
@@ -32,7 +32,7 @@ public class Controller{
 	
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
-		//asigno la variable currentLocale a uno de los idiiomas que tenemos
+		//asigno la variable currentLocale a uno de los idiomas que tenemos
 		if(args[3].equals("en")){
 			currentLocale = new Locale("en", "EU");
 		}else if(args[3].equals("es")){
