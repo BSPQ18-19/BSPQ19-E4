@@ -44,17 +44,14 @@ public class StaffPanelGUI extends JFrame {
 	private Rent rent;
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textFieldNumPlate;
-	private JTextField textFieldBrand;
-	private JTextField textFieldModel;
 	private JFormattedTextField textFieldPpd= new JFormattedTextField(getMaskFormatter("###.#"));
 	private double pricePerDay=0.0;
 	private boolean allOK = true;
-	private ArrayList<String> garages = new ArrayList<>();
-	private ArrayList<String> numPlates = new ArrayList<>();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private ArrayList<String> garages;
+	private ArrayList<String> numPlates;
+	private JTextField textFieldNumPlate;
+	private JTextField textFieldBrand;
+	private JTextField textFieldModel;
 	
 
 	
@@ -73,18 +70,17 @@ public class StaffPanelGUI extends JFrame {
 		this.controller=controller;
 		this.staffType=staffType;
 		this.rent=rent;
-		initialize();
-		frame.setVisible(true);
 		numPlates=controller.getAllNumPlates();
 		garages = controller.getGarages();
-
+		initialize();
+		frame.setVisible(true);
 	}
 	
 	
 	/**
 	 * Create the frame.
 	 */
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,114 +151,106 @@ public class StaffPanelGUI extends JFrame {
 			lblRents.setBounds(465, 11, 245, 22);
 			panelrent.add(lblRents);
 			lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-
 		
-		
-		JPanel panelAddCars = new JPanel();
-		tabbedPane.addTab("Add cars", null, panelAddCars, null);
-		panelAddCars.setLayout(null);
-		
-		JLabel label = new JLabel("Add a car");
-		label.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		label.setBounds(148, 33, 207, 22);
-		panelAddCars.add(label);
-		
-		JLabel label_1 = new JLabel("Number plate");
-		label_1.setBounds(33, 80, 98, 14);
-		panelAddCars.add(label_1);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(147, 77, 185, 20);
-		panelAddCars.add(textField);
-		
-		JLabel label_2 = new JLabel("Brand");
-		label_2.setBounds(33, 114, 98, 14);
-		panelAddCars.add(label_2);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(148, 108, 185, 20);
-		panelAddCars.add(textField_1);
-		
-		JLabel label_3 = new JLabel("Model");
-		label_3.setBounds(33, 148, 98, 14);
-		panelAddCars.add(label_3);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(148, 139, 185, 20);
-		panelAddCars.add(textField_2);
-		
-		JLabel label_4 = new JLabel("Garage");
-		label_4.setBounds(33, 173, 98, 14);
-		panelAddCars.add(label_4);
-		
-		JComboBox comboBox = new JComboBox();
-//		comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
-//		comboBox.setSelectedIndex(0);
-		comboBox.setBounds(125, 177, 186, 20);
-		panelAddCars.add(comboBox);
-		
-		JLabel label_5 = new JLabel("Price per day");
-		label_5.setBounds(33, 206, 98, 14);
-		panelAddCars.add(label_5);
-		
-		JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
-		formattedTextField.setColumns(10);
-		formattedTextField.setBounds(148, 203, 183, 20);
-		panelAddCars.add(formattedTextField);
-		
-		JButton button = new JButton("Add");
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				allOK=true;
-				try {
-					if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
-						JOptionPane.showConfirmDialog(null,"The number plate entered already exists", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-						allOK=false;
-					}
-				} catch (HeadlessException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				} catch (RemoteException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
 				
-				pricePerDay= Double.parseDouble(textFieldPpd.getText());
-				if ((pricePerDay<=0)){
-					JOptionPane.showConfirmDialog(null, "The price needs to be higher than 0", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-					allOK=false;
-				}
-				if(textFieldBrand.getText().equals("") || textFieldModel.getText().equals("") || textFieldNumPlate.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-					allOK=false;
-				}
-				if(allOK) {
-					frame.dispose();
-					try {
-						new StaffPanelGUI(controller, staffType, rent);
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					try {
-						controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
-						System.out.println(controller.getCar(textFieldNumPlate.getText()));
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}	
-			}
-		});
+				
+				JPanel panelAddCars = new JPanel();
+				tabbedPane.addTab("Add cars", null, panelAddCars, null);
+				panelAddCars.setLayout(null);
+				
+				JLabel label = new JLabel("Add a car");
+				label.setBounds(148, 33, 207, 22);
+				label.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				panelAddCars.add(label);
+				
+				JLabel label_1 = new JLabel("Number plate");
+				label_1.setBounds(33, 80, 98, 14);
+				panelAddCars.add(label_1);
+				
+				textFieldNumPlate = new JTextField();
+				textFieldNumPlate.setBounds(148, 77, 185, 20);
+				textFieldNumPlate.setColumns(10);
+				panelAddCars.add(textFieldNumPlate);
+				
+				JLabel label_2 = new JLabel("Brand");
+				label_2.setBounds(33, 114, 98, 14);
+				panelAddCars.add(label_2);
+				
+				textFieldBrand = new JTextField();
+				textFieldBrand.setBounds(148, 108, 185, 20);
+				textFieldBrand.setColumns(10);
+				panelAddCars.add(textFieldBrand);
+				
+				JLabel label_3 = new JLabel("Model");
+				label_3.setBounds(33, 148, 98, 14);
+				panelAddCars.add(label_3);
+				
+				textFieldModel = new JTextField();
+				textFieldModel.setBounds(148, 139, 185, 20);
+				textFieldModel.setColumns(10);
+				panelAddCars.add(textFieldModel);
+				
+				JLabel label_4 = new JLabel("Garage");
+				label_4.setBounds(33, 173, 98, 14);
+				panelAddCars.add(label_4);
+				
+				JComboBox comboBox = new JComboBox();
+				comboBox.setBounds(147, 170, 186, 20);
+				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
+				panelAddCars.add(comboBox);
+				
+				JLabel label_5 = new JLabel("Price per day");
+				label_5.setBounds(33, 206, 98, 14);
+				panelAddCars.add(label_5);
+				
+				
+				textFieldPpd.setBounds(148, 203, 183, 20);
+				textFieldPpd.setColumns(10);
+				panelAddCars.add(textFieldPpd);
+				
+				JButton button = new JButton("Add");
+				button.setBounds(238, 285, 89, 23);
+				button.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						allOK=true;
+						try {
+							if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
+								JOptionPane.showConfirmDialog(null,"The number plate entered already exists", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+								allOK=false;
+							}
+						} catch (HeadlessException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						} catch (RemoteException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						pricePerDay= Double.parseDouble(textFieldPpd.getText());
+						if ((pricePerDay<=0)){
+							JOptionPane.showConfirmDialog(null, "The price needs to be higher than 0", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							allOK=false;
+						}
+						if(textFieldBrand.getText().equals("") || textFieldModel.getText().equals("") || textFieldNumPlate.getText().equals("")) {
+							JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							allOK=false;
+						}
+						if(allOK) {
+								try {
+									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+									System.out.println(controller.getCar(textFieldNumPlate.getText()));
+								} catch (RemoteException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
 
-		button.setBounds(238, 285, 89, 23);
-		panelAddCars.add(button);
-		
-		
+
+						}
+					}
+				});
+				panelAddCars.add(button);
+
+
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Remove cars", null, panel, null);

@@ -3,6 +3,7 @@ package carrenting.client;
 import java.net.MalformedURLException;
 
 
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import carrenting.client.gui.AddCarGUI;
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
 
@@ -52,10 +52,10 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		this.getRents();
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-//		new StaffPanelGUI(this, "admin", this.rent);
+		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
