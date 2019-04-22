@@ -28,6 +28,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 
 
@@ -118,7 +119,7 @@ public class WelcomeGUI extends JFrame {
 		listGarageOrigin.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listGarageOrigin.setModel(new AbstractListModel<Object>() {
 			private static final long serialVersionUID = 1L;
-			ArrayList<String> values = controller.getGarages();
+			ArrayList<String> values = controller.garagesWithCars();
 			public int getSize() {
 				return values.size();
 			}
@@ -146,9 +147,6 @@ public class WelcomeGUI extends JFrame {
 			}
 		});
 		listGarageDestination.setSelectedIndex(0);
-		
-
-		
 		
 
 		Date date = new Date(System.currentTimeMillis());  
@@ -184,15 +182,27 @@ public class WelcomeGUI extends JFrame {
 		JButton btnContinue = new JButton("Next");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
+				String garageDestination=(String) listGarageDestination.getSelectedValue();
+				java.util.Date startingDate=  dateChooserStart.getDate();
+				java.util.Date finishingDate =  dateChooserFinish.getDate();
+				ArrayList<Car> carTest = new ArrayList<>();
+				try {
+					carTest= controller.getCarsAvailable(garageOrigin, startingDate, finishingDate);
+				} catch (RemoteException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				if(carTest.isEmpty()) {
+					JOptionPane.showConfirmDialog(null, "There are no cars available in that garage for those dates", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+				}
 				if(dateChooserStart.getDate()==(null)|| dateChooserFinish.getDate()==(null)) {
 					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("date_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
+
 				else {
 					welcomeFrame.dispose();
-					String garageOrigin = (String) listGarageOrigin.getSelectedValue();
-					String garageDestination=(String) listGarageDestination.getSelectedValue();
-					java.util.Date startingDate=  dateChooserStart.getDate();
-					java.util.Date finishingDate =  dateChooserFinish.getDate();
+
 					try {
 						rent.setGarageOrigin(garageOrigin);
 						rent.setGarageDestination(garageDestination);

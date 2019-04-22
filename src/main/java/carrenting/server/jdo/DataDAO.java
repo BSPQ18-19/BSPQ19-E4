@@ -221,16 +221,13 @@ public class DataDAO{
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
 			query.setUnique(true);
-			
 			Car carToDelete = (Car) pm.getObjectById(Car.class, numberPlate);	
-			
 			pm.deletePersistent(carToDelete);
-			
 			tx.commit();
 		}catch (Exception ex){
 			System.out.println("   $ Error deleting data from the database: " + ex.getMessage());
 		}finally {
-			System.out.println("DELETED CAR");
+			System.out.println("DELETED CAR" + numberPlate);
 			pm.close();
 		}
 	}

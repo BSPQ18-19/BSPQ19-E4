@@ -31,8 +31,8 @@ public class Controller{
 	private ResourceBundle myBundle; //el que gestiona los idiomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
-//	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
-//	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
+	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
+	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 	
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
@@ -56,8 +56,13 @@ public class Controller{
 //		new PaymentGUI(this, this.rent);
 //		new StaffPanelGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
+//		deleteCar("8765BCN");
+
+//		garagesWithCars();
 
 	}
+	
+
 	
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
@@ -128,6 +133,19 @@ public class Controller{
 			numPlates.add(car.getNumPlate());
 		}
 		return numPlates;
+	}
+	
+	public ArrayList<String> garagesWithCars() throws RemoteException{
+		ArrayList<String> garages = new ArrayList<>();
+		ArrayList<Car> cars = new ArrayList<>();
+		cars=this.getAllCars();
+		for(Car car: cars) {
+			if(!(garages.contains(car.getGarage()))) {
+				garages.add(car.getGarage());
+				System.out.println(car.getGarage());
+			}	
+		}
+		return garages;
 	}
 	
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
