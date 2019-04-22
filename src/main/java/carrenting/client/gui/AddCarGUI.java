@@ -84,6 +84,7 @@ public class AddCarGUI extends JFrame {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void initialize() throws RemoteException {
+
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 382, 340);
@@ -208,6 +209,8 @@ public class AddCarGUI extends JFrame {
 		});
 		btnAdd.setBounds(243, 259, 89, 23);
 		contentPane.add(btnAdd);
+		
+	
 		
 
 

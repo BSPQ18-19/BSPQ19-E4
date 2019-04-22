@@ -1,17 +1,23 @@
 package carrenting.client.gui;
 
 import java.awt.Color;
+
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -19,7 +25,14 @@ import javax.swing.border.EmptyBorder;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTabbedPane;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 
 @SuppressWarnings("serial")
@@ -30,7 +43,31 @@ public class StaffPanelGUI extends JFrame {
 	private String staffType;
 	private Rent rent;
 	private JTable table;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textFieldNumPlate;
+	private JTextField textFieldBrand;
+	private JTextField textFieldModel;
+	private JFormattedTextField textFieldPpd= new JFormattedTextField(getMaskFormatter("###.#"));
+	private double pricePerDay=0.0;
+	private boolean allOK = true;
+	private ArrayList<String> garages = new ArrayList<>();
+	private ArrayList<String> numPlates = new ArrayList<>();
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	
 
+	
+	private MaskFormatter getMaskFormatter(String format) {
+	    MaskFormatter mask = null;
+	    try {
+	        mask = new MaskFormatter(format);
+	        mask.setPlaceholderCharacter('0');
+	    }catch (ParseException ex) {
+	        ex.printStackTrace();
+	    }
+	    return mask;
+	}
 	
 	public StaffPanelGUI(Controller controller, String staffType, Rent rent) throws RemoteException{
 		this.controller=controller;
@@ -38,6 +75,8 @@ public class StaffPanelGUI extends JFrame {
 		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
+		numPlates=controller.getAllNumPlates();
+		garages = controller.getGarages();
 
 	}
 	
@@ -45,18 +84,17 @@ public class StaffPanelGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("rawtypes")
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1084, 500);
+		frame.setBounds(100, 100, 1164, 591);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		frame.setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
-		
 		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
+		btnReturnToStartpage.setBounds(805, 525, 332, 23);
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
@@ -67,13 +105,22 @@ public class StaffPanelGUI extends JFrame {
 				}
 			}
 		});
+		contentPane.setLayout(null);
 		btnReturnToStartpage.setForeground(Color.BLACK);
-		btnReturnToStartpage.setBounds(726, 398, 332, 23);
 		contentPane.add(btnReturnToStartpage);
+		ArrayList<Rent> rents = controller.getRents();
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 1144, 480);
+		contentPane.add(tabbedPane);
+		
+		JPanel panelrent = new JPanel();
+		tabbedPane.addTab("Rents", null, panelrent, null);
+		panelrent.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(24, 114, 1034, 273);
-		contentPane.add(scrollPane);
+		scrollPane.setBounds(10, 44, 1100, 377);
+		panelrent.add(scrollPane);
 		
 		table = new JTable();
 		table.setRowSelectionAllowed(false);
@@ -89,97 +136,142 @@ public class StaffPanelGUI extends JFrame {
 		table.getColumnModel().getColumn(2).setPreferredWidth(110);
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		 ArrayList<Rent> rents = controller.getRents();
+        Object rowData[] = new Object[11];
+        for(int i = 0; i < rents.size(); i++)
+        {
+        	rowData[0] = rents.get(i).getNumberPlate();
+        	rowData[1] = rents.get(i).getStartingDate();	      
+        	rowData[2] = rents.get(i).getFinishingDate();
+        	rowData[3] = rents.get(i).getGarageOrigin();
+        	rowData[4] = rents.get(i).getGarageDestination();
+            rowData[5] = rents.get(i).getPaymentSystem();
+            rowData[6] = rents.get(i).getTotalPrice();
+            rowData[7] = rents.get(i).getUserId();
+            model.addRow(rowData);
+        }
+			scrollPane.setViewportView(table);
+			
+			JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
+			lblRents.setBounds(465, 11, 245, 22);
+			panelrent.add(lblRents);
+			lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 
-	        Object rowData[] = new Object[11];
-	        for(int i = 0; i < rents.size(); i++)
-	        {
-	        	rowData[0] = rents.get(i).getNumberPlate();
-	        	rowData[1] = rents.get(i).getStartingDate();	      
-	        	rowData[2] = rents.get(i).getFinishingDate();
-	        	rowData[3] = rents.get(i).getGarageOrigin();
-	        	rowData[4] = rents.get(i).getGarageDestination();
-	            rowData[5] = rents.get(i).getPaymentSystem();
-	            rowData[6] = rents.get(i).getTotalPrice();
-	            rowData[7] = rents.get(i).getUserId();
-	            model.addRow(rowData);
-	        }
-		scrollPane.setViewportView(table);
 		
-	
-		JPanel panelAdmin = new JPanel();
-		panelAdmin.setBounds(24, 11, 1006, 48);
-		contentPane.add(panelAdmin);
-		panelAdmin.setLayout(null);
 		
-		JButton btnAddCars = new JButton("Add car");
-		btnAddCars.addMouseListener(new MouseAdapter() {
+		JPanel panelAddCars = new JPanel();
+		tabbedPane.addTab("Add cars", null, panelAddCars, null);
+		panelAddCars.setLayout(null);
+		
+		JLabel label = new JLabel("Add a car");
+		label.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		label.setBounds(148, 33, 207, 22);
+		panelAddCars.add(label);
+		
+		JLabel label_1 = new JLabel("Number plate");
+		label_1.setBounds(33, 80, 98, 14);
+		panelAddCars.add(label_1);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(147, 77, 185, 20);
+		panelAddCars.add(textField);
+		
+		JLabel label_2 = new JLabel("Brand");
+		label_2.setBounds(33, 114, 98, 14);
+		panelAddCars.add(label_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(148, 108, 185, 20);
+		panelAddCars.add(textField_1);
+		
+		JLabel label_3 = new JLabel("Model");
+		label_3.setBounds(33, 148, 98, 14);
+		panelAddCars.add(label_3);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(148, 139, 185, 20);
+		panelAddCars.add(textField_2);
+		
+		JLabel label_4 = new JLabel("Garage");
+		label_4.setBounds(33, 173, 98, 14);
+		panelAddCars.add(label_4);
+		
+		JComboBox comboBox = new JComboBox();
+//		comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
+//		comboBox.setSelectedIndex(0);
+		comboBox.setBounds(125, 177, 186, 20);
+		panelAddCars.add(comboBox);
+		
+		JLabel label_5 = new JLabel("Price per day");
+		label_5.setBounds(33, 206, 98, 14);
+		panelAddCars.add(label_5);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField((AbstractFormatter) null);
+		formattedTextField.setColumns(10);
+		formattedTextField.setBounds(148, 203, 183, 20);
+		panelAddCars.add(formattedTextField);
+		
+		JButton button = new JButton("Add");
+		button.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
+			public void mouseClicked(MouseEvent arg0) {
+				allOK=true;
 				try {
-					new AddCarGUI(controller, staffType, rent);
-				} catch (RemoteException e1) {
+					if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
+						JOptionPane.showConfirmDialog(null,"The number plate entered already exists", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						allOK=false;
+					}
+				} catch (HeadlessException e2) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					e2.printStackTrace();
+				} catch (RemoteException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
 				}
-			}
-		});
-		btnAddCars.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 				
+				pricePerDay= Double.parseDouble(textFieldPpd.getText());
+				if ((pricePerDay<=0)){
+					JOptionPane.showConfirmDialog(null, "The price needs to be higher than 0", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					allOK=false;
+				}
+				if(textFieldBrand.getText().equals("") || textFieldModel.getText().equals("") || textFieldNumPlate.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					allOK=false;
+				}
+				if(allOK) {
+					frame.dispose();
+					try {
+						new StaffPanelGUI(controller, staffType, rent);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+						System.out.println(controller.getCar(textFieldNumPlate.getText()));
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}	
 			}
 		});
-		btnAddCars.setBounds(10, 11, 147, 23);
-		panelAdmin.add(btnAddCars);
+
+		button.setBounds(238, 285, 89, 23);
+		panelAddCars.add(button);
 		
-		JButton btnAddGarages = new JButton("Add garages");
-		btnAddGarages.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		btnAddGarages.setBounds(384, 11, 180, 23);
-		panelAdmin.add(btnAddGarages);
 		
-		JButton btnViewStatistics = new JButton("View statistics");
-		btnViewStatistics.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				new StatisticsGUI(controller,staffType,rent);
-			}	
-		});
-		btnViewStatistics.setBounds(787, 11, 190, 23);
-		panelAdmin.add(btnViewStatistics);
 		
-		JButton btnRemoveCar = new JButton("Remove car");
-		btnRemoveCar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		btnRemoveCar.setBounds(182, 11, 171, 23);
-		panelAdmin.add(btnRemoveCar);
-		
-		JButton btnRemoveGarage = new JButton("Remove garage");
-		btnRemoveGarage.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		btnRemoveGarage.setBounds(584, 11, 180, 23);
-		panelAdmin.add(btnRemoveGarage);
-		
-		JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
-		lblRents.setBounds(482, 81, 245, 22);
-		contentPane.add(lblRents);
-		lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		if (staffType.equalsIgnoreCase("employee")) {
-			panelAdmin.setVisible(false);
-		}else {
-			panelAdmin.setVisible(true);
-		}
-		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Remove cars", null, panel, null);
+//		
+//		if(staffType.equalsIgnoreCase("employee")) {
+//			// Disable the tab
+//		    tabbedPane.setEnabledAt(1, false);
+//		    tabbedPane.setEnabledAt(2, false);
+//		}
+//		
 	}
 }

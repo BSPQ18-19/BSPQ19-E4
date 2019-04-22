@@ -101,22 +101,11 @@ public class RemoveCarGUI extends JFrame {
 		JButton btnRemove = new JButton("Remove");
 //		btnRemove.addMouseListener(new MouseAdapter() {
 //			@Override
-//			public void mouseClicked(MouseEvent e) {
-////				try {
-////					controller.deleteCar(cars.get(table.getSelectedRow()).getNumPlate());
-////					cars.remove(table.getSelectedRow());
-////					model.removeRow(table.getSelectedRow());
-////					model.fireTableDataChanged();
-////					table.addNotify();
-//
-//					
-////				} catch (RemoteException e1) {
-////					// TODO Auto-generated catch block
-////					e1.printStackTrace();
-////				}
-//				
+//			public void mouseReleased(MouseEvent e) {
 //			}
 //		});
+
+
 		btnRemove.setBounds(478, 343, 108, 23);
 		contentPane.add(btnRemove);
 		

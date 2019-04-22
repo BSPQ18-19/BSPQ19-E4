@@ -52,7 +52,7 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		this.getRents();
-//		new WelcomeGUI(this, this.rent);
+		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
 //		new StaffPanelGUI(this, "admin", this.rent);
