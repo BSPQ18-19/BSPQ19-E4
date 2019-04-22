@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
@@ -20,9 +21,12 @@ import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class AddCarGUI extends JFrame {
@@ -30,7 +34,6 @@ public class AddCarGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldNumPlate;
 	private JTextField textFieldBrand;
-	private JTextField textFieldPpd;
 	private JTextField textFieldModel;
 	private JFrame frame;
 	private Controller controller;
@@ -38,6 +41,21 @@ public class AddCarGUI extends JFrame {
 	private Rent rent;
 	private ArrayList<String> garages;
 	private JList<String> listGarages;
+	private JFormattedTextField textFieldPpd= new JFormattedTextField(getMaskFormatter("###.#"));
+	
+
+	
+	private MaskFormatter getMaskFormatter(String format) {
+	    MaskFormatter mask = null;
+	    try {
+	        mask = new MaskFormatter(format);
+	        mask.setPlaceholderCharacter('0');
+	    }catch (ParseException ex) {
+	        ex.printStackTrace();
+	    }
+	    return mask;
+	}
+
 	
 	public AddCarGUI(Controller controller, String staffType, Rent rent) {
 		this.controller= controller;
@@ -122,7 +140,7 @@ public class AddCarGUI extends JFrame {
 		lblPricePerDay.setBounds(10, 284, 98, 14);
 		contentPane.add(lblPricePerDay);
 		
-		textFieldPpd = new JTextField();
+		
 		textFieldPpd.setBounds(125, 281, 183, 20);
 		contentPane.add(textFieldPpd);
 		textFieldPpd.setColumns(10);
