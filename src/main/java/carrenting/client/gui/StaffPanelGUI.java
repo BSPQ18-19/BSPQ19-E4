@@ -88,7 +88,6 @@ public class StaffPanelGUI extends JFrame {
 		table.getColumnModel().getColumn(1).setPreferredWidth(110);
 		table.getColumnModel().getColumn(2).setPreferredWidth(110);
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
-		scrollPane.setViewportView(table);
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		 ArrayList<Rent> rents = controller.getRents();
 

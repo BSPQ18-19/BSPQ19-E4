@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import carrenting.client.gui.AddCarGUI;
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
+import carrenting.client.gui.RemoveCarGUI;
 import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.StaffPanelGUI;
 import carrenting.client.gui.WelcomeGUI;
@@ -51,13 +52,13 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		this.getRents();
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
 //		new StaffPanelGUI(this, "admin", this.rent);
+		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
-
 //		garagesWithCars();
 
 	}
@@ -142,7 +143,6 @@ public class Controller{
 		for(Car car: cars) {
 			if(!(garages.contains(car.getGarage()))) {
 				garages.add(car.getGarage());
-				System.out.println(car.getGarage());
 			}	
 		}
 		return garages;

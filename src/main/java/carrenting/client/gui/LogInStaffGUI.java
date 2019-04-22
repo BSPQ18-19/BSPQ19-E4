@@ -113,7 +113,7 @@ public class LogInStaffGUI extends JFrame {
 				
 			}
 		});
-		btnSignIn.setBounds(90, 311, 119, 23);
+		btnSignIn.setBounds(180, 327, 179, 23);
 		frame.getContentPane().add(btnSignIn);
 		
 		JLabel lblStaffLoginArea = new JLabel(controller.getResourcebundle().getString("staff_login"));
@@ -139,7 +139,7 @@ public class LogInStaffGUI extends JFrame {
 			}
 		});
 
-		btnCancel.setBounds(219, 311, 124, 23);
+		btnCancel.setBounds(21, 327, 128, 23);
 		contentPane.add(btnCancel);
 	}
 }

@@ -51,7 +51,7 @@ public class StatisticsGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblGarage = new JLabel("Garage popularity");
-		lblGarage.setBounds(39, 50, 173, 14);
+		lblGarage.setBounds(39, 50, 283, 14);
 		contentPane.add(lblGarage);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -79,7 +79,7 @@ public class StatisticsGUI extends JFrame {
 		contentPane.add(labelStatistics);
 		
 		JLabel lblPaymentSystemPopularity = new JLabel("Payment system popularity");
-		lblPaymentSystemPopularity.setBounds(40, 275, 153, 14);
+		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
 		contentPane.add(lblPaymentSystemPopularity);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -105,7 +105,7 @@ public class StatisticsGUI extends JFrame {
 		scrollPane_1.setViewportView(tablePaySys);
 		
 		JLabel lblCarPopularity = new JLabel("Car popularity");
-		lblCarPopularity.setBounds(399, 50, 106, 14);
+		lblCarPopularity.setBounds(399, 50, 248, 14);
 		contentPane.add(lblCarPopularity);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -128,7 +128,7 @@ public class StatisticsGUI extends JFrame {
 			}
 			
 		});
-		btnBackToStaff.setBounds(663, 417, 194, 23);
+		btnBackToStaff.setBounds(609, 417, 248, 23);
 		contentPane.add(btnBackToStaff);
 	}
 }
