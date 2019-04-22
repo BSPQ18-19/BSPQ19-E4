@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -43,7 +44,6 @@ public class StaffPanelGUI extends JFrame {
 	private String staffType;
 	private Rent rent;
 	private JTable table;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JFormattedTextField textFieldPpd= new JFormattedTextField(getMaskFormatter("###.#"));
 	private double pricePerDay=0.0;
 	private boolean allOK = true;
@@ -52,6 +52,7 @@ public class StaffPanelGUI extends JFrame {
 	private JTextField textFieldNumPlate;
 	private JTextField textFieldBrand;
 	private JTextField textFieldModel;
+	private JTable tableRemoveCars;
 	
 
 	
@@ -90,6 +91,17 @@ public class StaffPanelGUI extends JFrame {
 		
 		frame.setContentPane(contentPane);
 		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
+		btnReturnToStartpage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				try {
+					new WelcomeGUI(controller, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnReturnToStartpage.setBounds(805, 525, 332, 23);
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -158,59 +170,59 @@ public class StaffPanelGUI extends JFrame {
 				tabbedPane.addTab("Add cars", null, panelAddCars, null);
 				panelAddCars.setLayout(null);
 				
-				JLabel label = new JLabel("Add a car");
-				label.setBounds(148, 33, 207, 22);
-				label.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-				panelAddCars.add(label);
+				JLabel labelAddACar = new JLabel("Add a car");
+				labelAddACar.setBounds(444, 33, 207, 22);
+				labelAddACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				panelAddCars.add(labelAddACar);
 				
-				JLabel label_1 = new JLabel("Number plate");
-				label_1.setBounds(33, 80, 98, 14);
-				panelAddCars.add(label_1);
+				JLabel labelNumberPlate = new JLabel("Number plate");
+				labelNumberPlate.setBounds(329, 80, 98, 14);
+				panelAddCars.add(labelNumberPlate);
 				
 				textFieldNumPlate = new JTextField();
-				textFieldNumPlate.setBounds(148, 77, 185, 20);
+				textFieldNumPlate.setBounds(444, 77, 185, 20);
 				textFieldNumPlate.setColumns(10);
 				panelAddCars.add(textFieldNumPlate);
 				
-				JLabel label_2 = new JLabel("Brand");
-				label_2.setBounds(33, 114, 98, 14);
-				panelAddCars.add(label_2);
+				JLabel labelBrand = new JLabel("Brand");
+				labelBrand.setBounds(329, 131, 98, 14);
+				panelAddCars.add(labelBrand);
 				
 				textFieldBrand = new JTextField();
-				textFieldBrand.setBounds(148, 108, 185, 20);
+				textFieldBrand.setBounds(444, 125, 185, 20);
 				textFieldBrand.setColumns(10);
 				panelAddCars.add(textFieldBrand);
 				
-				JLabel label_3 = new JLabel("Model");
-				label_3.setBounds(33, 148, 98, 14);
-				panelAddCars.add(label_3);
+				JLabel labelModel = new JLabel("Model");
+				labelModel.setBounds(329, 173, 98, 14);
+				panelAddCars.add(labelModel);
 				
 				textFieldModel = new JTextField();
-				textFieldModel.setBounds(148, 139, 185, 20);
+				textFieldModel.setBounds(444, 170, 185, 20);
 				textFieldModel.setColumns(10);
 				panelAddCars.add(textFieldModel);
 				
-				JLabel label_4 = new JLabel("Garage");
-				label_4.setBounds(33, 173, 98, 14);
-				panelAddCars.add(label_4);
+				JLabel labelGarage = new JLabel("Garage");
+				labelGarage.setBounds(329, 222, 98, 14);
+				panelAddCars.add(labelGarage);
 				
 				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(147, 170, 186, 20);
+				comboBox.setBounds(444, 219, 186, 20);
 				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
 				panelAddCars.add(comboBox);
 				
-				JLabel label_5 = new JLabel("Price per day");
-				label_5.setBounds(33, 206, 98, 14);
-				panelAddCars.add(label_5);
+				JLabel labelPricePerDsy = new JLabel("Price per day");
+				labelPricePerDsy.setBounds(329, 277, 98, 14);
+				panelAddCars.add(labelPricePerDsy);
 				
 				
-				textFieldPpd.setBounds(148, 203, 183, 20);
+				textFieldPpd.setBounds(446, 274, 183, 20);
 				textFieldPpd.setColumns(10);
 				panelAddCars.add(textFieldPpd);
 				
-				JButton button = new JButton("Add");
-				button.setBounds(238, 285, 89, 23);
-				button.addMouseListener(new MouseAdapter() {
+				JButton buttonAdd = new JButton("Add");
+				buttonAdd.setBounds(540, 329, 89, 23);
+				buttonAdd.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						allOK=true;
@@ -243,23 +255,86 @@ public class StaffPanelGUI extends JFrame {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
-
-
 						}
 					}
 				});
-				panelAddCars.add(button);
+				panelAddCars.add(buttonAdd);
 
 
 		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("Remove cars", null, panel, null);
-//		
-//		if(staffType.equalsIgnoreCase("employee")) {
-//			// Disable the tab
-//		    tabbedPane.setEnabledAt(1, false);
-//		    tabbedPane.setEnabledAt(2, false);
-//		}
-//		
+		JPanel panelRemoveCars = new JPanel();
+		tabbedPane.addTab("Remove cars", null, panelRemoveCars, null);
+		panelRemoveCars.setLayout(null);
+		
+		JLabel labelRemoveCars = new JLabel("Remove cars");
+		labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		labelRemoveCars.setBounds(487, 33, 209, 24);
+		panelRemoveCars.add(labelRemoveCars);
+		
+		JScrollPane scrollPaneRemoveCars = new JScrollPane();
+		scrollPaneRemoveCars.setBounds(252, 82, 556, 237);
+		panelRemoveCars.add(scrollPaneRemoveCars);
+		
+		tableRemoveCars = new JTable();
+		tableRemoveCars.setShowVerticalLines(false);
+		tableRemoveCars.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Number plate", "Brand", "Garage", "Model", "Price per day"
+			}
+		) {
+			boolean[] columnEditableRemoveCarss = new boolean[] {
+				false, false, false, false, false
+			};
+			public boolean isCellEditableRemoveCars(int row, int column) {
+				return columnEditableRemoveCarss[column];
+			}
+		});
+		tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
+		DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
+		ArrayList<Car> cars = controller.getAllCars();
+
+	        Object rowRemoveCars[] = new Object[5];
+	        for(int i = 0; i < cars.size(); i++)
+	        {
+	        	rowRemoveCars[0] = cars.get(i).getNumPlate();
+	        	rowRemoveCars[1] = cars.get(i).getBrand();	      
+	        	rowRemoveCars[2] = cars.get(i).getGarage();
+	        	rowRemoveCars[3] = cars.get(i).getModel();
+	        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
+	            modelRemoveCars.addRow(rowRemoveCars);
+	        }
+		scrollPaneRemoveCars.setViewportView(tableRemoveCars);
+		
+		JButton buttonRemoveCar = new JButton("Remove");
+		buttonRemoveCar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(tableRemoveCars.getSelectedRow()!=-1) {
+					try {
+						controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					cars.remove(tableRemoveCars.getSelectedRow());
+					modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
+					modelRemoveCars.fireTableDataChanged();
+					tableRemoveCars.addNotify();
+				}
+				else {
+					JOptionPane.showConfirmDialog(null,"You must choose a car", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		buttonRemoveCar.setBounds(700, 341, 108, 23);
+		panelRemoveCars.add(buttonRemoveCar);
+		
+		if(staffType.equalsIgnoreCase("employee")) {
+			// Disable the tab
+		    tabbedPane.setEnabledAt(1, false);
+		    tabbedPane.setEnabledAt(2, false);
+		}
+		
 	}
 }

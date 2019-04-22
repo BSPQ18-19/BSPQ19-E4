@@ -55,7 +55,7 @@ public class Controller{
 //		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-		new StaffPanelGUI(this, "admin", this.rent);
+		new StaffPanelGUI(this, "employee", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
