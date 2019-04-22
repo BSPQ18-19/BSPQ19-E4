@@ -132,7 +132,12 @@ public class StaffPanelGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
-				new AddCarGUI(controller, staffType, rent);
+				try {
+					new AddCarGUI(controller, staffType, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnAddGarages.setBounds(384, 11, 180, 23);

@@ -51,22 +51,7 @@ public class WelcomeGUI extends JFrame {
 	
 
 
-	/**
-	 * Launch the application.
-	 * @throws RemoteException 
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					WelcomeGUI frame = new WelcomeGUI();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+
 	public WelcomeGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
 		this.rent=rent;

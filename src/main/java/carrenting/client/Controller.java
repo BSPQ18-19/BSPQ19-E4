@@ -57,7 +57,8 @@ public class Controller{
 //		new StaffPanelGUI(this, "admin", this.rent);
 //		garageOriginPopularity();
 		new AddCarGUI(this, "admin", this.rent);
-		
+//		checkExistingNumPlate("0252HJH");
+//		getAllNumPlates();
 	}
 	
 	public void storeGarage(String location) throws RemoteException {
@@ -99,7 +100,7 @@ public class Controller{
         return (int)( ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24))+1);
 }
 
-	public void storeCar(String garage, String numberPlate, String brand, String model, int pricePerDay) throws RemoteException{
+	public void storeCar(String garage, String numberPlate, String brand, String model, double pricePerDay) throws RemoteException{
 		RMIServiceLocator.getService().storeCar( garage, numberPlate, brand, model, pricePerDay);
 	}
 	
@@ -112,19 +113,34 @@ public class Controller{
 		return RMIServiceLocator.getService().getCar(numPlate);
 	}
 	
+	public ArrayList<Car> getAllCars() throws RemoteException{
+		ArrayList<String> garages = new ArrayList<>();
+		ArrayList<Car> cars = new ArrayList<>();
+		garages = getGarages();
+		for(String garage: garages) {
+			cars.addAll(getCars(garage));
+		}
+		return cars;	
+	}
+	
+	public ArrayList<String> getAllNumPlates() throws RemoteException{
+		ArrayList<Car> cars = new ArrayList<>();
+		cars= this.getAllCars();
+		ArrayList<String> numPlates = new ArrayList<>();
+		for(Car car: cars) {
+			numPlates.add(car.getNumPlate());
+		}
+		return numPlates;
+	}
+	
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
 		ArrayList<Car> carsAvailable = new ArrayList<>();
 		ArrayList<String>carsNotAvailable = new ArrayList<>();
 		ArrayList<Car>allCars= new ArrayList<>();
 		allCars=getCars(garageOrigin);
-//		carsAvailable= getCars("Bilbao");
 		for(int i=0; i<rents.size(); i++) {
-//			System.out.println(rent.toString());
 			if (rents.get(i).getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
 				if(!(finishingDate.before(rents.get(i).getStartingDate()) || startingDate.after(rents.get(i).getFinishingDate()))){
-//					System.out.println("Start date " + startingDate + "\n Finish date " + finishingDate + 
-//							"\n startingDateRENT" +rents.get(i).getStartingDate()+ 
-//							"\n finishingdateRENT" +rents.get(i).getFinishingDate());
 					carsNotAvailable.add(rents.get(i).getNumberPlate());
 					System.out.println("NOT AVAILABLE");
 					System.out.println(getCar(rents.get(i).getNumberPlate()));
@@ -189,7 +205,17 @@ public class Controller{
 		return garagePopularity;
 	}
 	
-	
+	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
+		boolean numPlateOK= true;
+		ArrayList<String> numPlates= new ArrayList<>();
+		numPlates= this.getAllNumPlates();
+		for(String nP : numPlates){
+			if(nP.equalsIgnoreCase(numPlate)) {
+				numPlateOK=false;
+			}
+		}
+		return numPlateOK;
+	}
 	
 	
 	
@@ -201,6 +227,7 @@ public class Controller{
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}
+
 	
 	
 }

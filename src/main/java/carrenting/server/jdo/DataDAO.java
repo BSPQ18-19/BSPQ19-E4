@@ -116,7 +116,7 @@ public class DataDAO{
 	}
 	
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
-			String garageDestination, String paymentSystem, int totalPrice){
+			String garageDestination, String paymentSystem, double totalPrice){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try {
@@ -147,7 +147,7 @@ public class DataDAO{
 		System.out.println("Initializing STAFF");
 	}
 	
-	public void storeCar(String garage,String numberPlate, String brand, String model,int pricePerDay){
+	public void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
 			pm.makePersistent(new Car(garage, numberPlate, brand, model, pricePerDay));

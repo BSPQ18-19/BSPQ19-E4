@@ -55,7 +55,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return DataDAO.getInstance().getGarages();
 	}
 	
-	public void storeCar(String garage, String numberPlate, String brand, String model, int pricePerDay) {
+	public void storeCar(String garage, String numberPlate, String brand, String model, double pricePerDay) {
 		DataDAO.getInstance().storeCar( garage, numberPlate, brand, model, pricePerDay);
 	}
 	

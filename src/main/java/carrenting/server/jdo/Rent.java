@@ -23,7 +23,7 @@ public class Rent implements Serializable{
 	
 	
 	public Rent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
-			String garageDestination, String paymentSystem, int totalPrice) {
+			String garageDestination, String paymentSystem, double totalPrice) {
 		super();
 		this.userId = userId;
 		this.numberPlate = numberPlate;

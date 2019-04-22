@@ -9,16 +9,21 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -28,6 +33,7 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 public class AddCarGUI extends JFrame {
 
@@ -39,9 +45,11 @@ public class AddCarGUI extends JFrame {
 	private Controller controller;
 	private String staffType;
 	private Rent rent;
+	private ArrayList<String> numPlates;
 	private ArrayList<String> garages;
-	private JList<String> listGarages;
+	private boolean allOK = true;
 	private JFormattedTextField textFieldPpd= new JFormattedTextField(getMaskFormatter("###.#"));
+	private double pricePerDay=0.0;
 	
 
 	
@@ -57,22 +65,28 @@ public class AddCarGUI extends JFrame {
 	}
 
 	
-	public AddCarGUI(Controller controller, String staffType, Rent rent) {
+	public AddCarGUI(Controller controller, String staffType, Rent rent) throws RemoteException {
 		this.controller= controller;
 		this.staffType= staffType;
 		this.rent= rent;
+		numPlates=controller.getAllNumPlates();
+		garages = controller.getGarages();
 		initialize();
 		frame.setVisible(true);
+
+
 	}
 
 	
 	/**
 	 * Create the frame.
+	 * @throws RemoteException 
 	 */
-	public void initialize() {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void initialize() throws RemoteException {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 382, 422);
+		frame.setBounds(100, 100, 382, 340);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -102,46 +116,25 @@ public class AddCarGUI extends JFrame {
 		textFieldBrand.setColumns(10);
 		
 		JLabel lblGarage = new JLabel("Garage");
-		lblGarage.setBounds(10, 190, 98, 14);
+		lblGarage.setBounds(10, 180, 98, 14);
 		contentPane.add(lblGarage);
 		
 		JLabel lblModel = new JLabel("Model");
 		lblModel.setBounds(10, 155, 98, 14);
 		contentPane.add(lblModel);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(125, 188, 185, 80);
-		contentPane.add(scrollPane);
 		
-		JList<Object> listGarage = new JList<Object>();
-		scrollPane.setViewportView(listGarage);
-		listGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		try {
-			listGarage.setModel(new AbstractListModel<Object>() {
-				private static final long serialVersionUID = 1L;
-				ArrayList<String> values = controller.getGarages();
-				public int getSize() {
-					return values.size();
-				}
-				public Object getElementAt(int index) {
-					return values.get(index);
-				}
-			});
-		} catch (RemoteException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		listGarage.setSelectedIndex(0);
-		
-
-		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
+		comboBox.setSelectedIndex(0);
+		comboBox.setBounds(125, 177, 186, 20);
+		contentPane.add(comboBox);
 		
 		JLabel lblPricePerDay = new JLabel("Price per day");
-		lblPricePerDay.setBounds(10, 284, 98, 14);
+		lblPricePerDay.setBounds(10, 213, 98, 14);
 		contentPane.add(lblPricePerDay);
 		
-		
-		textFieldPpd.setBounds(125, 281, 183, 20);
+		textFieldPpd.setBounds(125, 210, 183, 20);
 		contentPane.add(textFieldPpd);
 		textFieldPpd.setColumns(10);
 		
@@ -163,16 +156,60 @@ public class AddCarGUI extends JFrame {
 				}
 			}
 		});
-		btnCancel.setBounds(125, 340, 89, 23);
+		btnCancel.setBounds(125, 259, 89, 23);
 		contentPane.add(btnCancel);
 		
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				allOK=true;
+				try {
+					if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
+						JOptionPane.showConfirmDialog(null,"The number plate entered already exists", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						allOK=false;
+					}
+				} catch (HeadlessException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (RemoteException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+				pricePerDay= Double.parseDouble(textFieldPpd.getText());
+				if ((pricePerDay<=0)){
+					JOptionPane.showConfirmDialog(null, "The price needs to be higher than 0", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					allOK=false;
+				}
+				if(textFieldBrand.getText().equals("") || textFieldModel.getText().equals("") || textFieldNumPlate.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					allOK=false;
+				}
+				if(allOK) {
+					frame.dispose();
+					try {
+						new StaffPanelGUI(controller, staffType, rent);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						controller.storeCar("Bilbao", textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+						System.out.println(controller.getCar(textFieldNumPlate.getText()));
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+//				listGarage.getSelectedValue().toString(),
+				
 			}
 		});
-		btnAdd.setBounds(250, 340, 89, 23);
+		btnAdd.setBounds(243, 259, 89, 23);
 		contentPane.add(btnAdd);
+		
+
+
 	}
 }

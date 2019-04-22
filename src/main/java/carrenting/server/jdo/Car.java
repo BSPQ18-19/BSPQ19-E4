@@ -16,9 +16,9 @@ public class Car implements Serializable{
 	protected String numPlate;
 	protected String brand;
 	protected String model;
-	protected int pricePerDay;
+	protected double pricePerDay;
 
-	public Car(String garage, String numPlate, String brand, String model, int pricePerDay) {
+	public Car(String garage, String numPlate, String brand, String model, double pricePerDay) {
 		super();
 		this.garage = garage;
 		this.numPlate = numPlate;
@@ -59,16 +59,15 @@ public class Car implements Serializable{
 		this.numPlate=numPlate;
 	}
 	
-	public double getPricePerDay(){
+
+	public double getPricePerDay() {
 		return pricePerDay;
 	}
-	
-	public void setPricePerDay(int pricePerDay){
-		this.pricePerDay=pricePerDay;
-	}
-	
 
-	
+	public void setPricePerDay(double pricePerDay) {
+		this.pricePerDay = pricePerDay;
+	}
+
 	@Override
 	public String toString() {
 		return "Car [garage=" + garage + ", numPlate=" + numPlate + ", brand="
