@@ -12,10 +12,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import carrenting.client.Controller;
+import carrenting.server.jdo.Rent;
 
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -27,9 +29,13 @@ public class StatisticsGUI extends JFrame {
 	private Controller controller;
 	private JFrame frame;
 	private JTable tableCars;
+	private String staffType;
+	private Rent rent;
 
-	public StatisticsGUI(Controller controller) {
+	public StatisticsGUI(Controller controller, String staffType, Rent rent) {
 		this.controller= controller;
+		this.staffType=staffType;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -112,7 +118,13 @@ public class StatisticsGUI extends JFrame {
 		JButton btnBackToStaff = new JButton("Back to Staff Panel");
 		btnBackToStaff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				frame.dispose();
+				try {
+					new StaffPanelGUI(controller, staffType, rent);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 		});

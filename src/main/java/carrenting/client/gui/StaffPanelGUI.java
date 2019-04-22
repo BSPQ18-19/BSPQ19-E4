@@ -117,6 +117,13 @@ public class StaffPanelGUI extends JFrame {
 		btnAddCars.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new AddCarGUI(controller, staffType, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnAddCars.addActionListener(new ActionListener() {
@@ -131,13 +138,7 @@ public class StaffPanelGUI extends JFrame {
 		btnAddGarages.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-				try {
-					new AddCarGUI(controller, staffType, rent);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				
 			}
 		});
 		btnAddGarages.setBounds(384, 11, 180, 23);
@@ -147,7 +148,7 @@ public class StaffPanelGUI extends JFrame {
 		btnViewStatistics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				new StatisticsGUI(controller);
+				new StatisticsGUI(controller,staffType,rent);
 			}	
 		});
 		btnViewStatistics.setBounds(787, 11, 190, 23);

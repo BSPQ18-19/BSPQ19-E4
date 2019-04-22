@@ -195,7 +195,7 @@ public class AddCarGUI extends JFrame {
 						e1.printStackTrace();
 					}
 					try {
-						controller.storeCar("Bilbao", textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+						controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 						System.out.println(controller.getCar(textFieldNumPlate.getText()));
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block
