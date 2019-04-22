@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
 import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.WelcomeGUI;
@@ -54,6 +55,9 @@ public class Controller{
 		System.out.println("CONTROLLER 2ª VEZ");
 		getCars("Bilbao");
 		new WelcomeGUI(this, this.rent);
+//		new ClientDataGUI(this, this.rent);
+//		new PaymentGUI(this, this.rent);
+		
 
 		
 
@@ -179,15 +183,6 @@ public class Controller{
 			}
 		}
 		
-		
-//		for(Car carAv: carsAvailable) {
-//			for (Car carNotAv: carsNotAvailable) {
-//				if (carAv.getNumPlate().equals(carNotAv.getNumPlate())){
-//					System.out.println("Removing this car " + carAv.toString());
-//					//carsAvailable.remove(carAv);
-//				}
-//			}
-//		}
 		System.out.println("Cars available!!");
 		for (Car car: carsAvailable) {
 			System.out.println(car.toString());

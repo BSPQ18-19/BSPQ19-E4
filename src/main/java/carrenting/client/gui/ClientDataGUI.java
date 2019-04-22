@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.sql.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -40,13 +41,14 @@ public class ClientDataGUI extends JFrame {
 	private JTextField emailCompany;
 	private JPanel panelCompany = new JPanel();
 	private JPanel panelPerson = new JPanel();
-
 	private String clientType="person";
 	private JDateChooser dateChooserBirth = new JDateChooser();
 
 
+
 	public ClientDataGUI(Controller controller,Rent rent) throws RemoteException{
 		this.controller=controller;
+		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
 		
@@ -79,7 +81,10 @@ public class ClientDataGUI extends JFrame {
 				
 					}
 					else {
-
+						rent.setUserId(personID.getText());
+						frame.dispose();
+						System.out.println(rent);
+						new PaymentGUI(controller, rent);
 					}
 				}
 				if(clientType.equalsIgnoreCase("company")) {
@@ -87,7 +92,10 @@ public class ClientDataGUI extends JFrame {
 							emailCompany.getText().equals("")){					
 						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("All fields must be filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 					}else {
-
+						rent.setUserId(companyID.getText());
+						frame.dispose();
+						new PaymentGUI(controller, rent);
+						System.out.println(rent);
 					}	
 				}
 			}
@@ -104,8 +112,8 @@ public class ClientDataGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				panelCompany.setVisible(false);
 				panelPerson.setVisible(true);
-				frame.setBounds(100, 100, 481, 419);
-				buttonNext.setBounds(299, 372, 160, 23);
+				frame.setBounds(100, 100, 481, 416);
+				buttonNext.setBounds(295, 346, 160, 23);
 				clientType="person";
 				
 			
@@ -159,7 +167,7 @@ public class ClientDataGUI extends JFrame {
 		personSurname.setBounds(200, 39, 149, 20);
 		panelPerson.add(personSurname);
 		
-	
+
 		dateChooserBirth.setBounds(200, 67, 95, 20);
 		panelPerson.add(dateChooserBirth);
 		

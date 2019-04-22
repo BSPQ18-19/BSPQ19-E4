@@ -58,16 +58,16 @@ public class SelectCarGUI extends JFrame {
 		ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
 		JLabel lblSelectACar = new JLabel(controller.getResourcebundle().getString("select_car"));
 		lblSelectACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblSelectACar.setBounds(206, 22, 94, 22);
+		lblSelectACar.setBounds(97, 22, 363, 22);
 		frame.getContentPane().add(lblSelectACar);
 		
 		JLabel lblTotalPrice = new JLabel(controller.getResourcebundle().getString("total_price"));
-		lblTotalPrice.setBounds(28, 223, 76, 14);
+		lblTotalPrice.setBounds(28, 223, 122, 14);
 		frame.getContentPane().add(lblTotalPrice);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
-		textPane.setBounds(97, 217, 107, 20);
+		textPane.setBounds(123, 217, 107, 20);
 		
 		
 		
@@ -128,7 +128,7 @@ public class SelectCarGUI extends JFrame {
 		price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
 		totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
 		textPane.setText(String.valueOf(totalPrice));
-		
+		frame.getContentPane().add(textPane);
 		JButton btnBack = new JButton(controller.getResourcebundle().getString("back"));
 		btnBack.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

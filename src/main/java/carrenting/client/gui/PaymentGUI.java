@@ -22,6 +22,7 @@ import carrenting.server.jdo.Rent;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -42,6 +43,7 @@ public class PaymentGUI extends JFrame {
 	private JPanel panelPaypal;
 	private JButton btnFinishAndPay;
 	private String paymentType="visa";
+	private JDateChooser dateChooserExpirationDate;
 
 
 
@@ -101,7 +103,6 @@ public class PaymentGUI extends JFrame {
 				btnFinishAndPay.setBounds(261, 315, 181, 23);
 				frame.setBounds(100, 100, 468, 385);
 				paymentType="visa";
-				
 			}
 		});
 		buttonGroup.add(rdbtnVisa);
@@ -118,6 +119,7 @@ public class PaymentGUI extends JFrame {
 				btnFinishAndPay.setBounds(261,205,181,23);
 				frame.setBounds(100, 100, 468, 300);
 				paymentType="paypal";
+
 			}
 		});
 		buttonGroup.add(rdbtnPaypal);
@@ -134,16 +136,22 @@ public class PaymentGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(paymentType.equalsIgnoreCase("paypal")) {
 					if(textFieldEmail.getText().equals("")|| textFieldPassword.getText().equals("")) {
-						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("All fields must be filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						rent.setPaymentSystem(paymentType);
+						System.out.println(rent.toString());
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
-					
+					if(textFieldNameCard.getText().equals("")|| textFieldCardNumber.getText().equals("")|| textFieldCVV.getText().equals("")||
+							dateChooserExpirationDate.getDate()==(null)){
+						JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						rent.setPaymentSystem(paymentType);
+						System.out.println(rent.toString());
+					}
 				}
-				else {
-					rent.setPaymentSystem(paymentType);
-
-				}
-				
 			}
 		});
 		btnFinishAndPay.setBounds(261, 312, 181, 23);
@@ -172,7 +180,9 @@ public class PaymentGUI extends JFrame {
 		panelVisa.add(textFieldNameCard);
 		textFieldNameCard.setColumns(10);
 		
-		JDateChooser dateChooserExpirationDate = new JDateChooser();
+		dateChooserExpirationDate = new JDateChooser();
+		Date date = new Date(System.currentTimeMillis());  
+		dateChooserExpirationDate.setMinSelectableDate(date);
 		dateChooserExpirationDate.setBounds(155, 108, 95, 20);
 		panelVisa.add(dateChooserExpirationDate);
 		
