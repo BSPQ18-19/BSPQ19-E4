@@ -72,7 +72,7 @@ public class StaffPanelGUI extends JFrame {
 		contentPane.add(btnReturnToStartpage);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(70, 114, 923, 273);
+		scrollPane.setBounds(24, 114, 1034, 273);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -85,6 +85,8 @@ public class StaffPanelGUI extends JFrame {
 				"NumberPlate", "StartingDate", "FinishingDate", "GarageOrigin", "GarageDestination", "PaymentSystem", "TotalPrice", "UserID"
 			}
 		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(110);
+		table.getColumnModel().getColumn(2).setPreferredWidth(110);
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
 		scrollPane.setViewportView(table);
 		DefaultTableModel model = (DefaultTableModel) table.getModel();

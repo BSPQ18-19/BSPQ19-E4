@@ -47,8 +47,7 @@ public class DataDAO{
 	private Date date3 = new GregorianCalendar(2019, Calendar.SEPTEMBER, 27).getTime();
 	private Date date2 = new GregorianCalendar(2019, Calendar.JULY, 1).getTime();
 	private Date date1 = new GregorianCalendar(2020, Calendar.JULY, 1).getTime();
-	
-	
+
 	
 	
 	private DataDAO(){
@@ -80,7 +79,6 @@ public class DataDAO{
 		storeRent("12365678A", "1784GSE",datePast3,datePast2,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast3,datePast2,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast2,datePast1,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
-		storeRent("12365678A", "0987KJH",datePast3,datePast2, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		//Future rents
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
 		storeRent("12365678A", "0352HTQ",date6,date5, garage3.getLocation(), garage3.getLocation(), "visa", 500);
@@ -90,6 +88,7 @@ public class DataDAO{
 		//Current rents
 		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "paypal", 500);
+		 
 		
 		
 //		System.out.println(getCar("0352HTQ").toString());
@@ -362,10 +361,10 @@ public class DataDAO{
 			}
 			System.out.println("Updating availability and garage");
 			pm.close();
-		}
+		}	
 	}
 	
-
+	
 
 	
 	

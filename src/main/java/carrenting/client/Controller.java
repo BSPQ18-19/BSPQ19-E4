@@ -18,6 +18,7 @@ import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.StaffPanelGUI;
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.Garage;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
 
@@ -29,8 +30,8 @@ public class Controller{
 	private ResourceBundle myBundle; //el que gestiona los idiomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
-	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
-	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
+//	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
+//	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 	
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
@@ -49,22 +50,12 @@ public class Controller{
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		this.getRents();
-//		getCars("Bilbao");
-		//getGarageDestination("0352HTQ");
-		//Inicializar GUI
-		System.out.println("controller");		
-		getCars("Bilbao");
-		System.out.println("CONTROLLER 2ª VEZ");
-		getCars("Bilbao");
 //		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-		new StaffPanelGUI(this, "admin", this.rent);
+//		new StaffPanelGUI(this, "admin", this.rent);
+		garageOriginPopularity();
 		
-
-		
-
-//		System.out.println("Searching by numplate" +getCar("0352HTQ").toString());
 	}
 	
 	public void storeGarage(String location) throws RemoteException {
@@ -80,15 +71,10 @@ public class Controller{
 	}
 	
 	public ArrayList<Car> getCars(String garage) throws RemoteException{
-		ArrayList<Car> cars = new ArrayList<>();
-		cars = RMIServiceLocator.getService().getCars(garage);
-		System.out.println("CONTROLLER");
-//		for(Car car:cars){
-//			System.out.println(car.toString());
-//		}
-		return cars;
-		//return RMIServiceLocator.getService().getCars(garage);
-		
+//		ArrayList<Car> cars = new ArrayList<>();
+//		cars = RMIServiceLocator.getService().getCars(garage);
+//		return cars;
+		return RMIServiceLocator.getService().getCars(garage);	
 	}
 	
 	public boolean loginStaff(String user, String password, String type) throws RemoteException {
@@ -97,38 +83,6 @@ public class Controller{
 	
 	public void register ( String username) throws RemoteException {
 		RMIServiceLocator.getService().registerUser(username);
-	}
-
-	public Rent getLatestRent(String numberPlate) throws RemoteException{
-		ArrayList<Rent> rentsByNumPlate = new ArrayList<>();
-		Date currentDate= new Date();
-		Date latestDate = new GregorianCalendar(1970, Calendar.FEBRUARY, 11).getTime();
-		for (Rent rent: rents) {
-			//System.out.println(rent);
-			if(rent.getNumberPlate().equals(numberPlate)) {
-				//System.out.println(rent);
-				rentsByNumPlate.add(rent);
-			}
-		}
-		for(int i=0; i<rentsByNumPlate.size() ; i++) {
-			currentDate= rentsByNumPlate.get(i).getStartingDate();
-//			System.out.println("CURRENT DATE  " + currentDate);
-//			System.out.println("LATEST DATE   " +latestDate);
-			if(currentDate.compareTo(latestDate)> 0) {
-//				System.out.println(currentDate +"es más reciente que" + latestDate);
-				latestDate= currentDate;
-
-			}	
-		}
-		for(Rent rent: rentsByNumPlate) {
-			//System.out.println(rent);
-			if(latestDate.equals(rent.getStartingDate())) {
-				//System.out.println(latestDate);
-				//System.out.println(rent.getGarageDestination());
-				return rent;
-			}
-		}
-		return null;
 	}
 	
 	public ArrayList<Rent> getRents() throws RemoteException {
@@ -139,7 +93,6 @@ public class Controller{
 		return rents;
 	}
 
-//TODO
     public int daysBetween(Date d1, Date d2){
         return (int)( ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24))+1);
 }
@@ -174,29 +127,73 @@ public class Controller{
 					System.out.println("NOT AVAILABLE");
 					System.out.println(getCar(rents.get(i).getNumberPlate()));
 				}
-
-			}
-			
-			
+			}	
 		}
-		
 		for (Car car: allCars) {
 			if(!(carsNotAvailable.contains(car.getNumPlate()))) {
 				carsAvailable.add(car);
 			}
 		}
-		
 		System.out.println("Cars available!!");
 		for (Car car: carsAvailable) {
 			System.out.println(car.toString());
 		}
-
 		return carsAvailable;
 	}
 	
+	
+	public Object[][] garageOriginPopularity(){
+		ArrayList<Rent> rents = new ArrayList<>();
+		ArrayList<String> garages= new ArrayList<>();
+		try {
+			garages= getGarages();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		//Filling the list
+		Object[][] garagePopularity = new Object[garages.size()][3];
+		for(int i=0; i<garages.size(); i++) {
+			garagePopularity[i][0] =(Object)garages.get(i);
+			garagePopularity[i][1] =0;	
+			garagePopularity[i][2] =0;	
+		}
+		try {
+			rents= this.getRents();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		for(Rent rent: rents) {
+			String rentGarageOrigin =rent.getGarageOrigin();
+			for(int i=0; i<garagePopularity.length; i++) {
+				if (garagePopularity[i][0].equals(rentGarageOrigin)){
+					garagePopularity[i][1] = (int)garagePopularity[i][1]+1 ;
+				}	
+			}
+		}
+		for(Rent rent: rents) {
+			String rentGarageDestination =rent.getGarageDestination();
+			for(int i=0; i<garagePopularity.length; i++) {
+				if (garagePopularity[i][0].equals(rentGarageDestination)){
+					garagePopularity[i][2] = (int)garagePopularity[i][2]+1 ;
+				}	
+			}
+		}
+		for(int i=0; i<garagePopularity.length; i++) {
+			for(int j=0; j<garagePopularity[i].length; j++) {
+				System.out.println(garagePopularity[i][j]);
+			}
+		}
+		return garagePopularity;
+	}
+	
+	
+	
+	
+	
 	public ResourceBundle getResourcebundle() {
 		return myBundle;
-}
+	}
 	
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
