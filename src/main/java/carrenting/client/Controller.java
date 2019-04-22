@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import carrenting.client.gui.AddCarGUI;
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
-import carrenting.client.gui.RemoveCarGUI;
+
 import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.StaffPanelGUI;
 import carrenting.client.gui.WelcomeGUI;
@@ -56,7 +56,7 @@ public class Controller{
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
 //		new StaffPanelGUI(this, "admin", this.rent);
-		new RemoveCarGUI(this, "admin", this.rent);
+//		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
 //		garagesWithCars();

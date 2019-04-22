@@ -1,12 +1,6 @@
 package carrenting.server.jdo;
 
-import java.sql.Connection;
 
-
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.Calendar;
@@ -330,25 +324,6 @@ public class DataDAO{
 		return null;
 	}
 	
-	
-//	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) {
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//		try {
-//			tx.begin();
-//			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " , GARAGE ='"+ garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
-//			q.execute();
-//			tx.commit();
-//		} catch (Exception ex) {
-//			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//			System.out.println("Updating availability and garage");
-//			pm.close();
-//		}	
-//	}
 	
 	
 
