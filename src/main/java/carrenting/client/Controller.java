@@ -15,9 +15,11 @@ import java.util.ResourceBundle;
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
 import carrenting.client.gui.SelectCarGUI;
+import carrenting.client.gui.StaffPanelGUI;
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
+import carrenting.server.jdo.Staff;
 
 
 
@@ -54,9 +56,10 @@ public class Controller{
 		getCars("Bilbao");
 		System.out.println("CONTROLLER 2ª VEZ");
 		getCars("Bilbao");
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
+		new StaffPanelGUI(this, "admin", this.rent);
 		
 
 		

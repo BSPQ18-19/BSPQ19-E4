@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,8 @@ import javax.swing.border.EmptyBorder;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 @SuppressWarnings("serial")
@@ -26,6 +29,7 @@ public class StaffPanelGUI extends JFrame {
 	private JFrame frame;
 	private String staffType;
 	private Rent rent;
+	private JTable table;
 
 	
 	public StaffPanelGUI(Controller controller, String staffType, Rent rent) throws RemoteException{
@@ -70,6 +74,36 @@ public class StaffPanelGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(70, 114, 923, 273);
 		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setRowSelectionAllowed(false);
+		table.setEnabled(false);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"NumberPlate", "StartingDate", "FinishingDate", "GarageOrigin", "GarageDestination", "PaymentSystem", "TotalPrice", "UserID"
+			}
+		));
+		table.getColumnModel().getColumn(5).setPreferredWidth(85);
+		scrollPane.setViewportView(table);
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		 ArrayList<Rent> rents = controller.getRents();
+
+	        Object rowData[] = new Object[11];
+	        for(int i = 0; i < rents.size(); i++)
+	        {
+	        	rowData[0] = rents.get(i).getNumberPlate();
+	        	rowData[1] = rents.get(i).getStartingDate();	      
+	        	rowData[2] = rents.get(i).getFinishingDate();
+	        	rowData[3] = rents.get(i).getGarageOrigin();
+	        	rowData[4] = rents.get(i).getGarageDestination();
+	            rowData[5] = rents.get(i).getPaymentSystem();
+	            rowData[6] = rents.get(i).getTotalPrice();
+	            rowData[7] = rents.get(i).getUserId();
+	            model.addRow(rowData);
+	        }
+		scrollPane.setViewportView(table);
 		
 	
 		JPanel panelAdmin = new JPanel();
