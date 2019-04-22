@@ -243,7 +243,6 @@ public class DataDAO{
 			
 			Query<Garage> query = pm.newQuery(Garage.class);
 			query.setUnique(true);
-			
 			Garage garageToDelete = (Garage) pm.getObjectById(Garage.class, garage);
 			pm.deletePersistent(garageToDelete);
 			
@@ -335,34 +334,24 @@ public class DataDAO{
 	}
 	
 	
-	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " , GARAGE ='"+ garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
-			q.execute();
-			tx.commit();
-			
+//	public void updateAvailability(String numberPlate, int newAvailability, String garageDestination) {
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx = pm.currentTransaction();
+//		try {
 //			tx.begin();
-//			Query q2 =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET GARAGE'"+garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
-//			q2.execute();
+//			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET AVAILABILITY =" + newAvailability + " , GARAGE ='"+ garageDestination + "' WHERE NUMPLATE='" + numberPlate + "'");
+//			q.execute();
 //			tx.commit();
-	
-//			for(Rent rent:rents) {
-//				System.out.println("DAO");
-//				System.out.println(rent);
+//		} catch (Exception ex) {
+//			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
+//		} finally {
+//			if (tx != null && tx.isActive()) {
+//				tx.rollback();
 //			}
-		} catch (Exception ex) {
-			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			System.out.println("Updating availability and garage");
-			pm.close();
-		}	
-	}
+//			System.out.println("Updating availability and garage");
+//			pm.close();
+//		}	
+//	}
 	
 	
 

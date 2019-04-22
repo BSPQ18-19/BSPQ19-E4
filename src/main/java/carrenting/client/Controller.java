@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import carrenting.client.gui.AddCarGUI;
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
 import carrenting.client.gui.SelectCarGUI;
@@ -54,7 +55,8 @@ public class Controller{
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
 //		new StaffPanelGUI(this, "admin", this.rent);
-		garageOriginPopularity();
+//		garageOriginPopularity();
+		new AddCarGUI(this, "admin", this.rent);
 		
 	}
 	

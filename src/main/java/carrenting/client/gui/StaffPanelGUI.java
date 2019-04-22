@@ -109,33 +109,62 @@ public class StaffPanelGUI extends JFrame {
 		
 	
 		JPanel panelAdmin = new JPanel();
-		panelAdmin.setBounds(24, 11, 984, 48);
+		panelAdmin.setBounds(24, 11, 1006, 48);
 		contentPane.add(panelAdmin);
 		panelAdmin.setLayout(null);
 		
-		JButton btnAddCars = new JButton("Add cars");
-		btnAddCars.setBounds(10, 11, 144, 23);
+		JButton btnAddCars = new JButton("Add car");
+		btnAddCars.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnAddCars.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnAddCars.setBounds(10, 11, 147, 23);
 		panelAdmin.add(btnAddCars);
 		
 		JButton btnAddGarages = new JButton("Add garages");
-		btnAddGarages.setBounds(407, 11, 144, 23);
-		panelAdmin.add(btnAddGarages);
-		
-		JButton btnRemoveCars = new JButton("Remove cars");
-		btnRemoveCars.setBounds(185, 11, 160, 23);
-		panelAdmin.add(btnRemoveCars);
-		
-		JButton btnNewButton = new JButton("Remove garages");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnAddGarages.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				new AddCarGUI(controller, staffType, rent);
 			}
 		});
-		btnNewButton.setBounds(588, 11, 160, 23);
-		panelAdmin.add(btnNewButton);
+		btnAddGarages.setBounds(384, 11, 180, 23);
+		panelAdmin.add(btnAddGarages);
 		
 		JButton btnViewStatistics = new JButton("View statistics");
-		btnViewStatistics.setBounds(814, 11, 160, 23);
+		btnViewStatistics.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				new StatisticsGUI(controller);
+			}	
+		});
+		btnViewStatistics.setBounds(787, 11, 190, 23);
 		panelAdmin.add(btnViewStatistics);
+		
+		JButton btnRemoveCar = new JButton("Remove car");
+		btnRemoveCar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnRemoveCar.setBounds(182, 11, 171, 23);
+		panelAdmin.add(btnRemoveCar);
+		
+		JButton btnRemoveGarage = new JButton("Remove garage");
+		btnRemoveGarage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnRemoveGarage.setBounds(584, 11, 180, 23);
+		panelAdmin.add(btnRemoveGarage);
 		
 		JLabel lblRents = new JLabel(controller.getResourcebundle().getString("rents"));
 		lblRents.setBounds(482, 81, 245, 22);
