@@ -20,6 +20,7 @@ import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
+import carrenting.server.logger.ServerLogger;
 
 @SuppressWarnings("serial")
 public class ClientDataGUI extends JFrame {
@@ -83,7 +84,8 @@ public class ClientDataGUI extends JFrame {
 					else {
 						rent.setUserId(personID.getText());
 						frame.dispose();
-						System.out.println(rent);
+						//System.out.println(rent);
+						ServerLogger.getLogger().info(rent);
 						new PaymentGUI(controller, rent);
 					}
 				}
@@ -95,7 +97,8 @@ public class ClientDataGUI extends JFrame {
 						rent.setUserId(companyID.getText());
 						frame.dispose();
 						new PaymentGUI(controller, rent);
-						System.out.println(rent);
+						//System.out.println(rent);
+						ServerLogger.getLogger().info(rent);
 					}	
 				}
 			}

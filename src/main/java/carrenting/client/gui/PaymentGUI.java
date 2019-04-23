@@ -21,6 +21,7 @@ import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
+import carrenting.server.logger.ServerLogger;
 
 @SuppressWarnings("serial")
 public class PaymentGUI extends JFrame {
@@ -68,7 +69,7 @@ public class PaymentGUI extends JFrame {
 		panelPaypal.setLayout(null);
 
 		
-		JLabel lblEmail = new JLabel("email");
+		JLabel lblEmail = new JLabel(controller.getResourcebundle().getString("email"));
 		lblEmail.setBounds(10, 24, 111, 14);
 		panelPaypal.add(lblEmail);
 		
@@ -77,7 +78,7 @@ public class PaymentGUI extends JFrame {
 		panelPaypal.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("password");
+		JLabel lblPassword = new JLabel(controller.getResourcebundle().getString("password"));
 		lblPassword.setBounds(10, 64, 109, 14);
 		panelPaypal.add(lblPassword);
 		
@@ -86,11 +87,11 @@ public class PaymentGUI extends JFrame {
 		panelPaypal.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
-		JLabel lblPaymentType = new JLabel("Payment type:");
+		JLabel lblPaymentType = new JLabel(controller.getResourcebundle().getString("payment_type"));
 		lblPaymentType.setBounds(46, 65, 141, 18);
 		frame.getContentPane().add(lblPaymentType);
 		
-		JRadioButton rdbtnVisa = new JRadioButton("Visa");
+		JRadioButton rdbtnVisa = new JRadioButton(controller.getResourcebundle().getString("visa"));
 		rdbtnVisa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -106,7 +107,7 @@ public class PaymentGUI extends JFrame {
 		rdbtnVisa.setBounds(193, 63, 74, 23);
 		frame.getContentPane().add(rdbtnVisa);
 		
-		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
+		JRadioButton rdbtnPaypal = new JRadioButton("Paypal"); //It isnt worth it to use the controller here because it is teh same in the 3 laguages
 		rdbtnPaypal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -122,12 +123,12 @@ public class PaymentGUI extends JFrame {
 		rdbtnPaypal.setBounds(284, 63, 109, 23);
 		frame.getContentPane().add(rdbtnPaypal);
 		
-		JLabel lblPayment = new JLabel("Payment");
+		JLabel lblPayment = new JLabel(controller.getResourcebundle().getString("payment"));
 		lblPayment.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		lblPayment.setBounds(171, 29, 164, 24);
 		frame.getContentPane().add(lblPayment);
 		
-		btnFinishAndPay = new JButton("Finish and pay");
+		btnFinishAndPay = new JButton(controller.getResourcebundle().getString("finish_and_pay"));
 		btnFinishAndPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(paymentType.equalsIgnoreCase("paypal")) {
@@ -136,16 +137,18 @@ public class PaymentGUI extends JFrame {
 					}
 					else {
 						rent.setPaymentSystem(paymentType);
-						System.out.println(rent.toString());
+						//System.out.println(rent.toString());
+						ServerLogger.getLogger().info(rent.toString());
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
 					if(textFieldNameCard.getText().equals("")|| textFieldCardNumber.getText().equals("")|| textFieldCVV.getText().equals("")||
 							dateChooserExpirationDate.getDate()==(null)){
-						JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						rent.setPaymentSystem(paymentType);
-						System.out.println(rent.toString());
+						//System.out.println(rent.toString());
+						ServerLogger.getLogger().info(rent.toString());
 					}
 				}
 			}
