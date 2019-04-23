@@ -139,7 +139,7 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"NumberPlate", "StartingDate", "FinishingDate", "GarageOrigin", "GarageDestination", "PaymentSystem", "TotalPrice", "UserID"
+				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("starting_date"), controller.getResourcebundle().getString("finishing_date"), controller.getResourcebundle().getString("garage_origin"), controller.getResourcebundle().getString("garage_destination"), controller.getResourcebundle().getString("payment_system"), controller.getResourcebundle().getString("total_price"), controller.getResourcebundle().getString("user_ID")
 			}
 		));
 		table.getColumnModel().getColumn(1).setPreferredWidth(110);
@@ -169,7 +169,7 @@ public class StaffPanelGUI extends JFrame {
 				
 				
 				JPanel panelAddCars = new JPanel();
-				tabbedPane.addTab("Add cars", null, panelAddCars, null);
+				tabbedPane.addTab(controller.getResourcebundle().getString("add_car"), null, panelAddCars, null);
 				panelAddCars.setLayout(null);
 				
 				JLabel labelAddACar = new JLabel(controller.getResourcebundle().getString("add_car"));
@@ -266,7 +266,7 @@ public class StaffPanelGUI extends JFrame {
 
 		
 		JPanel panelRemoveCars = new JPanel();
-		tabbedPane.addTab("Remove cars", null, panelRemoveCars, null);
+		tabbedPane.addTab(controller.getResourcebundle().getString("remove_cars"), null, panelRemoveCars, null);
 		panelRemoveCars.setLayout(null);
 		
 		JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
@@ -284,7 +284,7 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Number plate", "Brand", "Garage", "Model", "Price per day"
+				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
 			}
 		) {
 			boolean[] columnEditableRemoveCarss = new boolean[] {

@@ -61,9 +61,9 @@ public class StatisticsGUI extends JFrame {
 		tableGarages = new JTable();
 		tableGarages.setModel(new DefaultTableModel(
 			new Object[][] {
-			},
+			}, 
 			new String[] {
-				"Garage", "Times as origin", "Times as destination"
+				controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("times_as_origin"), controller.getResourcebundle().getString("times_as_destination")
 			}
 		));
 		tableGarages.getColumnModel().getColumn(1).setPreferredWidth(110);
@@ -91,7 +91,7 @@ public class StatisticsGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Payment System", "Times used"
+				controller.getResourcebundle().getString("payment_system"), controller.getResourcebundle().getString("times_used")
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
