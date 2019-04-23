@@ -84,7 +84,7 @@ public class WelcomeGUI extends JFrame {
 		lblWelcomeToCar.setBounds(253, 51, 230, 22);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
-		JLabel lblStaffArea = new JLabel("<html><u>STAFF area");
+		JLabel lblStaffArea = new JLabel(controller.getResourcebundle().getString("staff_area"));
 		lblStaffArea.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -179,7 +179,7 @@ public class WelcomeGUI extends JFrame {
 		lblSelectFinishingDate.setBounds(390, 265, 293, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
-		JButton btnContinue = new JButton("Next");
+		JButton btnContinue = new JButton(controller.getResourcebundle().getString("next"));
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String garageOrigin = (String) listGarageOrigin.getSelectedValue();
@@ -194,7 +194,7 @@ public class WelcomeGUI extends JFrame {
 					e2.printStackTrace();
 				}
 				if(carTest.isEmpty()) {
-					JOptionPane.showConfirmDialog(null, "There are no cars available in that garage for those dates", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("no_cars_available"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 				if(dateChooserStart.getDate()==(null)|| dateChooserFinish.getDate()==(null)) {
 					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("date_confirm_dialogue"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
@@ -222,7 +222,7 @@ public class WelcomeGUI extends JFrame {
 		btnContinue.setBounds(537, 353, 151, 23);
 		contentPane.add(btnContinue);
 		
-		JCheckBox chckbxSameGarage = new JCheckBox("<html>Same as garage <p> of origin<html>");
+		JCheckBox chckbxSameGarage = new JCheckBox(controller.getResourcebundle().getString("same_as_garage_of_origin"));
 		chckbxSameGarage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
