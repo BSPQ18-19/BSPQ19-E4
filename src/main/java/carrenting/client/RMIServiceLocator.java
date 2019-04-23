@@ -5,8 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import carrenting.server.ICarRenting;
-
-
+import org.apache.log4j.Logger;
 
 public class RMIServiceLocator {
 
@@ -17,7 +16,6 @@ public class RMIServiceLocator {
 	}
 	
 	public static void setService(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
-		
 		String name = "//" + ip + ":" + port + "/" + serviceName;
 		service = (ICarRenting) java.rmi.Naming.lookup(name);
 		

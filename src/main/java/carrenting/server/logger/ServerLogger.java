@@ -24,6 +24,10 @@ public class ServerLogger {
 	 * @return a Logger object.
 	 */
 	public static Logger getLogger() {
+//		log.info("Info example");
+//		log.warn("warn example");
+//		log.fatal("fatal example");
+//		log.error("error example");
 		return log;
 	}
 	

@@ -8,17 +8,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.mysql.cj.log.Log;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import carrenting.client.Controller;
 import carrenting.client.RMIServiceLocator;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
+import carrenting.server.logger.ServerLogger;
 
 
 
@@ -72,15 +78,18 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		Staff staff = DataDAO.getInstance().getStaff(user);
 		System.out.println(staff.toString());
 		if(staff.getPassword().equals(password) && staff.getType().equals(type)) {
-			System.out.println("Login successful");
+			//System.out.println("Login successful");
+			ServerLogger.getLogger().info("login_successful");
 			return true;
 		}
-		System.out.println("Login unsuccessful");
+		//System.out.println("Login unsuccessful");
+		ServerLogger.getLogger().error("login_unsuccessful");
 		return false;
 	}
 
 	public void registerUser (String username) throws RemoteException{
-		System.out.println("Username: " + username);
+		//System.out.println("Username: " + username);
+		ServerLogger.getLogger().info("Username: "+username);
 		
 	}
 
@@ -88,7 +97,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		ArrayList<Car>cars = new ArrayList<>();
 		cars=DataDAO.getInstance().getCars(garage);
 		for(Car car: cars) {
-			System.out.println(car);
+			//System.out.println(car);
+			ServerLogger.getLogger().info("car");
 		}
 		return cars;
 	}
