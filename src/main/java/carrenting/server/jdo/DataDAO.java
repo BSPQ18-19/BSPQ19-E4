@@ -103,11 +103,16 @@ public class DataDAO{
 		} finally {
 			pm.close();
 		}
-		System.out.println("Initializing garages");
-		System.out.println("Initializing garages");
-		System.out.println("Initializing garages");
-		System.out.println("Initializing garages");
-		ServerLogger.getLogger().info("   * Retrieving an Extent for Hotels.");
+		//System.out.println("Initializing garages");
+		ServerLogger.getLogger().debug("Initializing garages");
+		//System.out.println("Initializing garages");
+		ServerLogger.getLogger().debug("Initializing garages");
+		//System.out.println("Initializing garages");
+		ServerLogger.getLogger().debug("Initializing garages");
+		//System.out.println("Initializing garages");
+		ServerLogger.getLogger().debug("Initializing garages");
+//		ServerLogger.getLogger().info("   * Retrieving an Extent for Hotels.");
+		ServerLogger.getLogger().debug("   * Retrieving an Extent for Hotels.");
 	}
 	
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
@@ -126,7 +131,7 @@ public class DataDAO{
 			pm.close();
 		}
 		//System.out.println("Initializing RENTS");
-		ServerLogger.getLogger().info("Initializing RENTS");
+		ServerLogger.getLogger().debug("Initializing RENTS");
 	}
 	
 	private void storeStaff(){
@@ -143,7 +148,7 @@ public class DataDAO{
 			pm.close();
 		}
 		//System.out.println("Initializing STAFF");
-		ServerLogger.getLogger().info("Initializing STAFF");
+		ServerLogger.getLogger().debug("Initializing STAFF");
 	}
 	
 	public void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
@@ -158,7 +163,7 @@ public class DataDAO{
 			pm.close();
 		}
 		//System.out.println("Storing cars");
-		ServerLogger.getLogger().info("Storing cars");
+		ServerLogger.getLogger().debug("Storing cars");
 	}
 	
 	
@@ -185,7 +190,7 @@ public class DataDAO{
 				tx.rollback();
 			}
 			//System.out.println("GETTING GARAGES");
-			ServerLogger.getLogger().info("GETTING GARAGES");
+			ServerLogger.getLogger().debug("GETTING GARAGES");
 			pm.close();
 		}
 		return null;
@@ -202,7 +207,7 @@ public class DataDAO{
 			tx.commit();
 			for (Rent rent: rents) {
 				//System.out.println(rent.toString());
-				ServerLogger.getLogger().info(rent.toString());
+				ServerLogger.getLogger().debug(rent.toString());
 			}
 			return rents;
 
@@ -214,7 +219,7 @@ public class DataDAO{
 				tx.rollback();
 			}
 			//System.out.println("GETTING RENTS");
-			ServerLogger.getLogger().info("GETTING RENTS");
+			ServerLogger.getLogger().debug("GETTING RENTS");
 			pm.close();
 		}
 		return null;
@@ -235,7 +240,7 @@ public class DataDAO{
 			ServerLogger.getLogger().error("Error deleting data from the database: "+ex.getMessage());
 		}finally {
 			//System.out.println("DELETED CAR" + numberPlate);
-			ServerLogger.getLogger().info("DELETED CAR "+numberPlate);
+			ServerLogger.getLogger().debug("DELETED CAR "+numberPlate);
 			pm.close();
 		}
 	}
@@ -257,7 +262,7 @@ public class DataDAO{
 			ServerLogger.getLogger().error("Error deleting data from the database: "+ex.getMessage());
 		}finally {
 			//System.out.println("DELETED GARAGE");
-			ServerLogger.getLogger().info("DELETED GARAGE");
+			ServerLogger.getLogger().debug("DELETED GARAGE");
 			pm.close();
 		}
 	}
@@ -274,7 +279,7 @@ public class DataDAO{
 			tx.commit();
 			for(Car car: carsByGarage) {
 				//System.out.println(car.toString());
-				ServerLogger.getLogger().info(car.toString());
+				ServerLogger.getLogger().debug(car.toString());
 			}
 			return carsByGarage;
 			
@@ -286,7 +291,7 @@ public class DataDAO{
 				tx.rollback();
 			}
 			//System.out.println("GETTING CARS");
-			ServerLogger.getLogger().info("GETTING CARS");
+			ServerLogger.getLogger().debug("GETTING CARS");
 			pm.close();
 		}
 		return null;
@@ -303,7 +308,7 @@ public class DataDAO{
 			Car car = ((Car) query.execute());
 			tx.commit();
 			//System.out.println("GETTING CAR by numplate"+ car.toString());
-			ServerLogger.getLogger().info("GETTING CAR BY NUMPLATE"+ car.toString());
+			ServerLogger.getLogger().debug("GETTING CAR BY NUMPLATE"+ car.toString());
 			
 			return car;
 		} catch (Exception ex) {
@@ -331,7 +336,7 @@ public class DataDAO{
 			Staff staff = (Staff) query.execute();
 			tx.commit();
 			//System.out.println(staff.toString());
-			ServerLogger.getLogger().info(staff.toString());
+			ServerLogger.getLogger().debug(staff.toString());
 			return staff;
 		} catch (Exception ex) {
 			//System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
@@ -341,7 +346,7 @@ public class DataDAO{
 				tx.rollback();
 			}
 			//System.out.println("GETTING STAFF");
-			ServerLogger.getLogger().info("GETTING STAFF");
+			ServerLogger.getLogger().debug("GETTING STAFF");
 			
 			pm.close();
 		}

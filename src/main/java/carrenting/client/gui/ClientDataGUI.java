@@ -85,7 +85,8 @@ public class ClientDataGUI extends JFrame {
 						rent.setUserId(personID.getText());
 						frame.dispose();
 						//System.out.println(rent);
-						ServerLogger.getLogger().info(rent);
+//						ServerLogger.getLogger().info(rent);
+						ServerLogger.getLogger().debug(rent);
 						new PaymentGUI(controller, rent);
 					}
 				}
@@ -98,7 +99,8 @@ public class ClientDataGUI extends JFrame {
 						frame.dispose();
 						new PaymentGUI(controller, rent);
 						//System.out.println(rent);
-						ServerLogger.getLogger().info(rent);
+//						ServerLogger.getLogger().info(rent);
+						ServerLogger.getLogger().debug(rent);
 					}	
 				}
 			}

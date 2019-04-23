@@ -28,6 +28,7 @@ public class ServerLogger {
 //		log.warn("warn example");
 //		log.fatal("fatal example");
 //		log.error("error example");
+//		log.debug("Debug example");
 		return log;
 	}
 	

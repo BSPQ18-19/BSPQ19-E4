@@ -253,7 +253,8 @@ public class StaffPanelGUI extends JFrame {
 								try {
 									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 									//System.out.println(controller.getCar(textFieldNumPlate.getText()));
-									ServerLogger.getLogger().info(controller.getCar(textFieldNumPlate.getText()));
+//									ServerLogger.getLogger().info(controller.getCar(textFieldNumPlate.getText()));
+									ServerLogger.getLogger().debug(controller.getCar(textFieldNumPlate.getText()));
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();

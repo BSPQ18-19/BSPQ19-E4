@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import carrenting.client.Controller;
+import carrenting.server.logger.ServerLogger;
+
 public class Login {
 	
 	public boolean authenticate(String name, String password)
@@ -24,7 +27,8 @@ public class Login {
                 System.out.println("Invalid username or password");
             }*/
         } catch (Exception e) {
-            System.out.println("Error in the DataBase!!");
+//            System.out.println("Error in the DataBase!!");
+            ServerLogger.getLogger().error("Error in the database");
             e.printStackTrace();
         }
         return isUser;

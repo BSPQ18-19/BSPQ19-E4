@@ -82,13 +82,15 @@ public class SelectCarGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
 				//System.out.println(price);
-				ServerLogger.getLogger().info(price);
+//				ServerLogger.getLogger().info(price);
+				ServerLogger.getLogger().debug(price);
 				totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
 				textPane.setText(String.valueOf(totalPrice));
 				frame.getContentPane().add(textPane);
 				numberPlate=carsAvailable.get(tableCars.getSelectedRow()).getNumPlate();
 				//System.out.println("number plate  " + numberPlate);
-				ServerLogger.getLogger().info(controller.getResourcebundle().getString("number_plate"+numberPlate));
+//				ServerLogger.getLogger().info(controller.getResourcebundle().getString("number_plate"+numberPlate));
+				ServerLogger.getLogger().debug(controller.getResourcebundle().getString("number_plate "+numberPlate));
 				
 				
 			}

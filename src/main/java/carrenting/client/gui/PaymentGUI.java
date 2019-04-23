@@ -138,7 +138,8 @@ public class PaymentGUI extends JFrame {
 					else {
 						rent.setPaymentSystem(paymentType);
 						//System.out.println(rent.toString());
-						ServerLogger.getLogger().info(rent.toString());
+//						ServerLogger.getLogger().info(rent.toString());
+						ServerLogger.getLogger().debug(rent.toString());
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
 					if(textFieldNameCard.getText().equals("")|| textFieldCardNumber.getText().equals("")|| textFieldCVV.getText().equals("")||
@@ -148,7 +149,8 @@ public class PaymentGUI extends JFrame {
 					else {
 						rent.setPaymentSystem(paymentType);
 						//System.out.println(rent.toString());
-						ServerLogger.getLogger().info(rent.toString());
+//						ServerLogger.getLogger().info(rent.toString());
+						ServerLogger.getLogger().debug(rent.toString());
 					}
 				}
 			}
