@@ -50,7 +50,7 @@ public class StatisticsGUI extends JFrame {
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblGarage = new JLabel("Garage popularity");
+		JLabel lblGarage = new JLabel(controller.getResourcebundle().getString("garage_popularity"));
 		lblGarage.setBounds(39, 50, 283, 14);
 		contentPane.add(lblGarage);
 		
@@ -73,12 +73,12 @@ public class StatisticsGUI extends JFrame {
 		tableGarages.setRowSelectionAllowed(false);
 		scrollPane.setViewportView(tableGarages);
 		
-		JLabel labelStatistics = new JLabel("Statistics");
+		JLabel labelStatistics = new JLabel(controller.getResourcebundle().getString("statistics"));
 		labelStatistics.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		labelStatistics.setBounds(389, 11, 194, 22);
 		contentPane.add(labelStatistics);
 		
-		JLabel lblPaymentSystemPopularity = new JLabel("Payment system popularity");
+		JLabel lblPaymentSystemPopularity = new JLabel(controller.getResourcebundle().getString("payment_system_popularity"));
 		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
 		contentPane.add(lblPaymentSystemPopularity);
 		
@@ -104,7 +104,7 @@ public class StatisticsGUI extends JFrame {
 		tablePaySys.getColumnModel().getColumn(0).setPreferredWidth(110);
 		scrollPane_1.setViewportView(tablePaySys);
 		
-		JLabel lblCarPopularity = new JLabel("Car popularity");
+		JLabel lblCarPopularity = new JLabel(controller.getResourcebundle().getString("car_popularity"));
 		lblCarPopularity.setBounds(399, 50, 248, 14);
 		contentPane.add(lblCarPopularity);
 		
@@ -115,7 +115,7 @@ public class StatisticsGUI extends JFrame {
 		tableCars = new JTable();
 		scrollPane_2.setViewportView(tableCars);
 		
-		JButton btnBackToStaff = new JButton("Back to Staff Panel");
+		JButton btnBackToStaff = new JButton(controller.getResourcebundle().getString("back_to_staffPanel"));
 		btnBackToStaff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();

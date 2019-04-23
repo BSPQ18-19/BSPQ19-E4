@@ -25,6 +25,8 @@ import javax.swing.border.EmptyBorder;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
+import carrenting.server.logger.ServerLogger;
+
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -170,12 +172,12 @@ public class StaffPanelGUI extends JFrame {
 				tabbedPane.addTab("Add cars", null, panelAddCars, null);
 				panelAddCars.setLayout(null);
 				
-				JLabel labelAddACar = new JLabel("Add a car");
+				JLabel labelAddACar = new JLabel(controller.getResourcebundle().getString("add_car"));
 				labelAddACar.setBounds(444, 33, 207, 22);
 				labelAddACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 				panelAddCars.add(labelAddACar);
 				
-				JLabel labelNumberPlate = new JLabel("Number plate");
+				JLabel labelNumberPlate = new JLabel(controller.getResourcebundle().getString("number_plate"));
 				labelNumberPlate.setBounds(329, 80, 98, 14);
 				panelAddCars.add(labelNumberPlate);
 				
@@ -184,7 +186,7 @@ public class StaffPanelGUI extends JFrame {
 				textFieldNumPlate.setColumns(10);
 				panelAddCars.add(textFieldNumPlate);
 				
-				JLabel labelBrand = new JLabel("Brand");
+				JLabel labelBrand = new JLabel(controller.getResourcebundle().getString("brand"));
 				labelBrand.setBounds(329, 131, 98, 14);
 				panelAddCars.add(labelBrand);
 				
@@ -193,7 +195,7 @@ public class StaffPanelGUI extends JFrame {
 				textFieldBrand.setColumns(10);
 				panelAddCars.add(textFieldBrand);
 				
-				JLabel labelModel = new JLabel("Model");
+				JLabel labelModel = new JLabel(controller.getResourcebundle().getString("model"));
 				labelModel.setBounds(329, 173, 98, 14);
 				panelAddCars.add(labelModel);
 				
@@ -202,7 +204,7 @@ public class StaffPanelGUI extends JFrame {
 				textFieldModel.setColumns(10);
 				panelAddCars.add(textFieldModel);
 				
-				JLabel labelGarage = new JLabel("Garage");
+				JLabel labelGarage = new JLabel(controller.getResourcebundle().getString("garage"));
 				labelGarage.setBounds(329, 222, 98, 14);
 				panelAddCars.add(labelGarage);
 				
@@ -211,7 +213,7 @@ public class StaffPanelGUI extends JFrame {
 				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
 				panelAddCars.add(comboBox);
 				
-				JLabel labelPricePerDsy = new JLabel("Price per day");
+				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
 				labelPricePerDsy.setBounds(329, 277, 98, 14);
 				panelAddCars.add(labelPricePerDsy);
 				
@@ -220,7 +222,7 @@ public class StaffPanelGUI extends JFrame {
 				textFieldPpd.setColumns(10);
 				panelAddCars.add(textFieldPpd);
 				
-				JButton buttonAdd = new JButton("Add");
+				JButton buttonAdd = new JButton(controller.getResourcebundle().getString("add"));
 				buttonAdd.setBounds(540, 329, 89, 23);
 				buttonAdd.addMouseListener(new MouseAdapter() {
 					@Override
@@ -228,7 +230,7 @@ public class StaffPanelGUI extends JFrame {
 						allOK=true;
 						try {
 							if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
-								JOptionPane.showConfirmDialog(null,"The number plate entered already exists", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("number_plate_exists"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 								allOK=false;
 							}
 						} catch (HeadlessException e2) {
@@ -240,17 +242,18 @@ public class StaffPanelGUI extends JFrame {
 						}
 						pricePerDay= Double.parseDouble(textFieldPpd.getText());
 						if ((pricePerDay<=0)){
-							JOptionPane.showConfirmDialog(null, "The price needs to be higher than 0", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("price_higher_than_0"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 							allOK=false;
 						}
 						if(textFieldBrand.getText().equals("") || textFieldModel.getText().equals("") || textFieldNumPlate.getText().equals("")) {
-							JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 							allOK=false;
 						}
 						if(allOK) {
 								try {
 									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
-									System.out.println(controller.getCar(textFieldNumPlate.getText()));
+									//System.out.println(controller.getCar(textFieldNumPlate.getText()));
+									ServerLogger.getLogger().info(controller.getCar(textFieldNumPlate.getText()));
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
@@ -266,7 +269,7 @@ public class StaffPanelGUI extends JFrame {
 		tabbedPane.addTab("Remove cars", null, panelRemoveCars, null);
 		panelRemoveCars.setLayout(null);
 		
-		JLabel labelRemoveCars = new JLabel("Remove cars");
+		JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
 		labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		labelRemoveCars.setBounds(487, 33, 209, 24);
 		panelRemoveCars.add(labelRemoveCars);
@@ -307,7 +310,7 @@ public class StaffPanelGUI extends JFrame {
 	        }
 		scrollPaneRemoveCars.setViewportView(tableRemoveCars);
 		
-		JButton buttonRemoveCar = new JButton("Remove");
+		JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
 		buttonRemoveCar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(tableRemoveCars.getSelectedRow()!=-1) {
@@ -323,7 +326,7 @@ public class StaffPanelGUI extends JFrame {
 					tableRemoveCars.addNotify();
 				}
 				else {
-					JOptionPane.showConfirmDialog(null,"You must choose a car", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

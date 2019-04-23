@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
+import carrenting.server.logger.ServerLogger;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -80,12 +81,14 @@ public class SelectCarGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
-				System.out.println(price);
+				//System.out.println(price);
+				ServerLogger.getLogger().info(price);
 				totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
 				textPane.setText(String.valueOf(totalPrice));
 				frame.getContentPane().add(textPane);
 				numberPlate=carsAvailable.get(tableCars.getSelectedRow()).getNumPlate();
-				System.out.println("number plate  " + numberPlate);
+				//System.out.println("number plate  " + numberPlate);
+				ServerLogger.getLogger().info(controller.getResourcebundle().getString("number_plate"+numberPlate));
 				
 				
 			}
