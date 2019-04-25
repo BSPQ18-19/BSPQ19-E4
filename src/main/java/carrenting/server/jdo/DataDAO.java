@@ -44,7 +44,8 @@ public class DataDAO{
 
 	
 	
-	private DataDAO(){
+	public DataDAO(){
+		
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		
 //		Initializing staff, garages, cars, rent
@@ -87,8 +88,10 @@ public class DataDAO{
 		
 //		System.out.println(getCar("0352HTQ").toString());
 	}
+	
 
 	public static DataDAO getInstance() {
+		
 		return instance;
 	}
 

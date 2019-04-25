@@ -63,6 +63,12 @@ public class Controller{
 
 	}
 	
+	public Controller(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
+		
+		RMIServiceLocator.setService(ip, port, serviceName);
+		
+	}
+	
 
 	
 	public void storeGarage(String location) throws RemoteException {
@@ -200,7 +206,8 @@ public class Controller{
 			String rentGarageOrigin =rent.getGarageOrigin();
 			for(int i=0; i<garagePopularity.length; i++) {
 				if (garagePopularity[i][0].equals(rentGarageOrigin)){
-					garagePopularity[i][1] = (int)garagePopularity[i][1]+1 ;
+					garagePopularity[i][1] = (int)garagePopularity[i][1]+1;
+					
 				}	
 			}
 		}
@@ -208,13 +215,15 @@ public class Controller{
 			String rentGarageDestination =rent.getGarageDestination();
 			for(int i=0; i<garagePopularity.length; i++) {
 				if (garagePopularity[i][0].equals(rentGarageDestination)){
-					garagePopularity[i][2] = (int)garagePopularity[i][2]+1 ;
+					garagePopularity[i][2] = (int)garagePopularity[i][2]+1;
+					
 				}	
 			}
 		}
 		for(int i=0; i<garagePopularity.length; i++) {
 			for(int j=0; j<garagePopularity[i].length; j++) {
 				System.out.println(garagePopularity[i][j]);
+				
 			}
 		}
 		return garagePopularity;
