@@ -2,7 +2,6 @@ package carrenting.server.jdo;
 
 
 import java.util.ArrayList;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -13,14 +12,14 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import carrenting.server.logger.ServerLogger;
 
-
-
 public class DataDAO{
-	
+	final Logger logger = LoggerFactory.getLogger(DataDAO.class);
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
 	private Logger log;
@@ -84,7 +83,6 @@ public class DataDAO{
 		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		 
-//		System.out.println(getCar("0352HTQ").toString());
 	}
 	
 
@@ -101,13 +99,12 @@ public class DataDAO{
 			pm.makePersistent(new Garage(location));
 			tx.commit();
 		} catch (Exception ex) {
-			//System.out.println("   $ Error storing garage: " + ex.getMessage());
 			ServerLogger.getLogger().error("Error storing garage: "+ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
+		logger.debug("Initializing garages");
+		logger.debug("Finishing testBagMultiply");
 
 	}
 	
@@ -121,13 +118,11 @@ public class DataDAO{
 					 garageDestination,paymentSystem,  totalPrice));
 			tx.commit();
 		} catch (Exception ex) {
-			//System.out.println("   $ Error storing rent: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error storing rents: "+ex.getMessage());
+			logger.error("Error storing rents: "+ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		//System.out.println("Initializing RENTS");
-		ServerLogger.getLogger().debug("Initializing RENTS");
+		logger.debug("Initializing RENTS");
 	}
 	
 	private void storeStaff(){
@@ -138,13 +133,12 @@ public class DataDAO{
 			pm.makePersistent(new Staff("administrator","admin2", "admin2"));
 			pm.makePersistent(new Staff("employee","employee1", "employee1"));
 		} catch (Exception ex) {
-			//System.out.println("   $ Error storing staff: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error storing staff: "+ex.getMessage());
+			logger.error("Error storing staff:" +ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		//System.out.println("Initializing STAFF");
-		ServerLogger.getLogger().debug("Initializing STAFF");
+
+		logger.debug("Initializing STAFF");
 	}
 	
 	public void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
@@ -153,13 +147,11 @@ public class DataDAO{
 			pm.makePersistent(new Car(garage, numberPlate, brand, model, pricePerDay));
 			
 		} catch (Exception ex) {
-			//System.out.println("   $ Error storing staff: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error storing staff: "+ex.getMessage());
+			logger.error("Error storing car:" +ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		//System.out.println("Storing cars");
-		ServerLogger.getLogger().debug("Storing cars");
+		logger.debug("Storing cars");
 	}
 	
 	
@@ -179,14 +171,12 @@ public class DataDAO{
 			return preparedGarages;
 
 		} catch (Exception ex) {
-			//System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error retrieving data from the database: "+ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			//System.out.println("GETTING GARAGES");
-			//ServerLogger.getLogger().debug("GETTING GARAGES");
+			logger.debug("GETTING GARAGES");
 			pm.close();
 		}
 		return null;
@@ -202,20 +192,17 @@ public class DataDAO{
 			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
 			for (Rent rent: rents) {
-				//System.out.println(rent.toString());
-				ServerLogger.getLogger().debug(rent.toString());
+				logger.debug(rent.toString());
 			}
 			return rents;
 
 		} catch (Exception ex) {
-			//System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error retrieving data from the database: "+ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			//System.out.println("GETTING RENTS");
-			ServerLogger.getLogger().debug("GETTING RENTS");
+			logger.debug("GETTING RENTS");
 			pm.close();
 		}
 		return null;
@@ -232,11 +219,9 @@ public class DataDAO{
 			pm.deletePersistent(carToDelete);
 			tx.commit();
 		}catch (Exception ex){
-			//System.out.println("   $ Error deleting data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error deleting data from the database: "+ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
 		}finally {
-			//System.out.println("DELETED CAR" + numberPlate);
-			ServerLogger.getLogger().debug("DELETED CAR "+numberPlate);
+			logger.debug("DELETED CAR "+numberPlate);
 			pm.close();
 		}
 	}
@@ -254,11 +239,9 @@ public class DataDAO{
 			
 			tx.commit();
 		}catch (Exception ex){
-			//System.out.println("   $ Error deleting data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error deleting data from the database: "+ex.getMessage());
+			logger.error("Error deleting data from the database:" +ex.getMessage());
 		}finally {
-			//System.out.println("DELETED GARAGE");
-			ServerLogger.getLogger().debug("DELETED GARAGE");
+			logger.debug("DELETED GARAGE" + garage);
 			pm.close();
 		}
 	}
@@ -274,20 +257,18 @@ public class DataDAO{
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
 			for(Car car: carsByGarage) {
-				//System.out.println(car.toString());
-				ServerLogger.getLogger().debug(car.toString());
+				logger.debug(car.toString());
 			}
 			return carsByGarage;
 			
 		} catch (Exception ex) {
-			//System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error retrieving data from the database: "+ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			//System.out.println("GETTING CARS");
-			ServerLogger.getLogger().debug("GETTING CARS");
+			logger.debug("GETTING CARS");
 			pm.close();
 		}
 		return null;
@@ -303,13 +284,12 @@ public class DataDAO{
 			query.setUnique(true);
 			Car car = ((Car) query.execute());
 			tx.commit();
-			//System.out.println("GETTING CAR by numplate"+ car.toString());
-			ServerLogger.getLogger().debug("GETTING CAR BY NUMPLATE"+ car.toString());
+			logger.debug("GETTING CAR BY NUMPLATE"+ car.toString());
+			
 			
 			return car;
 		} catch (Exception ex) {
-			System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error retrieving data from the database: "+ ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -331,18 +311,15 @@ public class DataDAO{
 			query.setUnique(true);
 			Staff staff = (Staff) query.execute();
 			tx.commit();
-			//System.out.println(staff.toString());
-			ServerLogger.getLogger().debug(staff.toString());
+			logger.debug(staff.toString());
 			return staff;
 		} catch (Exception ex) {
-			//System.out.println("   $ Error retrieving data from the database: " + ex.getMessage());
-			ServerLogger.getLogger().error("Error retrieving data from the database: "+ex.getMessage());
+			logger.error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			//System.out.println("GETTING STAFF");
-			ServerLogger.getLogger().debug("GETTING STAFF");
+			logger.debug("GETTING STAFF " + user);
 			
 			pm.close();
 		}

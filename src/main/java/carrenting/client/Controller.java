@@ -13,6 +13,9 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import carrenting.client.gui.ClientDataGUI;
 import carrenting.client.gui.PaymentGUI;
 
@@ -20,6 +23,7 @@ import carrenting.client.gui.SelectCarGUI;
 import carrenting.client.gui.StaffPanelGUI;
 import carrenting.client.gui.WelcomeGUI;
 import carrenting.server.jdo.Car;
+import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Garage;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
@@ -27,6 +31,7 @@ import carrenting.server.jdo.Staff;
 
 
 public class Controller{
+	final Logger logger = LoggerFactory.getLogger(Controller.class);
 
 	private Rent rent = new Rent(null, null, null, null, null, null, null, 0);
 	private ResourceBundle myBundle; //el que gestiona los idiomas
@@ -47,15 +52,15 @@ public class Controller{
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
-//		System.out.println("Example of a text in english: "+ myBundle.getString("starting_msg")); //esto coge el texto que tiene la string que le paso. (Debería salir: Starting...)
+//		logger.debug("Example of a text in english: "+ myBundle.getString("starting_msg")); //esto coge el texto que tiene la string que le paso. (Debería salir: Starting...)
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		
 		this.getRents();
-//		new WelcomeGUI(this, this.rent);
+		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-		new StaffPanelGUI(this, "employee", this.rent);
+//		new StaffPanelGUI(this, "employee", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -63,13 +68,9 @@ public class Controller{
 
 	}
 	
-	public Controller(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
-		
-		RMIServiceLocator.setService(ip, port, serviceName);
-		
+	public Controller(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {		
+		RMIServiceLocator.setService(ip, port, serviceName);	
 	}
-	
-
 	
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
@@ -84,9 +85,6 @@ public class Controller{
 	}
 	
 	public ArrayList<Car> getCars(String garage) throws RemoteException{
-//		ArrayList<Car> cars = new ArrayList<>();
-//		cars = RMIServiceLocator.getService().getCars(garage);
-//		return cars;
 		return RMIServiceLocator.getService().getCars(garage);	
 	}
 	
@@ -100,9 +98,6 @@ public class Controller{
 	
 	public ArrayList<Rent> getRents() throws RemoteException {
 		rents=RMIServiceLocator.getService().getRents();
-//		for(Rent rent:rents){
-//			System.out.println(rent.toString());
-//		}
 		return rents;
 	}
 
@@ -163,8 +158,7 @@ public class Controller{
 			if (rents.get(i).getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
 				if(!(finishingDate.before(rents.get(i).getStartingDate()) || startingDate.after(rents.get(i).getFinishingDate()))){
 					carsNotAvailable.add(rents.get(i).getNumberPlate());
-					System.out.println("NOT AVAILABLE");
-					System.out.println(getCar(rents.get(i).getNumberPlate()));
+					logger.debug("NOT AVAILABLE"+ getCar(rents.get(i).getNumberPlate()).toString());
 				}
 			}	
 		}
@@ -173,9 +167,10 @@ public class Controller{
 				carsAvailable.add(car);
 			}
 		}
-		System.out.println("Cars available!!");
+		logger.debug("Cars available!!");
+		
 		for (Car car: carsAvailable) {
-			System.out.println(car.toString());
+			logger.debug(car.toString());
 		}
 		return carsAvailable;
 	}
@@ -222,7 +217,7 @@ public class Controller{
 		}
 		for(int i=0; i<garagePopularity.length; i++) {
 			for(int j=0; j<garagePopularity[i].length; j++) {
-				System.out.println(garagePopularity[i][j]);
+				logger.debug((String) garagePopularity[i][j]);
 				
 			}
 		}
