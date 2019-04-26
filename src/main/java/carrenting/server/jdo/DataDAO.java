@@ -84,8 +84,6 @@ public class DataDAO{
 		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		 
-		
-		
 //		System.out.println(getCar("0352HTQ").toString());
 	}
 	
@@ -97,9 +95,11 @@ public class DataDAO{
 
 	public void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
 		try {
+			tx.begin();
 			pm.makePersistent(new Garage(location));
-
+			tx.commit();
 		} catch (Exception ex) {
 			//System.out.println("   $ Error storing garage: " + ex.getMessage());
 			ServerLogger.getLogger().error("Error storing garage: "+ex.getMessage());
@@ -108,14 +108,7 @@ public class DataDAO{
 		}
 		//System.out.println("Initializing garages");
 		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-//		ServerLogger.getLogger().info("   * Retrieving an Extent for Hotels.");
-		ServerLogger.getLogger().debug("   * Retrieving an Extent for Hotels.");
+
 	}
 	
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
@@ -193,7 +186,7 @@ public class DataDAO{
 				tx.rollback();
 			}
 			//System.out.println("GETTING GARAGES");
-			ServerLogger.getLogger().debug("GETTING GARAGES");
+			//ServerLogger.getLogger().debug("GETTING GARAGES");
 			pm.close();
 		}
 		return null;

@@ -4,6 +4,7 @@ package es.deusto.rmi.carrenting;
 import junit.framework.JUnit4TestAdapter;
 
 import org.junit.runner.RunWith;
+import org.junit.runners.Suite.SuiteClasses;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -23,21 +24,26 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.databene.contiperf.junit.ContiPerfSuiteRunner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DAOTest {
+public class Tests {
 	
-	private static String cwd = DAOTest.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+	private static String cwd = Tests.class.getProtectionDomain().getCodeSource().getLocation().getFile();
 	private static Thread rmiRegistryThread = null;
 	private static Thread rmiServerThread = null;
 	static Controller c;
 	
 	public static junit.framework.Test suite() {
-		return new JUnit4TestAdapter(DAOTest.class);
+		return new JUnit4TestAdapter(Tests.class);
 	}
 	
 	@BeforeClass
@@ -103,14 +109,22 @@ public class DAOTest {
 		c.storeGarage("Vitoria");
 	}
 	
+	
+	@Rule
+	public ContiPerfRule i = new ContiPerfRule();
 	@Test
+	@PerfTest(invocations = 200, threads = 20)
+	@Required(max = 1500, average = 800, throughput = 20)
 	public void testLoginStaff() throws RemoteException {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
 	}
 	
 	
-	
+	@Rule
+	public ContiPerfRule u = new ContiPerfRule();
 	@Test
+	@PerfTest(duration = 2000)
+	@Required(max = 3000, average = 3000)
 	public void testStoreDeleteGarage() throws RemoteException {
 		c.storeGarage("Portugalete");
 		
@@ -119,10 +133,8 @@ public class DAOTest {
 		boolean a = false;
 		
 		for(String s : garages) {
-			System.out.println(s);
-			if(s.equals("Portugalete")){
+			if(s.equals("Portugalete"))
 				a = true;
-			}
 		}
 		
 		c.deleteGarage("Portugalete");
@@ -130,10 +142,8 @@ public class DAOTest {
 		garages = c.getGarages();
 		
 		for(String s : garages) {
-			System.out.println(s);
-			if(s.equals("Portugalete")){
+			if(s.equals("Portugalete"))
 				assert(false);
-			}
 		}
 		
 		assert(a);

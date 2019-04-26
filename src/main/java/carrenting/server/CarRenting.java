@@ -34,7 +34,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	private PersistenceManager pm=null;
 	private Transaction tx=null;
 	
-
+	private HashMap<String, Staff> users = new HashMap<String, Staff>();
 	
 	public CarRenting() throws RemoteException {
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -75,15 +75,23 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	
 	public boolean loginStaff(String user, String password, String type) throws RemoteException{
 	
-		Staff staff = DataDAO.getInstance().getStaff(user);
-		System.out.println(staff.toString());
+		Staff staff;
+		if(!users.containsKey(user)) {
+			staff = DataDAO.getInstance().getStaff(user);
+		} else {
+			staff = users.get(user);
+		}
+			
+		
+		
+		//System.out.println(staff.toString());
 		if(staff.getPassword().equals(password) && staff.getType().equals(type)) {
-			//System.out.println("Login successful");
-			ServerLogger.getLogger().info("login_successful");
+				users.put(user, staff);
+			
 			return true;
 		}
-		//System.out.println("Login unsuccessful");
-		ServerLogger.getLogger().error("login_unsuccessful");
+		
+		//ServerLogger.getLogger().error("login_unsuccessful");
 		return false;
 	}
 
