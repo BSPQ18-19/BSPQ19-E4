@@ -84,7 +84,6 @@ public class DataDAO{
 		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		 
-
 	}
 	
 
@@ -95,9 +94,11 @@ public class DataDAO{
 
 	public void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
 		try {
+			tx.begin();
 			pm.makePersistent(new Garage(location));
-
+			tx.commit();
 		} catch (Exception ex) {
 			CarRenting.getLogger().error("Error storing garage: "+ex.getMessage());
 		} finally {

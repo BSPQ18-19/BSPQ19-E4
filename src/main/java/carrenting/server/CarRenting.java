@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -25,7 +26,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	private PersistenceManager pm=null;
 	private Transaction tx=null;
 	
-
+	private HashMap<String, Staff> users = new HashMap<String, Staff>();
 	
 	public static Logger getLogger() {
 		return logger;
