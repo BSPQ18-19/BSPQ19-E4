@@ -30,15 +30,17 @@ import carrenting.server.jdo.Staff;
 
 
 
-public class Controller{
-	final Logger logger = LoggerFactory.getLogger(Controller.class);
 
+
+public class Controller{
+	final  Logger logger = LoggerFactory.getLogger(Controller.class);
 	private Rent rent = new Rent(null, null, null, null, null, null, null, 0);
 	private ResourceBundle myBundle; //el que gestiona los idiomas
 	private Locale currentLocale; //variable para decirle que idioma queremos
 	private ArrayList<Rent> rents = new ArrayList<>();
 	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
+
 	
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
@@ -52,10 +54,8 @@ public class Controller{
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
-//		logger.debug("Example of a text in english: "+ myBundle.getString("starting_msg")); //esto coge el texto que tiene la string que le paso. (Debería salir: Starting...)
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
-		
 		this.getRents();
 		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
@@ -158,7 +158,7 @@ public class Controller{
 			if (rents.get(i).getGarageOrigin().equalsIgnoreCase(garageOrigin)) {
 				if(!(finishingDate.before(rents.get(i).getStartingDate()) || startingDate.after(rents.get(i).getFinishingDate()))){
 					carsNotAvailable.add(rents.get(i).getNumberPlate());
-					logger.debug("NOT AVAILABLE"+ getCar(rents.get(i).getNumberPlate()).toString());
+					logger.info("NOT AVAILABLE"+ getCar(rents.get(i).getNumberPlate()).toString());
 				}
 			}	
 		}
@@ -168,7 +168,6 @@ public class Controller{
 			}
 		}
 		logger.debug("Cars available!!");
-		
 		for (Car car: carsAvailable) {
 			logger.debug(car.toString());
 		}
@@ -237,11 +236,13 @@ public class Controller{
 	}
 	
 	
-	
+	public Logger getLogger() {
+		return logger;
+	}
+
 	public ResourceBundle getResourcebundle() {
 		return myBundle;
 	}
-	
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);

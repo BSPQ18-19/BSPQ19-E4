@@ -1,6 +1,7 @@
 package carrenting.client.gui;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -16,8 +17,6 @@ import java.rmi.RemoteException;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class LogInStaffGUI extends JFrame {
@@ -102,9 +101,9 @@ public class LogInStaffGUI extends JFrame {
 						} catch (RemoteException e1) {
 							e1.printStackTrace();
 						}
-						System.out.println(controller.getResourcebundle().getString("staff_login_successful"));
+						controller.getLogger().info(controller.getResourcebundle().getString("staff_login_successful"));
 					}else {
-						System.out.println(controller.getResourcebundle().getString("login_unsuccessful"));
+						controller.getLogger().info(controller.getResourcebundle().getString("login_unsuccessful"));
 					}
 				} catch (RemoteException e1) {
 					

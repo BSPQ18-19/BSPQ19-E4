@@ -2,6 +2,7 @@ package carrenting.server.jdo;
 
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -16,13 +17,13 @@ import javax.jdo.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import carrenting.server.logger.ServerLogger;
+import carrenting.server.CarRenting;
+
 
 public class DataDAO{
-	final Logger logger = LoggerFactory.getLogger(DataDAO.class);
+
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
-	private Logger log;
 	private Garage garage1= new Garage("Madrid");
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
@@ -98,12 +99,12 @@ public class DataDAO{
 			pm.makePersistent(new Garage(location));
 
 		} catch (Exception ex) {
-			ServerLogger.getLogger().error("Error storing garage: "+ex.getMessage());
+			CarRenting.getLogger().error("Error storing garage: "+ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		logger.debug("Initializing garages");
-		logger.debug("Finishing testBagMultiply");
+		CarRenting.getLogger().debug("Initializing garages");
+		CarRenting.getLogger().debug("Finishing testBagMultiply");
 
 	}
 	
@@ -117,11 +118,11 @@ public class DataDAO{
 					 garageDestination,paymentSystem,  totalPrice));
 			tx.commit();
 		} catch (Exception ex) {
-			logger.error("Error storing rents: "+ex.getMessage());
+			CarRenting.getLogger().error("Error storing rents: "+ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		logger.debug("Initializing RENTS");
+		CarRenting.getLogger().debug("Initializing RENTS");
 	}
 	
 	private void storeStaff(){
@@ -132,12 +133,12 @@ public class DataDAO{
 			pm.makePersistent(new Staff("administrator","admin2", "admin2"));
 			pm.makePersistent(new Staff("employee","employee1", "employee1"));
 		} catch (Exception ex) {
-			logger.error("Error storing staff:" +ex.getMessage());
+			CarRenting.getLogger().error("Error storing staff:" +ex.getMessage());
 		} finally {
 			pm.close();
 		}
 
-		logger.debug("Initializing STAFF");
+		CarRenting.getLogger().debug("Initializing STAFF");
 	}
 	
 	public void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
@@ -146,11 +147,11 @@ public class DataDAO{
 			pm.makePersistent(new Car(garage, numberPlate, brand, model, pricePerDay));
 			
 		} catch (Exception ex) {
-			logger.error("Error storing car:" +ex.getMessage());
+			CarRenting.getLogger().error("Error storing car:" +ex.getMessage());
 		} finally {
 			pm.close();
 		}
-		logger.debug("Storing cars");
+		CarRenting.getLogger().debug("Storing cars");
 	}
 	
 	
@@ -170,12 +171,12 @@ public class DataDAO{
 			return preparedGarages;
 
 		} catch (Exception ex) {
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			logger.debug("GETTING GARAGES");
+			CarRenting.getLogger().debug("GETTING GARAGES");
 			pm.close();
 		}
 		return null;
@@ -191,17 +192,17 @@ public class DataDAO{
 			ArrayList<Rent>rents= new ArrayList<Rent>((List<Rent>) query.execute());
 			tx.commit();
 			for (Rent rent: rents) {
-				logger.debug(rent.toString());
+				CarRenting.getLogger().debug(rent.toString());
 			}
 			return rents;
 
 		} catch (Exception ex) {
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			logger.debug("GETTING RENTS");
+			CarRenting.getLogger().debug("GETTING RENTS");
 			pm.close();
 		}
 		return null;
@@ -218,9 +219,9 @@ public class DataDAO{
 			pm.deletePersistent(carToDelete);
 			tx.commit();
 		}catch (Exception ex){
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		}finally {
-			logger.debug("DELETED CAR "+numberPlate);
+			CarRenting.getLogger().debug("DELETED CAR "+numberPlate);
 			pm.close();
 		}
 	}
@@ -238,9 +239,9 @@ public class DataDAO{
 			
 			tx.commit();
 		}catch (Exception ex){
-			logger.error("Error deleting data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error deleting data from the database:" +ex.getMessage());
 		}finally {
-			logger.debug("DELETED GARAGE" + garage);
+			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
 			pm.close();
 		}
 	}
@@ -256,18 +257,18 @@ public class DataDAO{
 			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
 			tx.commit();
 			for(Car car: carsByGarage) {
-				logger.debug(car.toString());
+				CarRenting.getLogger().debug(car.toString());
 			}
 			return carsByGarage;
 			
 		} catch (Exception ex) {
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 			
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			logger.debug("GETTING CARS");
+			CarRenting.getLogger().debug("GETTING CARS");
 			pm.close();
 		}
 		return null;
@@ -283,12 +284,12 @@ public class DataDAO{
 			query.setUnique(true);
 			Car car = ((Car) query.execute());
 			tx.commit();
-			logger.debug("GETTING CAR BY NUMPLATE"+ car.toString());
+			CarRenting.getLogger().debug("GETTING CAR BY NUMPLATE"+ car.toString());
 			
 			
 			return car;
 		} catch (Exception ex) {
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -310,15 +311,15 @@ public class DataDAO{
 			query.setUnique(true);
 			Staff staff = (Staff) query.execute();
 			tx.commit();
-			logger.debug(staff.toString());
+			CarRenting.getLogger().debug(staff.toString());
 			return staff;
 		} catch (Exception ex) {
-			logger.error("Error retrieving data from the database:" +ex.getMessage());
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			logger.debug("GETTING STAFF " + user);
+			CarRenting.getLogger().debug("GETTING STAFF " + user);
 			
 			pm.close();
 		}

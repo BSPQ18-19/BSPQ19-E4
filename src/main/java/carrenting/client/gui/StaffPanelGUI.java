@@ -25,17 +25,14 @@ import javax.swing.border.EmptyBorder;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
-import carrenting.server.logger.ServerLogger;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTabbedPane;
-import javax.swing.JFormattedTextField.AbstractFormatter;
+
 
 
 @SuppressWarnings("serial")
@@ -50,7 +47,6 @@ public class StaffPanelGUI extends JFrame {
 	private double pricePerDay=0.0;
 	private boolean allOK = true;
 	private ArrayList<String> garages;
-	private ArrayList<String> numPlates;
 	private JTextField textFieldNumPlate;
 	private JTextField textFieldBrand;
 	private JTextField textFieldModel;
@@ -73,7 +69,6 @@ public class StaffPanelGUI extends JFrame {
 		this.controller=controller;
 		this.staffType=staffType;
 		this.rent=rent;
-		numPlates=controller.getAllNumPlates();
 		garages = controller.getGarages();
 		initialize();
 		frame.setVisible(true);
@@ -252,9 +247,7 @@ public class StaffPanelGUI extends JFrame {
 						if(allOK) {
 								try {
 									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
-									//System.out.println(controller.getCar(textFieldNumPlate.getText()));
-//									ServerLogger.getLogger().info(controller.getCar(textFieldNumPlate.getText()));
-									ServerLogger.getLogger().debug(controller.getCar(textFieldNumPlate.getText()));
+									controller.getLogger().debug("Added car" + controller.getCar(textFieldNumPlate.getText()).toString());
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
@@ -291,6 +284,7 @@ public class StaffPanelGUI extends JFrame {
 			boolean[] columnEditableRemoveCarss = new boolean[] {
 				false, false, false, false, false
 			};
+			@SuppressWarnings("unused")
 			public boolean isCellEditableRemoveCars(int row, int column) {
 				return columnEditableRemoveCarss[column];
 			}

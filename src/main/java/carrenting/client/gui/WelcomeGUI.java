@@ -202,10 +202,10 @@ public class WelcomeGUI extends JFrame {
 						rent.setGarageOrigin(garageOrigin);
 						rent.setGarageDestination(garageDestination);
 						rent.setStartingDate(startingDate);
-						System.out.println(startingDate);
-						System.out.println(startingDate);
+						controller.getLogger().debug(startingDate.toString());
+						controller.getLogger().debug(startingDate.toString());
 						rent.setFinishingDate(finishingDate);
-						System.out.println(rent.toString());
+						controller.getLogger().debug(rent.toString());
 						new SelectCarGUI(controller, rent);
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
