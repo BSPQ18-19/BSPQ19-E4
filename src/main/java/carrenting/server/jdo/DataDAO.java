@@ -106,16 +106,8 @@ public class DataDAO{
 		} finally {
 			pm.close();
 		}
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-		//System.out.println("Initializing garages");
-		ServerLogger.getLogger().debug("Initializing garages");
-//		ServerLogger.getLogger().info("   * Retrieving an Extent for Hotels.");
-		ServerLogger.getLogger().debug("   * Retrieving an Extent for Hotels.");
+		ServerLogger.getLogger().info("Initializing garages");
+
 	}
 	
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
