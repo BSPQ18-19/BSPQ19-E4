@@ -45,13 +45,10 @@ public class WelcomeGUI extends JFrame {
 	private JScrollPane scrollPaneDestination;
 	JButton btnChange= new JButton();
 	JLabel lblHi=new JLabel();
-	JComboBox selectLanguage = new JComboBox<>();
 	private Rent rent;
 	private JDateChooser dateChooserFinish = new JDateChooser();
 	private JDateChooser dateChooserStart = new JDateChooser();
 	
-
-
 
 	public WelcomeGUI(Controller controller, Rent rent) throws RemoteException{
 		this.controller=controller;
@@ -61,8 +58,6 @@ public class WelcomeGUI extends JFrame {
 		//initComponents(); (descomentar con lo de abajo(alternativa para el tema del idioma))
 		
 	}
-	
-	
 	
 
 	/**
