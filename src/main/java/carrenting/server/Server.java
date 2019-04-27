@@ -7,29 +7,31 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import carrenting.client.Controller;
 import carrenting.server.jdo.DataDAO;
 
 public class Server{
-	private static ArrayList<String> garages= new ArrayList();
 	
+
+
 	public static void main(String[] args) throws IOException {
+		Logger logger = LoggerFactory.getLogger(Server.class);
+		
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
 		}
 
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];
-		System.out.println(" * Server name: " + name);
+		logger.info(" * Server name: " + name);
 		
 		try {
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
 			DataDAO.getInstance();
 			
-//			garages= DataDAO.getInstance().getGarages();
-//			for (String garage : garages) {
-//				System.out.println(garage);
-//			}
-//			
 			java.io.InputStreamReader inputStreamReader = new java.io.InputStreamReader ( System.in );
 			java.io.BufferedReader stdin = new java.io.BufferedReader ( inputStreamReader );
 			@SuppressWarnings("unused")
@@ -37,17 +39,15 @@ public class Server{
 			
 			
 		} catch (RemoteException re) {
-			System.err.println(" # Collector RemoteException: " + re.getMessage());
+			logger.error(" # Collector RemoteException: " + re.getMessage());
 			re.printStackTrace();
 			System.exit(-1);
 		} catch (MalformedURLException murle) {
-			System.err.println(" # Collector MalformedURLException: " + murle.getMessage());
+			logger.error(" # Collector MalformedURLException: " + murle.getMessage());
 			murle.printStackTrace();
 			System.exit(-1);
-		}
-		
+		}		
 	}
-
 
 	
 }

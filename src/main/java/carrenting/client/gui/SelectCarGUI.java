@@ -2,6 +2,7 @@ package carrenting.client.gui;
 
 import javax.swing.JFrame;
 
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
-import carrenting.server.logger.ServerLogger;
+
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -41,7 +42,6 @@ public class SelectCarGUI extends JFrame {
 		this.rent=rent;
 		initialize();
 		frame.setVisible(true);
-
 	}
 	
 	
@@ -81,16 +81,12 @@ public class SelectCarGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				price=(double)tableCars.getValueAt(tableCars.getSelectedRow(), 2);
-				//System.out.println(price);
-//				ServerLogger.getLogger().info(price);
-				ServerLogger.getLogger().debug(price);
 				totalPrice=controller.daysBetween(rent.getStartingDate(), rent.getFinishingDate())*price;
+				controller.getLogger().debug("TOTAL PRICE" + String.valueOf(totalPrice));
 				textPane.setText(String.valueOf(totalPrice));
 				frame.getContentPane().add(textPane);
 				numberPlate=carsAvailable.get(tableCars.getSelectedRow()).getNumPlate();
-				//System.out.println("number plate  " + numberPlate);
-//				ServerLogger.getLogger().info(controller.getResourcebundle().getString("number_plate"+numberPlate));
-				ServerLogger.getLogger().debug(controller.getResourcebundle().getString("number_plate "+numberPlate));
+				controller.getLogger().debug(controller.getResourcebundle().getString("Selected car "+numberPlate));
 				
 				
 			}
@@ -158,7 +154,6 @@ public class SelectCarGUI extends JFrame {
 					rent.setTotalPrice(totalPrice);
 					new ClientDataGUI(controller,rent);
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

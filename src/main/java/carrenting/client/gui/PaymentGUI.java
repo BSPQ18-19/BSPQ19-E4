@@ -1,6 +1,7 @@
 package carrenting.client.gui;
 
 import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,7 +22,6 @@ import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
-import carrenting.server.logger.ServerLogger;
 
 @SuppressWarnings("serial")
 public class PaymentGUI extends JFrame {
@@ -137,9 +137,7 @@ public class PaymentGUI extends JFrame {
 					}
 					else {
 						rent.setPaymentSystem(paymentType);
-						//System.out.println(rent.toString());
-//						ServerLogger.getLogger().info(rent.toString());
-						ServerLogger.getLogger().debug(rent.toString());
+						controller.getLogger().debug(rent.toString());
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
 					if(textFieldNameCard.getText().equals("")|| textFieldCardNumber.getText().equals("")|| textFieldCVV.getText().equals("")||
@@ -148,9 +146,7 @@ public class PaymentGUI extends JFrame {
 					}
 					else {
 						rent.setPaymentSystem(paymentType);
-						//System.out.println(rent.toString());
-//						ServerLogger.getLogger().info(rent.toString());
-						ServerLogger.getLogger().debug(rent.toString());
+						controller.getLogger().debug(rent.toString());
 					}
 				}
 			}
