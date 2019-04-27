@@ -176,15 +176,11 @@ public class Controller{
 	}
 	
 	
-	public Object[][] garageOriginPopularity(){
+	public Object[][] garageOriginPopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<String> garages= new ArrayList<>();
-		try {
-			garages= getGarages();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		garages= getGarages();
+		
 		//Filling the list
 		Object[][] garagePopularity = new Object[garages.size()][3];
 		for(int i=0; i<garages.size(); i++) {
@@ -217,20 +213,19 @@ public class Controller{
 		}
 		for(int i=0; i<garagePopularity.length; i++) {
 			for(int j=0; j<garagePopularity[i].length; j++) {
-				logger.debug((String) garagePopularity[i][j]);
-				
+				logger.debug(garagePopularity[i][j].toString());
 			}
 		}
 		return garagePopularity;
 	}
 	
 	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
-		boolean numPlateOK= true;
+		boolean numPlateOK= false;
 		ArrayList<String> numPlates= new ArrayList<>();
 		numPlates= this.getAllNumPlates();
 		for(String nP : numPlates){
 			if(nP.equalsIgnoreCase(numPlate)) {
-				numPlateOK=false;
+				numPlateOK=true;
 			}
 		}
 		return numPlateOK;

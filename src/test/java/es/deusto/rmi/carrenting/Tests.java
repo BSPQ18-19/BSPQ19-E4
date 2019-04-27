@@ -114,7 +114,7 @@ public class Tests {
 	public ContiPerfRule i = new ContiPerfRule();
 	@Test
 	@PerfTest(invocations = 200, threads = 20)
-	@Required(max = 1500, average = 800, throughput = 20)
+	@Required(max = 1500, average = 1000, throughput = 10)
 	public void testLoginStaff() throws RemoteException {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
 	}
@@ -175,6 +175,58 @@ public class Tests {
 		assert(a);
 		
 	}
+	
+	
+	@Test
+	public void testCheckExistingNumPlate() throws RemoteException {
+		Car storedCar = new Car("Vitoria", "5678ASD", "Citroen", "C3", 40);
+		c.storeCar(storedCar.getGarage(), storedCar.getNumPlate(), storedCar.getBrand(), storedCar.getModel(), storedCar.getPricePerDay());
+		
+		System.out.println(c.checkExistingNumPlate("5678ASD"));
+		assert(c.checkExistingNumPlate("5678ASD"));
+	
+	}
+	
+	
+	@Rule
+	public ContiPerfRule v = new ContiPerfRule();
+	@Test
+	@PerfTest(duration = 2000)
+	@Required(max = 3000, average = 3000)
+	public void testGarageOriginPopularity() throws RemoteException {
+		
+		
+		Object[][] result = new Object[4][3];
+		result[0][0] = "Barcelona";
+		result[1][0] = "Bilbao";
+		result[2][0] = "Madrid";
+		result[3][0] = "Vitoria";
+		
+		result[0][1] = 0;
+		result[1][1] = 10;
+		result[2][1] = 4;
+		result[3][1] = 0;
+		
+		result[0][2] = 7;
+		result[1][2] = 4;
+		result[2][2] = 3;
+		result[3][2] = 0;
+		
+		Object[][] garagePopularity = c.garageOriginPopularity();
+		
+		
+		for(int i=0; i<result.length; i++) {
+			for(int j=0; j<result[i].length; j++) {
+				if(!result[i][j].equals(garagePopularity[i][j])) {
+					assert(false);
+				}
+			}
+		}
+		assert(true);
+		
+	}
+	
+	
 	
 	
 	@AfterClass
