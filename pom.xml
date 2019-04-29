@@ -176,6 +176,15 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/client/gui/**</exclude>
+						<exclude>**/server/jdo/Rent.class</exclude>
+						<exclude>**/server/jdo/Car.class</exclude>
+						<exclude>**/server/jdo/Staff.class</exclude>
+						<exclude>**/server/jdo/Garage.class</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

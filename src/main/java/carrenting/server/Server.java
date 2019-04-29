@@ -20,6 +20,7 @@ public class Server{
 	public static void main(String[] args) throws IOException {
 		Logger logger = LoggerFactory.getLogger(Server.class);
 		
+		
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
 		}
@@ -27,7 +28,10 @@ public class Server{
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];
 		logger.info(" * Server name: " + name);
 		
+		
+		
 		try {
+
 			ICarRenting server = new CarRenting();
 			Naming.rebind(name, server);
 			DataDAO.getInstance();

@@ -113,8 +113,8 @@ public class Tests {
 	@Rule
 	public ContiPerfRule i = new ContiPerfRule();
 	@Test
-	@PerfTest(invocations = 200, threads = 20)
-	@Required(max = 1500, average = 1000, throughput = 10)
+	@PerfTest(invocations = 100, threads = 5)
+	@Required(max = 1500, average = 1000, throughput = 5)
 	public void testLoginStaff() throws RemoteException {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
 	}
