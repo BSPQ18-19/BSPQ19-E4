@@ -92,7 +92,7 @@ public class DataDAO{
 		return instance;
 	}
 
-	public void storeGarage(String location){
+	public synchronized void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -109,7 +109,7 @@ public class DataDAO{
 
 	}
 	
-	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+	public synchronized void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
 			String garageDestination, String paymentSystem, double totalPrice){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -126,7 +126,7 @@ public class DataDAO{
 		CarRenting.getLogger().debug("Initializing RENTS");
 	}
 	
-	private void storeStaff(){
+	private synchronized void storeStaff(){
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
@@ -142,7 +142,7 @@ public class DataDAO{
 		CarRenting.getLogger().debug("Initializing STAFF");
 	}
 	
-	public void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
+	public synchronized void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
 			pm.makePersistent(new Car(garage, numberPlate, brand, model, pricePerDay));
@@ -156,7 +156,7 @@ public class DataDAO{
 	}
 	
 	
-	public ArrayList<String> getGarages() {
+	public synchronized ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -183,7 +183,7 @@ public class DataDAO{
 		return null;
 	}
 	
-	public ArrayList<Rent> getRents() {
+	public synchronized ArrayList<Rent> getRents() {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -209,7 +209,7 @@ public class DataDAO{
 		return null;
 	}
 	
-	public void deleteCar(String numberPlate) {
+	public synchronized void deleteCar(String numberPlate) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -227,7 +227,7 @@ public class DataDAO{
 		}
 	}
 	
-	public void deleteGarage(String garage) {
+	public synchronized void deleteGarage(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {

@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import carrenting.client.Controller;
 import carrenting.server.CarRenting;
@@ -41,7 +43,7 @@ public class Tests {
 	private static Thread rmiRegistryThread = null;
 	private static Thread rmiServerThread = null;
 	static Controller c;
-	
+	final static Logger logger = LoggerFactory.getLogger(Test.class);
 	public static junit.framework.Test suite() {
 		return new JUnit4TestAdapter(Tests.class);
 	}
@@ -54,7 +56,7 @@ public class Tests {
 			public void run() {
 				try {
 					java.rmi.registry.LocateRegistry.createRegistry(10990);
-					System.out.println("RMI registry ready.");
+					logger.info("RMI registry ready.");
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -74,13 +76,11 @@ public class Tests {
 		class RMIServerRunnable implements Runnable {
 			
 			public void run() {
-				System.out.println("This is a test to check if mvn test -Pserver executes this tests; JVM properties by program");
-				System.out.println("**************: " + cwd);
 				System.setProperty("java.rmi.server.codebase", "file:" + cwd);
 				System.setProperty("java.security.policy", "target\\classes\\security\\java.policy");
 	
 				String name = "//127.0.0.1:10990/TestCarServer";
-				System.out.println(" * TestServer name: " + name);
+				logger.info(" * TestServer name: " + name);
 				
 				try {
 					ICarRenting carRenting = new CarRenting();
@@ -111,9 +111,9 @@ public class Tests {
 	
 	
 	@Rule
-	public ContiPerfRule i = new ContiPerfRule();
+	public ContiPerfRule t = new ContiPerfRule();
 	@Test
-	@PerfTest(invocations = 100, threads = 5)
+	@PerfTest(invocations = 5, threads = 5)
 	@Required(max = 1500, average = 1000, throughput = 5)
 	public void testLoginStaff() throws RemoteException {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
