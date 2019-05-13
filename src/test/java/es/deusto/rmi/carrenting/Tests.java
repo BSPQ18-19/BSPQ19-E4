@@ -120,8 +120,6 @@ public class Tests {
 	}
 	
 	
-	@Rule
-	public ContiPerfRule u = new ContiPerfRule();
 	@Test
 	@PerfTest(duration = 2000)
 	@Required(max = 3000, average = 3000)
@@ -188,8 +186,6 @@ public class Tests {
 	}
 	
 	
-	@Rule
-	public ContiPerfRule v = new ContiPerfRule();
 	@Test
 	@PerfTest(duration = 2000)
 	@Required(max = 3000, average = 3000)
