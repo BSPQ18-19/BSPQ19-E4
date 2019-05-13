@@ -51,6 +51,7 @@ public class StaffPanelGUI extends JFrame {
 	private JTextField textFieldBrand;
 	private JTextField textFieldModel;
 	private JTable tableRemoveCars;
+	private JTextField textField;
 	
 
 	
@@ -163,62 +164,140 @@ public class StaffPanelGUI extends JFrame {
 		
 				
 				
+				JPanel panelManageCars = new JPanel();
+				tabbedPane.addTab(controller.getResourcebundle().getString("add_car"), null, panelManageCars, null);
+				panelManageCars.setLayout(null);
+				
 				JPanel panelAddCars = new JPanel();
-				tabbedPane.addTab(controller.getResourcebundle().getString("add_car"), null, panelAddCars, null);
+				panelAddCars.setBounds(31, 33, 406, 408);
+				panelManageCars.add(panelAddCars);
 				panelAddCars.setLayout(null);
 				
 				JLabel labelAddACar = new JLabel(controller.getResourcebundle().getString("add_car"));
-				labelAddACar.setBounds(444, 33, 207, 22);
-				labelAddACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				labelAddACar.setBounds(170, 27, 207, 22);
 				panelAddCars.add(labelAddACar);
+				labelAddACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 				
 				JLabel labelNumberPlate = new JLabel(controller.getResourcebundle().getString("number_plate"));
-				labelNumberPlate.setBounds(329, 80, 98, 14);
+				labelNumberPlate.setBounds(55, 74, 98, 14);
 				panelAddCars.add(labelNumberPlate);
 				
 				textFieldNumPlate = new JTextField();
-				textFieldNumPlate.setBounds(444, 77, 185, 20);
-				textFieldNumPlate.setColumns(10);
+				textFieldNumPlate.setBounds(170, 71, 185, 20);
 				panelAddCars.add(textFieldNumPlate);
+				textFieldNumPlate.setColumns(10);
 				
 				JLabel labelBrand = new JLabel(controller.getResourcebundle().getString("brand"));
-				labelBrand.setBounds(329, 131, 98, 14);
+				labelBrand.setBounds(55, 125, 98, 14);
 				panelAddCars.add(labelBrand);
 				
 				textFieldBrand = new JTextField();
-				textFieldBrand.setBounds(444, 125, 185, 20);
-				textFieldBrand.setColumns(10);
+				textFieldBrand.setBounds(170, 119, 185, 20);
 				panelAddCars.add(textFieldBrand);
+				textFieldBrand.setColumns(10);
 				
 				JLabel labelModel = new JLabel(controller.getResourcebundle().getString("model"));
-				labelModel.setBounds(329, 173, 98, 14);
+				labelModel.setBounds(55, 167, 98, 14);
 				panelAddCars.add(labelModel);
 				
 				textFieldModel = new JTextField();
-				textFieldModel.setBounds(444, 170, 185, 20);
-				textFieldModel.setColumns(10);
+				textFieldModel.setBounds(170, 164, 185, 20);
 				panelAddCars.add(textFieldModel);
+				textFieldModel.setColumns(10);
 				
 				JLabel labelGarage = new JLabel(controller.getResourcebundle().getString("garage"));
-				labelGarage.setBounds(329, 222, 98, 14);
+				labelGarage.setBounds(55, 216, 98, 14);
 				panelAddCars.add(labelGarage);
 				
 				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(444, 219, 186, 20);
-				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
+				comboBox.setBounds(170, 213, 186, 20);
 				panelAddCars.add(comboBox);
+				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
-				labelPricePerDsy.setBounds(329, 277, 98, 14);
+				labelPricePerDsy.setBounds(55, 271, 98, 14);
 				panelAddCars.add(labelPricePerDsy);
-				
-				
-				textFieldPpd.setBounds(446, 274, 183, 20);
-				textFieldPpd.setColumns(10);
+				textFieldPpd.setBounds(172, 268, 183, 20);
 				panelAddCars.add(textFieldPpd);
+				textFieldPpd.setColumns(10);
 				
 				JButton buttonAdd = new JButton(controller.getResourcebundle().getString("add"));
-				buttonAdd.setBounds(540, 329, 89, 23);
+				buttonAdd.setBounds(266, 323, 89, 23);
+				panelAddCars.add(buttonAdd);
+				
+				JPanel panelRemoveCars= new JPanel();
+				panelRemoveCars.setBounds(494, 33, 621, 408);
+				panelManageCars.add(panelRemoveCars);
+				panelRemoveCars.setLayout(null);
+				
+				
+				JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
+				labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				labelRemoveCars.setBounds(114, 38, 209, 24);
+				panelRemoveCars.add(labelRemoveCars);
+				
+				JScrollPane scrollPaneRemoveCars = new JScrollPane();
+				scrollPaneRemoveCars.setBounds(30, 72, 556, 237);
+				panelRemoveCars.add(scrollPaneRemoveCars);
+				
+				tableRemoveCars = new JTable();
+				tableRemoveCars.setShowVerticalLines(false);
+				tableRemoveCars.setModel(new DefaultTableModel(
+					new Object[][] {
+					},
+					new String[] {
+						controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
+					}
+				) {
+					boolean[] columnEditableRemoveCarss = new boolean[] {
+						false, false, false, false, false
+					};
+					@SuppressWarnings("unused")
+					public boolean isCellEditableRemoveCars(int row, int column) {
+						return columnEditableRemoveCarss[column];
+					}
+				});
+				tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
+				DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
+				ArrayList<Car> cars = controller.getAllCars();
+		
+			        Object rowRemoveCars[] = new Object[5];
+			        for(int i = 0; i < cars.size(); i++)
+			        {
+			        	rowRemoveCars[0] = cars.get(i).getNumPlate();
+			        	rowRemoveCars[1] = cars.get(i).getBrand();	      
+			        	rowRemoveCars[2] = cars.get(i).getGarage();
+			        	rowRemoveCars[3] = cars.get(i).getModel();
+			        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
+			            modelRemoveCars.addRow(rowRemoveCars);
+			        }
+				scrollPaneRemoveCars.setViewportView(tableRemoveCars);
+				
+				JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
+				buttonRemoveCar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						if(tableRemoveCars.getSelectedRow()!=-1) {
+							try {
+								controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
+							} catch (RemoteException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							cars.remove(tableRemoveCars.getSelectedRow());
+							modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
+							modelRemoveCars.fireTableDataChanged();
+							tableRemoveCars.addNotify();
+						}
+						else {
+							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				});
+				buttonRemoveCar.setBounds(422, 358, 164, 23);
+				panelRemoveCars.add(buttonRemoveCar);
+				
+				
+				
 				buttonAdd.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -246,6 +325,7 @@ public class StaffPanelGUI extends JFrame {
 						}
 						if(allOK) {
 								try {
+									JOptionPane.showConfirmDialog(null, "Car added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 									controller.getLogger().debug("Added car" + controller.getCar(textFieldNumPlate.getText()).toString());
 								} catch (RemoteException e1) {
@@ -255,78 +335,113 @@ public class StaffPanelGUI extends JFrame {
 						}
 					}
 				});
-				panelAddCars.add(buttonAdd);
 
 
 		
-		JPanel panelRemoveCars = new JPanel();
-		tabbedPane.addTab(controller.getResourcebundle().getString("remove_cars"), null, panelRemoveCars, null);
-		panelRemoveCars.setLayout(null);
+//		JPanel panelRemoveCars = new JPanel();
+//		tabbedPane.addTab(controller.getResourcebundle().getString("remove_cars"), null, panelRemoveCars, null);
+//		panelRemoveCars.setLayout(null);
+//		
+//		JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
+//		labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+//		labelRemoveCars.setBounds(487, 33, 209, 24);
+//		panelRemoveCars.add(labelRemoveCars);
+//		
+//		JScrollPane scrollPaneRemoveCars = new JScrollPane();
+//		scrollPaneRemoveCars.setBounds(252, 82, 556, 237);
+//		panelRemoveCars.add(scrollPaneRemoveCars);
+//		
+//		tableRemoveCars = new JTable();
+//		tableRemoveCars.setShowVerticalLines(false);
+//		tableRemoveCars.setModel(new DefaultTableModel(
+//			new Object[][] {
+//			},
+//			new String[] {
+//				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
+//			}
+//		) {
+//			boolean[] columnEditableRemoveCarss = new boolean[] {
+//				false, false, false, false, false
+//			};
+//			@SuppressWarnings("unused")
+//			public boolean isCellEditableRemoveCars(int row, int column) {
+//				return columnEditableRemoveCarss[column];
+//			}
+//		});
+//		tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
+//		DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
+//		ArrayList<Car> cars = controller.getAllCars();
+//
+//	        Object rowRemoveCars[] = new Object[5];
+//	        for(int i = 0; i < cars.size(); i++)
+//	        {
+//	        	rowRemoveCars[0] = cars.get(i).getNumPlate();
+//	        	rowRemoveCars[1] = cars.get(i).getBrand();	      
+//	        	rowRemoveCars[2] = cars.get(i).getGarage();
+//	        	rowRemoveCars[3] = cars.get(i).getModel();
+//	        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
+//	            modelRemoveCars.addRow(rowRemoveCars);
+//	        }
+//		scrollPaneRemoveCars.setViewportView(tableRemoveCars);
+//		
+//		JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
+//		buttonRemoveCar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				if(tableRemoveCars.getSelectedRow()!=-1) {
+//					try {
+//						controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
+//					} catch (RemoteException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//					cars.remove(tableRemoveCars.getSelectedRow());
+//					modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
+//					modelRemoveCars.fireTableDataChanged();
+//					tableRemoveCars.addNotify();
+//				}
+//				else {
+//					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+//				}
+//			}
+//		});
+//		buttonRemoveCar.setBounds(700, 341, 108, 23);
+//		panelRemoveCars.add(buttonRemoveCar);
 		
-		JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
-		labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		labelRemoveCars.setBounds(487, 33, 209, 24);
-		panelRemoveCars.add(labelRemoveCars);
+		JPanel panelManageGarages = new JPanel();
+		tabbedPane.addTab("Garage Management", null, panelManageGarages, null);
+		panelManageGarages.setLayout(null);
 		
-		JScrollPane scrollPaneRemoveCars = new JScrollPane();
-		scrollPaneRemoveCars.setBounds(252, 82, 556, 237);
-		panelRemoveCars.add(scrollPaneRemoveCars);
+		JPanel panelAddGarage = new JPanel();
+		panelAddGarage.setBounds(102, 84, 384, 213);
+		panelManageGarages.add(panelAddGarage);
+		panelAddGarage.setLayout(null);
 		
-		tableRemoveCars = new JTable();
-		tableRemoveCars.setShowVerticalLines(false);
-		tableRemoveCars.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
-			}
-		) {
-			boolean[] columnEditableRemoveCarss = new boolean[] {
-				false, false, false, false, false
-			};
-			@SuppressWarnings("unused")
-			public boolean isCellEditableRemoveCars(int row, int column) {
-				return columnEditableRemoveCarss[column];
+		JLabel lblAddNewGarages = new JLabel("Add a new garage");
+		lblAddNewGarages.setBounds(110, 22, 232, 24);
+		panelAddGarage.add(lblAddNewGarages);
+		lblAddNewGarages.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		
+		textField = new JTextField();
+		textField.setBounds(162, 82, 156, 20);
+		panelAddGarage.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblLocation = new JLabel("Location");
+		lblLocation.setBounds(79, 85, 73, 14);
+		panelAddGarage.add(lblLocation);
+		
+		JButton btnNewButton = new JButton("Add garage");
+		btnNewButton.setBounds(267, 137, 89, 23);
+		panelAddGarage.add(btnNewButton);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
-		DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
-		ArrayList<Car> cars = controller.getAllCars();
-
-	        Object rowRemoveCars[] = new Object[5];
-	        for(int i = 0; i < cars.size(); i++)
-	        {
-	        	rowRemoveCars[0] = cars.get(i).getNumPlate();
-	        	rowRemoveCars[1] = cars.get(i).getBrand();	      
-	        	rowRemoveCars[2] = cars.get(i).getGarage();
-	        	rowRemoveCars[3] = cars.get(i).getModel();
-	        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
-	            modelRemoveCars.addRow(rowRemoveCars);
-	        }
-		scrollPaneRemoveCars.setViewportView(tableRemoveCars);
-		
-		JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
-		buttonRemoveCar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(tableRemoveCars.getSelectedRow()!=-1) {
-					try {
-						controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					cars.remove(tableRemoveCars.getSelectedRow());
-					modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
-					modelRemoveCars.fireTableDataChanged();
-					tableRemoveCars.addNotify();
-				}
-				else {
-					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-				}
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		buttonRemoveCar.setBounds(700, 341, 108, 23);
-		panelRemoveCars.add(buttonRemoveCar);
 		
 		if(staffType.equalsIgnoreCase("employee")) {
 			// Disable the tab

@@ -219,12 +219,12 @@ public class Controller{
 	}
 	
 	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
-		boolean numPlateOK= false;
+		boolean numPlateOK= true;
 		ArrayList<String> numPlates= new ArrayList<>();
 		numPlates= this.getAllNumPlates();
 		for(String nP : numPlates){
 			if(nP.equalsIgnoreCase(numPlate)) {
-				numPlateOK=true;
+				numPlateOK=false;
 			}
 		}
 		return numPlateOK;
