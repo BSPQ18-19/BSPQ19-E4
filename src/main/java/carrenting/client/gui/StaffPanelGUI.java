@@ -89,17 +89,17 @@ public class StaffPanelGUI extends JFrame {
 		
 		frame.setContentPane(contentPane);
 		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
-		btnReturnToStartpage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				try {
-					new WelcomeGUI(controller, rent);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
+//		btnReturnToStartpage.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				frame.dispose();
+//				try {
+//					new WelcomeGUI(controller, rent);
+//				} catch (RemoteException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//			}
+//		});
 		btnReturnToStartpage.setBounds(805, 525, 332, 23);
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
