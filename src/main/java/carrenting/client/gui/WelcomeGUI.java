@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
@@ -48,6 +49,7 @@ public class WelcomeGUI extends JFrame {
 	private Rent rent;
 	private JDateChooser dateChooserFinish = new JDateChooser();
 	private JDateChooser dateChooserStart = new JDateChooser();
+	private JComboBox languageComboBox;
 	
 
 	public WelcomeGUI(Controller controller, Rent rent) throws RemoteException{
@@ -56,7 +58,26 @@ public class WelcomeGUI extends JFrame {
 		initialize();
 		welcomeFrame.setVisible(true);
 		//initComponents(); (descomentar con lo de abajo(alternativa para el tema del idioma))
+		ComboOption option1 = new ComboOption("English", "en");
+		ComboOption option2 = new ComboOption("Español", "es");
+		ComboOption option3 = new ComboOption("Euskara", "eu");
+		languageComboBox.addItem(option1);
+		languageComboBox.addItem(option2);
+		languageComboBox.addItem(option3);
 		
+		final Locale english = new Locale("en_EU");
+		final Locale español = new Locale("es_ES");
+		final Locale euskara = new Locale("eu_ES");
+		
+		Locale.setDefault(Locale.getDefault());
+		if(Locale.getDefault().equals(english)){
+			languageComboBox.setSelectedItem(option1);
+		}else if(Locale.getDefault().equals(español)){
+			languageComboBox.setSelectedItem(option2);
+		}else{
+			languageComboBox.setSelectedItem(option3);
+		}
+	
 	}
 	
 
@@ -234,6 +255,28 @@ public class WelcomeGUI extends JFrame {
 		});
 		chckbxSameGarage.setBounds(598, 129, 145, 37);
 		contentPane.add(chckbxSameGarage);
+		
+		//JComboBox LanguagecomboBox = new JComboBox();
+		languageComboBox.setBounds(173,55,28,20);
+		contentPane.add(languageComboBox);
+		languageComboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+//				if(languageComboBox.getSelectedItem().toString().equals("English")){
+//					Locale.setDefault(english);
+//				}else if(languageComboBox.getSelectedItem().toString().equals("Español")){
+//					Locale.setDefault(español);
+//				}else{
+//					Locale.setDefault(euskara);
+//				}
+			}
+		});
+		
+		JLabel lblSelectLanguage = new JLabel("Select language");
+		lblSelectLanguage.setBounds(88, 58, 86, 14);
+		contentPane.add(lblSelectLanguage);
 
 
 	}
