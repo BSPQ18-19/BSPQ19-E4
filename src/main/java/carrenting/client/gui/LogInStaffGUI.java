@@ -94,7 +94,7 @@ public class LogInStaffGUI extends JFrame {
 					type = "employee";
 				
 				try {
-					if(controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type)) {
+						controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type);
 						frame.dispose();
 						try {
 							new StaffPanelGUI(controller,type,rent);
@@ -102,11 +102,10 @@ public class LogInStaffGUI extends JFrame {
 							e1.printStackTrace();
 						}
 						controller.getLogger().info(controller.getResourcebundle().getString("staff_login_successful"));
-					}else {
-						controller.getLogger().info(controller.getResourcebundle().getString("login_unsuccessful"));
-					}
+					
 				} catch (RemoteException e1) {
 					
+					controller.getLogger().info(controller.getResourcebundle().getString("login_unsuccessful"));
 					e1.printStackTrace();
 				}		
 				

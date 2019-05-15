@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.jdo.JDOHelper;
@@ -92,6 +93,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
             tx.rollback();
         }
         pm.close();
+	}
+
+	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+			String garageDestination, String paymentSystem, double totalPrice) throws RemoteException {
+		DataDAO.getInstance().storeRent(userId,  numberPlate,  startingDate,  finishingDate,  garageOrigin,
+				 garageDestination,  paymentSystem,  totalPrice);
+		
 	}
 
 

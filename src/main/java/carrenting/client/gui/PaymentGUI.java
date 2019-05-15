@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -133,10 +135,18 @@ public class PaymentGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(paymentType.equalsIgnoreCase("paypal")) {
 					if(textFieldEmail.getText().equals("")|| textFieldPassword.getText().equals("")) {
-						JOptionPane.showConfirmDialog(null, "All fields must be filled", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						rent.setPaymentSystem(paymentType);
+						try {
+							controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
+							System.out.println(rent);
+
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						controller.getLogger().debug(rent.toString());
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
@@ -147,6 +157,12 @@ public class PaymentGUI extends JFrame {
 					else {
 						rent.setPaymentSystem(paymentType);
 						controller.getLogger().debug(rent.toString());
+						try {
+							controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
+						} catch (RemoteException e) {
+							e.printStackTrace();
+						}
+						System.out.println(rent);
 					}
 				}
 			}
