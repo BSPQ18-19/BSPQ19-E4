@@ -200,8 +200,10 @@ public class StaffPanelGUI extends JFrame {
 				JComboBox comboBoxGarages = new JComboBox();
 				comboBoxGarages.setBounds(170, 213, 186, 20);
 				panelAddCars.add(comboBoxGarages);
-				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
-				DefaultComboBoxModel modelListGarages = (DefaultComboBoxModel) comboBoxGarages.getModel();
+//				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
+//				DefaultComboBoxModel modelListGarages = (DefaultComboBoxModel) comboBoxGarages.getModel();
+				DefaultComboBoxModel comboBoxGaragesModel= new DefaultComboBoxModel(garages.toArray());
+				comboBoxGarages.setModel(comboBoxGaragesModel);
 //				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
@@ -293,7 +295,7 @@ public class StaffPanelGUI extends JFrame {
 					public void mouseClicked(MouseEvent e) {
 						allOK=true;
 						try {
-							if(!controller.checkExistingNumPlate(textFieldNumPlate.getText())){
+							if(!controller.numberPlateAvailable(textFieldNumPlate.getText())){
 								JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("number_plate_exists"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 								allOK=false;
 							}
@@ -377,26 +379,23 @@ public class StaffPanelGUI extends JFrame {
 					//TODO
 					JOptionPane.showConfirmDialog(null, "You must enter a location", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					allGaragesOk=false;
-					try {
-						if(!controller.checkExistingGarage(textFieldLocation.getText())) {
-							System.out.println("aaaaaaaaaaa");
-							allGaragesOk=false;
-						}
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+				}
+				try {
+					if(!controller.newGarageAvailable(textFieldLocation.getText())){
+						//TODO
+						JOptionPane.showConfirmDialog(null, "This garage already exists, you can't add an already existing garage", "Error", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						allGaragesOk=false;
 					}
-
-				
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}if(allGaragesOk) {
 					try {
 						controller.storeGarage(textFieldLocation.getText());
 						//TODO
 						JOptionPane.showConfirmDialog(null, "Garage added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
-						ArrayList<String> garages= controller.getGarages();
-						for (String g : garages) {
-							System.out.println(g);
-						}
+						comboBoxGaragesModel.notify();
+						
 						//TODO  Que en el tab de añadir coches aparezca el nuevo garage
 						
 					} catch (RemoteException e1) {
