@@ -15,8 +15,11 @@ import carrenting.server.CarRenting;
 import carrenting.server.ICarRenting;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
+import carrenting.server.jdo.Rent;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import junit.framework.JUnit4TestAdapter;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +28,9 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
@@ -119,6 +125,32 @@ public class Tests {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
 	}
 	
+	@Test
+	public void testLoginStaffError() throws RemoteException {
+		assertFalse(c.loginStaff("admin1", "admin3", "administrator"));
+	}
+	
+	@Test 
+	public void testStoreRent() throws RemoteException {
+		Date datePast5=new GregorianCalendar(2017, Calendar.JUNE, 11).getTime();
+		Date datePast2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
+		
+		Rent rent = new Rent("12005678A", "0352HTQ", datePast5, datePast2, "Madrid", "Bilbao", "paypal", 500);
+		
+		c.storeRent("12005678A", "0352HTQ", datePast5, datePast2, "Madrid", "Bilbao", "paypal", 500);
+		
+		ArrayList<Rent> rents = c.getRents();
+		for(Rent r: rents) {
+			if(r.equals(rent)) {
+				assert(true);
+			}
+		}
+	}
+	
+	@Test
+	public void testRegisterUser() throws RemoteException {
+		c.register("alvaroh");
+	}
 	
 	@Test
 	@PerfTest(duration = 2000)
@@ -146,6 +178,16 @@ public class Tests {
 		
 		assert(a);
 		
+	}
+	
+	@Test
+	public void checkExistingGarageTrueTest() throws RemoteException {
+		assertFalse(c.checkExistingGarage("Bilbao"));
+	}
+	
+	@Test
+	public void checkExistingGarageFalseTest() throws RemoteException {
+		assert(c.checkExistingGarage("Sevilla"));
 	}
 	
 	@Test
@@ -180,12 +222,19 @@ public class Tests {
 		Car storedCar = new Car("Vitoria", "5678ASD", "Citroen", "C3", 40);
 		c.storeCar(storedCar.getGarage(), storedCar.getNumPlate(), storedCar.getBrand(), storedCar.getModel(), storedCar.getPricePerDay());
 		
-		System.out.println(c.checkExistingNumPlate("5678ASD"));
 		assert(c.checkExistingNumPlate("5678ASD"));
 	
 	}
 	
+	@Test
+	public void testErrorGetCars() throws RemoteException {
+		
+		c.getCars("Sevilla");
+	}
 	
+	
+	
+
 	@Test
 	@PerfTest(duration = 2000)
 	@Required(max = 3000, average = 3000)
@@ -199,13 +248,13 @@ public class Tests {
 		result[3][0] = "Vitoria";
 		
 		result[0][1] = 0;
-		result[1][1] = 10;
-		result[2][1] = 4;
+		result[1][1] = 9;
+		result[2][1] = 5;
 		result[3][1] = 0;
 		
 		result[0][2] = 7;
-		result[1][2] = 4;
-		result[2][2] = 3;
+		result[1][2] = 5;
+		result[2][2] = 2;
 		result[3][2] = 0;
 		
 		Object[][] garagePopularity = c.garageOriginPopularity();

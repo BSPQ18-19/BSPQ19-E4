@@ -360,17 +360,24 @@ public class Controller{
 	 * @throws RemoteException
 	 */
 	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
-		boolean numPlateOK= true;
+		boolean numPlateOK= false;
 		ArrayList<String> numPlates= new ArrayList<>();
 		numPlates= this.getAllNumPlates();
+		
 		for(String nP : numPlates){
-			if(nP.equals(numPlate)) {
-				numPlateOK=false;
+			if(nP.equalsIgnoreCase(numPlate)) {
+				numPlateOK=true;
 			}
 		}
 		return numPlateOK;
 	}
 	
+	/**
+	 * Checks if a Garage already exists
+	 * @param Location Location of the garage
+	 * @return Returns true if it isn't a coincidence
+	 * @throws RemoteException
+	 */
 	public boolean checkExistingGarage(String location) throws RemoteException {
 		boolean locationOK= true;
 		ArrayList<String> locations= new ArrayList<>();

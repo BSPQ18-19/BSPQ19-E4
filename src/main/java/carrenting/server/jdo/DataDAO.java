@@ -68,7 +68,6 @@ public class DataDAO{
 		
 		storeCar("Barcelona","8765BCN","Volvo", "XC60", 50);
 		//Hystorical rents
-		storeRent("12005678A", "0352HTQ",datePast5,datePast2,garage3.getLocation(), garage1.getLocation(), "paypal", 500);
 		storeRent("12349578B", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "paypal", 500);
 		storeRent("12365678A", "1234QWE",datePast6,datePast5,garage1.getLocation(), garage2.getLocation(), "paypal", 500);
 		storeRent("12365678A", "0252HJH",datePast7,datePast3,garage3.getLocation(), garage2.getLocation(), "paypal", 500);
@@ -295,35 +294,40 @@ public class DataDAO{
 	
 	/**
 	 * Asks the DB of the list of cars in a garage
-	 * @param garage Nme of the garage
+	 * @param garage Name of the garage
 	 * @return List of cars in the given garage
 	 */
+	@SuppressWarnings("unchecked")
 	public ArrayList<Car> getCars(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
+		ArrayList<Car> carsByGarage = new ArrayList<>();
+		
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
 			query.setFilter("garage=='" + garage + "'");
-			@SuppressWarnings("unchecked")
-			ArrayList<Car> carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
+	
+			carsByGarage = new ArrayList<Car>((List<Car>) query.execute());
+			
 			tx.commit();
 			for(Car car: carsByGarage) {
 				CarRenting.getLogger().debug(car.toString());
 			}
-			return carsByGarage;
+			
 			
 		} catch (Exception ex) {
 			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
-			
+			return null;
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
 			CarRenting.getLogger().debug("GETTING CARS");
 			pm.close();
+			
 		}
-		return null;
+		return carsByGarage;
 	}
 	
 	/**

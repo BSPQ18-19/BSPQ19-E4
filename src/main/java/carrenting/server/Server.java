@@ -15,8 +15,6 @@ import carrenting.server.jdo.DataDAO;
 
 public class Server{
 	
-
-
 	public static void main(String[] args) throws IOException {
 		Logger logger = LoggerFactory.getLogger(Server.class);
 		

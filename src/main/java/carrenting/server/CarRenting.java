@@ -142,12 +142,12 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	/**
 	 * Finishes the connection with the DB
 	 */
-	protected void finalize() throws Throwable {
-		if (tx.isActive()) {
-            tx.rollback();
-        }
-        pm.close();
-	}
+//	protected void finalize() throws Throwable {
+//		if (tx.isActive()) {
+//            tx.rollback();
+//        }
+//        pm.close();
+//	}
 
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
 			String garageDestination, String paymentSystem, double totalPrice) throws RemoteException {
