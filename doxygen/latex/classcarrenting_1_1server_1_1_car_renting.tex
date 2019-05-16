@@ -1,0 +1,177 @@
+\hypertarget{classcarrenting_1_1server_1_1_car_renting}{}\section{carrenting.\+server.\+Car\+Renting Class Reference}
+\label{classcarrenting_1_1server_1_1_car_renting}\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+Inheritance diagram for carrenting.\+server.\+Car\+Renting\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classcarrenting_1_1server_1_1_car_renting}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_aeb9f1491df8b5dd6b9a9c20a8a255fec}{Car\+Renting}} ()  throws Remote\+Exception 
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a00e1951eeaff747c8a601d586b3fb8e9}{store\+Garage}} (String location)
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a65886cbac0c23f1dd39c1b2bf5daec25}{get\+Garages}} ()  throws Remote\+Exception
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a4a562c581946a77d814f10ee7c53b3f5}{store\+Car}} (String garage, String number\+Plate, String brand, String model, double price\+Per\+Day)
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_ab4f8e49f619868d8665ddb1fed45e398}{delete\+Car}} (String number\+Plate)  throws Remote\+Exception 
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_ad1b784e2383f3c5ea6de3783fe4306f7}{delete\+Garage}} (String garage)  throws Remote\+Exception
+\item 
+boolean \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a99b2a341e48a7270ae5ee51d8ac4414c}{login\+Staff}} (String user, String password, String type)  throws Remote\+Exception
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_ae378b81a5c614b66474e89c26c513cb7}{register\+User}} (String username)  throws Remote\+Exception
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a11dd014dde29a6d25450e6269ddb78c7}{get\+Cars}} (String garage)  throws Remote\+Exception 
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_a7f49dd67da8352a564161f9a164523cf}{get\+Car}} (String num\+Plate)  throws Remote\+Exception
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}} $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_aa888e82a1c7d54b10c1e2d8b02b5a363}{get\+Rents}} ()  throws Remote\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Logger \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_ab6247bc987fa497393e8db651849f845}{get\+Logger}} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting_ae7f5b4e17063c96ae0d81b230f79f549}{finalize}} ()  throws Throwable 
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_aeb9f1491df8b5dd6b9a9c20a8a255fec}\label{classcarrenting_1_1server_1_1_car_renting_aeb9f1491df8b5dd6b9a9c20a8a255fec}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!CarRenting@{CarRenting}}
+\index{CarRenting@{CarRenting}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{CarRenting()}{CarRenting()}}
+{\footnotesize\ttfamily carrenting.\+server.\+Car\+Renting.\+Car\+Renting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Initializes \mbox{\hyperlink{classcarrenting_1_1server_1_1_car_renting}{Car\+Renting}} 
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_ab4f8e49f619868d8665ddb1fed45e398}\label{classcarrenting_1_1server_1_1_car_renting_ab4f8e49f619868d8665ddb1fed45e398}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+delete\+Car (\begin{DoxyParamCaption}\item[{String}]{number\+Plate }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_ac3730576a7df8ac11f89d1cc9ad4158a}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_ad1b784e2383f3c5ea6de3783fe4306f7}\label{classcarrenting_1_1server_1_1_car_renting_ad1b784e2383f3c5ea6de3783fe4306f7}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!deleteGarage@{deleteGarage}}
+\index{deleteGarage@{deleteGarage}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{deleteGarage()}{deleteGarage()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+delete\+Garage (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a962ebc71ee856ffdda808876d3a26e79}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_ae7f5b4e17063c96ae0d81b230f79f549}\label{classcarrenting_1_1server_1_1_car_renting_ae7f5b4e17063c96ae0d81b230f79f549}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!finalize@{finalize}}
+\index{finalize@{finalize}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Throwable\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a7f49dd67da8352a564161f9a164523cf}\label{classcarrenting_1_1server_1_1_car_renting_a7f49dd67da8352a564161f9a164523cf}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!getCar@{getCar}}
+\index{getCar@{getCar}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{getCar()}{getCar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} carrenting.\+server.\+Car\+Renting.\+get\+Car (\begin{DoxyParamCaption}\item[{String}]{num\+Plate }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_aa4d89c769e75b73df2a85805ea90bb49}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a11dd014dde29a6d25450e6269ddb78c7}\label{classcarrenting_1_1server_1_1_car_renting_a11dd014dde29a6d25450e6269ddb78c7}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!getCars@{getCars}}
+\index{getCars@{getCars}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{getCars()}{getCars()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}}$>$ carrenting.\+server.\+Car\+Renting.\+get\+Cars (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_aeaa26a483ce5e53faab84b0e3be0f7c9}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a65886cbac0c23f1dd39c1b2bf5daec25}\label{classcarrenting_1_1server_1_1_car_renting_a65886cbac0c23f1dd39c1b2bf5daec25}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!getGarages@{getGarages}}
+\index{getGarages@{getGarages}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{getGarages()}{getGarages()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ carrenting.\+server.\+Car\+Renting.\+get\+Garages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a3192598ccc120a739ca168df03c23681}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_ab6247bc987fa497393e8db651849f845}\label{classcarrenting_1_1server_1_1_car_renting_ab6247bc987fa497393e8db651849f845}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!getLogger@{getLogger}}
+\index{getLogger@{getLogger}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{getLogger()}{getLogger()}}
+{\footnotesize\ttfamily static Logger carrenting.\+server.\+Car\+Renting.\+get\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_aa888e82a1c7d54b10c1e2d8b02b5a363}\label{classcarrenting_1_1server_1_1_car_renting_aa888e82a1c7d54b10c1e2d8b02b5a363}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!getRents@{getRents}}
+\index{getRents@{getRents}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{getRents()}{getRents()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}}$>$ carrenting.\+server.\+Car\+Renting.\+get\+Rents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a314ae8f7230cca5469932eb3034d5c49}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a99b2a341e48a7270ae5ee51d8ac4414c}\label{classcarrenting_1_1server_1_1_car_renting_a99b2a341e48a7270ae5ee51d8ac4414c}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!loginStaff@{loginStaff}}
+\index{loginStaff@{loginStaff}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{loginStaff()}{loginStaff()}}
+{\footnotesize\ttfamily boolean carrenting.\+server.\+Car\+Renting.\+login\+Staff (\begin{DoxyParamCaption}\item[{String}]{user,  }\item[{String}]{password,  }\item[{String}]{type }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_affb9a568ddfe7cd2712f367c38e0e432}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_ae378b81a5c614b66474e89c26c513cb7}\label{classcarrenting_1_1server_1_1_car_renting_ae378b81a5c614b66474e89c26c513cb7}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!registerUser@{registerUser}}
+\index{registerUser@{registerUser}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{registerUser()}{registerUser()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+register\+User (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a2cc1d35537a158a56fcc8315ab18af77}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a4a562c581946a77d814f10ee7c53b3f5}\label{classcarrenting_1_1server_1_1_car_renting_a4a562c581946a77d814f10ee7c53b3f5}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!storeCar@{storeCar}}
+\index{storeCar@{storeCar}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{storeCar()}{storeCar()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+store\+Car (\begin{DoxyParamCaption}\item[{String}]{garage,  }\item[{String}]{number\+Plate,  }\item[{String}]{brand,  }\item[{String}]{model,  }\item[{double}]{price\+Per\+Day }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a45afd537059a13920f8ed9f91865b871}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1_car_renting_a00e1951eeaff747c8a601d586b3fb8e9}\label{classcarrenting_1_1server_1_1_car_renting_a00e1951eeaff747c8a601d586b3fb8e9}} 
+\index{carrenting.server.CarRenting@{carrenting.server.CarRenting}!storeGarage@{storeGarage}}
+\index{storeGarage@{storeGarage}!carrenting.server.CarRenting@{carrenting.server.CarRenting}}
+\subsubsection{\texorpdfstring{storeGarage()}{storeGarage()}}
+{\footnotesize\ttfamily void carrenting.\+server.\+Car\+Renting.\+store\+Garage (\begin{DoxyParamCaption}\item[{String}]{location }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interfacecarrenting_1_1server_1_1_i_car_renting_a2a6b576363c023ef94615f58d7305222}{carrenting.\+server.\+I\+Car\+Renting}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/carrenting/server/\mbox{\hyperlink{_car_renting_8java}{Car\+Renting.\+java}}\end{DoxyCompactItemize}

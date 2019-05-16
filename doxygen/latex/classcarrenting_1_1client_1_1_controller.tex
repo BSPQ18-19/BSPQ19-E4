@@ -1,0 +1,460 @@
+\hypertarget{classcarrenting_1_1client_1_1_controller}{}\section{carrenting.\+client.\+Controller Class Reference}
+\label{classcarrenting_1_1client_1_1_controller}\index{carrenting.client.Controller@{carrenting.client.Controller}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a54c511ae5355b24a7215c181cefb1846}{Controller}} (String\mbox{[}$\,$\mbox{]} args)  throws Remote\+Exception, Malformed\+U\+R\+L\+Exception, Not\+Bound\+Exception
+\item 
+\mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_aa2cbbf30110eecbf9cb7dd0a57cc8a4c}{Controller}} (String ip, String port, String service\+Name)  throws Malformed\+U\+R\+L\+Exception, Remote\+Exception, Not\+Bound\+Exception 
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_ab6ddf6da22a98db5fe72e2c4b19c70d0}{store\+Garage}} (String location)  throws Remote\+Exception 
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a41f7110cdb9a72be3de30b5ddd7ac8e3}{delete\+Garage}} (String garage)  throws Remote\+Exception 
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a38355c55fd14b445cbc7e420a5c36fa7}{get\+Garages}} ()  throws Remote\+Exception
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a1e9a90a7164b6a988e23d77ecf39eea9}{get\+Cars}} (String garage)  throws Remote\+Exception
+\item 
+boolean \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_ae1141f30035d8d32ec22db92b3710f8c}{login\+Staff}} (String user, String password, String type)  throws Remote\+Exception 
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a642d9b66b13dcba6c1843c0bee2f060e}{register}} (String username)  throws Remote\+Exception 
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}} $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a4ba12c757900989ed2755f9924410a4b}{get\+Rents}} ()  throws Remote\+Exception 
+\item 
+int \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_adf3e50eccb845807f36a476e870717c8}{days\+Between}} (Date d1, Date d2)
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a267c24a1a13732839f548cddfe640f09}{store\+Car}} (String garage, String number\+Plate, String brand, String model, double price\+Per\+Day)  throws Remote\+Exception
+\item 
+void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_acd2c7f2a6a74dd480004505b53d3a42e}{delete\+Car}} (String number\+Plate)  throws Remote\+Exception 
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_ae306f94b15ad4b3869d13ce8f6c46d45}{get\+Car}} (String num\+Plate)  throws Remote\+Exception
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a3198f90f6563c389e1f22e52a925ee5d}{get\+All\+Cars}} ()  throws Remote\+Exception
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a2a1f2139f9682b3c1215798216bee256}{get\+All\+Num\+Plates}} ()  throws Remote\+Exception
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a7131927c67ed8afaed347d3090c0e08b}{garages\+With\+Cars}} ()  throws Remote\+Exception
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a80d021acb8be8a60823c3da433f5495f}{get\+Cars\+Available}} (String garage\+Origin, Date starting\+Date, Date finishing\+Date)  throws Remote\+Exception
+\item 
+Object \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a26fcc1a9b0108dc2283436a34db76c30}{garage\+Origin\+Popularity}} ()  throws Remote\+Exception
+\item 
+boolean \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a4bd3a1876779b6547d6a56d00de92067}{check\+Existing\+Num\+Plate}} (String num\+Plate)  throws Remote\+Exception 
+\item 
+Logger \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a34a0edf53b5204f26b1a39ff4d8fa316}{get\+Logger}} ()
+\item 
+Resource\+Bundle \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_a02bfa40e18727766ed66076119d95cc3}{get\+Resourcebundle}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcarrenting_1_1client_1_1_controller_acff3740c4a8e0d3788748ac27206b371}{main}} (String\mbox{[}$\,$\mbox{]} args)  throws Remote\+Exception, Malformed\+U\+R\+L\+Exception, Not\+Bound\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a54c511ae5355b24a7215c181cefb1846}\label{classcarrenting_1_1client_1_1_controller_a54c511ae5355b24a7215c181cefb1846}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{Controller()}{Controller()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily carrenting.\+client.\+Controller.\+Controller (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption}) throws Remote\+Exception, Malformed\+U\+R\+L\+Exception, Not\+Bound\+Exception}
+
+Calls the main constructor of the controller class. Sets the Locale variable and the Service Locator. Finally, starts the G\+UI
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & IP, Port Name of the server and Locale \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+{\em Malformed\+U\+R\+L\+Exception} & \\
+\hline
+{\em Not\+Bound\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_aa2cbbf30110eecbf9cb7dd0a57cc8a4c}\label{classcarrenting_1_1client_1_1_controller_aa2cbbf30110eecbf9cb7dd0a57cc8a4c}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{Controller()}{Controller()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily carrenting.\+client.\+Controller.\+Controller (\begin{DoxyParamCaption}\item[{String}]{ip,  }\item[{String}]{port,  }\item[{String}]{service\+Name }\end{DoxyParamCaption}) throws Malformed\+U\+R\+L\+Exception, Remote\+Exception, Not\+Bound\+Exception}
+
+Other Constructor for when using tests.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & IP address of the server \\
+\hline
+{\em port} & Port of the server \\
+\hline
+{\em service\+Name} & Name of the server \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Malformed\+U\+R\+L\+Exception} & \\
+\hline
+{\em Remote\+Exception} & \\
+\hline
+{\em Not\+Bound\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a4bd3a1876779b6547d6a56d00de92067}\label{classcarrenting_1_1client_1_1_controller_a4bd3a1876779b6547d6a56d00de92067}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!checkExistingNumPlate@{checkExistingNumPlate}}
+\index{checkExistingNumPlate@{checkExistingNumPlate}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{checkExistingNumPlate()}{checkExistingNumPlate()}}
+{\footnotesize\ttfamily boolean carrenting.\+client.\+Controller.\+check\+Existing\+Num\+Plate (\begin{DoxyParamCaption}\item[{String}]{num\+Plate }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Checks if a number plate already exists
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Plate} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True of the number plate doesn\textquotesingle{}t exist, False if otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_adf3e50eccb845807f36a476e870717c8}\label{classcarrenting_1_1client_1_1_controller_adf3e50eccb845807f36a476e870717c8}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!daysBetween@{daysBetween}}
+\index{daysBetween@{daysBetween}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{daysBetween()}{daysBetween()}}
+{\footnotesize\ttfamily int carrenting.\+client.\+Controller.\+days\+Between (\begin{DoxyParamCaption}\item[{Date}]{d1,  }\item[{Date}]{d2 }\end{DoxyParamCaption})}
+
+Calculates the days between the 2 given dates
+
+
+\begin{DoxyParams}{Parameters}
+{\em d1} & Date 1 \\
+\hline
+{\em d2} & Date 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_acd2c7f2a6a74dd480004505b53d3a42e}\label{classcarrenting_1_1client_1_1_controller_acd2c7f2a6a74dd480004505b53d3a42e}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily void carrenting.\+client.\+Controller.\+delete\+Car (\begin{DoxyParamCaption}\item[{String}]{number\+Plate }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Deletes a car
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+Plate} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a41f7110cdb9a72be3de30b5ddd7ac8e3}\label{classcarrenting_1_1client_1_1_controller_a41f7110cdb9a72be3de30b5ddd7ac8e3}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!deleteGarage@{deleteGarage}}
+\index{deleteGarage@{deleteGarage}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{deleteGarage()}{deleteGarage()}}
+{\footnotesize\ttfamily void carrenting.\+client.\+Controller.\+delete\+Garage (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Calls the server to delete the given garage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em garage} & Where cars are stored \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a26fcc1a9b0108dc2283436a34db76c30}\label{classcarrenting_1_1client_1_1_controller_a26fcc1a9b0108dc2283436a34db76c30}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!garageOriginPopularity@{garageOriginPopularity}}
+\index{garageOriginPopularity@{garageOriginPopularity}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{garageOriginPopularity()}{garageOriginPopularity()}}
+{\footnotesize\ttfamily Object \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} carrenting.\+client.\+Controller.\+garage\+Origin\+Popularity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Returns the list of garages that are more popular
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a7131927c67ed8afaed347d3090c0e08b}\label{classcarrenting_1_1client_1_1_controller_a7131927c67ed8afaed347d3090c0e08b}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!garagesWithCars@{garagesWithCars}}
+\index{garagesWithCars@{garagesWithCars}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{garagesWithCars()}{garagesWithCars()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ carrenting.\+client.\+Controller.\+garages\+With\+Cars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for the list of garages with cars in it
+
+\begin{DoxyReturn}{Returns}
+List of garages 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a3198f90f6563c389e1f22e52a925ee5d}\label{classcarrenting_1_1client_1_1_controller_a3198f90f6563c389e1f22e52a925ee5d}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getAllCars@{getAllCars}}
+\index{getAllCars@{getAllCars}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getAllCars()}{getAllCars()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}}$>$ carrenting.\+client.\+Controller.\+get\+All\+Cars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for the whole list of cars
+
+\begin{DoxyReturn}{Returns}
+List of cars 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a2a1f2139f9682b3c1215798216bee256}\label{classcarrenting_1_1client_1_1_controller_a2a1f2139f9682b3c1215798216bee256}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getAllNumPlates@{getAllNumPlates}}
+\index{getAllNumPlates@{getAllNumPlates}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getAllNumPlates()}{getAllNumPlates()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ carrenting.\+client.\+Controller.\+get\+All\+Num\+Plates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for the whole list of number plates
+
+\begin{DoxyReturn}{Returns}
+List of number plates 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_ae306f94b15ad4b3869d13ce8f6c46d45}\label{classcarrenting_1_1client_1_1_controller_ae306f94b15ad4b3869d13ce8f6c46d45}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getCar@{getCar}}
+\index{getCar@{getCar}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getCar()}{getCar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} carrenting.\+client.\+Controller.\+get\+Car (\begin{DoxyParamCaption}\item[{String}]{num\+Plate }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for a car given the number plate
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Plate} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Car 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a1e9a90a7164b6a988e23d77ecf39eea9}\label{classcarrenting_1_1client_1_1_controller_a1e9a90a7164b6a988e23d77ecf39eea9}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getCars@{getCars}}
+\index{getCars@{getCars}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getCars()}{getCars()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}}$>$ carrenting.\+client.\+Controller.\+get\+Cars (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for the cars in the given garage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em garage} & Where cars are stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of cars in the garage 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a80d021acb8be8a60823c3da433f5495f}\label{classcarrenting_1_1client_1_1_controller_a80d021acb8be8a60823c3da433f5495f}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getCarsAvailable@{getCarsAvailable}}
+\index{getCarsAvailable@{getCarsAvailable}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getCarsAvailable()}{getCarsAvailable()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}}$>$ carrenting.\+client.\+Controller.\+get\+Cars\+Available (\begin{DoxyParamCaption}\item[{String}]{garage\+Origin,  }\item[{Date}]{starting\+Date,  }\item[{Date}]{finishing\+Date }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server of the list of cars available to rent
+
+
+\begin{DoxyParams}{Parameters}
+{\em garage\+Origin} & Garage of Origin \\
+\hline
+{\em starting\+Date} & Date to start renting the car \\
+\hline
+{\em finishing\+Date} & Date to return the car \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of cars available to rent 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a38355c55fd14b445cbc7e420a5c36fa7}\label{classcarrenting_1_1client_1_1_controller_a38355c55fd14b445cbc7e420a5c36fa7}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getGarages@{getGarages}}
+\index{getGarages@{getGarages}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getGarages()}{getGarages()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ carrenting.\+client.\+Controller.\+get\+Garages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for the list of garages.
+
+\begin{DoxyReturn}{Returns}
+List of all garages 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a34a0edf53b5204f26b1a39ff4d8fa316}\label{classcarrenting_1_1client_1_1_controller_a34a0edf53b5204f26b1a39ff4d8fa316}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getLogger@{getLogger}}
+\index{getLogger@{getLogger}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getLogger()}{getLogger()}}
+{\footnotesize\ttfamily Logger carrenting.\+client.\+Controller.\+get\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the logger \begin{DoxyReturn}{Returns}
+Logger 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a4ba12c757900989ed2755f9924410a4b}\label{classcarrenting_1_1client_1_1_controller_a4ba12c757900989ed2755f9924410a4b}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getRents@{getRents}}
+\index{getRents@{getRents}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getRents()}{getRents()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}}$>$ carrenting.\+client.\+Controller.\+get\+Rents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server for all the car rents
+
+\begin{DoxyReturn}{Returns}
+List of Rents 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a02bfa40e18727766ed66076119d95cc3}\label{classcarrenting_1_1client_1_1_controller_a02bfa40e18727766ed66076119d95cc3}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!getResourcebundle@{getResourcebundle}}
+\index{getResourcebundle@{getResourcebundle}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{getResourcebundle()}{getResourcebundle()}}
+{\footnotesize\ttfamily Resource\+Bundle carrenting.\+client.\+Controller.\+get\+Resourcebundle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the Resource\+Bundle \begin{DoxyReturn}{Returns}
+Resource\+Bundle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_ae1141f30035d8d32ec22db92b3710f8c}\label{classcarrenting_1_1client_1_1_controller_ae1141f30035d8d32ec22db92b3710f8c}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!loginStaff@{loginStaff}}
+\index{loginStaff@{loginStaff}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{loginStaff()}{loginStaff()}}
+{\footnotesize\ttfamily boolean carrenting.\+client.\+Controller.\+login\+Staff (\begin{DoxyParamCaption}\item[{String}]{user,  }\item[{String}]{password,  }\item[{String}]{type }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Asks the server if the given user can log in or not to the system
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & Username of the staff \\
+\hline
+{\em password} & Password of the staff \\
+\hline
+{\em type} & Type of the staff \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_acff3740c4a8e0d3788748ac27206b371}\label{classcarrenting_1_1client_1_1_controller_acff3740c4a8e0d3788748ac27206b371}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!main@{main}}
+\index{main@{main}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void carrenting.\+client.\+Controller.\+main (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption}) throws Remote\+Exception, Malformed\+U\+R\+L\+Exception, Not\+Bound\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a642d9b66b13dcba6c1843c0bee2f060e}\label{classcarrenting_1_1client_1_1_controller_a642d9b66b13dcba6c1843c0bee2f060e}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!register@{register}}
+\index{register@{register}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{register()}{register()}}
+{\footnotesize\ttfamily void carrenting.\+client.\+Controller.\+register (\begin{DoxyParamCaption}\item[{String}]{username }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Registers a user
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Name of the user \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_a267c24a1a13732839f548cddfe640f09}\label{classcarrenting_1_1client_1_1_controller_a267c24a1a13732839f548cddfe640f09}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!storeCar@{storeCar}}
+\index{storeCar@{storeCar}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{storeCar()}{storeCar()}}
+{\footnotesize\ttfamily void carrenting.\+client.\+Controller.\+store\+Car (\begin{DoxyParamCaption}\item[{String}]{garage,  }\item[{String}]{number\+Plate,  }\item[{String}]{brand,  }\item[{String}]{model,  }\item[{double}]{price\+Per\+Day }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Stores a car in the given garage
+
+
+\begin{DoxyParams}{Parameters}
+{\em garage} & Garage of the car \\
+\hline
+{\em number\+Plate} & Car identification \\
+\hline
+{\em brand} & Brand of the car \\
+\hline
+{\em model} & Model of the car \\
+\hline
+{\em price\+Per\+Day} & Price per day of the car \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcarrenting_1_1client_1_1_controller_ab6ddf6da22a98db5fe72e2c4b19c70d0}\label{classcarrenting_1_1client_1_1_controller_ab6ddf6da22a98db5fe72e2c4b19c70d0}} 
+\index{carrenting.client.Controller@{carrenting.client.Controller}!storeGarage@{storeGarage}}
+\index{storeGarage@{storeGarage}!carrenting.client.Controller@{carrenting.client.Controller}}
+\subsubsection{\texorpdfstring{storeGarage()}{storeGarage()}}
+{\footnotesize\ttfamily void carrenting.\+client.\+Controller.\+store\+Garage (\begin{DoxyParamCaption}\item[{String}]{location }\end{DoxyParamCaption}) throws Remote\+Exception}
+
+Calls the server to store the given garage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Where is the garage \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Remote\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/carrenting/client/\mbox{\hyperlink{_controller_8java}{Controller.\+java}}\end{DoxyCompactItemize}

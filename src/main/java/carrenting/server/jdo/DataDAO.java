@@ -43,7 +43,9 @@ public class DataDAO{
 	private Date date1 = new GregorianCalendar(2020, Calendar.JULY, 1).getTime();
 
 	
-	
+	/**
+	 * Initializes the DB
+	 */
 	public DataDAO(){
 		
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -86,12 +88,19 @@ public class DataDAO{
 		 
 	}
 	
-
+	/**
+	 * Gives the instance of the SAO
+	 * @return Instance of the class
+	 */
 	public static DataDAO getInstance() {
 		
 		return instance;
 	}
 
+	/**
+	 * Stores a garage in the DB
+	 * @param location Location of the garage
+	 */
 	public synchronized void storeGarage(String location){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -109,6 +118,17 @@ public class DataDAO{
 
 	}
 	
+	/**
+	 * Stores a rent in the DB
+	 * @param userId ID of the user
+	 * @param numberPlate Number plate of the car
+	 * @param startingDate Starting date of the rent
+	 * @param finishingDate Finishing date of the rent
+	 * @param garageOrigin Garage of origin
+	 * @param garageDestination Garage of destination
+	 * @param paymentSystem Payment system
+	 * @param totalPrice Total price of the rent
+	 */
 	public synchronized void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
 			String garageDestination, String paymentSystem, double totalPrice){
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -126,6 +146,9 @@ public class DataDAO{
 		CarRenting.getLogger().debug("Initializing RENTS");
 	}
 	
+	/**
+	 * Initializes the staff in the DB
+	 */
 	private synchronized void storeStaff(){
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -142,6 +165,14 @@ public class DataDAO{
 		CarRenting.getLogger().debug("Initializing STAFF");
 	}
 	
+	/**
+	 * Stores a car in the DB
+	 * @param garage Location where the car is stored
+	 * @param numberPlate Number plate of the car
+	 * @param brand Brand of the car
+	 * @param model Model of the car
+	 * @param pricePerDay Price per day of the car
+	 */
 	public synchronized void storeCar(String garage,String numberPlate, String brand, String model,double pricePerDay){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try {
@@ -155,7 +186,10 @@ public class DataDAO{
 		CarRenting.getLogger().debug("Storing cars");
 	}
 	
-	
+	/**
+	 * Asks the BD for the list of garages
+	 * @return List of garages
+	 */
 	public synchronized ArrayList<String> getGarages() {
 		ArrayList<String> preparedGarages = new ArrayList<>();
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -183,6 +217,10 @@ public class DataDAO{
 		return null;
 	}
 	
+	/**
+	 * Asks the DB for the list of rents
+	 * @return
+	 */
 	public synchronized ArrayList<Rent> getRents() {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -209,6 +247,10 @@ public class DataDAO{
 		return null;
 	}
 	
+	/**
+	 * Deletes a car from the DB given a number plate
+	 * @param numberPlate Identification of the car
+	 */
 	public synchronized void deleteCar(String numberPlate) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -227,6 +269,10 @@ public class DataDAO{
 		}
 	}
 	
+	/**
+	 * Deletes a garage from the DB
+	 * @param garage Name of the garage
+	 */
 	public synchronized void deleteGarage(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -247,6 +293,11 @@ public class DataDAO{
 		}
 	}
 	
+	/**
+	 * Asks the DB of the list of cars in a garage
+	 * @param garage Nme of the garage
+	 * @return List of cars in the given garage
+	 */
 	public ArrayList<Car> getCars(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -275,6 +326,11 @@ public class DataDAO{
 		return null;
 	}
 	
+	/**
+	 * Asks for a car to the DB given its number plate
+	 * @param numPlate Number plate of the car
+	 * @return Car
+	 */
 	public Car getCar(String numPlate) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -301,7 +357,11 @@ public class DataDAO{
 		}
 		return null;
 	}
-	
+	 /**
+	  * Asks the DB for the information of a user
+	  * @param user username of the user
+	  * @return Staff
+	  */
 	public Staff getStaff(String user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();

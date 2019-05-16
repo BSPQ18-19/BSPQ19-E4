@@ -1,0 +1,115 @@
+\hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o}{}\section{carrenting.\+server.\+jdo.\+Data\+D\+AO Class Reference}
+\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o}\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a99112c37c44213ed0f42c0a888c28efc}{Data\+D\+AO}} ()
+\item 
+synchronized void \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acc6c38b4b5481d4e22f7673fed01c25c}{store\+Garage}} (String location)
+\item 
+synchronized void \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acf4c9d1e243934c4e900c5f78276d781}{store\+Rent}} (String user\+Id, String number\+Plate, Date starting\+Date, Date finishing\+Date, String garage\+Origin, String garage\+Destination, String payment\+System, double total\+Price)
+\item 
+synchronized void \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af9e2798cf3b06a1fbcb74f3bc92c670f}{store\+Car}} (String garage, String number\+Plate, String brand, String model, double price\+Per\+Day)
+\item 
+synchronized Array\+List$<$ String $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5b1d1d55affddcf556ee7e0f8fae8396}{get\+Garages}} ()
+\item 
+synchronized Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}} $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5c545569e40ce40b601fe18964801238}{get\+Rents}} ()
+\item 
+synchronized void \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ac28ce30e234f307f395f5a21e3aab17b}{delete\+Car}} (String number\+Plate)
+\item 
+synchronized void \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ad1ff1ec34fc9fd66558f52c493bf8afd}{delete\+Garage}} (String garage)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} $>$ \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_adf525acd8c1b628a4f828d15b16d6730}{get\+Cars}} (String garage)
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a77ba4c9c8444bfeb2523ca327041dfbe}{get\+Car}} (String num\+Plate)
+\item 
+\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_staff}{Staff}} \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a4c1e6e490bab3a0bbd0c1159ef856800}{get\+Staff}} (String user)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o}{Data\+D\+AO}} \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af8f8055222b8f4337f5f46c4365078d6}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a99112c37c44213ed0f42c0a888c28efc}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a99112c37c44213ed0f42c0a888c28efc}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!DataDAO@{DataDAO}}
+\index{DataDAO@{DataDAO}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{DataDAO()}{DataDAO()}}
+{\footnotesize\ttfamily carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+Data\+D\+AO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ac28ce30e234f307f395f5a21e3aab17b}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ac28ce30e234f307f395f5a21e3aab17b}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!deleteCar@{deleteCar}}
+\index{deleteCar@{deleteCar}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{deleteCar()}{deleteCar()}}
+{\footnotesize\ttfamily synchronized void carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+delete\+Car (\begin{DoxyParamCaption}\item[{String}]{number\+Plate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ad1ff1ec34fc9fd66558f52c493bf8afd}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_ad1ff1ec34fc9fd66558f52c493bf8afd}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!deleteGarage@{deleteGarage}}
+\index{deleteGarage@{deleteGarage}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{deleteGarage()}{deleteGarage()}}
+{\footnotesize\ttfamily synchronized void carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+delete\+Garage (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a77ba4c9c8444bfeb2523ca327041dfbe}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a77ba4c9c8444bfeb2523ca327041dfbe}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getCar@{getCar}}
+\index{getCar@{getCar}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getCar()}{getCar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}} carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Car (\begin{DoxyParamCaption}\item[{String}]{num\+Plate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_adf525acd8c1b628a4f828d15b16d6730}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_adf525acd8c1b628a4f828d15b16d6730}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getCars@{getCars}}
+\index{getCars@{getCars}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getCars()}{getCars()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_car}{Car}}$>$ carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Cars (\begin{DoxyParamCaption}\item[{String}]{garage }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5b1d1d55affddcf556ee7e0f8fae8396}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5b1d1d55affddcf556ee7e0f8fae8396}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getGarages@{getGarages}}
+\index{getGarages@{getGarages}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getGarages()}{getGarages()}}
+{\footnotesize\ttfamily synchronized Array\+List$<$String$>$ carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Garages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af8f8055222b8f4337f5f46c4365078d6}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af8f8055222b8f4337f5f46c4365078d6}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o}{Data\+D\+AO}} carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5c545569e40ce40b601fe18964801238}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a5c545569e40ce40b601fe18964801238}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getRents@{getRents}}
+\index{getRents@{getRents}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getRents()}{getRents()}}
+{\footnotesize\ttfamily synchronized Array\+List$<$\mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_rent}{Rent}}$>$ carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Rents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a4c1e6e490bab3a0bbd0c1159ef856800}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_a4c1e6e490bab3a0bbd0c1159ef856800}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!getStaff@{getStaff}}
+\index{getStaff@{getStaff}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{getStaff()}{getStaff()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcarrenting_1_1server_1_1jdo_1_1_staff}{Staff}} carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+get\+Staff (\begin{DoxyParamCaption}\item[{String}]{user }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af9e2798cf3b06a1fbcb74f3bc92c670f}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_af9e2798cf3b06a1fbcb74f3bc92c670f}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!storeCar@{storeCar}}
+\index{storeCar@{storeCar}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{storeCar()}{storeCar()}}
+{\footnotesize\ttfamily synchronized void carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+store\+Car (\begin{DoxyParamCaption}\item[{String}]{garage,  }\item[{String}]{number\+Plate,  }\item[{String}]{brand,  }\item[{String}]{model,  }\item[{double}]{price\+Per\+Day }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acc6c38b4b5481d4e22f7673fed01c25c}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acc6c38b4b5481d4e22f7673fed01c25c}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!storeGarage@{storeGarage}}
+\index{storeGarage@{storeGarage}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{storeGarage()}{storeGarage()}}
+{\footnotesize\ttfamily synchronized void carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+store\+Garage (\begin{DoxyParamCaption}\item[{String}]{location }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acf4c9d1e243934c4e900c5f78276d781}\label{classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o_acf4c9d1e243934c4e900c5f78276d781}} 
+\index{carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}!storeRent@{storeRent}}
+\index{storeRent@{storeRent}!carrenting.server.jdo.DataDAO@{carrenting.server.jdo.DataDAO}}
+\subsubsection{\texorpdfstring{storeRent()}{storeRent()}}
+{\footnotesize\ttfamily synchronized void carrenting.\+server.\+jdo.\+Data\+D\+A\+O.\+store\+Rent (\begin{DoxyParamCaption}\item[{String}]{user\+Id,  }\item[{String}]{number\+Plate,  }\item[{Date}]{starting\+Date,  }\item[{Date}]{finishing\+Date,  }\item[{String}]{garage\+Origin,  }\item[{String}]{garage\+Destination,  }\item[{String}]{payment\+System,  }\item[{double}]{total\+Price }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/carrenting/server/jdo/\mbox{\hyperlink{_data_d_a_o_8java}{Data\+D\+A\+O.\+java}}\end{DoxyCompactItemize}

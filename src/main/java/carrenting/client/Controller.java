@@ -41,7 +41,17 @@ public class Controller{
 	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 
-	
+
+	/**
+	 * Calls the main constructor of the controller class.
+	 * Sets the Locale variable and the Service Locator.
+	 * Finally, starts the GUI
+	 * 
+	 * @param args IP, Port Name of the server and Locale
+	 * @throws RemoteException
+	 * @throws MalformedURLException
+	 * @throws NotBoundException
+	 */
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
 		
 		//asigno la variable currentLocale a uno de los idiomas que tenemos
@@ -68,55 +78,147 @@ public class Controller{
 
 	}
 	
+	/**
+	 * Other Constructor for when using tests.
+	 * 
+	 * @param ip IP address of the server
+	 * @param port Port of the server
+	 * @param serviceName Name of the server
+	 * @throws MalformedURLException
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 */
 	public Controller(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {		
 		RMIServiceLocator.setService(ip, port, serviceName);	
 	}
 	
+	/**
+	 * Calls the server to store the given garage.
+	 * 
+	 * @param location Where is the garage
+	 * @throws RemoteException
+	 */
 	public void storeGarage(String location) throws RemoteException {
 		RMIServiceLocator.getService().storeGarage(location);
 	}
 	
+	/**
+	 * Calls the server to delete the given garage.
+	 * 
+	 * @param garage Where cars are stored
+	 * @throws RemoteException
+	 */
 	public void deleteGarage(String garage) throws RemoteException {
 		RMIServiceLocator.getService().deleteGarage(garage);
 	}
 	
+	/**
+	 * Asks the server for the list of garages.
+	 * 
+	 * @return List of all garages
+	 * @throws RemoteException
+	 */
 	public ArrayList<String> getGarages() throws RemoteException{
 		return RMIServiceLocator.getService().getGarages();
 	}
 	
+	/**
+	 * Asks the server for the cars in the given garage.
+	 * 
+	 * @param garage Where cars are stored
+	 * @return List of cars in the garage
+	 * @throws RemoteException
+	 */
 	public ArrayList<Car> getCars(String garage) throws RemoteException{
 		return RMIServiceLocator.getService().getCars(garage);	
 	}
 	
+	/**
+	 * Asks the server if the given user can log in or not to the system
+	 * 
+	 * @param user Username of the staff
+	 * @param password Password of the staff
+	 * @param type Type of the staff
+	 * @return
+	 * @throws RemoteException
+	 */
 	public boolean loginStaff(String user, String password, String type) throws RemoteException {
 		return RMIServiceLocator.getService().loginStaff(user, password, type);	
 	}
 	
+	/**
+	 * Registers a user
+	 * 
+	 * @param username Name of the user
+	 * @throws RemoteException
+	 */
 	public void register ( String username) throws RemoteException {
 		RMIServiceLocator.getService().registerUser(username);
 	}
 	
+	/**
+	 * Asks the server for all the car rents
+	 * 
+	 * @return List of Rents
+	 * @throws RemoteException
+	 */
 	public ArrayList<Rent> getRents() throws RemoteException {
 		rents=RMIServiceLocator.getService().getRents();
 		return rents;
 	}
 
+	/**
+	 * Calculates the days between the 2 given dates
+	 * 
+	 * @param d1 Date 1
+	 * @param d2 Date 2
+	 * @return
+	 */
     public int daysBetween(Date d1, Date d2){
         return (int)( ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24))+1);
-}
+    }
 
+    /**
+     * Stores a car in the given garage
+     * 
+     * @param garage Garage of the car
+     * @param numberPlate Car identification
+     * @param brand Brand of the car
+     * @param model Model of the car
+     * @param pricePerDay Price per day of the car
+     * @throws RemoteException
+     */
 	public void storeCar(String garage, String numberPlate, String brand, String model, double pricePerDay) throws RemoteException{
 		RMIServiceLocator.getService().storeCar( garage, numberPlate, brand, model, pricePerDay);
 	}
 	
+	/**
+	 * Deletes a car
+	 * 
+	 * @param numberPlate 
+	 * @throws RemoteException
+	 */
 	public void deleteCar(String numberPlate) throws RemoteException {
 		RMIServiceLocator.getService().deleteCar(numberPlate);
 	}
 	
+	/**
+	 * Asks the server for a car given the number plate
+	 * 
+	 * @param numPlate
+	 * @return Car
+	 * @throws RemoteException
+	 */
 	public Car getCar(String numPlate) throws RemoteException{
 		return RMIServiceLocator.getService().getCar(numPlate);
 	}
 	
+	/**
+	 * Asks the server for the whole list of cars
+	 * 
+	 * @return List of cars
+	 * @throws RemoteException
+	 */
 	public ArrayList<Car> getAllCars() throws RemoteException{
 		ArrayList<String> garages = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
@@ -127,6 +229,12 @@ public class Controller{
 		return cars;	
 	}
 	
+	/**
+	 * Asks the server for the whole list of number plates
+	 * 
+	 * @return List of number plates
+	 * @throws RemoteException
+	 */
 	public ArrayList<String> getAllNumPlates() throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
 		cars= this.getAllCars();
@@ -137,6 +245,12 @@ public class Controller{
 		return numPlates;
 	}
 	
+	/**
+	 * Asks the server for the list of garages with cars in it
+	 * 
+	 * @return List of garages
+	 * @throws RemoteException
+	 */
 	public ArrayList<String> garagesWithCars() throws RemoteException{
 		ArrayList<String> garages = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
@@ -149,6 +263,15 @@ public class Controller{
 		return garages;
 	}
 	
+	/**
+	 * Asks the server of the list of cars available to rent
+	 * 
+	 * @param garageOrigin Garage of Origin
+	 * @param startingDate Date to start renting the car
+	 * @param finishingDate Date to return the car
+	 * @return List of cars available to rent
+	 * @throws RemoteException
+	 */
 	public ArrayList<Car> getCarsAvailable(String garageOrigin, Date startingDate, Date finishingDate) throws RemoteException{
 		ArrayList<Car> carsAvailable = new ArrayList<>();
 		ArrayList<String>carsNotAvailable = new ArrayList<>();
@@ -174,7 +297,12 @@ public class Controller{
 		return carsAvailable;
 	}
 	
-	
+	/**
+	 * Returns the list of garages that are more popular 
+	 * 
+	 * @return 
+	 * @throws RemoteException
+	 */
 	public Object[][] garageOriginPopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<String> garages= new ArrayList<>();
@@ -218,6 +346,13 @@ public class Controller{
 		return garagePopularity;
 	}
 	
+	/**
+	 * Checks if a number plate already exists
+	 * 
+	 * @param numPlate
+	 * @return True of the number plate doesn't exist, False if otherwise
+	 * @throws RemoteException
+	 */
 	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
 		boolean numPlateOK= false;
 		ArrayList<String> numPlates= new ArrayList<>();
@@ -230,11 +365,18 @@ public class Controller{
 		return numPlateOK;
 	}
 	
-	
+	/**
+	 * Returns the logger
+	 * @return Logger
+	 */
 	public Logger getLogger() {
 		return logger;
 	}
-
+	
+	/**
+	 * Returns the ResourceBundle
+	 * @return ResourceBundle
+	 */
 	public ResourceBundle getResourcebundle() {
 		return myBundle;
 	}
