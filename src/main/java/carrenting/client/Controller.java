@@ -92,6 +92,12 @@ public class Controller{
 		RMIServiceLocator.setService(ip, port, serviceName);	
 	}
 	
+	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+	String garageDestination, String paymentSystem, double totalPrice) throws RemoteException{
+		RMIServiceLocator.getService().storeRent(userId,  numberPlate,  startingDate,  finishingDate,  garageOrigin,
+				 garageDestination,  paymentSystem,  totalPrice);
+	}
+
 	/**
 	 * Calls the server to store the given garage.
 	 * 
@@ -354,15 +360,29 @@ public class Controller{
 	 * @throws RemoteException
 	 */
 	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
-		boolean numPlateOK= false;
+		boolean numPlateOK= true;
 		ArrayList<String> numPlates= new ArrayList<>();
 		numPlates= this.getAllNumPlates();
 		for(String nP : numPlates){
 			if(nP.equals(numPlate)) {
-				numPlateOK=true;
+				numPlateOK=false;
 			}
 		}
 		return numPlateOK;
+	}
+	
+	public boolean checkExistingGarage(String location) throws RemoteException {
+		boolean locationOK= true;
+		ArrayList<String> locations= new ArrayList<>();
+		locations= this.getGarages();
+		for(String loc : locations){
+			System.out.println(loc);
+			if(loc.equals(location)) {
+				System.out.println(loc+ " = " + location);
+				locationOK=false;
+			}
+		}
+		return locationOK;
 	}
 	
 	/**

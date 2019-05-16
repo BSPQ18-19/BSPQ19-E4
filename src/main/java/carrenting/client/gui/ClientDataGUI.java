@@ -78,7 +78,7 @@ public class ClientDataGUI extends JFrame {
 					if(personName.getText().equals("") || personSurname.getText().equals("")|| personAddress.getText().equals("")||
 							personID.getText().equals("")|| personPhone.getText().equals("")|| personEmail.getText().equals("")|| 
 							dateChooserBirth.getDate()==(null)) {
-						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("All fields must be filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				
 					}
 					else {
@@ -91,7 +91,7 @@ public class ClientDataGUI extends JFrame {
 				if(clientType.equalsIgnoreCase("company")) {
 					if(companyID.getText().equals("") || companyAddress.getText().equals("")||companyPhone.getText().equals("")||
 							emailCompany.getText().equals("")){					
-						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("All fields must be filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 					}else {
 						rent.setUserId(companyID.getText());
 						frame.dispose();

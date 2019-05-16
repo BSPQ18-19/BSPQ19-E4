@@ -33,8 +33,6 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTabbedPane;
 
-
-
 @SuppressWarnings("serial")
 public class StaffPanelGUI extends JFrame {
 	private JPanel contentPane;
@@ -51,8 +49,9 @@ public class StaffPanelGUI extends JFrame {
 	private JTextField textFieldBrand;
 	private JTextField textFieldModel;
 	private JTable tableRemoveCars;
-	private JTextField textField;
-	
+	private JTextField textFieldLocation;
+	private ArrayList<Car> cars;
+	private boolean allGaragesOk= true;
 
 	
 	private MaskFormatter getMaskFormatter(String format) {
@@ -89,17 +88,6 @@ public class StaffPanelGUI extends JFrame {
 		
 		frame.setContentPane(contentPane);
 		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
-		btnReturnToStartpage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				try {
-					new WelcomeGUI(controller, rent);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
 		btnReturnToStartpage.setBounds(805, 525, 332, 23);
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -209,10 +197,12 @@ public class StaffPanelGUI extends JFrame {
 				labelGarage.setBounds(55, 216, 98, 14);
 				panelAddCars.add(labelGarage);
 				
-				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(170, 213, 186, 20);
-				panelAddCars.add(comboBox);
-				comboBox.setModel(new DefaultComboBoxModel(garages.toArray()));
+				JComboBox comboBoxGarages = new JComboBox();
+				comboBoxGarages.setBounds(170, 213, 186, 20);
+				panelAddCars.add(comboBoxGarages);
+				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
+				DefaultComboBoxModel modelListGarages = (DefaultComboBoxModel) comboBoxGarages.getModel();
+//				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
 				labelPricePerDsy.setBounds(55, 271, 98, 14);
@@ -259,7 +249,7 @@ public class StaffPanelGUI extends JFrame {
 				});
 				tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
 				DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
-				ArrayList<Car> cars = controller.getAllCars();
+				cars = controller.getAllCars();
 		
 			        Object rowRemoveCars[] = new Object[5];
 			        for(int i = 0; i < cars.size(); i++)
@@ -325,9 +315,22 @@ public class StaffPanelGUI extends JFrame {
 						}
 						if(allOK) {
 								try {
+									//TODO
 									JOptionPane.showConfirmDialog(null, "Car added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
-									controller.storeCar(comboBox.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+									Car addedCar= new Car(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+									controller.storeCar(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
+									//TODO
 									controller.getLogger().debug("Added car" + controller.getCar(textFieldNumPlate.getText()).toString());
+									cars.add(addedCar);
+
+						        	rowRemoveCars[0] = addedCar.getNumPlate();
+						        	rowRemoveCars[1] = addedCar.getBrand();	      
+						        	rowRemoveCars[2] = addedCar.getGarage();
+						        	rowRemoveCars[3] = addedCar.getModel();
+						        	rowRemoveCars[4] = addedCar.getPricePerDay();
+						            modelRemoveCars.addRow(rowRemoveCars);
+									modelRemoveCars.fireTableDataChanged();
+									tableRemoveCars.addNotify();
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
@@ -336,112 +339,73 @@ public class StaffPanelGUI extends JFrame {
 					}
 				});
 
-
-		
-//		JPanel panelRemoveCars = new JPanel();
-//		tabbedPane.addTab(controller.getResourcebundle().getString("remove_cars"), null, panelRemoveCars, null);
-//		panelRemoveCars.setLayout(null);
-//		
-//		JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
-//		labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-//		labelRemoveCars.setBounds(487, 33, 209, 24);
-//		panelRemoveCars.add(labelRemoveCars);
-//		
-//		JScrollPane scrollPaneRemoveCars = new JScrollPane();
-//		scrollPaneRemoveCars.setBounds(252, 82, 556, 237);
-//		panelRemoveCars.add(scrollPaneRemoveCars);
-//		
-//		tableRemoveCars = new JTable();
-//		tableRemoveCars.setShowVerticalLines(false);
-//		tableRemoveCars.setModel(new DefaultTableModel(
-//			new Object[][] {
-//			},
-//			new String[] {
-//				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
-//			}
-//		) {
-//			boolean[] columnEditableRemoveCarss = new boolean[] {
-//				false, false, false, false, false
-//			};
-//			@SuppressWarnings("unused")
-//			public boolean isCellEditableRemoveCars(int row, int column) {
-//				return columnEditableRemoveCarss[column];
-//			}
-//		});
-//		tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
-//		DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
-//		ArrayList<Car> cars = controller.getAllCars();
-//
-//	        Object rowRemoveCars[] = new Object[5];
-//	        for(int i = 0; i < cars.size(); i++)
-//	        {
-//	        	rowRemoveCars[0] = cars.get(i).getNumPlate();
-//	        	rowRemoveCars[1] = cars.get(i).getBrand();	      
-//	        	rowRemoveCars[2] = cars.get(i).getGarage();
-//	        	rowRemoveCars[3] = cars.get(i).getModel();
-//	        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
-//	            modelRemoveCars.addRow(rowRemoveCars);
-//	        }
-//		scrollPaneRemoveCars.setViewportView(tableRemoveCars);
-//		
-//		JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
-//		buttonRemoveCar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				if(tableRemoveCars.getSelectedRow()!=-1) {
-//					try {
-//						controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
-//					} catch (RemoteException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					cars.remove(tableRemoveCars.getSelectedRow());
-//					modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
-//					modelRemoveCars.fireTableDataChanged();
-//					tableRemoveCars.addNotify();
-//				}
-//				else {
-//					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-//				}
-//			}
-//		});
-//		buttonRemoveCar.setBounds(700, 341, 108, 23);
-//		panelRemoveCars.add(buttonRemoveCar);
 		
 		JPanel panelManageGarages = new JPanel();
+		//TODO
 		tabbedPane.addTab("Garage Management", null, panelManageGarages, null);
 		panelManageGarages.setLayout(null);
 		
 		JPanel panelAddGarage = new JPanel();
-		panelAddGarage.setBounds(102, 84, 384, 213);
+		panelAddGarage.setBounds(42, 94, 410, 200);
 		panelManageGarages.add(panelAddGarage);
 		panelAddGarage.setLayout(null);
-		
+		//TODO
 		JLabel lblAddNewGarages = new JLabel("Add a new garage");
 		lblAddNewGarages.setBounds(110, 22, 232, 24);
 		panelAddGarage.add(lblAddNewGarages);
 		lblAddNewGarages.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		
-		textField = new JTextField();
-		textField.setBounds(162, 82, 156, 20);
-		panelAddGarage.add(textField);
-		textField.setColumns(10);
+		textFieldLocation = new JTextField();
+		textFieldLocation.setBounds(162, 82, 156, 20);
+		panelAddGarage.add(textFieldLocation);
+		textFieldLocation.setColumns(10);
 		
+		//TODO
 		JLabel lblLocation = new JLabel("Location");
-		lblLocation.setBounds(79, 85, 73, 14);
+		lblLocation.setBounds(68, 85, 84, 14);
 		panelAddGarage.add(lblLocation);
 		
-		JButton btnNewButton = new JButton("Add garage");
-		btnNewButton.setBounds(267, 137, 89, 23);
-		panelAddGarage.add(btnNewButton);
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		//TODO
+		JButton btnAddGarage = new JButton("Add garage");
+		btnAddGarage.setBounds(267, 137, 110, 23);
+		panelAddGarage.add(btnAddGarage);
+		btnAddGarage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				allGaragesOk=true;
+				if(textFieldLocation.getText().equals("")) {
+					//TODO
+					JOptionPane.showConfirmDialog(null, "You must enter a location", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					allGaragesOk=false;
+					try {
+						if(!controller.checkExistingGarage(textFieldLocation.getText())) {
+							System.out.println("aaaaaaaaaaa");
+							allGaragesOk=false;
+						}
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+				
+				}if(allGaragesOk) {
+					try {
+						controller.storeGarage(textFieldLocation.getText());
+						//TODO
+						JOptionPane.showConfirmDialog(null, "Garage added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						ArrayList<String> garages= controller.getGarages();
+						for (String g : garages) {
+							System.out.println(g);
+						}
+						//TODO  Que en el tab de añadir coches aparezca el nuevo garage
+						
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+				}
 			}
 		});
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		
 		if(staffType.equalsIgnoreCase("employee")) {
 			// Disable the tab

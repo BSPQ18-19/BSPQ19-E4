@@ -3,6 +3,7 @@ package carrenting.server;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import carrenting.server.jdo.Car;
@@ -21,4 +22,6 @@ public interface ICarRenting extends Remote  {
 	public void storeCar(String garage, String numberPlate, String brand, String model, double pricePerDay) throws RemoteException;
 	public void deleteCar(String numberPlate) throws RemoteException;
 	public void deleteGarage(String garage) throws RemoteException;
+	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
+			String garageDestination, String paymentSystem, double totalPrice)throws RemoteException;
 }
