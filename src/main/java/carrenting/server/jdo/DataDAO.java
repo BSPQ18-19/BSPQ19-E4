@@ -290,11 +290,11 @@ public class DataDAO{
 			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
 			pm.close();
 		}
-	}	
+	}
 	
 	/**
 	 * Asks the DB of the list of cars in a garage
-	 * @return List of all cars in the renting service
+	 * @return List of cars in the given garage
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<Car> getAllCars() {
@@ -305,7 +305,8 @@ public class DataDAO{
 		try {
 			tx.begin();
 			Query<Car> query = pm.newQuery(Car.class);
-			allCars= new ArrayList<Car>((List<Car>) query.execute());
+			allCars = new ArrayList<Car>((List<Car>) query.execute());
+			
 			tx.commit();
 			for(Car car: allCars) {
 				CarRenting.getLogger().debug(car.toString());
@@ -320,9 +321,36 @@ public class DataDAO{
 				tx.rollback();
 			}
 			CarRenting.getLogger().debug("GETTING CARS");
-			pm.close();	
+			pm.close();
+			
 		}
 		return allCars;
+	}
+	
+	
+	
+	/**
+	 * Deletes a garage from the DB
+	 * @param garage Name of the garage to be deleted
+	 */
+	public synchronized void deleteGarageAndCars(String garage) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			
+			Query<Garage> query = pm.newQuery(Garage.class);
+			query.setUnique(true);
+			Garage garageToDelete = (Garage) pm.getObjectById(Garage.class, garage);
+			pm.deletePersistent(garageToDelete);
+			
+			tx.commit();
+		}catch (Exception ex){
+			CarRenting.getLogger().error("Error deleting data from the database:" +ex.getMessage());
+		}finally {
+			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
+			pm.close();
+		}
 	}
 	
 	

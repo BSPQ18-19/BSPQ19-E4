@@ -58,8 +58,6 @@ public class StaffPanelGUI extends JFrame {
 	private ArrayList<Car> cars;
 
 
-	
-	
 	private MaskFormatter getMaskFormatter(String format) {
 	    MaskFormatter mask = null;
 	    try {
@@ -156,8 +154,6 @@ public class StaffPanelGUI extends JFrame {
 			panelrent.add(lblRents);
 			lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		
-				
-				
 				JPanel panelManageCars = new JPanel();
 				tabbedPane.addTab(controller.getResourcebundle().getString("add_car"), null, panelManageCars, null);
 				panelManageCars.setLayout(null);
@@ -206,11 +202,8 @@ public class StaffPanelGUI extends JFrame {
 				JComboBox comboBoxGarages = new JComboBox();
 				comboBoxGarages.setBounds(125, 213, 147, 20);
 				panelAddCars.add(comboBoxGarages);
-//				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
-//				DefaultComboBoxModel modelListGarages = (DefaultComboBoxModel) comboBoxGarages.getModel();
 				DefaultComboBoxModel comboBoxGaragesModel= new DefaultComboBoxModel(garages.toArray());
 				comboBoxGarages.setModel(comboBoxGaragesModel);
-//				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
 				labelPricePerDsy.setBounds(10, 271, 98, 14);
@@ -272,6 +265,7 @@ public class StaffPanelGUI extends JFrame {
 				scrollPaneRemoveCars.setViewportView(tableRemoveCars);
 				
 				JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
+				
 				buttonRemoveCar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(tableRemoveCars.getSelectedRow()!=-1) {
@@ -430,20 +424,6 @@ public class StaffPanelGUI extends JFrame {
 		scrollPaneDeleteGarage.setBounds(161, 76, 181, 138);
 		panelDeleteGarage.add(scrollPaneDeleteGarage);
 		
-//		JList listDeleteGarage = new JList();
-//		listDeleteGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		listDeleteGarage.setModel(new AbstractListModel() {
-//			final DefaultListModel<String> model = new DefaultListModel();
-//			final JList list = new JList(model);
-//			ArrayList<String> values = controller.getGarages();
-//			public int getSize() {
-//				return values.size();
-//			}
-//			public Object getElementAt(int index) {
-//				return values.get(index);
-//			}
-//		});
-//		scrollPaneDeleteGarage.setViewportView(listDeleteGarage);
 
 		final DefaultListModel<String> modelDeleteGarages = new DefaultListModel<String>();
 		JList listDeleteGarage = new JList(modelDeleteGarages);
@@ -458,6 +438,7 @@ public class StaffPanelGUI extends JFrame {
 		
 		JButton btnDeleteGarageCars = new JButton("<html>Delete garage and  <p>  all its cars");
 		btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
+			ArrayList<Car> carsToDelete= new ArrayList<>();
 			boolean deleteGarageOk;
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -471,10 +452,32 @@ public class StaffPanelGUI extends JFrame {
 					if(deleteGarageOk) {
 						try {
 							controller.deleteGarageAndItsCars(listDeleteGarage.getSelectedValue().toString());
+
+							cars.clear();				
+							for (int i = tableRemoveCars.getRowCount() - 1; i >= 0; i--) {
+								modelRemoveCars.removeRow(i);
+							}
+							modelRemoveCars.fireTableDataChanged();
+							tableRemoveCars.addNotify();
+							cars.addAll(controller.getAllCars());
+					        Object rowRemoveCars[] = new Object[5];
+					        for(int i = 0; i < cars.size(); i++)
+					        {
+					        	rowRemoveCars[0] = cars.get(i).getNumPlate();
+					        	rowRemoveCars[1] = cars.get(i).getBrand();	      
+					        	rowRemoveCars[2] = cars.get(i).getGarage();
+					        	rowRemoveCars[3] = cars.get(i).getModel();
+					        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
+					            modelRemoveCars.addRow(rowRemoveCars);
+					        }
+							modelRemoveCars.fireTableDataChanged();
+							tableRemoveCars.addNotify();
+							tableRemoveCars.repaint();
+
+							
 							modelDeleteGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
 							comboBoxGarages.removeItem(textFieldLocation.getText());
-							tableRemoveCars.addNotify();
-							
+
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

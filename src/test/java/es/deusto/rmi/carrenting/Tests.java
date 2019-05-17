@@ -182,12 +182,12 @@ public class Tests {
 	
 	@Test
 	public void checkExistingGarageTrueTest() throws RemoteException {
-		assertFalse(c.checkExistingGarage("Bilbao"));
+		assertFalse(c.newGarageAvailable("Bilbao"));
 	}
 	
 	@Test
 	public void checkExistingGarageFalseTest() throws RemoteException {
-		assert(c.checkExistingGarage("Sevilla"));
+		assert(c.newGarageAvailable("Sevilla"));
 	}
 	
 	@Test
@@ -205,7 +205,7 @@ public class Tests {
 		
 		c.deleteCar(retrievedCar.getNumPlate());
 		
-		ArrayList<Car> carList = c.getAllCars();
+		ArrayList<Car> carList = c.getCars();
 		
 		for(Car c : carList) {
 			if(c.equals(storedCar))
@@ -222,7 +222,7 @@ public class Tests {
 		Car storedCar = new Car("Vitoria", "5678ASD", "Citroen", "C3", 40);
 		c.storeCar(storedCar.getGarage(), storedCar.getNumPlate(), storedCar.getBrand(), storedCar.getModel(), storedCar.getPricePerDay());
 		
-		assert(c.checkExistingNumPlate("5678ASD"));
+		assert(c.numberPlateAvailable("5678ASD"));
 	
 	}
 	
