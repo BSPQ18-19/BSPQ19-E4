@@ -56,6 +56,9 @@ public class StaffPanelGUI extends JFrame {
 	private JTable tableRemoveCars;
 	private JTextField textFieldLocation;
 	private ArrayList<Car> cars;
+	private JTable tableGarages;
+	private JTable tablePaySys;
+	private JTable tableCars;
 
 
 	private MaskFormatter getMaskFormatter(String format) {
@@ -86,13 +89,13 @@ public class StaffPanelGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1149, 591);
+		frame.setBounds(100, 100, 1170, 591);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		frame.setContentPane(contentPane);
 		JButton btnReturnToStartpage = new JButton(controller.getResourcebundle().getString("return_startpage"));
-		btnReturnToStartpage.setBounds(805, 525, 332, 23);
+		btnReturnToStartpage.setBounds(812, 518, 332, 23);
 		btnReturnToStartpage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
@@ -109,7 +112,7 @@ public class StaffPanelGUI extends JFrame {
 		ArrayList<Rent> rents = controller.getRents();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 1144, 480);
+		tabbedPane.setBounds(0, 0, 1154, 480);
 		contentPane.add(tabbedPane);
 		
 		JPanel panelrent = new JPanel();
@@ -119,6 +122,8 @@ public class StaffPanelGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 44, 1100, 377);
 		panelrent.add(scrollPane);
+		
+
 		
 		table = new JTable();
 		table.setRowSelectionAllowed(false);
@@ -159,7 +164,7 @@ public class StaffPanelGUI extends JFrame {
 				panelManageCars.setLayout(null);
 				
 				JPanel panelAddCars = new JPanel();
-				panelAddCars.setBounds(10, 33, 295, 408);
+				panelAddCars.setBounds(37, 33, 295, 408);
 				panelManageCars.add(panelAddCars);
 				panelAddCars.setLayout(null);
 				
@@ -217,15 +222,15 @@ public class StaffPanelGUI extends JFrame {
 				panelAddCars.add(buttonAdd);
 				
 				JPanel panelRemoveCars= new JPanel();
-				panelRemoveCars.setBounds(304, 33, 526, 408);
+				panelRemoveCars.setBounds(364, 33, 538, 408);
 				panelManageCars.add(panelRemoveCars);
 				panelRemoveCars.setLayout(null);
 				
-				
-				JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
-				labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-				labelRemoveCars.setBounds(141, 29, 209, 24);
-				panelRemoveCars.add(labelRemoveCars);
+				//TODO
+				JLabel labelCarsInSystem = new JLabel("Cars");
+				labelCarsInSystem.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				labelCarsInSystem.setBounds(224, 30, 120, 24);
+				panelRemoveCars.add(labelCarsInSystem);
 				
 				JScrollPane scrollPaneRemoveCars = new JScrollPane();
 				scrollPaneRemoveCars.setBounds(30, 72, 481, 237);
@@ -263,8 +268,8 @@ public class StaffPanelGUI extends JFrame {
 			            modelRemoveCars.addRow(rowRemoveCars);
 			        }
 				scrollPaneRemoveCars.setViewportView(tableRemoveCars);
-				
-				JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove"));
+				 //TODO
+				JButton buttonRemoveCar = new JButton("Eliminar coche");
 				
 				buttonRemoveCar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
@@ -285,54 +290,93 @@ public class StaffPanelGUI extends JFrame {
 						}
 					}
 				});
-				buttonRemoveCar.setBounds(347, 347, 164, 23);
+				buttonRemoveCar.setBounds(347, 349, 164, 23);
 				panelRemoveCars.add(buttonRemoveCar);
 				
-				JButton btnRealocateCar = new JButton("Realocate car");
-				btnRealocateCar.addMouseListener(new MouseAdapter() {
+				JPanel panelRelocation = new JPanel();
+				panelRelocation.setBounds(912, 33, 227, 408);
+				panelManageCars.add(panelRelocation);
+				panelRelocation.setLayout(null);
+				
+				JButton btnRelocateCar = new JButton("Relocate car");
+				btnRelocateCar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+				btnRelocateCar.setBounds(71, 345, 146, 23);
+				panelRelocation.add(btnRelocateCar);
+				
+				JLabel lblGarageToMove = new JLabel("Garage to move the car to:");
+				lblGarageToMove.setBounds(10, 95, 207, 14);
+				panelRelocation.add(lblGarageToMove);
+				
+				JScrollPane scrollPaneRelocate = new JScrollPane();
+				scrollPaneRelocate.setBounds(21, 120, 184, 144);
+				panelRelocation.add(scrollPaneRelocate);
+				final DefaultListModel<String> modelGarages = new DefaultListModel<String>();
+				JList listGarages = new JList(modelGarages);
+				listGarages.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				ArrayList<String> garages = controller.getGarages();
+				for(String garage: garages) {
+					modelGarages.addElement(garage);
+				}
+				scrollPaneRelocate.setViewportView(listGarages);
+				
+
+				btnRelocateCar.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						if(tableRemoveCars.getSelectedRow()!=-1) {
+						if(tableRemoveCars.getSelectedRow()!=-1 && !listGarages.getSelectedValue().toString().equalsIgnoreCase("")) {
 							try {
-								controller.updateGarage(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate(), "Nuevogarage");
+								controller.updateGarage(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate(), listGarages.getSelectedValue().toString());
+								cars.clear();				
+								for (int i = tableRemoveCars.getRowCount() - 1; i >= 0; i--) {
+									modelRemoveCars.removeRow(i);
+								}
+								modelRemoveCars.fireTableDataChanged();
+								tableRemoveCars.addNotify();
+								cars.addAll(controller.getAllCars());
+						        Object rowRemoveCars[] = new Object[5];
+						        for(int i = 0; i < cars.size(); i++)
+						        {
+						        	rowRemoveCars[0] = cars.get(i).getNumPlate();
+						        	rowRemoveCars[1] = cars.get(i).getBrand();	      
+						        	rowRemoveCars[2] = cars.get(i).getGarage();
+						        	rowRemoveCars[3] = cars.get(i).getModel();
+						        	rowRemoveCars[4] = cars.get(i).getPricePerDay();
+						            modelRemoveCars.addRow(rowRemoveCars);
+						        }
+								modelRemoveCars.fireTableDataChanged();
+								tableRemoveCars.addNotify();
+								tableRemoveCars.repaint();
+//								
+//								String numPlate= cars.get(tableRemoveCars.getSelectedRow()).getNumPlate();
+//								cars.remove(tableRemoveCars.getSelectedRow());
+//								cars.add(controller.getCar(numPlate));
+//								modelRemoveCars.removeRow(tableRemoveCars.getSelectedRow());
+//								modelRemoveCars.fireTableDataChanged();
+//								tableRemoveCars.addNotify();
+
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
-							modelRemoveCars.fireTableDataChanged();
-							tableRemoveCars.addNotify();
+							
+							
 
 						}
 						else {
-							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							//TODO
+							JOptionPane.showConfirmDialog(null, "Debes seleccionar un coche y un garage", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							
 						}
 						
-						
 
-						
-						
-						
-						
-						
-						
-						
 						
 						
 						
 					}
 				});
-				btnRealocateCar.setBounds(164, 347, 146, 23);
-				panelRemoveCars.add(btnRealocateCar);
-				
-				JPanel panel = new JPanel();
-				panel.setBounds(834, 33, 295, 408);
-				panelManageCars.add(panel);
-				panel.setLayout(null);
-				
-				JLabel labelRealocateCar = new JLabel("Realocate car");
-				labelRealocateCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-				labelRealocateCar.setBounds(88, 32, 147, 24);
-				panel.add(labelRealocateCar);
 				
 				
 				
@@ -438,7 +482,6 @@ public class StaffPanelGUI extends JFrame {
 		scrollPaneDeleteGarage.setBounds(161, 76, 181, 138);
 		panelDeleteGarage.add(scrollPaneDeleteGarage);
 		
-
 		final DefaultListModel<String> modelDeleteGarages = new DefaultListModel<String>();
 		JList listDeleteGarage = new JList(modelDeleteGarages);
 		listDeleteGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -447,6 +490,7 @@ public class StaffPanelGUI extends JFrame {
 			modelDeleteGarages.addElement(garage);
 		}
 		scrollPaneDeleteGarage.setViewportView(listDeleteGarage);
+		
 		
 		
 		
@@ -488,7 +532,7 @@ public class StaffPanelGUI extends JFrame {
 							tableRemoveCars.addNotify();
 							tableRemoveCars.repaint();
 
-							
+							modelGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
 							modelDeleteGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
 							comboBoxGarages.removeItem(textFieldLocation.getText());
 
@@ -530,6 +574,76 @@ public class StaffPanelGUI extends JFrame {
 		});
 		btnDeleteGarage.setBounds(115, 249, 145, 38);
 		panelDeleteGarage.add(btnDeleteGarage);
+		
+		JPanel panelStatistics = new JPanel();
+		tabbedPane.addTab("New tab", null, panelStatistics, null);
+		panelStatistics.setLayout(null);
+		JLabel lblGaragePopularity= new JLabel(controller.getResourcebundle().getString("garage_popularity"));
+		lblGaragePopularity.setBounds(39, 50, 283, 14);
+		panelStatistics.add(lblGaragePopularity);
+		
+		JScrollPane scrollPaneStatistics = new JScrollPane();
+		scrollPaneStatistics.setBounds(37, 75, 307, 178);
+		panelStatistics.add(scrollPaneStatistics);
+		
+		tableGarages = new JTable();
+		tableGarages.setModel(new DefaultTableModel(
+			new Object[][] {
+			}, 
+			new String[] {
+				controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("times_as_origin"), controller.getResourcebundle().getString("times_as_destination")
+			}
+		));
+		tableGarages.getColumnModel().getColumn(1).setPreferredWidth(110);
+		tableGarages.getColumnModel().getColumn(2).setPreferredWidth(110);
+		tableGarages.setEnabled(false);
+		tableGarages.setShowVerticalLines(false);
+		tableGarages.setRowSelectionAllowed(false);
+		scrollPaneStatistics.setViewportView(tableGarages);
+		
+		JLabel labelStatistics = new JLabel(controller.getResourcebundle().getString("statistics"));
+		labelStatistics.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		labelStatistics.setBounds(389, 11, 194, 22);
+		panelStatistics.add(labelStatistics);
+		
+		JLabel lblPaymentSystemPopularity = new JLabel(controller.getResourcebundle().getString("payment_system_popularity"));
+		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
+		panelStatistics.add(lblPaymentSystemPopularity);
+		
+		JScrollPane scrollPaneStatistics_1 = new JScrollPane();
+		scrollPaneStatistics_1.setBounds(39, 300, 307, 128);
+		panelStatistics.add(scrollPaneStatistics_1);
+		
+		tablePaySys = new JTable();
+		tablePaySys.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				controller.getResourcebundle().getString("payment_system"), controller.getResourcebundle().getString("times_used")
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tablePaySys.getColumnModel().getColumn(0).setPreferredWidth(110);
+		scrollPaneStatistics_1.setViewportView(tablePaySys);
+		
+		JLabel lblCarPopularity = new JLabel(controller.getResourcebundle().getString("car_popularity"));
+		lblCarPopularity.setBounds(399, 50, 248, 14);
+		panelStatistics.add(lblCarPopularity);
+		
+		JScrollPane scrollPaneStatistics_2 = new JScrollPane();
+		scrollPaneStatistics_2.setBounds(400, 75, 457, 250);
+		panelStatistics.add(scrollPaneStatistics_2);
+		
+		tableCars = new JTable();
+		scrollPaneStatistics_2.setViewportView(tableCars);
+		
+
 		
 		
 		
