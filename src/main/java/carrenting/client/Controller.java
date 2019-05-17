@@ -119,6 +119,17 @@ public class Controller{
 	}
 	
 	/**
+	 * Calls the server to delete the given garage and its cars.
+	 * 
+	 * @param garage Where cars are stored
+	 * @throws RemoteException
+	 */
+	public void deleteGarageAndItsCars(String garage) throws RemoteException {
+		RMIServiceLocator.getService().deleteGarage(garage);
+	}
+	
+	
+	/**
 	 * Asks the server for the list of garages.
 	 * 
 	 * @return List of all garages
@@ -355,18 +366,18 @@ public class Controller{
 	/**
 	 * Checks if a number plate already exists
 	 * 
-	 * @param numPlate
-	 * @return True of the number plate doesn't exist, False if otherwise
+	 * @param numPlate number plate that wants to be checked if it already exists or not
+	 * @return True if the number plate doesn't exist, False otherwise
 	 * @throws RemoteException
 	 */
-	public boolean checkExistingNumPlate(String numPlate) throws RemoteException {
-		boolean numPlateOK= false;
+	public boolean numberPlateAvailable(String numPlate) throws RemoteException {
+		boolean numPlateOK= true;
 		ArrayList<String> numPlates= new ArrayList<>();
 		numPlates= this.getAllNumPlates();
 		
 		for(String nP : numPlates){
 			if(nP.equalsIgnoreCase(numPlate)) {
-				numPlateOK=true;
+				numPlateOK=false;
 			}
 		}
 		return numPlateOK;
@@ -374,21 +385,22 @@ public class Controller{
 	
 	/**
 	 * Checks if a Garage already exists
-	 * @param location Location of the garage
-	 * @return Returns true if it isn't a coincidence
+	 * @param Location Location of the garage that wants to be checked if it already exists or not
+	 * @return Returns true if the garage does not already exist, False otherwise
 	 * @throws RemoteException
 	 */
-	public boolean checkExistingGarage(String location) throws RemoteException {
+	public boolean newGarageAvailable(String location) throws RemoteException {
 		boolean locationOK= true;
 		ArrayList<String> locations= new ArrayList<>();
 		locations= this.getGarages();
 		for(String loc : locations){
-			System.out.println(loc);
+			System.out.println("This location" + loc + "is not the same as" + location);
 			if(loc.equals(location)) {
-				System.out.println(loc+ " = " + location);
+				//System.out.println(loc+ " = " + location);
 				locationOK=false;
 			}
 		}
+		
 		return locationOK;
 	}
 	

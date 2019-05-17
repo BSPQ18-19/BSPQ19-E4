@@ -248,7 +248,7 @@ public class DataDAO{
 	
 	/**
 	 * Deletes a car from the DB given a number plate
-	 * @param numberPlate Identification of the car
+	 * @param numberPlate Identification of the car to be deleted
 	 */
 	public synchronized void deleteCar(String numberPlate) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -270,7 +270,7 @@ public class DataDAO{
 	
 	/**
 	 * Deletes a garage from the DB
-	 * @param garage Name of the garage
+	 * @param garage Name of the garage to be deleted
 	 */
 	public synchronized void deleteGarage(String garage) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -290,7 +290,7 @@ public class DataDAO{
 			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
 			pm.close();
 		}
-	}
+	}	
 	
 	/**
 	 * Asks the DB of the list of cars in a garage
