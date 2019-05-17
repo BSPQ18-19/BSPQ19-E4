@@ -1,0 +1,44 @@
+digraph "carrenting.server.ICarRenting.getGarages"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node33 [label="carrenting.server.ICarRenting.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node33 -> Node34 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="carrenting.client.Controller.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38355c55fd14b445cbc7e420a5c36fa7",tooltip=" "];
+  Node34 -> Node35 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="carrenting.client.Controller.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a3198f90f6563c389e1f22e52a925ee5d",tooltip=" "];
+  Node35 -> Node36 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node36 [label="carrenting.client.Controller.get\lAllNumPlates",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a2a1f2139f9682b3c1215798216bee256",tooltip=" "];
+  Node36 -> Node37 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node37 [label="carrenting.client.Controller.check\lExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a4bd3a1876779b6547d6a56d00de92067",tooltip=" "];
+  Node37 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node38 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
+  Node37 -> Node39 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
+  Node35 -> Node40 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node40 [label="carrenting.client.Controller.garages\lWithCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a7131927c67ed8afaed347d3090c0e08b",tooltip=" "];
+  Node40 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="carrenting.client.gui.Welcome\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_welcome_g_u_i.html#a2bfdeb076ee5dec04b540de7b4e36a9f",tooltip=" "];
+  Node35 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 -> Node42 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="es.deusto.rmi.carrenting.\lTests.testStoreDeleteCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#af8829dcf722f17efca1d53345b5a049a",tooltip=" "];
+  Node34 -> Node43 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="carrenting.client.Controller.garage\lOriginPopularity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a26fcc1a9b0108dc2283436a34db76c30",tooltip=" "];
+  Node43 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="es.deusto.rmi.carrenting.\lTests.testGarageOriginPopularity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a74d971547bb970852d80678b2004b0f5",tooltip=" "];
+  Node34 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="carrenting.client.Controller.check\lExistingGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#ab294232318dba9065f4e3d5da3fca730",tooltip=" "];
+  Node45 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 -> Node46 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="es.deusto.rmi.carrenting.\lTests.checkExistingGarageTrueTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a49aa78644912ca6ed94367b05df213ff",tooltip=" "];
+  Node45 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="es.deusto.rmi.carrenting.\lTests.checkExistingGarageFalseTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a7d95a04419f8fcabae9a5efeb980d82d",tooltip=" "];
+  Node34 -> Node48 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="carrenting.client.gui.Staff\lPanelGUI.StaffPanelGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#a0731d4c14dfd42839e75af5007c93648",tooltip=" "];
+  Node34 -> Node38 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 -> Node49 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node49 [label="es.deusto.rmi.carrenting.\lTests.testStoreDeleteGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#afc6f67fefbb2274c222cc554412d85c4",tooltip=" "];
+}

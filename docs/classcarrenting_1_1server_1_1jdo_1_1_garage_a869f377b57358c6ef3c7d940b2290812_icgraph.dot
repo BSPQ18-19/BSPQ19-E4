@@ -1,0 +1,10 @@
+digraph "carrenting.server.jdo.Garage.getLocation"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node3 [label="carrenting.server.jdo.Garage.get\lLocation",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="carrenting.server.jdo.Data\lDAO.DataDAO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o.html#a99112c37c44213ed0f42c0a888c28efc",tooltip=" "];
+}

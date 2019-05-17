@@ -1,0 +1,20 @@
+<map id="es.deusto.rmi.carrenting.Tests.testStoreDeleteCar" name="es.deusto.rmi.carrenting.Tests.testStoreDeleteCar">
+<area shape="rect" id="node1" title=" " alt="" coords="5,338,173,380"/>
+<area shape="rect" id="node2" href="$classcarrenting_1_1client_1_1_controller.html#a267c24a1a13732839f548cddfe640f09" title=" " alt="" coords="224,146,451,172"/>
+<area shape="rect" id="node5" href="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a1287409c08d788e0b34f8988e7842f84" title=" " alt="" coords="245,338,429,380"/>
+<area shape="rect" id="node6" href="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a032ac9ab77bd9c980fd1bcdde95dedb4" title=" " alt="" coords="245,404,429,445"/>
+<area shape="rect" id="node7" href="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a45425648e8ef3708cc79cb6895ae8c06" title=" " alt="" coords="245,469,429,510"/>
+<area shape="rect" id="node8" href="$classcarrenting_1_1server_1_1jdo_1_1_car.html#ab218a139547b4178939722b4f5756b93" title=" " alt="" coords="245,534,429,576"/>
+<area shape="rect" id="node9" href="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a957fd3951d0756628a14563828bea9c7" title=" " alt="" coords="245,600,429,641"/>
+<area shape="rect" id="node10" href="$classcarrenting_1_1client_1_1_controller.html#ae306f94b15ad4b3869d13ce8f6c46d45" title=" " alt="" coords="230,44,445,71"/>
+<area shape="rect" id="node12" href="$classcarrenting_1_1client_1_1_controller.html#acd2c7f2a6a74dd480004505b53d3a42e" title=" " alt="" coords="221,222,453,248"/>
+<area shape="rect" id="node14" href="$classcarrenting_1_1client_1_1_controller.html#a3198f90f6563c389e1f22e52a925ee5d" title=" " alt="" coords="240,273,435,314"/>
+<area shape="rect" id="node3" href="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c" title=" " alt="" coords="823,189,1006,230"/>
+<area shape="rect" id="node4" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a45afd537059a13920f8ed9f91865b871" title=" " alt="" coords="504,95,745,122"/>
+<area shape="rect" id="node11" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aa4d89c769e75b73df2a85805ea90bb49" title=" " alt="" coords="509,44,740,71"/>
+<area shape="rect" id="node13" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#ac3730576a7df8ac11f89d1cc9ad4158a" title=" " alt="" coords="501,247,748,274"/>
+<area shape="rect" id="node15" href="$classcarrenting_1_1client_1_1_controller.html#a38355c55fd14b445cbc7e420a5c36fa7" title=" " alt="" coords="527,298,722,340"/>
+<area shape="rect" id="node17" href="$classcarrenting_1_1client_1_1_controller.html#a1e9a90a7164b6a988e23d77ecf39eea9" title=" " alt="" coords="513,364,736,391"/>
+<area shape="rect" id="node16" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a3192598ccc120a739ca168df03c23681" title=" " alt="" coords="809,298,1020,340"/>
+<area shape="rect" id="node18" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aeaa26a483ce5e53faab84b0e3be0f7c9" title=" " alt="" coords="796,364,1033,391"/>
+</map>

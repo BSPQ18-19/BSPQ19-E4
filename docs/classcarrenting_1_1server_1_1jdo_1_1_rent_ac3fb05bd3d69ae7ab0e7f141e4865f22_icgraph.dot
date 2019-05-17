@@ -1,0 +1,10 @@
+digraph "carrenting.server.jdo.Rent.setTotalPrice"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node52 [label="carrenting.server.jdo.Rent.set\lTotalPrice",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node52 -> Node53 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="carrenting.client.gui.Select\lCarGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_select_car_g_u_i.html#a6e81cefc1c5bb31c0b0c5c7e766bc468",tooltip=" "];
+}

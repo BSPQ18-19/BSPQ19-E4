@@ -1,0 +1,10 @@
+digraph "carrenting.server.jdo.Staff.getType"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node6 [label="carrenting.server.jdo.Staff.getType",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="carrenting.server.CarRenting.login\lStaff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1_car_renting.html#a99b2a341e48a7270ae5ee51d8ac4414c",tooltip=" "];
+}

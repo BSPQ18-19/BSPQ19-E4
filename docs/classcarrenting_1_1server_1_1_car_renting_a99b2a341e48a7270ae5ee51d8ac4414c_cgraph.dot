@@ -1,0 +1,20 @@
+digraph "carrenting.server.CarRenting.loginStaff"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node56 [label="carrenting.server.CarRenting.login\lStaff",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node56 -> Node57 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node57 [label="carrenting.server.jdo.Data\lDAO.getInstance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o.html#af8f8055222b8f4337f5f46c4365078d6",tooltip=" "];
+  Node56 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node58 [label="carrenting.server.jdo.Data\lDAO.getStaff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o.html#a4c1e6e490bab3a0bbd0c1159ef856800",tooltip=" "];
+  Node58 -> Node59 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node59 [label="carrenting.server.CarRenting.get\lLogger",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1_car_renting.html#ab6247bc987fa497393e8db651849f845",tooltip=" "];
+  Node58 -> Node60 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 [label="carrenting.server.jdo.Staff.to\lString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_staff.html#a4b37251253fe5f6bce2a0ef4561c35ac",tooltip=" "];
+  Node56 -> Node61 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node61 [label="carrenting.server.jdo.Staff.get\lPassword",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_staff.html#aeb06f4e58a110ec1d95628d45639c11b",tooltip=" "];
+  Node56 -> Node62 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node62 [label="carrenting.server.jdo.Staff.getType",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_staff.html#ad13da1463d4261eeddd1b024c553ed0f",tooltip=" "];
+}

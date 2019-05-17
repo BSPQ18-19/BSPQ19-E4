@@ -374,7 +374,7 @@ public class Controller{
 	
 	/**
 	 * Checks if a Garage already exists
-	 * @param Location Location of the garage
+	 * @param location Location of the garage
 	 * @return Returns true if it isn't a coincidence
 	 * @throws RemoteException
 	 */

@@ -1,0 +1,18 @@
+<map id="carrenting.client.gui.PaymentGUI.initialize" name="carrenting.client.gui.PaymentGUI.initialize">
+<area shape="rect" id="node1" title=" " alt="" coords="5,384,196,425"/>
+<area shape="rect" id="node2" href="$classcarrenting_1_1client_1_1_controller.html#a02bfa40e18727766ed66076119d95cc3" title=" " alt="" coords="263,5,458,47"/>
+<area shape="rect" id="node3" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a1487539ca87230013a7249c081f0d392" title=" " alt="" coords="265,71,456,112"/>
+<area shape="rect" id="node4" href="$classcarrenting_1_1client_1_1_controller.html#a45eeea9b470ee528e5d8068cce0bd614" title=" " alt="" coords="244,137,477,163"/>
+<area shape="rect" id="node7" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#ac08fdfb15d1916dc2b124cda2c38f412" title=" " alt="" coords="265,188,456,229"/>
+<area shape="rect" id="node8" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a91e5c7e50a1ad550e9bf5b106cd5d7fa" title=" " alt="" coords="265,253,456,295"/>
+<area shape="rect" id="node9" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a8c473af7dfbd02277e8993a984ba8e98" title=" " alt="" coords="265,319,456,360"/>
+<area shape="rect" id="node10" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a0f93847b1fbcebcbf6c39dd0d539bf00" title=" " alt="" coords="265,384,456,425"/>
+<area shape="rect" id="node11" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a2ec000cdd1156e64c50277541ad95f6a" title=" " alt="" coords="265,449,456,491"/>
+<area shape="rect" id="node12" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a977c1c0516e78d672da939d76b3a28c9" title=" " alt="" coords="265,515,456,556"/>
+<area shape="rect" id="node13" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a1329c3199ae2e2639285116a5cdfd54e" title=" " alt="" coords="265,580,456,621"/>
+<area shape="rect" id="node14" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a93af9f286a769e4d8e0f36ea952f3433" title=" " alt="" coords="265,645,456,687"/>
+<area shape="rect" id="node15" href="$classcarrenting_1_1client_1_1_controller.html#a34a0edf53b5204f26b1a39ff4d8fa316" title=" " alt="" coords="263,711,458,752"/>
+<area shape="rect" id="node16" href="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a0b24f3a2451eebba996054aaca563f36" title=" " alt="" coords="269,776,453,817"/>
+<area shape="rect" id="node5" href="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c" title=" " alt="" coords="558,100,741,141"/>
+<area shape="rect" id="node6" href="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a9fa1afb7be0e4bfd379b8c01640d0c6c" title=" " alt="" coords="525,166,773,193"/>
+</map>

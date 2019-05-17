@@ -1,0 +1,22 @@
+digraph "carrenting.client.Controller.getResourcebundle"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node159 [label="carrenting.client.Controller.get\lResourcebundle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node159 -> Node160 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node160 [label="carrenting.client.gui.Client\lDataGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_client_data_g_u_i.html#a2eb7f748bf70c5f4e42c71106a604a40",tooltip=" "];
+  Node159 -> Node161 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node161 [label="carrenting.client.gui.Log\lInStaffGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_log_in_staff_g_u_i.html#a47b35e476216e26fe89235fee12150e1",tooltip=" "];
+  Node159 -> Node162 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node162 [label="carrenting.client.gui.Payment\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_payment_g_u_i.html#a19724d907d6135f0e7b18d43504b2cc8",tooltip=" "];
+  Node159 -> Node163 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node163 [label="carrenting.client.gui.Select\lCarGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_select_car_g_u_i.html#a6e81cefc1c5bb31c0b0c5c7e766bc468",tooltip=" "];
+  Node159 -> Node164 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node164 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
+  Node159 -> Node165 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node165 [label="carrenting.client.gui.Statistics\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_statistics_g_u_i.html#a3b85a88b18774ebb23ef80a5dcebaceb",tooltip=" "];
+  Node159 -> Node166 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node166 [label="carrenting.client.gui.Welcome\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_welcome_g_u_i.html#a2bfdeb076ee5dec04b540de7b4e36a9f",tooltip=" "];
+}
