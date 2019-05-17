@@ -454,6 +454,26 @@ public class DataDAO{
 	}
 	
 	
+	public void updateGarage(String numberPlate, String newGarage) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET GARAGE ='" + newGarage + "' WHERE NUMPLATE='" + numberPlate + "'");
+			q.execute();
+			tx.commit();
+
+
+		} catch (Exception ex) {
+			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en update availability");
+			pm.close();
+		}
+	}
 	
 
 	

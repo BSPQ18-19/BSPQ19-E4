@@ -449,6 +449,23 @@ public class Controller{
 		return myBundle;
 	}
 	
+	
+	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
+		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}

@@ -292,9 +292,23 @@ public class StaffPanelGUI extends JFrame {
 				btnRealocateCar.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						//tableRemoveCars.getSelectedRow()).getNumPlate()
+						if(tableRemoveCars.getSelectedRow()!=-1) {
+							try {
+								controller.updateGarage(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate(), "Nuevogarage");
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							modelRemoveCars.fireTableDataChanged();
+							tableRemoveCars.addNotify();
+
+						}
+						else {
+							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_car"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+						}
 						
 						
+
 						
 						
 						

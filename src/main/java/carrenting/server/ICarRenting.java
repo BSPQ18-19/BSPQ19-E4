@@ -25,4 +25,5 @@ public interface ICarRenting extends Remote  {
 	public void storeRent(String userId, String numberPlate, Date startingDate, Date finishingDate, String garageOrigin,
 			String garageDestination, String paymentSystem, double totalPrice)throws RemoteException;
 	public ArrayList<Car> getAllCars() throws RemoteException;
+	public void updateGarage(String numberPlate, String newGarage) throws RemoteException;
 }

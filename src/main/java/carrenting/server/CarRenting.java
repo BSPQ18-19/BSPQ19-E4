@@ -164,6 +164,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 
+	@Override
+	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
+		DataDAO.getInstance().updateGarage(numberPlate, newGarage);
+		
+	}
+
+
 
 	
 
