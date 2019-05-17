@@ -119,6 +119,17 @@ public class Controller{
 	}
 	
 	/**
+	 * Calls the server to delete the given garage and its cars.
+	 * 
+	 * @param garage Where cars are stored
+	 * @throws RemoteException
+	 */
+	public void deleteGarageAndItsCars(String garage) throws RemoteException {
+		RMIServiceLocator.getService().deleteGarage(garage);
+	}
+	
+	
+	/**
 	 * Asks the server for the list of garages.
 	 * 
 	 * @return List of all garages

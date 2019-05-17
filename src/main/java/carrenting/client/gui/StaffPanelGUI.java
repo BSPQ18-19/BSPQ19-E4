@@ -28,10 +28,13 @@ import carrenting.server.jdo.Rent;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTabbedPane;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class StaffPanelGUI extends JFrame {
@@ -82,7 +85,7 @@ public class StaffPanelGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1164, 591);
+		frame.setBounds(100, 100, 1149, 591);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -157,48 +160,48 @@ public class StaffPanelGUI extends JFrame {
 				panelManageCars.setLayout(null);
 				
 				JPanel panelAddCars = new JPanel();
-				panelAddCars.setBounds(31, 33, 406, 408);
+				panelAddCars.setBounds(10, 33, 295, 408);
 				panelManageCars.add(panelAddCars);
 				panelAddCars.setLayout(null);
 				
 				JLabel labelAddACar = new JLabel(controller.getResourcebundle().getString("add_car"));
-				labelAddACar.setBounds(170, 27, 207, 22);
+				labelAddACar.setBounds(53, 27, 207, 22);
 				panelAddCars.add(labelAddACar);
 				labelAddACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 				
 				JLabel labelNumberPlate = new JLabel(controller.getResourcebundle().getString("number_plate"));
-				labelNumberPlate.setBounds(55, 74, 98, 14);
+				labelNumberPlate.setBounds(10, 74, 98, 14);
 				panelAddCars.add(labelNumberPlate);
 				
 				textFieldNumPlate = new JTextField();
-				textFieldNumPlate.setBounds(170, 71, 185, 20);
+				textFieldNumPlate.setBounds(125, 71, 147, 20);
 				panelAddCars.add(textFieldNumPlate);
 				textFieldNumPlate.setColumns(10);
 				
 				JLabel labelBrand = new JLabel(controller.getResourcebundle().getString("brand"));
-				labelBrand.setBounds(55, 125, 98, 14);
+				labelBrand.setBounds(10, 125, 98, 14);
 				panelAddCars.add(labelBrand);
 				
 				textFieldBrand = new JTextField();
-				textFieldBrand.setBounds(170, 119, 185, 20);
+				textFieldBrand.setBounds(125, 119, 147, 20);
 				panelAddCars.add(textFieldBrand);
 				textFieldBrand.setColumns(10);
 				
 				JLabel labelModel = new JLabel(controller.getResourcebundle().getString("model"));
-				labelModel.setBounds(55, 167, 98, 14);
+				labelModel.setBounds(10, 167, 98, 14);
 				panelAddCars.add(labelModel);
 				
 				textFieldModel = new JTextField();
-				textFieldModel.setBounds(170, 164, 185, 20);
+				textFieldModel.setBounds(125, 164, 147, 20);
 				panelAddCars.add(textFieldModel);
 				textFieldModel.setColumns(10);
 				
 				JLabel labelGarage = new JLabel(controller.getResourcebundle().getString("garage"));
-				labelGarage.setBounds(55, 216, 98, 14);
+				labelGarage.setBounds(10, 216, 98, 14);
 				panelAddCars.add(labelGarage);
 				
 				JComboBox comboBoxGarages = new JComboBox();
-				comboBoxGarages.setBounds(170, 213, 186, 20);
+				comboBoxGarages.setBounds(125, 213, 147, 20);
 				panelAddCars.add(comboBoxGarages);
 //				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
 //				DefaultComboBoxModel modelListGarages = (DefaultComboBoxModel) comboBoxGarages.getModel();
@@ -207,29 +210,29 @@ public class StaffPanelGUI extends JFrame {
 //				comboBoxGarages.setModel(new DefaultComboBoxModel(garages.toArray()));
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
-				labelPricePerDsy.setBounds(55, 271, 98, 14);
+				labelPricePerDsy.setBounds(10, 271, 98, 14);
 				panelAddCars.add(labelPricePerDsy);
-				textFieldPpd.setBounds(172, 268, 183, 20);
+				textFieldPpd.setBounds(127, 268, 147, 20);
 				panelAddCars.add(textFieldPpd);
 				textFieldPpd.setColumns(10);
 				
 				JButton buttonAdd = new JButton(controller.getResourcebundle().getString("add"));
-				buttonAdd.setBounds(266, 323, 89, 23);
+				buttonAdd.setBounds(183, 342, 89, 23);
 				panelAddCars.add(buttonAdd);
 				
 				JPanel panelRemoveCars= new JPanel();
-				panelRemoveCars.setBounds(494, 33, 621, 408);
+				panelRemoveCars.setBounds(304, 33, 526, 408);
 				panelManageCars.add(panelRemoveCars);
 				panelRemoveCars.setLayout(null);
 				
 				
 				JLabel labelRemoveCars = new JLabel(controller.getResourcebundle().getString("remove_cars"));
 				labelRemoveCars.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-				labelRemoveCars.setBounds(114, 38, 209, 24);
+				labelRemoveCars.setBounds(141, 29, 209, 24);
 				panelRemoveCars.add(labelRemoveCars);
 				
 				JScrollPane scrollPaneRemoveCars = new JScrollPane();
-				scrollPaneRemoveCars.setBounds(30, 72, 556, 237);
+				scrollPaneRemoveCars.setBounds(30, 72, 481, 237);
 				panelRemoveCars.add(scrollPaneRemoveCars);
 				
 				tableRemoveCars = new JTable();
@@ -285,8 +288,40 @@ public class StaffPanelGUI extends JFrame {
 						}
 					}
 				});
-				buttonRemoveCar.setBounds(422, 358, 164, 23);
+				buttonRemoveCar.setBounds(347, 347, 164, 23);
 				panelRemoveCars.add(buttonRemoveCar);
+				
+				JButton btnRealocateCar = new JButton("Realocate car");
+				btnRealocateCar.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//tableRemoveCars.getSelectedRow()).getNumPlate()
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					}
+				});
+				btnRealocateCar.setBounds(164, 347, 146, 23);
+				panelRemoveCars.add(btnRealocateCar);
+				
+				JPanel panel = new JPanel();
+				panel.setBounds(834, 33, 295, 408);
+				panelManageCars.add(panel);
+				panel.setLayout(null);
+				
+				JLabel labelRealocateCar = new JLabel("Realocate car");
+				labelRealocateCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+				labelRealocateCar.setBounds(88, 32, 147, 24);
+				panel.add(labelRealocateCar);
 				
 				
 				
@@ -348,7 +383,7 @@ public class StaffPanelGUI extends JFrame {
 		panelManageGarages.setLayout(null);
 		
 		JPanel panelAddGarage = new JPanel();
-		panelAddGarage.setBounds(42, 94, 410, 200);
+		panelAddGarage.setBounds(40, 62, 410, 200);
 		panelManageGarages.add(panelAddGarage);
 		panelAddGarage.setLayout(null);
 		//TODO
@@ -371,6 +406,47 @@ public class StaffPanelGUI extends JFrame {
 		JButton btnAddGarage = new JButton("Add garage");
 		btnAddGarage.setBounds(267, 137, 110, 23);
 		panelAddGarage.add(btnAddGarage);
+		
+		JPanel panelDeleteGarage = new JPanel();
+		panelDeleteGarage.setBounds(558, 62, 510, 298);
+		panelManageGarages.add(panelDeleteGarage);
+		panelDeleteGarage.setLayout(null);
+		
+		JLabel labelDeleteGarage = new JLabel("Delete garage");
+		labelDeleteGarage.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
+		labelDeleteGarage.setBounds(187, 24, 155, 24);
+		panelDeleteGarage.add(labelDeleteGarage);
+		
+		JLabel lblGarage = new JLabel("Garage");
+		lblGarage.setBounds(92, 78, 84, 14);
+		panelDeleteGarage.add(lblGarage);
+		
+		JScrollPane scrollPaneDeleteGarage = new JScrollPane();
+		scrollPaneDeleteGarage.setBounds(161, 76, 181, 138);
+		panelDeleteGarage.add(scrollPaneDeleteGarage);
+		
+		JList listDeleteGarage = new JList();
+		listDeleteGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listDeleteGarage.setModel(new AbstractListModel() {
+			
+			ArrayList<String> values = controller.getGarages();
+			public int getSize() {
+				return values.size();
+			}
+			public Object getElementAt(int index) {
+				return values.get(index);
+			}
+		});
+		scrollPaneDeleteGarage.setViewportView(listDeleteGarage);
+		
+		
+		
+		
+		
+		
+		JButton btnDeleteGarage = new JButton("Delete garage");
+		btnDeleteGarage.setBounds(315, 249, 148, 23);
+		panelDeleteGarage.add(btnDeleteGarage);
 		btnAddGarage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -394,7 +470,7 @@ public class StaffPanelGUI extends JFrame {
 						controller.storeGarage(textFieldLocation.getText());
 						//TODO
 						JOptionPane.showConfirmDialog(null, "Garage added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
-						comboBoxGaragesModel.notify();
+						comboBoxGarages.addItem(textFieldLocation.getText());
 						
 						//TODO  Que en el tab de añadir coches aparezca el nuevo garage
 						
