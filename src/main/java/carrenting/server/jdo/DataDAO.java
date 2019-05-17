@@ -294,6 +294,40 @@ public class DataDAO{
 	
 	/**
 	 * Asks the DB of the list of cars in a garage
+	 * @return List of all cars in the renting service
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<Car> getAllCars() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		ArrayList<Car> allCars = new ArrayList<>();
+		
+		try {
+			tx.begin();
+			Query<Car> query = pm.newQuery(Car.class);
+			allCars= new ArrayList<Car>((List<Car>) query.execute());
+			tx.commit();
+			for(Car car: allCars) {
+				CarRenting.getLogger().debug(car.toString());
+			}
+			
+			
+		} catch (Exception ex) {
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
+			return null;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			CarRenting.getLogger().debug("GETTING CARS");
+			pm.close();	
+		}
+		return allCars;
+	}
+	
+	
+	/**
+	 * Asks the DB of the list of cars in a garage
 	 * @param garage Name of the garage
 	 * @return List of cars in the given garage
 	 */

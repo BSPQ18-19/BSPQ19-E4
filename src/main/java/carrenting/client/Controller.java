@@ -126,6 +126,17 @@ public class Controller{
 	 */
 	public void deleteGarageAndItsCars(String garage) throws RemoteException {
 		RMIServiceLocator.getService().deleteGarage(garage);
+		ArrayList<Car>carsToDelete= this.getCars(garage);
+		System.out.println("The cars to be deleted are: ");
+		for (Car c: carsToDelete) {
+			System.out.println(c);
+		}
+		System.out.println("\n");
+		for (Car c: carsToDelete) {
+			this.deleteCar(c.getNumPlate());
+			System.out.println("deleting:   " + c   );
+			
+		}
 	}
 	
 	
@@ -237,12 +248,8 @@ public class Controller{
 	 * @throws RemoteException
 	 */
 	public ArrayList<Car> getAllCars() throws RemoteException{
-		ArrayList<String> garages = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
-		garages = getGarages();
-		for(String garage: garages) {
-			cars.addAll(getCars(garage));
-		}
+		cars.addAll(RMIServiceLocator.getService().getAllCars());
 		return cars;	
 	}
 	

@@ -157,6 +157,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	}
 
 
+	@Override
+	public ArrayList<Car> getAllCars() throws RemoteException {
+		return DataDAO.getInstance().getAllCars();
+		
+	}
+
+
 
 	
 

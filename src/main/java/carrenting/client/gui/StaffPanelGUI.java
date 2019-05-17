@@ -28,11 +28,13 @@ import carrenting.server.jdo.Rent;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
 
@@ -54,8 +56,9 @@ public class StaffPanelGUI extends JFrame {
 	private JTable tableRemoveCars;
 	private JTextField textFieldLocation;
 	private ArrayList<Car> cars;
-	private boolean allGaragesOk= true;
 
+
+	
 	
 	private MaskFormatter getMaskFormatter(String format) {
 	    MaskFormatter mask = null;
@@ -412,11 +415,13 @@ public class StaffPanelGUI extends JFrame {
 		panelManageGarages.add(panelDeleteGarage);
 		panelDeleteGarage.setLayout(null);
 		
+		//TODO
 		JLabel labelDeleteGarage = new JLabel("Delete garage");
 		labelDeleteGarage.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		labelDeleteGarage.setBounds(187, 24, 155, 24);
 		panelDeleteGarage.add(labelDeleteGarage);
 		
+		//TODO
 		JLabel lblGarage = new JLabel("Garage");
 		lblGarage.setBounds(92, 78, 84, 14);
 		panelDeleteGarage.add(lblGarage);
@@ -425,29 +430,94 @@ public class StaffPanelGUI extends JFrame {
 		scrollPaneDeleteGarage.setBounds(161, 76, 181, 138);
 		panelDeleteGarage.add(scrollPaneDeleteGarage);
 		
-		JList listDeleteGarage = new JList();
+//		JList listDeleteGarage = new JList();
+//		listDeleteGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		listDeleteGarage.setModel(new AbstractListModel() {
+//			final DefaultListModel<String> model = new DefaultListModel();
+//			final JList list = new JList(model);
+//			ArrayList<String> values = controller.getGarages();
+//			public int getSize() {
+//				return values.size();
+//			}
+//			public Object getElementAt(int index) {
+//				return values.get(index);
+//			}
+//		});
+//		scrollPaneDeleteGarage.setViewportView(listDeleteGarage);
+
+		final DefaultListModel<String> modelDeleteGarages = new DefaultListModel<String>();
+		JList listDeleteGarage = new JList(modelDeleteGarages);
 		listDeleteGarage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listDeleteGarage.setModel(new AbstractListModel() {
-			
-			ArrayList<String> values = controller.getGarages();
-			public int getSize() {
-				return values.size();
-			}
-			public Object getElementAt(int index) {
-				return values.get(index);
-			}
-		});
+		ArrayList<String> values = controller.getGarages();
+		for(String garage: values) {
+			modelDeleteGarages.addElement(garage);
+		}
 		scrollPaneDeleteGarage.setViewportView(listDeleteGarage);
 		
 		
 		
+		JButton btnDeleteGarageCars = new JButton("<html>Delete garage and  <p>  all its cars");
+		btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
+			boolean deleteGarageOk;
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				deleteGarageOk =true;
+				
+					if(listDeleteGarage.getSelectedIndex()==-1) {
+						JOptionPane.showConfirmDialog(null, "You have to choose a garage", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						deleteGarageOk=false;
+					}
+			
+					if(deleteGarageOk) {
+						try {
+							controller.deleteGarageAndItsCars(listDeleteGarage.getSelectedValue().toString());
+							modelDeleteGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
+							comboBoxGarages.removeItem(textFieldLocation.getText());
+							tableRemoveCars.addNotify();
+							
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+			}
+		});
 		
-		
+		btnDeleteGarageCars.setBounds(318, 249, 145, 38);
+		panelDeleteGarage.add(btnDeleteGarageCars);
 		
 		JButton btnDeleteGarage = new JButton("Delete garage");
-		btnDeleteGarage.setBounds(315, 249, 148, 23);
+		btnDeleteGarage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				boolean allOk=true;
+				if(listDeleteGarage.getSelectedIndex()==-1) {
+					JOptionPane.showConfirmDialog(null, "You have to choose a garage", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					allOk=false;
+				}
+				if(allOk) {
+					try {
+						controller.deleteGarage(listDeleteGarage.getSelectedValue().toString());
+						modelDeleteGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
+						comboBoxGarages.removeItem(textFieldLocation.getText());
+						
+						
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+				
+			}
+		});
+		btnDeleteGarage.setBounds(115, 249, 145, 38);
 		panelDeleteGarage.add(btnDeleteGarage);
+		
+		
+		
 		btnAddGarage.addMouseListener(new MouseAdapter() {
+			boolean allGaragesOk= true;
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				allGaragesOk=true;
@@ -471,8 +541,7 @@ public class StaffPanelGUI extends JFrame {
 						//TODO
 						JOptionPane.showConfirmDialog(null, "Garage added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 						comboBoxGarages.addItem(textFieldLocation.getText());
-						
-						//TODO  Que en el tab de añadir coches aparezca el nuevo garage
+						modelDeleteGarages.addElement(textFieldLocation.getText());
 						
 					} catch (RemoteException e1) {
 						e1.printStackTrace();
