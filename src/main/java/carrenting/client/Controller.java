@@ -69,10 +69,10 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-//		new StaffPanelGUI(this, "admin", this.rent);
+		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -571,7 +571,9 @@ public class Controller{
 	
 	
 	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
-		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
+		Car car= this.getCar(numberPlate);
+		this.deleteCar(numberPlate);
+		this.storeCar(newGarage, car.getNumPlate(), car.getBrand(), car.getModel(), car.getPricePerDay());
 	}
 	
 

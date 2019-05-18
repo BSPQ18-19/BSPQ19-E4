@@ -87,7 +87,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	
 	/**
 	 * Deletes a Garage from the DB
-	 * @param garage Garage to eb deleted
+	 * @param garage Garage to be deleted
 	 */
 	public void deleteGarage(String garage) throws RemoteException{
 		DataDAO.getInstance().deleteGarage(garage);
@@ -99,13 +99,9 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	 * @param password password of the staff
 	 * @param type type of the staff
 	 */
-	public boolean loginStaff(String user, String password, String type) throws RemoteException{
-		
+	public boolean loginStaff(String user, String password, String type) throws RemoteException{	
 		boolean loginSuccessful=false;
 		for(Staff staff: staffs ) {
-			System.out.println(staff.getUsername());
-			System.out.println(staff.getPassword());
-			System.out.println(staff.getType());
 			if(staff.getUsername().equals(user) && staff.getPassword().equals(password) && staff.getType().equals(type)) {
 				logger.debug("login_successful " + user);
 				loginSuccessful=true;
@@ -175,12 +171,6 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 	}
 
-
-	@Override
-	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
-		DataDAO.getInstance().updateGarage(numberPlate, newGarage);
-		
-	}
 
 
 

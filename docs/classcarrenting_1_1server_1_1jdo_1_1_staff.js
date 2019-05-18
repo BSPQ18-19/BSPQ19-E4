@@ -1,6 +1,7 @@
 var classcarrenting_1_1server_1_1jdo_1_1_staff =
 [
     [ "Staff", "classcarrenting_1_1server_1_1jdo_1_1_staff.html#ae44967323617b6fe2c0404270a5470d4", null ],
+    [ "Staff", "classcarrenting_1_1server_1_1jdo_1_1_staff.html#a9d50e49defabb6b6c3029ce05d477ccf", null ],
     [ "getPassword", "classcarrenting_1_1server_1_1jdo_1_1_staff.html#aeb06f4e58a110ec1d95628d45639c11b", null ],
     [ "getType", "classcarrenting_1_1server_1_1jdo_1_1_staff.html#ad13da1463d4261eeddd1b024c553ed0f", null ],
     [ "getUsername", "classcarrenting_1_1server_1_1jdo_1_1_staff.html#a6a9d8bdaa6ef11454f1b61d99d684f9f", null ],

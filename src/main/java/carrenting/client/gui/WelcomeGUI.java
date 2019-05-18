@@ -238,6 +238,71 @@ public class WelcomeGUI extends JFrame {
 		});
 		chckbxSameGarage.setBounds(598, 129, 145, 37);
 		contentPane.add(chckbxSameGarage);
+		
+		//TODO
+		JLabel lblSeleccionDeIdioma = new JLabel("Idioma:");
+		lblSeleccionDeIdioma.setBounds(10, 0, 151, 14);
+		contentPane.add(lblSeleccionDeIdioma);
+		
+		//TODO
+		JLabel lblSpanish = new JLabel("<html><u>Español");
+		lblSpanish.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.setLocale("es");
+				welcomeFrame.dispose();
+				try {
+					new WelcomeGUI(controller, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("CAMBIANDO A Español");
+			}
+		});
+		lblSpanish.setForeground(Color.BLUE);
+		lblSpanish.setBounds(20, 15, 51, 14);
+		contentPane.add(lblSpanish);
+		
+		//TODO
+		JLabel lblEuskera = new JLabel("<html><u>Euskera");
+		lblEuskera.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.setLocale("eu");
+				welcomeFrame.dispose();
+				try {
+					new WelcomeGUI(controller, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("CAMBIANDO A EUSKERA");
+			}
+		});
+		lblEuskera.setForeground(Color.BLUE);
+		lblEuskera.setBounds(84, 15, 46, 14);
+		contentPane.add(lblEuskera);
+		
+		//TODO
+		JLabel lblIngls = new JLabel("<html><u>Inglés");
+		lblIngls.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.setLocale("en");
+				welcomeFrame.dispose();
+				try {
+					new WelcomeGUI(controller, rent);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("CAMBIANDO A ingles");
+			}
+		});
+		lblIngls.setForeground(Color.BLUE);
+		lblIngls.setBounds(146, 15, 46, 14);
+		contentPane.add(lblIngls);
 
 
 	}

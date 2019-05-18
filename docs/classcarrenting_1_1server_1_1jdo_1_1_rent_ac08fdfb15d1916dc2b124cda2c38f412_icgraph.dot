@@ -4,7 +4,7 @@ digraph "carrenting.server.jdo.Rent.getUserId"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="RL";
-  Node31 [label="carrenting.server.jdo.Rent.get\lUserId",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node31 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node32 [label="carrenting.client.gui.Payment\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_payment_g_u_i.html#a19724d907d6135f0e7b18d43504b2cc8",tooltip=" "];
+  Node38 [label="carrenting.server.jdo.Rent.get\lUserId",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node38 -> Node39 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="carrenting.client.gui.Payment\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_payment_g_u_i.html#a19724d907d6135f0e7b18d43504b2cc8",tooltip=" "];
 }

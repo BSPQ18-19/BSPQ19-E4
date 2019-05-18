@@ -1,0 +1,32 @@
+digraph "carrenting.client.Controller.getCars"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node120 [label="carrenting.client.Controller.getCars",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node120 -> Node121 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node121 [label="carrenting.client.Controller.delete\lGarageAndItsCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a8ab0dbe50a7131d88767853d40886943",tooltip=" "];
+  Node121 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node122 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
+  Node120 -> Node123 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node123 [label="carrenting.client.Controller.get\lAllNumPlates",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a2a1f2139f9682b3c1215798216bee256",tooltip=" "];
+  Node123 -> Node124 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node124 [label="carrenting.client.Controller.number\lPlateAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38e2ceefec996f614721075c4e8272ed",tooltip=" "];
+  Node124 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node124 -> Node125 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node125 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
+  Node120 -> Node126 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node126 [label="carrenting.client.Controller.garages\lWithCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a7131927c67ed8afaed347d3090c0e08b",tooltip=" "];
+  Node126 -> Node127 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node127 [label="carrenting.client.gui.Welcome\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_welcome_g_u_i.html#a2bfdeb076ee5dec04b540de7b4e36a9f",tooltip=" "];
+  Node126 -> Node128 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node128 [label="es.deusto.rmi.carrenting.\lTests.testGaragesWithCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a0ad81901134fda691f344b155c8e69fa",tooltip=" "];
+  Node120 -> Node129 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node129 [label="carrenting.client.Controller.get\lCarsAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a80d021acb8be8a60823c3da433f5495f",tooltip=" "];
+  Node129 -> Node130 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node130 [label="carrenting.client.gui.Select\lCarGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_select_car_g_u_i.html#a6e81cefc1c5bb31c0b0c5c7e766bc468",tooltip=" "];
+  Node129 -> Node127 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node129 -> Node131 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node131 [label="es.deusto.rmi.carrenting.\lTests.testGetCarsAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#aa4631347bcb59d58fb296b10787feaa4",tooltip=" "];
+}

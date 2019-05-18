@@ -4,9 +4,9 @@ digraph "carrenting.server.jdo.DataDAO.storeGarage"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="RL";
-  Node58 [label="carrenting.server.jdo.Data\lDAO.storeGarage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node58 -> Node59 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node59 [label="carrenting.server.CarRenting.store\lGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1_car_renting.html#a00e1951eeaff747c8a601d586b3fb8e9",tooltip=" "];
-  Node58 -> Node60 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node60 [label="carrenting.server.jdo.Data\lDAO.DataDAO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o.html#a99112c37c44213ed0f42c0a888c28efc",tooltip=" "];
+  Node63 [label="carrenting.server.jdo.Data\lDAO.storeGarage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node63 -> Node64 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node64 [label="carrenting.server.CarRenting.store\lGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1_car_renting.html#a00e1951eeaff747c8a601d586b3fb8e9",tooltip=" "];
+  Node63 -> Node65 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node65 [label="carrenting.server.jdo.Data\lDAO.DataDAO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_data_d_a_o.html#a99112c37c44213ed0f42c0a888c28efc",tooltip=" "];
 }

@@ -3,6 +3,7 @@ digraph "carrenting.server.CarRenting"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
   Node4 [label="carrenting.server.CarRenting",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="UnicastRemoteObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
@@ -12,4 +13,6 @@ digraph "carrenting.server.CarRenting"
   Node7 [label="Remote",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node8 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" logger" ,fontname="Helvetica"];
   Node8 [label="Logger",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node9 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" staffs" ,fontname="Helvetica"];
+  Node9 [label="ArrayList\< carrenting.server.jdo.\lStaff \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
 }

@@ -6,7 +6,7 @@ digraph "es.deusto.rmi.carrenting.Tests.checkExistingGarageTrueTest"
   rankdir="LR";
   Node11 [label="es.deusto.rmi.carrenting.\lTests.checkExistingGarageTrueTest",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node11 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="carrenting.client.Controller.check\lExistingGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#ab294232318dba9065f4e3d5da3fca730",tooltip=" "];
+  Node12 [label="carrenting.client.Controller.new\lGarageAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a29f6f19aa82c8bf783775337ef6d593d",tooltip=" "];
   Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node13 [label="carrenting.client.Controller.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38355c55fd14b445cbc7e420a5c36fa7",tooltip=" "];
   Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

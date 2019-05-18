@@ -1,0 +1,32 @@
+digraph "carrenting.client.Controller.updateGarage"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node264 [label="carrenting.client.Controller.update\lGarage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node264 -> Node265 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node265 [label="carrenting.client.Controller.getCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#ae306f94b15ad4b3869d13ce8f6c46d45",tooltip=" "];
+  Node265 -> Node266 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node266 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node265 -> Node267 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node267 [label="carrenting.server.ICarRenting.getCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aa4d89c769e75b73df2a85805ea90bb49",tooltip=" "];
+  Node264 -> Node268 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node268 [label="carrenting.client.Controller.deleteCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#acd2c7f2a6a74dd480004505b53d3a42e",tooltip=" "];
+  Node268 -> Node266 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node268 -> Node269 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node269 [label="carrenting.server.ICarRenting.deleteCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#ac3730576a7df8ac11f89d1cc9ad4158a",tooltip=" "];
+  Node264 -> Node270 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node270 [label="carrenting.client.Controller.storeCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a267c24a1a13732839f548cddfe640f09",tooltip=" "];
+  Node270 -> Node266 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node270 -> Node271 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node271 [label="carrenting.server.ICarRenting.storeCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a45afd537059a13920f8ed9f91865b871",tooltip=" "];
+  Node264 -> Node272 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node272 [label="carrenting.server.jdo.Car.get\lNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a032ac9ab77bd9c980fd1bcdde95dedb4",tooltip=" "];
+  Node264 -> Node273 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node273 [label="carrenting.server.jdo.Car.get\lBrand",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a45425648e8ef3708cc79cb6895ae8c06",tooltip=" "];
+  Node264 -> Node274 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node274 [label="carrenting.server.jdo.Car.get\lModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_car.html#ab218a139547b4178939722b4f5756b93",tooltip=" "];
+  Node264 -> Node275 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node275 [label="carrenting.server.jdo.Car.get\lPricePerDay",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_car.html#a957fd3951d0756628a14563828bea9c7",tooltip=" "];
+}
