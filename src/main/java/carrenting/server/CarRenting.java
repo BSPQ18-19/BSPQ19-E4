@@ -1,8 +1,6 @@
 package carrenting.server;
 
 import java.rmi.RemoteException;
-
-
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,14 +11,13 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
-import sun.util.locale.provider.LocaleServiceProviderPool.LocalizedObjectGetter;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 public class CarRenting extends UnicastRemoteObject implements ICarRenting{

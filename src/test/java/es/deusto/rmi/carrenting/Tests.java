@@ -260,19 +260,12 @@ public class Tests {
 		
 		ArrayList<String> garages = c.garagesWithCars();
 		
-		
-		System.out.println(garages.toString());
-		System.out.println(garages.contains("Bilbao"));
-		System.out.println(garages.contains("Barcelona"));
-		System.out.println(garages.contains("Madrid"));
 		if(garages.contains("Bilbao") && garages.contains("Madrid") && garages.contains("Barcelona")) {
 			assert(true);
 		}else {
 			assert(false);
 		}
-		
-		
-		
+	
 	}
 	
 	@Test
@@ -311,7 +304,10 @@ public class Tests {
 		
 	}
 	
-	
+	@Test
+	public void testPaymentPopularity() throws RemoteException {
+		c.paymentPopularity();
+	}
 	
 	
 	@AfterClass
