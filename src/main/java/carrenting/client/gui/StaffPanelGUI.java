@@ -462,7 +462,7 @@ public class StaffPanelGUI extends JFrame {
 		panelAddGarage.add(lblLocation);
 		
 		JButton btnAddGarage = new JButton(controller.getResourcebundle().getString("add_garage"));
-		btnAddGarage.setBounds(267, 137, 110, 23);
+		btnAddGarage.setBounds(280, 148, 125, 45);
 		panelAddGarage.add(btnAddGarage);
 		
 		JPanel panelDeleteGarage = new JPanel();
@@ -549,7 +549,7 @@ public class StaffPanelGUI extends JFrame {
 			}
 		});
 		
-		btnDeleteGarageCars.setBounds(318, 249, 145, 38);
+		btnDeleteGarageCars.setBounds(400, 280, 165, 48);
 		panelDeleteGarage.add(btnDeleteGarageCars);
 		
 		JButton btnDeleteGarage = new JButton(controller.getResourcebundle().getString("delete_garage"));
@@ -581,7 +581,6 @@ public class StaffPanelGUI extends JFrame {
 		panelDeleteGarage.add(btnDeleteGarage);
 		
 		JPanel panelStatistics = new JPanel();
-		//TODO
 		tabbedPane.addTab(controller.getResourcebundle().getString("statistics"), null, panelStatistics, null);
 		panelStatistics.setLayout(null);
 		JLabel lblGaragePopularity= new JLabel(controller.getResourcebundle().getString("garage_popularity"));
@@ -691,7 +690,7 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Model", "Times rented"
+				controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("times_rented")
 			}
 		));
 		tableModelCars.setRowSelectionAllowed(false);
@@ -719,7 +718,7 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Brand", "Times rented"
+				controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("times_rented")
 			}
 		));
 		Object carBrandPopularity[][] = controller.carBrandPopularity();
@@ -744,14 +743,13 @@ public class StaffPanelGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				allGaragesOk=true;
 				if(textFieldLocation.getText().equals("")) {
-					//TODO
-					JOptionPane.showConfirmDialog(null, "You must enter a location", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("enter_location"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					allGaragesOk=false;
 				}
 				try {
 					if(!controller.newGarageAvailable(textFieldLocation.getText())){
 						//TODO
-						JOptionPane.showConfirmDialog(null, "This garage already exists, you can't add an already existing garage", "Error", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("already_exist_garage"), controller.getResourcebundle().getString("error"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 						allGaragesOk=false;
 					}
 				} catch (RemoteException e1) {
@@ -761,7 +759,7 @@ public class StaffPanelGUI extends JFrame {
 					try {
 						controller.storeGarage(textFieldLocation.getText());
 						//TODO
-						JOptionPane.showConfirmDialog(null, "Garage added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("garage_added_successfuly"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 						comboBoxGarages.addItem(textFieldLocation.getText());
 						modelDeleteGarages.addElement(textFieldLocation.getText());
 						
