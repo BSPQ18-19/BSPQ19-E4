@@ -130,15 +130,8 @@ public class Controller{
 	 */
 	public void deleteGarageAndItsCars(String garage) throws RemoteException {
 		ArrayList<Car>carsToDelete= this.getCars(garage);
-		System.out.println("The cars to be deleted are: ");
 		for (Car c: carsToDelete) {
-			System.out.println(c);
-		}
-		System.out.println("\n");
-		for (Car c: carsToDelete) {
-			this.deleteCar(c.getNumPlate());
-			System.out.println("deleting:   " + c   );
-			
+			this.deleteCar(c.getNumPlate());		
 		}
 		RMIServiceLocator.getService().deleteGarage(garage);
 	}
@@ -243,9 +236,6 @@ public class Controller{
 	public ArrayList<Car> getAllCars() throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
 		cars.addAll(RMIServiceLocator.getService().getAllCars());
-		for(Car c: cars) {
-			System.out.println(c);
-		}
 		return cars;	
 	}
 	
@@ -488,14 +478,7 @@ public class Controller{
 					
 				}	
 			}
-		}
-		for(int i=0; i<carBrandPopularity.length; i++) {
-			for(int j=0; j<carBrandPopularity[i].length; j++) {
-				System.out.println(carBrandPopularity[i][j]);
-			}
-		}
-		
-		//TODO  BORRAR
+		}		
 		return carBrandPopularity;	
 	}
 	
@@ -532,9 +515,7 @@ public class Controller{
 		ArrayList<String> locations= new ArrayList<>();
 		locations= this.getGarages();
 		for(String loc : locations){
-			System.out.println("This location" + loc + "is not the same as" + location);
 			if(loc.equals(location)) {
-				//System.out.println(loc+ " = " + location);
 				locationOK=false;
 			}
 		}

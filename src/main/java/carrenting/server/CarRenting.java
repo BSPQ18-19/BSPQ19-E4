@@ -17,7 +17,6 @@ import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
-import sun.util.locale.provider.LocaleServiceProviderPool.LocalizedObjectGetter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
