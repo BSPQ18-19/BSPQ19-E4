@@ -58,7 +58,8 @@ public class StaffPanelGUI extends JFrame {
 	private ArrayList<Car> cars;
 	private JTable tableGarages;
 	private JTable tablePaySys;
-	private JTable tableCars;
+	private JTable tableModelCars;
+	private JTable tableBrandCars;
 
 
 	private MaskFormatter getMaskFormatter(String format) {
@@ -88,6 +89,7 @@ public class StaffPanelGUI extends JFrame {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 1170, 591);
 		contentPane = new JPanel();
@@ -665,17 +667,7 @@ public class StaffPanelGUI extends JFrame {
 	        }
 		scrollPaneRemoveCars.setViewportView(tableRemoveCars);	
 		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		
@@ -685,31 +677,62 @@ public class StaffPanelGUI extends JFrame {
 		lblCarPopularity.setBounds(548, 50, 248, 14);
 		panelStatistics.add(lblCarPopularity);
 		
-		JScrollPane scrollPaneStatisticsCars = new JScrollPane();
-		scrollPaneStatisticsCars.setBounds(548, 75, 457, 250);
-		panelStatistics.add(scrollPaneStatisticsCars);
+		JScrollPane scrollPaneStatisticsModelCars = new JScrollPane();
+		scrollPaneStatisticsModelCars.setBounds(548, 75, 283, 155);
+		panelStatistics.add(scrollPaneStatisticsModelCars);
 		
-		tableCars = new JTable();
-		tableCars.setModel(new DefaultTableModel(
+		tableModelCars = new JTable();
+		tableModelCars.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Times rented", "Model", "Brand"
+				"Model", "Times rented"
 			}
 		));
-		tableCars.setRowSelectionAllowed(false);
-		tableCars.setEnabled(false);
+		tableModelCars.setRowSelectionAllowed(false);
+		tableModelCars.setEnabled(false);
+		
+		Object carModelPopularity[][] = controller.carModelPopularity();
+        Object rowCarModelPopularity[] = new Object[2];
+        for(int j = 0; j < carModelPopularity.length ; j++)
+        {
+        	for(int i=0; i<carModelPopularity[0].length; i++) {
+	        	rowCarModelPopularity[i] = carModelPopularity[j][i];
+        	}
+        	((DefaultTableModel) tableModelCars.getModel()).addRow(rowCarModelPopularity);
+        }
+		scrollPaneStatisticsModelCars.setViewportView(tableModelCars);
+		
+		JScrollPane scrollPaneStatisticsBrandCars = new JScrollPane();
+		scrollPaneStatisticsBrandCars.setBounds(548, 275, 283, 129);
+		panelStatistics.add(scrollPaneStatisticsBrandCars);
+		
+		tableBrandCars = new JTable();
+		tableBrandCars.setEnabled(false);
+		tableBrandCars.setRowSelectionAllowed(false);
+		tableBrandCars.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Brand", "Times rented"
+			}
+		));
+		Object carBrandPopularity[][] = controller.carBrandPopularity();
+        Object rowCarBrandPopularity[] = new Object[2];
+        for(int j = 0; j < carBrandPopularity.length ; j++)
+        {
+        	for(int i=0; i<carBrandPopularity[0].length; i++) {
+	        	rowCarBrandPopularity[i] = carBrandPopularity[j][i];
+        	}
+        	((DefaultTableModel) tableBrandCars.getModel()).addRow(rowCarBrandPopularity);
+        }
 		
 		
 		
 		
 		
 		
-		
-		
-		
-		
-		scrollPaneStatisticsCars.setViewportView(tableCars);
+		scrollPaneStatisticsBrandCars.setViewportView(tableBrandCars);
 		
 
 		
