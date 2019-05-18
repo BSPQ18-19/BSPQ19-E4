@@ -205,7 +205,7 @@ public class Tests {
 		
 		c.deleteCar(retrievedCar.getNumPlate());
 		
-		ArrayList<Car> carList = c.getAllCars();
+		ArrayList<Car> carList = c.getCars();
 		
 		for(Car c : carList) {
 			if(c.equals(storedCar))

@@ -69,13 +69,10 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-		
-		new WelcomeGUI(this, this.rent);
-		
-		
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-//		new StaffPanelGUI(this, "employee", this.rent);
+		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -130,6 +127,17 @@ public class Controller{
 	 * @throws RemoteException
 	 */
 	public void deleteGarageAndItsCars(String garage) throws RemoteException {
+		ArrayList<Car>carsToDelete= this.getCars(garage);
+		System.out.println("The cars to be deleted are: ");
+		for (Car c: carsToDelete) {
+			System.out.println(c);
+		}
+		System.out.println("\n");
+		for (Car c: carsToDelete) {
+			this.deleteCar(c.getNumPlate());
+			System.out.println("deleting:   " + c   );
+			
+		}
 		RMIServiceLocator.getService().deleteGarage(garage);
 	}
 	
@@ -225,6 +233,24 @@ public class Controller{
 	}
 	
 	/**
+	 * Asks the server for the list of cars in the renting service
+	 * 
+	 * @return List of cars
+	 * @throws RemoteException
+	 */
+	public ArrayList<Car> getAllCars() throws RemoteException{
+		ArrayList<Car> cars = new ArrayList<>();
+		cars.addAll(RMIServiceLocator.getService().getAllCars());
+		for(Car c: cars) {
+			System.out.println(c);
+		}
+		return cars;	
+	}
+	
+	
+	
+	
+	/**
 	 * Asks the server for a car given the number plate
 	 * 
 	 * @param numPlate
@@ -236,12 +262,12 @@ public class Controller{
 	}
 	
 	/**
-	 * Asks the server for the whole list of cars
+	 * Asks the server for the list of cars that are in an active garage
 	 * 
 	 * @return List of cars
 	 * @throws RemoteException
 	 */
-	public ArrayList<Car> getAllCars() throws RemoteException{
+	public ArrayList<Car> getCars() throws RemoteException{
 		ArrayList<String> garages = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
 		garages = getGarages();
@@ -259,7 +285,7 @@ public class Controller{
 	 */
 	public ArrayList<String> getAllNumPlates() throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
-		cars= this.getAllCars();
+		cars= this.getCars();
 		ArrayList<String> numPlates = new ArrayList<>();
 		for(Car car: cars) {
 			numPlates.add(car.getNumPlate());
@@ -276,7 +302,7 @@ public class Controller{
 	public ArrayList<String> garagesWithCars() throws RemoteException{
 		ArrayList<String> garages = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
-		cars=this.getAllCars();
+		cars=this.getCars();
 		for(Car car: cars) {
 			if(!(garages.contains(car.getGarage()))) {
 				garages.add(car.getGarage());
@@ -437,6 +463,23 @@ public class Controller{
 				//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 				myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
 	}
+	
+	
+	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
+		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);

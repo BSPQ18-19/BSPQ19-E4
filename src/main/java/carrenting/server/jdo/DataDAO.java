@@ -290,7 +290,69 @@ public class DataDAO{
 			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
 			pm.close();
 		}
-	}	
+	}
+	
+	/**
+	 * Asks the DB of the list of cars in a garage
+	 * @return List of cars in the given garage
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<Car> getAllCars() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		ArrayList<Car> allCars = new ArrayList<>();
+		
+		try {
+			tx.begin();
+			Query<Car> query = pm.newQuery(Car.class);
+			allCars = new ArrayList<Car>((List<Car>) query.execute());
+			
+			tx.commit();
+			for(Car car: allCars) {
+				CarRenting.getLogger().debug(car.toString());
+			}
+			
+			
+		} catch (Exception ex) {
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
+			return null;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			CarRenting.getLogger().debug("GETTING CARS");
+			pm.close();
+			
+		}
+		return allCars;
+	}
+	
+	
+	
+	/**
+	 * Deletes a garage from the DB
+	 * @param garage Name of the garage to be deleted
+	 */
+	public synchronized void deleteGarageAndCars(String garage) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			
+			Query<Garage> query = pm.newQuery(Garage.class);
+			query.setUnique(true);
+			Garage garageToDelete = (Garage) pm.getObjectById(Garage.class, garage);
+			pm.deletePersistent(garageToDelete);
+			
+			tx.commit();
+		}catch (Exception ex){
+			CarRenting.getLogger().error("Error deleting data from the database:" +ex.getMessage());
+		}finally {
+			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
+			pm.close();
+		}
+	}
+	
 	
 	/**
 	 * Asks the DB of the list of cars in a garage
@@ -392,6 +454,26 @@ public class DataDAO{
 	}
 	
 	
+	public void updateGarage(String numberPlate, String newGarage) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query q =pm.newQuery("javax.jdo.query.SQL","UPDATE carrenting.car SET GARAGE ='" + newGarage + "' WHERE NUMPLATE='" + numberPlate + "'");
+			q.execute();
+			tx.commit();
+
+
+		} catch (Exception ex) {
+			System.out.println("   $ Error updating the availability of a car: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			System.out.println("Entré en update availability");
+			pm.close();
+		}
+	}
 	
 
 	
