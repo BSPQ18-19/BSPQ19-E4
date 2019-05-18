@@ -1,0 +1,28 @@
+digraph "carrenting.client.Controller.carModelPopularity"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node22 [label="carrenting.client.Controller.car\lModelPopularity",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node22 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="carrenting.client.Controller.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a3198f90f6563c389e1f22e52a925ee5d",tooltip=" "];
+  Node23 -> Node24 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node23 -> Node25 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="carrenting.server.ICarRenting.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aac16e69b3c3a38a4d8d844af603ece6a",tooltip=" "];
+  Node22 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 [label="carrenting.client.Controller.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a4ba12c757900989ed2755f9924410a4b",tooltip=" "];
+  Node26 -> Node24 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 -> Node27 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 [label="carrenting.server.ICarRenting.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a314ae8f7230cca5469932eb3034d5c49",tooltip=" "];
+  Node22 -> Node28 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="carrenting.client.Controller.getCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#ae306f94b15ad4b3869d13ce8f6c46d45",tooltip=" "];
+  Node28 -> Node24 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="carrenting.server.ICarRenting.getCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aa4d89c769e75b73df2a85805ea90bb49",tooltip=" "];
+  Node22 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="carrenting.server.jdo.Rent.get\lNumberPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_rent.html#a91e5c7e50a1ad550e9bf5b106cd5d7fa",tooltip=" "];
+  Node22 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="carrenting.server.jdo.Car.get\lModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1server_1_1jdo_1_1_car.html#ab218a139547b4178939722b4f5756b93",tooltip=" "];
+}

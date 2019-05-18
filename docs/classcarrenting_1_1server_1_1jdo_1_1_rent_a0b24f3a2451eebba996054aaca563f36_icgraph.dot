@@ -4,11 +4,11 @@ digraph "carrenting.server.jdo.Rent.toString"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="RL";
-  Node58 [label="carrenting.server.jdo.Rent.to\lString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node58 -> Node59 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node59 [label="carrenting.client.gui.Client\lDataGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_client_data_g_u_i.html#a2eb7f748bf70c5f4e42c71106a604a40",tooltip=" "];
-  Node58 -> Node60 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node60 [label="carrenting.client.gui.Payment\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_payment_g_u_i.html#a19724d907d6135f0e7b18d43504b2cc8",tooltip=" "];
-  Node58 -> Node61 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node61 [label="carrenting.client.gui.Welcome\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_welcome_g_u_i.html#a2bfdeb076ee5dec04b540de7b4e36a9f",tooltip=" "];
+  Node65 [label="carrenting.server.jdo.Rent.to\lString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node65 -> Node66 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node66 [label="carrenting.client.gui.Client\lDataGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_client_data_g_u_i.html#a2eb7f748bf70c5f4e42c71106a604a40",tooltip=" "];
+  Node65 -> Node67 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node67 [label="carrenting.client.gui.Payment\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_payment_g_u_i.html#a19724d907d6135f0e7b18d43504b2cc8",tooltip=" "];
+  Node65 -> Node68 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node68 [label="carrenting.client.gui.Welcome\lGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_welcome_g_u_i.html#a2bfdeb076ee5dec04b540de7b4e36a9f",tooltip=" "];
 }

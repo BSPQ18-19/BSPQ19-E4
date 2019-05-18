@@ -4,11 +4,11 @@ digraph "carrenting.client.Controller.getAllNumPlates"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="RL";
-  Node84 [label="carrenting.client.Controller.get\lAllNumPlates",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node84 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node85 [label="carrenting.client.Controller.check\lExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a4bd3a1876779b6547d6a56d00de92067",tooltip=" "];
-  Node85 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node86 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
-  Node85 -> Node87 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node87 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
+  Node94 [label="carrenting.client.Controller.get\lAllNumPlates",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node94 -> Node95 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node95 [label="carrenting.client.Controller.number\lPlateAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38e2ceefec996f614721075c4e8272ed",tooltip=" "];
+  Node95 -> Node96 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node96 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
+  Node95 -> Node97 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node97 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
 }

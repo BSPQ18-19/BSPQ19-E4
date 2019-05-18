@@ -4,15 +4,15 @@ digraph "carrenting.client.Controller.main"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node174 [label="carrenting.client.Controller.main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node174 -> Node175 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node175 [label="carrenting.client.Controller.\lController",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a54c511ae5355b24a7215c181cefb1846",tooltip=" "];
-  Node175 -> Node176 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node176 [label="carrenting.client.RMIService\lLocator.setService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a334261a803c2de0ef14d82c998a39e85",tooltip=" "];
-  Node175 -> Node177 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node177 [label="carrenting.client.Controller.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a4ba12c757900989ed2755f9924410a4b",tooltip=" "];
-  Node177 -> Node178 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node178 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
-  Node177 -> Node179 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node179 [label="carrenting.server.ICarRenting.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a314ae8f7230cca5469932eb3034d5c49",tooltip=" "];
+  Node203 [label="carrenting.client.Controller.main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node203 -> Node204 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node204 [label="carrenting.client.Controller.\lController",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a54c511ae5355b24a7215c181cefb1846",tooltip=" "];
+  Node204 -> Node205 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node205 [label="carrenting.client.RMIService\lLocator.setService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a334261a803c2de0ef14d82c998a39e85",tooltip=" "];
+  Node204 -> Node206 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node206 [label="carrenting.client.Controller.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a4ba12c757900989ed2755f9924410a4b",tooltip=" "];
+  Node206 -> Node207 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node207 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node206 -> Node208 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node208 [label="carrenting.server.ICarRenting.get\lRents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a314ae8f7230cca5469932eb3034d5c49",tooltip=" "];
 }

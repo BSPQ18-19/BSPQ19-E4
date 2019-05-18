@@ -78,7 +78,7 @@ public class Controller{
 //		deleteCar("8765BCN");
 //		garagesWithCars();
 //		this.garagePopularity();
-		this.paymentPopularity();
+//		this.carBrandPopularity();
 
 	}
 	
@@ -388,13 +388,7 @@ public class Controller{
 				}	
 			}
 		}
-		
-		//TODO
-		for(int i=0; i<garagePopularity.length; i++) {
-			for(int j=0; j<garagePopularity[i].length; j++) {
-//				System.out.println(garagePopularity[i][j]);
-			}
-		}
+
 		return garagePopularity;
 	}
 	
@@ -425,13 +419,84 @@ public class Controller{
 				}	
 			}
 		}
-		//TODO  BORRAR
-		for(int i=0; i<paymentPop.length; i++) {
-			for(int j=0; j<paymentPop[i].length; j++) {
-				System.out.println(paymentPop[i][j]);
+		return paymentPop;	
+	}
+	
+	//TODO
+	public Object[][] carModelPopularity() throws RemoteException{
+		ArrayList<Rent> rents = new ArrayList<>();
+		ArrayList<Car> cars = new ArrayList<>();
+		cars= this.getAllCars();
+		ArrayList<String> models= new ArrayList<>();
+		for(Car c: cars) {
+			if(!models.contains(c.getModel())){
+				models.add(c.getModel());
 			}
 		}
-		return paymentPop;	
+		//Filling the list
+		Object[][] carModelPopularity = new Object[models.size()][2];
+		for(int i=0; i<carModelPopularity.length; i++) {
+			carModelPopularity[i][0] =(Object)models.get(i);
+			carModelPopularity[i][1] =0;	
+		}
+		
+		try {
+			rents= this.getRents();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(Rent rent: rents) {
+			Car car= this.getCar(rent.getNumberPlate());
+			for(int i=0; i<carModelPopularity.length; i++) {
+				if (((String) carModelPopularity[i][0]).equalsIgnoreCase(car.getModel())){
+					carModelPopularity[i][1] = (int)carModelPopularity[i][1]+1;
+				}	
+			}
+		}
+
+		return carModelPopularity;	
+	}
+	
+	public Object[][] carBrandPopularity() throws RemoteException{
+		ArrayList<Rent> rents = new ArrayList<>();
+		ArrayList<Car> cars = this.getAllCars();
+		ArrayList<String> brands= new ArrayList<>();
+		for(Car c: cars) {
+			if(!brands.contains(c.getBrand())){
+				brands.add(c.getBrand());
+			}
+		}
+		//Filling the list
+		Object[][] carBrandPopularity = new Object[brands.size()][2];
+		for(int i=0; i<carBrandPopularity.length; i++) {
+			carBrandPopularity[i][0] =(Object)brands.get(i);
+			carBrandPopularity[i][1] =0;	
+		}
+		
+		try {
+			rents= this.getRents();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(Rent rent: rents) {
+			Car car= this.getCar(rent.getNumberPlate());
+			for(int i=0; i<carBrandPopularity.length; i++) {
+				if (((String) carBrandPopularity[i][0]).equalsIgnoreCase(car.getBrand())){
+					carBrandPopularity[i][1] = (int)carBrandPopularity[i][1]+1;
+					
+				}	
+			}
+		}
+		for(int i=0; i<carBrandPopularity.length; i++) {
+			for(int j=0; j<carBrandPopularity[i].length; j++) {
+				System.out.println(carBrandPopularity[i][j]);
+			}
+		}
+		
+		//TODO  BORRAR
+		return carBrandPopularity;	
 	}
 	
 	
@@ -494,7 +559,6 @@ public class Controller{
 	}
 	
 	public void setLocale(String locale){
-		//asigno la variable currentLocale a uno de los idiomas que tenemos
 			if(locale.equals("en")){
 				currentLocale = new Locale("en", "US");
 			}else if(locale.equals("es")){
@@ -507,10 +571,10 @@ public class Controller{
 	
 	
 	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
-		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
+		Car car= this.getCar(numberPlate);
+		this.deleteCar(numberPlate);
+		this.storeCar(newGarage, car.getNumPlate(), car.getBrand(), car.getModel(), car.getPricePerDay());
 	}
-	
-	
 	
 
 	

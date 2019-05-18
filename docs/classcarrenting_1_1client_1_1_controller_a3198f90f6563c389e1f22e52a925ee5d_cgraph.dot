@@ -4,16 +4,9 @@ digraph "carrenting.client.Controller.getAllCars"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node63 [label="carrenting.client.Controller.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node63 -> Node64 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node64 [label="carrenting.client.Controller.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38355c55fd14b445cbc7e420a5c36fa7",tooltip=" "];
-  Node64 -> Node65 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node65 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
-  Node64 -> Node66 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node66 [label="carrenting.server.ICarRenting.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a3192598ccc120a739ca168df03c23681",tooltip=" "];
-  Node63 -> Node67 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node67 [label="carrenting.client.Controller.getCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a1e9a90a7164b6a988e23d77ecf39eea9",tooltip=" "];
-  Node67 -> Node65 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node67 -> Node68 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node68 [label="carrenting.server.ICarRenting.getCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aeaa26a483ce5e53faab84b0e3be0f7c9",tooltip=" "];
+  Node82 [label="carrenting.client.Controller.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node82 -> Node83 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node83 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node82 -> Node84 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node84 [label="carrenting.server.ICarRenting.get\lAllCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#aac16e69b3c3a38a4d8d844af603ece6a",tooltip=" "];
 }

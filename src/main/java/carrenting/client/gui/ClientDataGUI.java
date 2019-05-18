@@ -62,6 +62,7 @@ public class ClientDataGUI extends JFrame {
 	 */
 	public void initialize() throws RemoteException {
 		frame=new JFrame();
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 481, 416);
 		contentPane = new JPanel();

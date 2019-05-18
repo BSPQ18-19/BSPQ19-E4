@@ -4,13 +4,18 @@ digraph "carrenting.server.ICarRenting.storeCar"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="RL";
-  Node70 [label="carrenting.server.ICarRenting.storeCar",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node70 -> Node71 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node71 [label="carrenting.client.Controller.storeCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a267c24a1a13732839f548cddfe640f09",tooltip=" "];
-  Node71 -> Node72 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node72 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
-  Node71 -> Node73 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node73 [label="es.deusto.rmi.carrenting.\lTests.testStoreDeleteCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#af8829dcf722f17efca1d53345b5a049a",tooltip=" "];
-  Node71 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node74 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
+  Node81 [label="carrenting.server.ICarRenting.storeCar",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node81 -> Node82 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node82 [label="carrenting.client.Controller.storeCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a267c24a1a13732839f548cddfe640f09",tooltip=" "];
+  Node82 -> Node83 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node83 [label="carrenting.client.Controller.update\lGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a40569127cc047d411d09df3c16a87f28",tooltip=" "];
+  Node83 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node84 [label="carrenting.client.gui.Staff\lPanelGUI.initialize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1gui_1_1_staff_panel_g_u_i.html#aa2e22ff26b5539e2f2b4fdaf3e948802",tooltip=" "];
+  Node82 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node82 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node85 [label="es.deusto.rmi.carrenting.\lTests.testStoreDeleteCar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#af8829dcf722f17efca1d53345b5a049a",tooltip=" "];
+  Node82 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node86 [label="es.deusto.rmi.carrenting.\lTests.testCheckExistingNumPlate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2",tooltip=" "];
+  Node82 -> Node87 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node87 [label="es.deusto.rmi.carrenting.\lTests.testGetCarsAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#aa4631347bcb59d58fb296b10787feaa4",tooltip=" "];
 }

@@ -1,0 +1,18 @@
+digraph "carrenting.client.Controller.numberPlateAvailable"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node218 [label="carrenting.client.Controller.number\lPlateAvailable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node218 -> Node219 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node219 [label="carrenting.client.Controller.get\lAllNumPlates",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a2a1f2139f9682b3c1215798216bee256",tooltip=" "];
+  Node219 -> Node220 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node220 [label="carrenting.client.Controller.getCars",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#aa23affda674a59f25639c522800b35d1",tooltip=" "];
+  Node220 -> Node221 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node221 [label="carrenting.client.Controller.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_controller.html#a38355c55fd14b445cbc7e420a5c36fa7",tooltip=" "];
+  Node221 -> Node222 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node222 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node221 -> Node223 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node223 [label="carrenting.server.ICarRenting.get\lGarages",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a3192598ccc120a739ca168df03c23681",tooltip=" "];
+}

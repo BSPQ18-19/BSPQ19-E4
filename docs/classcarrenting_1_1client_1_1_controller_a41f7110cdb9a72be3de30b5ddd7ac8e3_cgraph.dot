@@ -4,9 +4,9 @@ digraph "carrenting.client.Controller.deleteGarage"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node38 [label="carrenting.client.Controller.delete\lGarage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node38 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node39 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
-  Node38 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node40 [label="carrenting.server.ICarRenting.delete\lGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a962ebc71ee856ffdda808876d3a26e79",tooltip=" "];
+  Node46 [label="carrenting.client.Controller.delete\lGarage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node46 -> Node47 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="carrenting.client.RMIService\lLocator.getService",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcarrenting_1_1client_1_1_r_m_i_service_locator.html#a0ac0c6fa2786c97632c927749a53237c",tooltip=" "];
+  Node46 -> Node48 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="carrenting.server.ICarRenting.delete\lGarage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecarrenting_1_1server_1_1_i_car_renting.html#a962ebc71ee856ffdda808876d3a26e79",tooltip=" "];
 }
