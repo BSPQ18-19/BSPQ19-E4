@@ -588,9 +588,6 @@ public class StaffPanelGUI extends JFrame {
 		panelStatistics.add(scrollPaneStatistics);
 		
        
-        	
-
-
 		
 		tableGarages = new JTable();
 		tableGarages.setModel(new DefaultTableModel(

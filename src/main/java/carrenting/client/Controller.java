@@ -77,7 +77,8 @@ public class Controller{
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
 //		garagesWithCars();
-		this.garagePopularity();
+//		this.garagePopularity();
+		this.paymentPopularity();
 
 	}
 	
@@ -356,11 +357,7 @@ public class Controller{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<String> garages= new ArrayList<>();
 		garages= getGarages();
-		
-//		for (String g: garages) {
-//			System.out.println(g);
-//		}
-		System.out.println("NUMERO DE GARAGES COTNROLLER" + garages.size());
+
 		//Filling the list
 		Object[][] garagePopularity = new Object[garages.size()][3];
 		for(int i=0; i<garages.size(); i++) {
@@ -400,6 +397,44 @@ public class Controller{
 		}
 		return garagePopularity;
 	}
+	
+	
+	//TODO
+	public Object[][] paymentPopularity() throws RemoteException{
+		ArrayList<Rent> rents = new ArrayList<>();
+		ArrayList<String> paymentTypes = new ArrayList<>();
+		paymentTypes.add("paypal");
+		paymentTypes.add("visa");
+		//Filling the list
+		Object[][] paymentPop = new Object[2][2];
+		for(int i=0; i<paymentPop.length; i++) {
+			paymentPop[i][0] =(Object)paymentTypes.get(i);
+			paymentPop[i][1] =0;	
+		}
+		
+		try {
+			rents= this.getRents();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		for(Rent rent: rents) {
+			String rentPayment =rent.getPaymentSystem();
+			for(int i=0; i<paymentPop.length; i++) {
+				if (((String) paymentPop[i][0]).equalsIgnoreCase(rentPayment)){
+					paymentPop[i][1] = (int)paymentPop[i][1]+1;
+				}	
+			}
+		}
+		//TODO  BORRAR
+		for(int i=0; i<paymentPop.length; i++) {
+			for(int j=0; j<paymentPop[i].length; j++) {
+				System.out.println(paymentPop[i][j]);
+			}
+		}
+		return paymentPop;	
+	}
+	
+	
 	
 	/**
 	 * Checks if a number plate already exists
@@ -467,25 +502,17 @@ public class Controller{
 			}else if(locale.equals("eu")){
 				currentLocale = new Locale("eu", "ES");
 			}
-				//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
-				myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
+		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
 	}
 	
 	
 	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
 		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
-
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
