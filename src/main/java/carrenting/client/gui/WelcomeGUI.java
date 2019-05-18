@@ -239,13 +239,11 @@ public class WelcomeGUI extends JFrame {
 		chckbxSameGarage.setBounds(598, 129, 145, 37);
 		contentPane.add(chckbxSameGarage);
 		
-		//TODO
-		JLabel lblSeleccionDeIdioma = new JLabel("Idioma:");
+		JLabel lblSeleccionDeIdioma = new JLabel(controller.getResourcebundle().getString("language"));
 		lblSeleccionDeIdioma.setBounds(10, 0, 151, 14);
 		contentPane.add(lblSeleccionDeIdioma);
 		
-		//TODO
-		JLabel lblSpanish = new JLabel("<html><u>Español");
+		JLabel lblSpanish = new JLabel(controller.getResourcebundle().getString("spanish"));
 		lblSpanish.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -257,15 +255,13 @@ public class WelcomeGUI extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("CAMBIANDO A Español");
 			}
 		});
 		lblSpanish.setForeground(Color.BLUE);
 		lblSpanish.setBounds(20, 15, 51, 14);
 		contentPane.add(lblSpanish);
 		
-		//TODO
-		JLabel lblEuskera = new JLabel("<html><u>Euskera");
+		JLabel lblEuskera = new JLabel(controller.getResourcebundle().getString("basque"));
 		lblEuskera.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -277,15 +273,13 @@ public class WelcomeGUI extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("CAMBIANDO A EUSKERA");
 			}
 		});
 		lblEuskera.setForeground(Color.BLUE);
 		lblEuskera.setBounds(84, 15, 46, 14);
 		contentPane.add(lblEuskera);
 		
-		//TODO
-		JLabel lblIngls = new JLabel("<html><u>Inglés");
+		JLabel lblIngls = new JLabel(controller.getResourcebundle().getString("english"));
 		lblIngls.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -297,7 +291,6 @@ public class WelcomeGUI extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("CAMBIANDO A ingles");
 			}
 		});
 		lblIngls.setForeground(Color.BLUE);

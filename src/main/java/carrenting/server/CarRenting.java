@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -19,17 +18,15 @@ import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	final static Logger logger = LoggerFactory.getLogger(CarRenting.class);
 	private static final long serialVersionUID = 1L;
 	private PersistenceManager pm=null;
+	@SuppressWarnings("unused")
 	private Transaction tx=null;
-	
-	private HashMap<String, Staff> users = new HashMap<String, Staff>();
+
 	ArrayList<Staff> staffs =this.getAllStaff();
 	
 	public static Logger getLogger() {
@@ -77,7 +74,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	
 	/**
 	 * Stores a Car in a garage into the DB
-	 * @param garage Locatin where the car is stored
+	 * @param garage Location where the car is stored
 	 * @param numberPlate Number plate of the car
 	 * @param brand Brand of the car
 	 * @param model Model of the car

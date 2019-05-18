@@ -106,10 +106,10 @@ public class PaymentGUI extends JFrame {
 		});
 		buttonGroup.add(rdbtnVisa);
 		rdbtnVisa.setSelected(true);
-		rdbtnVisa.setBounds(193, 63, 74, 23);
+		rdbtnVisa.setBounds(193, 63, 124, 23);
 		frame.getContentPane().add(rdbtnVisa);
 		
-		JRadioButton rdbtnPaypal = new JRadioButton("Paypal"); //It isnt worth it to use the controller here because it is teh same in the 3 laguages
+		JRadioButton rdbtnPaypal = new JRadioButton("Paypal"); //It isnt worth it to use the controller here because it is the same in the 3 laguages
 		rdbtnPaypal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -122,7 +122,7 @@ public class PaymentGUI extends JFrame {
 			}
 		});
 		buttonGroup.add(rdbtnPaypal);
-		rdbtnPaypal.setBounds(284, 63, 109, 23);
+		rdbtnPaypal.setBounds(319, 63, 109, 23);
 		frame.getContentPane().add(rdbtnPaypal);
 		
 		JLabel lblPayment = new JLabel(controller.getResourcebundle().getString("payment"));
@@ -175,7 +175,7 @@ public class PaymentGUI extends JFrame {
 		frame.getContentPane().add(panelVisa);
 		panelVisa.setLayout(null);
 		
-		JLabel lblCardNumber = new JLabel("Card number");
+		JLabel lblCardNumber = new JLabel(controller.getResourcebundle().getString("card_number"));
 		lblCardNumber.setBounds(10, 21, 127, 14);
 		panelVisa.add(lblCardNumber);
 		
@@ -184,7 +184,7 @@ public class PaymentGUI extends JFrame {
 		panelVisa.add(textFieldCardNumber);
 		textFieldCardNumber.setColumns(10);
 		
-		JLabel lblNameOnCard = new JLabel("Name on card");
+		JLabel lblNameOnCard = new JLabel(controller.getResourcebundle().getString("card_name"));
 		lblNameOnCard.setBounds(10, 69, 108, 14);
 		panelVisa.add(lblNameOnCard);
 		
@@ -199,12 +199,12 @@ public class PaymentGUI extends JFrame {
 		dateChooserExpirationDate.setBounds(155, 108, 95, 20);
 		panelVisa.add(dateChooserExpirationDate);
 		
-		JLabel lblExpirationDate = new JLabel("Expiration date");
+		JLabel lblExpirationDate = new JLabel(controller.getResourcebundle().getString("expiration_date"));
 		lblExpirationDate.setBounds(10, 114, 127, 14);
 		panelVisa.add(lblExpirationDate);
 		
-		JLabel lblCvv = new JLabel("CVV");
-		lblCvv.setBounds(10, 156, 46, 14);
+		JLabel lblCvv = new JLabel(controller.getResourcebundle().getString("cvv"));
+		lblCvv.setBounds(10, 156, 108, 14);
 		panelVisa.add(lblCvv);
 		
 		textFieldCVV = new JTextField();

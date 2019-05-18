@@ -63,12 +63,12 @@ public class SelectCarGUI extends JFrame {
 		frame.getContentPane().add(lblSelectACar);
 		
 		JLabel lblTotalPrice = new JLabel(controller.getResourcebundle().getString("total_price"));
-		lblTotalPrice.setBounds(28, 223, 122, 14);
+		lblTotalPrice.setBounds(28, 223, 156, 14);
 		frame.getContentPane().add(lblTotalPrice);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
-		textPane.setBounds(123, 217, 107, 20);
+		textPane.setBounds(158, 217, 107, 20);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 53, 471, 139);
