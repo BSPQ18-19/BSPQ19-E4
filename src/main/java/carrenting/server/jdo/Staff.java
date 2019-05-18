@@ -21,6 +21,12 @@ public class Staff implements Serializable {
 		this.password=password;
 	}
 	
+	public Staff() {
+		this.type = "";
+		this.username = "";
+		this.password = "";
+	}
+
 	public String getType(){
 		return type;
 	}

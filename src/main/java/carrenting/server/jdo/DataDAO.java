@@ -431,6 +431,7 @@ public class DataDAO{
 	public Staff getStaff(String user) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
+		Staff emptyStaff  = new Staff();
 		try {
 			tx.begin();
 			Query<Staff> query = pm.newQuery(Staff.class);
@@ -440,6 +441,7 @@ public class DataDAO{
 			tx.commit();
 			CarRenting.getLogger().debug(staff.toString());
 			return staff;
+			
 		} catch (Exception ex) {
 			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
 		} finally {
@@ -450,7 +452,7 @@ public class DataDAO{
 			
 			pm.close();
 		}
-		return null;
+		return emptyStaff;
 	}
 	
 	
