@@ -425,6 +425,12 @@ public class StaffPanelGUI extends JFrame {
 						            modelRemoveCars.addRow(rowRemoveCars);
 									modelRemoveCars.fireTableDataChanged();
 									tableRemoveCars.addNotify();
+									textFieldNumPlate.setText("");
+									textFieldBrand.setText("");
+									textFieldModel.setText("");
+									textFieldLocation.setText("");
+									
+									
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
@@ -586,7 +592,7 @@ public class StaffPanelGUI extends JFrame {
 		panelStatistics.add(lblGaragePopularity);
 		
 		JScrollPane scrollPaneStatisticsGarages = new JScrollPane();
-		scrollPaneStatisticsGarages.setBounds(37, 75, 307, 129);
+		scrollPaneStatisticsGarages.setBounds(37, 75, 331, 129);
 		panelStatistics.add(scrollPaneStatisticsGarages);
 		
        
@@ -594,13 +600,14 @@ public class StaffPanelGUI extends JFrame {
 		tableGarages = new JTable();
 		tableGarages.setModel(new DefaultTableModel(
 			new Object[][] {
-			}, 
+			},
 			new String[] {
-				controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("times_as_origin"), controller.getResourcebundle().getString("times_as_destination")
+					controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("times_as_origin"), controller.getResourcebundle().getString("times_as_destination")
 			}
 		));
+		tableGarages.getColumnModel().getColumn(0).setPreferredWidth(110);
 		tableGarages.getColumnModel().getColumn(1).setPreferredWidth(110);
-		tableGarages.getColumnModel().getColumn(2).setPreferredWidth(110);
+		tableGarages.getColumnModel().getColumn(2).setPreferredWidth(140);
 		tableGarages.setEnabled(false);
 		tableGarages.setShowVerticalLines(false);
 		tableGarages.setRowSelectionAllowed(false);
@@ -635,10 +642,11 @@ public class StaffPanelGUI extends JFrame {
 		panelStatistics.add(lblPaymentSystemPopularity);
 		
 		JScrollPane scrollPaneStatisticsPayment = new JScrollPane();
-		scrollPaneStatisticsPayment.setBounds(39, 300, 307, 84);
+		scrollPaneStatisticsPayment.setBounds(39, 300, 329, 84);
 		panelStatistics.add(scrollPaneStatisticsPayment);
 		
 		tablePaySys = new JTable();
+		tablePaySys.setRowSelectionAllowed(false);
 		tablePaySys.setEnabled(false);
 		tablePaySys.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -727,11 +735,6 @@ public class StaffPanelGUI extends JFrame {
         	((DefaultTableModel) tableBrandCars.getModel()).addRow(rowCarBrandPopularity);
         }
 		
-		
-		
-		
-		
-		
 		scrollPaneStatisticsBrandCars.setViewportView(tableBrandCars);
 		
 
@@ -777,6 +780,7 @@ public class StaffPanelGUI extends JFrame {
 			// Disable the tab
 		    tabbedPane.setEnabledAt(1, false);
 		    tabbedPane.setEnabledAt(2, false);
+		    tabbedPane.setEnabledAt(3, false);
 		}
 		
 	}

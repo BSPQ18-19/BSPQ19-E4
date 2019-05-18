@@ -69,10 +69,10 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-//		new WelcomeGUI(this, this.rent);
+		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-		new StaffPanelGUI(this, "admin", this.rent);
+//		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -388,13 +388,7 @@ public class Controller{
 				}	
 			}
 		}
-		
-		//TODO
-		for(int i=0; i<garagePopularity.length; i++) {
-			for(int j=0; j<garagePopularity[i].length; j++) {
-//				System.out.println(garagePopularity[i][j]);
-			}
-		}
+
 		return garagePopularity;
 	}
 	
@@ -423,12 +417,6 @@ public class Controller{
 				if (((String) paymentPop[i][0]).equalsIgnoreCase(rentPayment)){
 					paymentPop[i][1] = (int)paymentPop[i][1]+1;
 				}	
-			}
-		}
-		//TODO  BORRAR
-		for(int i=0; i<paymentPop.length; i++) {
-			for(int j=0; j<paymentPop[i].length; j++) {
-				System.out.println(paymentPop[i][j]);
 			}
 		}
 		return paymentPop;	
@@ -585,8 +573,6 @@ public class Controller{
 	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
 		RMIServiceLocator.getService().updateGarage(numberPlate, newGarage);
 	}
-	
-	
 	
 
 	
