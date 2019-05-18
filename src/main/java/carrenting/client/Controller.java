@@ -75,6 +75,7 @@ public class Controller{
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
 //		garagesWithCars();
+		this.garagePopularity();
 
 	}
 	
@@ -349,11 +350,15 @@ public class Controller{
 	 * @return 
 	 * @throws RemoteException
 	 */
-	public Object[][] garageOriginPopularity() throws RemoteException{
+	public Object[][] garagePopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<String> garages= new ArrayList<>();
 		garages= getGarages();
 		
+//		for (String g: garages) {
+//			System.out.println(g);
+//		}
+		System.out.println("NUMERO DE GARAGES COTNROLLER" + garages.size());
 		//Filling the list
 		Object[][] garagePopularity = new Object[garages.size()][3];
 		for(int i=0; i<garages.size(); i++) {
@@ -384,9 +389,11 @@ public class Controller{
 				}	
 			}
 		}
+		
+		//TODO
 		for(int i=0; i<garagePopularity.length; i++) {
 			for(int j=0; j<garagePopularity[i].length; j++) {
-				logger.debug(garagePopularity[i][j].toString());
+//				System.out.println(garagePopularity[i][j]);
 			}
 		}
 		return garagePopularity;
