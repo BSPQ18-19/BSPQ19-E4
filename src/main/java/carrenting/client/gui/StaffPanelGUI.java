@@ -228,8 +228,7 @@ public class StaffPanelGUI extends JFrame {
 				panelManageCars.add(panelRemoveCars);
 				panelRemoveCars.setLayout(null);
 				
-				//TODO
-				JLabel labelCarsInSystem = new JLabel("Cars");
+				JLabel labelCarsInSystem = new JLabel(controller.getResourcebundle().getString("cars"));
 				labelCarsInSystem.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 				labelCarsInSystem.setBounds(224, 30, 120, 24);
 				panelRemoveCars.add(labelCarsInSystem);
@@ -270,8 +269,8 @@ public class StaffPanelGUI extends JFrame {
 			            modelRemoveCars.addRow(rowRemoveCars);
 			        }
 				scrollPaneRemoveCars.setViewportView(tableRemoveCars);
-				 //TODO
-				JButton buttonRemoveCar = new JButton("Eliminar coche");
+
+				JButton buttonRemoveCar = new JButton(controller.getResourcebundle().getString("remove_cars"));
 				
 				buttonRemoveCar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
@@ -300,7 +299,7 @@ public class StaffPanelGUI extends JFrame {
 				panelManageCars.add(panelRelocation);
 				panelRelocation.setLayout(null);
 				
-				JButton btnRelocateCar = new JButton("Relocate car");
+				JButton btnRelocateCar = new JButton(controller.getResourcebundle().getString("relocate_car"));
 				btnRelocateCar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 					}
@@ -308,7 +307,7 @@ public class StaffPanelGUI extends JFrame {
 				btnRelocateCar.setBounds(71, 345, 146, 23);
 				panelRelocation.add(btnRelocateCar);
 				
-				JLabel lblGarageToMove = new JLabel("Garage to move the car to:");
+				JLabel lblGarageToMove = new JLabel(controller.getResourcebundle().getString("garage_to_move_the_car_to"));
 				lblGarageToMove.setBounds(10, 95, 207, 14);
 				panelRelocation.add(lblGarageToMove);
 				
@@ -368,8 +367,7 @@ public class StaffPanelGUI extends JFrame {
 
 						}
 						else {
-							//TODO
-							JOptionPane.showConfirmDialog(null, "Debes seleccionar un coche y un garage", controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("select_car_garage"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 							
 						}
 						
@@ -410,7 +408,7 @@ public class StaffPanelGUI extends JFrame {
 						if(allOK) {
 								try {
 									//TODO
-									JOptionPane.showConfirmDialog(null, "Car added successfuly", "Successful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("car_added_successfuly"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 									Car addedCar= new Car(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 									controller.storeCar(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 									//TODO
@@ -441,16 +439,15 @@ public class StaffPanelGUI extends JFrame {
 
 		
 		JPanel panelManageGarages = new JPanel();
-		//TODO
-		tabbedPane.addTab("Garage Management", null, panelManageGarages, null);
+		tabbedPane.addTab(controller.getResourcebundle().getString("garage_management"), null, panelManageGarages, null);
 		panelManageGarages.setLayout(null);
 		
 		JPanel panelAddGarage = new JPanel();
 		panelAddGarage.setBounds(40, 62, 410, 200);
 		panelManageGarages.add(panelAddGarage);
 		panelAddGarage.setLayout(null);
-		//TODO
-		JLabel lblAddNewGarages = new JLabel("Add a new garage");
+
+		JLabel lblAddNewGarages = new JLabel(controller.getResourcebundle().getString("add_new_garage"));
 		lblAddNewGarages.setBounds(110, 22, 232, 24);
 		panelAddGarage.add(lblAddNewGarages);
 		lblAddNewGarages.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
@@ -460,13 +457,11 @@ public class StaffPanelGUI extends JFrame {
 		panelAddGarage.add(textFieldLocation);
 		textFieldLocation.setColumns(10);
 		
-		//TODO
-		JLabel lblLocation = new JLabel("Location");
+		JLabel lblLocation = new JLabel(controller.getResourcebundle().getString("location"));
 		lblLocation.setBounds(68, 85, 84, 14);
 		panelAddGarage.add(lblLocation);
 		
-		//TODO
-		JButton btnAddGarage = new JButton("Add garage");
+		JButton btnAddGarage = new JButton(controller.getResourcebundle().getString("add_garage"));
 		btnAddGarage.setBounds(267, 137, 110, 23);
 		panelAddGarage.add(btnAddGarage);
 		
@@ -475,14 +470,12 @@ public class StaffPanelGUI extends JFrame {
 		panelManageGarages.add(panelDeleteGarage);
 		panelDeleteGarage.setLayout(null);
 		
-		//TODO
-		JLabel labelDeleteGarage = new JLabel("Delete garage");
+		JLabel labelDeleteGarage = new JLabel(controller.getResourcebundle().getString("delete_garage"));
 		labelDeleteGarage.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		labelDeleteGarage.setBounds(187, 24, 155, 24);
 		panelDeleteGarage.add(labelDeleteGarage);
 		
-		//TODO
-		JLabel lblGarage = new JLabel("Garage");
+		JLabel lblGarage = new JLabel(controller.getResourcebundle().getString("garage"));
 		lblGarage.setBounds(92, 78, 84, 14);
 		panelDeleteGarage.add(lblGarage);
 		
@@ -502,7 +495,7 @@ public class StaffPanelGUI extends JFrame {
 		
 		
 		
-		JButton btnDeleteGarageCars = new JButton("<html>Delete garage and  <p>  all its cars");
+		JButton btnDeleteGarageCars = new JButton(controller.getResourcebundle().getString("delete_garage_cars"));
 		btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
 			ArrayList<Car> carsToDelete= new ArrayList<>();
 			boolean deleteGarageOk;
@@ -511,7 +504,7 @@ public class StaffPanelGUI extends JFrame {
 				deleteGarageOk =true;
 				
 					if(listDeleteGarage.getSelectedIndex()==-1) {
-						JOptionPane.showConfirmDialog(null, "You have to choose a garage", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_garage"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 						deleteGarageOk=false;
 					}
 			
@@ -555,13 +548,13 @@ public class StaffPanelGUI extends JFrame {
 		btnDeleteGarageCars.setBounds(318, 249, 145, 38);
 		panelDeleteGarage.add(btnDeleteGarageCars);
 		
-		JButton btnDeleteGarage = new JButton("Delete garage");
+		JButton btnDeleteGarage = new JButton(controller.getResourcebundle().getString("delete_garage"));
 		btnDeleteGarage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean allOk=true;
 				if(listDeleteGarage.getSelectedIndex()==-1) {
-					JOptionPane.showConfirmDialog(null, "You have to choose a garage", "Be careful", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("choose_garage"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 					allOk=false;
 				}
 				if(allOk) {
@@ -585,7 +578,7 @@ public class StaffPanelGUI extends JFrame {
 		
 		JPanel panelStatistics = new JPanel();
 		//TODO
-		tabbedPane.addTab("Statistics", null, panelStatistics, null);
+		tabbedPane.addTab(controller.getResourcebundle().getString("statistics"), null, panelStatistics, null);
 		panelStatistics.setLayout(null);
 		JLabel lblGaragePopularity= new JLabel(controller.getResourcebundle().getString("garage_popularity"));
 		lblGaragePopularity.setBounds(39, 50, 283, 14);

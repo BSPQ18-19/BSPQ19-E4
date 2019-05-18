@@ -66,11 +66,11 @@ public class LogInStaffGUI extends JFrame {
 		frame.getContentPane().add(tfPassword);
 		tfPassword.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("Username");
+		JLabel lblUsername = new JLabel(controller.getResourcebundle().getString("username"));
 		lblUsername.setBounds(21, 118, 85, 14);
 		frame.getContentPane().add(lblUsername);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel(controller.getResourcebundle().getString("password"));
 		lblPassword.setBounds(21, 174, 64, 14);
 		frame.getContentPane().add(lblPassword);
 		
