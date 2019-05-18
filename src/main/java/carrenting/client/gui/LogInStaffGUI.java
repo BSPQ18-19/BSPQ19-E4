@@ -10,6 +10,7 @@ import carrenting.server.jdo.Rent;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -93,21 +94,21 @@ public class LogInStaffGUI extends JFrame {
 				else
 					type = "employee";
 				
+				
 				try {
-						controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type);
+					if(controller.loginStaff(tfUsername.getText(), tfPassword.getText(), type)) {
 						frame.dispose();
-						try {
-							new StaffPanelGUI(controller,type,rent);
-						} catch (RemoteException e1) {
-							e1.printStackTrace();
-						}
-						controller.getLogger().info(controller.getResourcebundle().getString("staff_login_successful"));
+						controller.getLogger().info(controller.getResourcebundle().getString("staff_login_successful"));		
+						new StaffPanelGUI(controller,type,rent);
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), controller.getResourcebundle().getString("login_unsuccessful"), "Dialog", JOptionPane.ERROR_MESSAGE);
+						controller.getLogger().info(controller.getResourcebundle().getString("login_unsuccessful"));
+					}
 					
 				} catch (RemoteException e1) {
-					
-					controller.getLogger().info(controller.getResourcebundle().getString("login_unsuccessful"));
 					e1.printStackTrace();
-				}		
+				}
+				
 				
 			}
 		});

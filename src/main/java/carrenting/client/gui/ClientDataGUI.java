@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -168,7 +169,13 @@ public class ClientDataGUI extends JFrame {
 		personSurname.setBounds(200, 39, 149, 20);
 		panelPerson.add(personSurname);
 		
-
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date(System.currentTimeMillis()));
+		calendar.add(Calendar.YEAR, -18);
+		Date date = new Date(calendar.getTimeInMillis());
+		//dateChooserFinish.setMaxSelectableDate(date);
+		dateChooserBirth.setMaxSelectableDate(date);
+		
 		dateChooserBirth.setBounds(200, 67, 95, 20);
 		panelPerson.add(dateChooserBirth);
 		

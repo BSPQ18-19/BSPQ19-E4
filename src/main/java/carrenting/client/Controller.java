@@ -174,7 +174,7 @@ public class Controller{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public boolean loginStaff(String user, String password, String type) throws RemoteException {
+	public boolean loginStaff(String user, String password, String type) throws RemoteException, NullPointerException{
 		return RMIServiceLocator.getService().loginStaff(user, password, type);	
 	}
 	

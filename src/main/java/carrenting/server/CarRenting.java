@@ -101,7 +101,7 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		System.out.println(staff.getPassword());
 		System.out.println(staff.getType());
 		
-		if(staff.getPassword().equals(password) && staff.getType().equals(type)) {
+		if(staff.getUsername().equals(user) && staff.getPassword().equals(password) && staff.getType().equals(type)) {
 			logger.debug("login_successful " + user);
 			return true;
 		}
