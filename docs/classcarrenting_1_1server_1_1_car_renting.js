@@ -3,7 +3,6 @@ var classcarrenting_1_1server_1_1_car_renting =
     [ "CarRenting", "classcarrenting_1_1server_1_1_car_renting.html#aeb9f1491df8b5dd6b9a9c20a8a255fec", null ],
     [ "deleteCar", "classcarrenting_1_1server_1_1_car_renting.html#ab4f8e49f619868d8665ddb1fed45e398", null ],
     [ "deleteGarage", "classcarrenting_1_1server_1_1_car_renting.html#ad1b784e2383f3c5ea6de3783fe4306f7", null ],
-    [ "getAllCars", "classcarrenting_1_1server_1_1_car_renting.html#af595c4c32e9819eecd35d92b7e5d100f", null ],
     [ "getCar", "classcarrenting_1_1server_1_1_car_renting.html#a7f49dd67da8352a564161f9a164523cf", null ],
     [ "getCars", "classcarrenting_1_1server_1_1_car_renting.html#a11dd014dde29a6d25450e6269ddb78c7", null ],
     [ "getGarages", "classcarrenting_1_1server_1_1_car_renting.html#a65886cbac0c23f1dd39c1b2bf5daec25", null ],
