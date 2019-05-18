@@ -583,9 +583,9 @@ public class StaffPanelGUI extends JFrame {
 		lblGaragePopularity.setBounds(39, 50, 283, 14);
 		panelStatistics.add(lblGaragePopularity);
 		
-		JScrollPane scrollPaneStatistics = new JScrollPane();
-		scrollPaneStatistics.setBounds(37, 75, 307, 178);
-		panelStatistics.add(scrollPaneStatistics);
+		JScrollPane scrollPaneStatisticsGarages = new JScrollPane();
+		scrollPaneStatisticsGarages.setBounds(37, 75, 307, 129);
+		panelStatistics.add(scrollPaneStatisticsGarages);
 		
        
 		
@@ -621,7 +621,7 @@ public class StaffPanelGUI extends JFrame {
 	        }
 		
 		
-		scrollPaneStatistics.setViewportView(tableGarages);
+		scrollPaneStatisticsGarages.setViewportView(tableGarages);
 		
 		JLabel labelStatistics = new JLabel(controller.getResourcebundle().getString("statistics"));
 		labelStatistics.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
@@ -632,9 +632,9 @@ public class StaffPanelGUI extends JFrame {
 		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
 		panelStatistics.add(lblPaymentSystemPopularity);
 		
-		JScrollPane scrollPaneStatistics_1 = new JScrollPane();
-		scrollPaneStatistics_1.setBounds(39, 300, 307, 128);
-		panelStatistics.add(scrollPaneStatistics_1);
+		JScrollPane scrollPaneStatisticsPayment = new JScrollPane();
+		scrollPaneStatisticsPayment.setBounds(39, 300, 307, 84);
+		panelStatistics.add(scrollPaneStatisticsPayment);
 		
 		tablePaySys = new JTable();
 		tablePaySys.setEnabled(false);
@@ -646,22 +646,48 @@ public class StaffPanelGUI extends JFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, false
+				false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
 		tablePaySys.getColumnModel().getColumn(0).setPreferredWidth(110);
-		scrollPaneStatistics_1.setViewportView(tablePaySys);
+		Object paymentPopularity[][] = controller.paymentPopularity();
+
+	        Object rowPaymentPopularity[] = new Object[2];
+	        for(int j = 0; j < paymentPopularity.length ; j++)
+	        {
+	        	for(int i=0; i<paymentPopularity[0].length; i++) {
+		        	rowPaymentPopularity[i] = paymentPopularity[j][i];
+	        	}
+	        	((DefaultTableModel) tablePaySys.getModel()).addRow(rowPaymentPopularity);
+	        }
+		scrollPaneRemoveCars.setViewportView(tableRemoveCars);	
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		scrollPaneStatisticsPayment.setViewportView(tablePaySys);
 		
 		JLabel lblCarPopularity = new JLabel(controller.getResourcebundle().getString("car_popularity"));
 		lblCarPopularity.setBounds(548, 50, 248, 14);
 		panelStatistics.add(lblCarPopularity);
 		
-		JScrollPane scrollPaneStatistics_2 = new JScrollPane();
-		scrollPaneStatistics_2.setBounds(548, 75, 457, 250);
-		panelStatistics.add(scrollPaneStatistics_2);
+		JScrollPane scrollPaneStatisticsCars = new JScrollPane();
+		scrollPaneStatisticsCars.setBounds(548, 75, 457, 250);
+		panelStatistics.add(scrollPaneStatisticsCars);
 		
 		tableCars = new JTable();
 		tableCars.setModel(new DefaultTableModel(
@@ -673,7 +699,17 @@ public class StaffPanelGUI extends JFrame {
 		));
 		tableCars.setRowSelectionAllowed(false);
 		tableCars.setEnabled(false);
-		scrollPaneStatistics_2.setViewportView(tableCars);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		scrollPaneStatisticsCars.setViewportView(tableCars);
 		
 
 		
