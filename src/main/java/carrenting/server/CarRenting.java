@@ -17,6 +17,8 @@ import carrenting.server.jdo.Car;
 import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
+import sun.util.locale.provider.LocaleServiceProviderPool.LocalizedObjectGetter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,10 +99,6 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	 */
 	public boolean loginStaff(String user, String password, String type) throws RemoteException{
 		Staff staff = DataDAO.getInstance().getStaff(user);
-		System.out.println(staff.getUsername());
-		System.out.println(staff.getPassword());
-		System.out.println(staff.getType());
-		
 		if(staff.getUsername().equals(user) && staff.getPassword().equals(password) && staff.getType().equals(type)) {
 			logger.debug("login_successful " + user);
 			return true;
@@ -158,6 +156,13 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		DataDAO.getInstance().storeRent(userId,  numberPlate,  startingDate,  finishingDate,  garageOrigin,
 				 garageDestination,  paymentSystem,  totalPrice);
 		
+	}
+	
+	public boolean paymentSystem(String payentSystem, int price) {
+		
+		logger.info("Payment succesfull through "+ payentSystem +" by the quantity of "+ price +"€");		
+		
+		return true;	
 	}
 
 

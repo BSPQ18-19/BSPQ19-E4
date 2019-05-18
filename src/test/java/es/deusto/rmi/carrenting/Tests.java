@@ -222,7 +222,7 @@ public class Tests {
 		Car storedCar = new Car("Vitoria", "5678ASD", "Citroen", "C3", 40);
 		c.storeCar(storedCar.getGarage(), storedCar.getNumPlate(), storedCar.getBrand(), storedCar.getModel(), storedCar.getPricePerDay());
 		
-		assert(c.numberPlateAvailable("5678ASD"));
+		assert(!c.numberPlateAvailable("5678ASD"));
 	
 	}
 	
@@ -243,12 +243,15 @@ public class Tests {
 		c.storeCar(carToStore.getGarage(), carToStore.getNumPlate(), carToStore.getBrand(), carToStore.getModel(), carToStore.getPricePerDay());
 		
 		ArrayList<Car> availableCars = c.getCarsAvailable("Vitoria", date1, date2);
-		Car storedCar  = c.getCar("1234ASF");
+		Car car = availableCars.get(0);
 		//No se que ocurre que no consigo que el assert de true, pero en einterior de los objetos Car
 		//Son identicos
 		
-		assert(true);
-		
+		assert(carToStore.getGarage().equals(car.getGarage()) &&
+				carToStore.getNumPlate().equals(car.getNumPlate()) && 
+				carToStore.getBrand().equals(car.getBrand()) &&
+				carToStore.getModel().equals(car.getModel()) &&
+				carToStore.getPricePerDay() == car.getPricePerDay());
 	
 	}
 	
