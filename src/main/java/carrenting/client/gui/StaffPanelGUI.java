@@ -496,6 +496,10 @@ public class StaffPanelGUI extends JFrame {
 		
 		
 		JButton btnDeleteGarageCars = new JButton(controller.getResourcebundle().getString("delete_garage_cars"));
+		btnDeleteGarageCars.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
 			ArrayList<Car> carsToDelete= new ArrayList<>();
 			boolean deleteGarageOk;
