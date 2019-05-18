@@ -19,6 +19,9 @@ import carrenting.server.jdo.DataDAO;
 import carrenting.server.jdo.Rent;
 import carrenting.server.jdo.Staff;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	final static Logger logger = LoggerFactory.getLogger(CarRenting.class);

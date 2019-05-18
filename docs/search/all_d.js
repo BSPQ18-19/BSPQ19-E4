@@ -2,8 +2,10 @@ var searchData=
 [
   ['t',['t',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#adf1163c82f75d1405b6b3b87926e465c',1,'es::deusto::rmi::carrenting::Tests']]],
   ['testcheckexistingnumplate',['testCheckExistingNumPlate',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ab275c8fe4601f38f88adbe497c42fed2',1,'es::deusto::rmi::carrenting::Tests']]],
-  ['testerrorgetcars',['testErrorGetCars',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a01c23eebb1d6c31f540d2e63f01cca6e',1,'es::deusto::rmi::carrenting::Tests']]],
+  ['testdaysbetween',['testDaysBetween',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#adae9e18a1fbe11d198a10db8a35f5664',1,'es::deusto::rmi::carrenting::Tests']]],
   ['testgarageoriginpopularity',['testGarageOriginPopularity',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a74d971547bb970852d80678b2004b0f5',1,'es::deusto::rmi::carrenting::Tests']]],
+  ['testgarageswithcars',['testGaragesWithCars',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#a0ad81901134fda691f344b155c8e69fa',1,'es::deusto::rmi::carrenting::Tests']]],
+  ['testgetcarsavailable',['testGetCarsAvailable',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#aa4631347bcb59d58fb296b10787feaa4',1,'es::deusto::rmi::carrenting::Tests']]],
   ['testloginstaff',['testLoginStaff',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#ac0024402892b0be0c6a7e214c8594f82',1,'es::deusto::rmi::carrenting::Tests']]],
   ['testloginstafferror',['testLoginStaffError',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#abbbf71ff6de221e44322d4474636cca9',1,'es::deusto::rmi::carrenting::Tests']]],
   ['testregisteruser',['testRegisterUser',['../classes_1_1deusto_1_1rmi_1_1carrenting_1_1_tests.html#aaab393346daaae250b4d9cf46475db27',1,'es::deusto::rmi::carrenting::Tests']]],
