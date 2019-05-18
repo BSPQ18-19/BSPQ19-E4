@@ -109,6 +109,9 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 	public boolean loginStaff(String user, String password, String type) throws RemoteException{	
 		boolean loginSuccessful=false;
 		for(Staff staff: staffs ) {
+			System.out.println(staff);
+			
+			
 			if(staff.getUsername().equals(user) && staff.getPassword().equals(password) && staff.getType().equals(type)) {
 				logger.debug("login_successful " + user);
 				loginSuccessful=true;

@@ -4,6 +4,7 @@ package carrenting.client.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -46,7 +48,6 @@ public class WelcomeGUI extends JFrame {
 	private JFrame welcomeFrame;
 	private JScrollPane scrollPaneDestination;
 	JButton btnChange= new JButton();
-	JLabel lblHi=new JLabel();
 	private Rent rent;
 	private JDateChooser dateChooserFinish = new JDateChooser();
 	private JDateChooser dateChooserStart = new JDateChooser();
@@ -57,7 +58,6 @@ public class WelcomeGUI extends JFrame {
 		this.rent=rent;
 		initialize();
 		welcomeFrame.setVisible(true);
-		//initComponents(); (descomentar con lo de abajo(alternativa para el tema del idioma))
 		
 	}
 	
@@ -69,7 +69,7 @@ public class WelcomeGUI extends JFrame {
 	public void initialize() throws RemoteException {
 		welcomeFrame = new JFrame();
 		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		welcomeFrame.setBounds(100, 100, 740, 442);
+		welcomeFrame.setBounds(100, 100, 752, 442);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		welcomeFrame.setContentPane(contentPane);
@@ -91,14 +91,13 @@ public class WelcomeGUI extends JFrame {
 				try {
 					new LogInStaffGUI(controller,rent);
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 		lblStaffArea.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 13));
 		lblStaffArea.setForeground(Color.BLUE);
-		lblStaffArea.setBounds(569, 11, 170, 22);
+		lblStaffArea.setBounds(594, 11, 145, 22);
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
 		JLabel lblSelectAGarage = new JLabel(controller.getResourcebundle().getString("Select_garage_origin"));
@@ -212,7 +211,6 @@ public class WelcomeGUI extends JFrame {
 						controller.getLogger().debug(rent.toString());
 						new SelectCarGUI(controller, rent);
 					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -243,7 +241,7 @@ public class WelcomeGUI extends JFrame {
 		lblSeleccionDeIdioma.setBounds(10, 0, 151, 14);
 		contentPane.add(lblSeleccionDeIdioma);
 		
-		JLabel lblSpanish = new JLabel(controller.getResourcebundle().getString("spanish"));
+		JLabel lblSpanish = new JLabel("<html><u>Español");
 		lblSpanish.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -261,8 +259,8 @@ public class WelcomeGUI extends JFrame {
 		lblSpanish.setBounds(20, 15, 51, 14);
 		contentPane.add(lblSpanish);
 		
-		JLabel lblEuskera = new JLabel(controller.getResourcebundle().getString("basque"));
-		lblEuskera.addMouseListener(new MouseAdapter() {
+		JLabel lblBasque = new JLabel("<html><u>Euskal");
+		lblBasque.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.setLocale("eu");
@@ -275,12 +273,12 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		lblEuskera.setForeground(Color.BLUE);
-		lblEuskera.setBounds(84, 15, 46, 14);
-		contentPane.add(lblEuskera);
+		lblBasque.setForeground(Color.BLUE);
+		lblBasque.setBounds(84, 15, 46, 14);
+		contentPane.add(lblBasque);
 		
-		JLabel lblIngls = new JLabel(controller.getResourcebundle().getString("english"));
-		lblIngls.addMouseListener(new MouseAdapter() {
+		JLabel lblEnglish = new JLabel("<html><u>English");
+		lblEnglish.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				controller.setLocale("en");
@@ -293,9 +291,20 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		lblIngls.setForeground(Color.BLUE);
-		lblIngls.setBounds(146, 15, 46, 14);
-		contentPane.add(lblIngls);
+		lblEnglish.setForeground(Color.BLUE);
+		lblEnglish.setBounds(146, 15, 46, 14);
+		contentPane.add(lblEnglish);
+//		JLabel lblImage=new JLabel(new ImageIcon("img/carrenting.png"));
+//	    ImageIcon background=new ImageIcon("img/carrenting.png");
+//	    Image img=background.getImage();
+//	    Image temp=img.getScaledInstance(500,600,Image.SCALE_SMOOTH);
+//	    background=new ImageIcon(temp);
+//	    JLabel back=new JLabel(background);
+//	    back.setLayout(null);
+//	    back.setBounds(0,0,500,600);
+//		welcomeFrame.getContentPane().add(lblImage);
+//		lblImage.setBounds(352, 0, 221, 95);
+//		contentPane.add(lblImage);
 
 
 	}

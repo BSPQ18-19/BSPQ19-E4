@@ -28,8 +28,7 @@ import carrenting.server.CarRenting;
 	private static PersistenceManagerFactory pmf;
 	private Garage garage1= new Garage("Madrid");
 	private Garage garage2= new Garage("Barcelona");
-	private Garage garage3= new Garage("Bilbao");
-	//private Date date= new Date(System.currentTimeMillis());  
+	private Garage garage3= new Garage("Bilbao"); 
 	private Date datePast1=new GregorianCalendar(2018, Calendar.AUGUST, 20).getTime();
 	private Date datePast2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
 	private Date datePast3=new GregorianCalendar(2018, Calendar.AUGUST, 11).getTime();
@@ -41,8 +40,7 @@ import carrenting.server.CarRenting;
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 25).getTime();
 	private Date date4 = new GregorianCalendar(2019, Calendar.SEPTEMBER, 20).getTime();
 	private Date date3 = new GregorianCalendar(2019, Calendar.SEPTEMBER, 27).getTime();
-	private Date date2 = new GregorianCalendar(2019, Calendar.JULY, 1).getTime();
-	private Date date1 = new GregorianCalendar(2020, Calendar.JULY, 1).getTime();
+
 
 	
 	/**
@@ -57,19 +55,18 @@ import carrenting.server.CarRenting;
 		storeGarage(garage1.getLocation());
 		storeGarage(garage2.getLocation());
 		storeGarage(garage3.getLocation());
+		
 		storeCar("Madrid","1234QWE","Ford", "Fiesta", 50);
 		storeCar("Madrid","1784GSE","Ford", "Fiesta", 50);
 		storeCar("Madrid","1934QWE","Ford", "Fiesta", 50);
-		
 		storeCar("Bilbao","0987KJH","Ford", "Fiesta", 50);
 		storeCar("Bilbao","5764DFG","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","7653GYU","Mercedes", "Clase A", 200);
 		storeCar("Bilbao","0932HJH","Audi", "A7", 180);
 		storeCar("Bilbao","0252HJH","Audi", "A4", 180);
 		storeCar("Bilbao","0352HTQ","Audi", "A5", 50);
-		
 		storeCar("Barcelona","8765BCN","Volvo", "XC60", 50);
-		//Hystorical rents
+
 		storeRent("12349578B", "0352HTQ",datePast7,datePast6,garage3.getLocation(), garage3.getLocation(), "Paypal", 500);
 		storeRent("12365678A", "1234QWE",datePast6,datePast5,garage1.getLocation(), garage2.getLocation(), "Paypal", 500);
 		storeRent("12365678A", "0252HJH",datePast7,datePast3,garage3.getLocation(), garage2.getLocation(), "Paypal", 500);
@@ -77,15 +74,10 @@ import carrenting.server.CarRenting;
 		storeRent("12365678A", "1784GSE",datePast3,datePast2,garage1.getLocation(), garage2.getLocation(), "Paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast3,datePast2,garage3.getLocation(), garage2.getLocation(), "Paypal", 500);
 		storeRent("12365678A", "0987KJH",datePast2,datePast1,garage3.getLocation(), garage2.getLocation(), "Paypal", 500);
-		//Future rents
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "Visa", 500);
 		storeRent("12365678A", "0352HTQ",date6,date5, garage3.getLocation(), garage3.getLocation(), "Visa", 500);
 		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "Paypal", 500);
-	//	storeRent("12365678A", "1234QWE",date,date5,garage1.getLocation(), garage2.getLocation(), "Paypal", 500);
-		
-		//Current rents
-	//	storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "Paypal", 500);
-	//	storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "Paypal", 500);
+
 		 
 	}
 	

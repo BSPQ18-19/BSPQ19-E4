@@ -118,7 +118,7 @@ public class StaffPanelGUI extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		JPanel panelrent = new JPanel();
-		tabbedPane.addTab("Rents", null, panelrent, null);
+		tabbedPane.addTab(controller.getResourcebundle().getString("rents"), null, panelrent, null);
 		panelrent.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -134,11 +134,11 @@ public class StaffPanelGUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("starting_date"), controller.getResourcebundle().getString("finishing_date"), controller.getResourcebundle().getString("garage_origin"), controller.getResourcebundle().getString("garage_destination"), controller.getResourcebundle().getString("payment_system"), controller.getResourcebundle().getString("total_price"), controller.getResourcebundle().getString("user_ID")
+				"<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>"
 			}
 		));
-		table.getColumnModel().getColumn(1).setPreferredWidth(110);
-		table.getColumnModel().getColumn(2).setPreferredWidth(110);
+		table.getColumnModel().getColumn(1).setPreferredWidth(140);
+		table.getColumnModel().getColumn(2).setPreferredWidth(140);
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
         Object rowData[] = new Object[11];
@@ -501,7 +501,6 @@ public class StaffPanelGUI extends JFrame {
 			}
 		});
 		btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
-			ArrayList<Car> carsToDelete= new ArrayList<>();
 			boolean deleteGarageOk;
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -549,7 +548,7 @@ public class StaffPanelGUI extends JFrame {
 			}
 		});
 		
-		btnDeleteGarageCars.setBounds(400, 280, 165, 48);
+		btnDeleteGarageCars.setBounds(335, 244, 165, 48);
 		panelDeleteGarage.add(btnDeleteGarageCars);
 		
 		JButton btnDeleteGarage = new JButton(controller.getResourcebundle().getString("delete_garage"));
