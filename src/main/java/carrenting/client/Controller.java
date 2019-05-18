@@ -56,7 +56,7 @@ public class Controller{
 		
 		//asigno la variable currentLocale a uno de los idiomas que tenemos
 		if(args[3].equals("en")){
-			currentLocale = new Locale("en", "EU");
+			currentLocale = new Locale("en", "US");
 		}else if(args[3].equals("es")){
 			currentLocale = new Locale("es", "ES");
 		}else if(args[3].equals("eu")){
@@ -64,6 +64,8 @@ public class Controller{
 		}
 		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
+		
+		
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
@@ -454,6 +456,19 @@ public class Controller{
 	 */
 	public ResourceBundle getResourcebundle() {
 		return myBundle;
+	}
+	
+	public void setLocale(String locale){
+		//asigno la variable currentLocale a uno de los idiomas que tenemos
+			if(locale.equals("en")){
+				currentLocale = new Locale("en", "US");
+			}else if(locale.equals("es")){
+				currentLocale = new Locale("es", "ES");
+			}else if(locale.equals("eu")){
+				currentLocale = new Locale("eu", "ES");
+			}
+				//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
+				myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
 	}
 	
 	
