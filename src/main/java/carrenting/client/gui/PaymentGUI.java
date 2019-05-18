@@ -106,7 +106,7 @@ public class PaymentGUI extends JFrame {
 		});
 		buttonGroup.add(rdbtnVisa);
 		rdbtnVisa.setSelected(true);
-		rdbtnVisa.setBounds(193, 63, 74, 23);
+		rdbtnVisa.setBounds(193, 63, 124, 23);
 		frame.getContentPane().add(rdbtnVisa);
 		
 		JRadioButton rdbtnPaypal = new JRadioButton("Paypal"); //It isnt worth it to use the controller here because it is the same in the 3 laguages
@@ -122,7 +122,7 @@ public class PaymentGUI extends JFrame {
 			}
 		});
 		buttonGroup.add(rdbtnPaypal);
-		rdbtnPaypal.setBounds(284, 63, 109, 23);
+		rdbtnPaypal.setBounds(319, 63, 109, 23);
 		frame.getContentPane().add(rdbtnPaypal);
 		
 		JLabel lblPayment = new JLabel(controller.getResourcebundle().getString("payment"));
@@ -204,7 +204,7 @@ public class PaymentGUI extends JFrame {
 		panelVisa.add(lblExpirationDate);
 		
 		JLabel lblCvv = new JLabel(controller.getResourcebundle().getString("cvv"));
-		lblCvv.setBounds(10, 156, 46, 14);
+		lblCvv.setBounds(10, 156, 108, 14);
 		panelVisa.add(lblCvv);
 		
 		textFieldCVV = new JTextField();

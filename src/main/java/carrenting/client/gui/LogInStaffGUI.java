@@ -67,22 +67,22 @@ public class LogInStaffGUI extends JFrame {
 		tfPassword.setColumns(10);
 		
 		JLabel lblUsername = new JLabel(controller.getResourcebundle().getString("username"));
-		lblUsername.setBounds(21, 118, 85, 14);
+		lblUsername.setBounds(21, 118, 164, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel(controller.getResourcebundle().getString("password"));
-		lblPassword.setBounds(21, 174, 64, 14);
+		lblPassword.setBounds(21, 174, 164, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		JRadioButton rdbtnAdministrator = new JRadioButton(controller.getResourcebundle().getString("admin"));
 		buttonGroup.add(rdbtnAdministrator);
-		rdbtnAdministrator.setBounds(26, 84, 109, 23);
+		rdbtnAdministrator.setBounds(26, 84, 145, 23);
 		contentPane.add(rdbtnAdministrator);
 		
 		JRadioButton rdbtnEmployee = new JRadioButton(controller.getResourcebundle().getString("employee"));
 		rdbtnEmployee.setSelected(true);
 		buttonGroup.add(rdbtnEmployee);
-		rdbtnEmployee.setBounds(151, 84, 109, 23);
+		rdbtnEmployee.setBounds(173, 84, 135, 23);
 		contentPane.add(rdbtnEmployee);
 		
 		JButton btnSignIn = new JButton(controller.getResourcebundle().getString("sign_in"));
