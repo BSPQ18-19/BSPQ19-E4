@@ -130,8 +130,15 @@ public class Controller{
 	 */
 	public void deleteGarageAndItsCars(String garage) throws RemoteException {
 		ArrayList<Car>carsToDelete= this.getCars(garage);
+		System.out.println("The cars to be deleted are: ");
 		for (Car c: carsToDelete) {
-			this.deleteCar(c.getNumPlate());		
+			System.out.println(c);
+		}
+		System.out.println("\n");
+		for (Car c: carsToDelete) {
+			this.deleteCar(c.getNumPlate());
+			System.out.println("deleting:   " + c   );
+			
 		}
 		RMIServiceLocator.getService().deleteGarage(garage);
 	}
@@ -236,6 +243,9 @@ public class Controller{
 	public ArrayList<Car> getAllCars() throws RemoteException{
 		ArrayList<Car> cars = new ArrayList<>();
 		cars.addAll(RMIServiceLocator.getService().getAllCars());
+		for(Car c: cars) {
+			System.out.println(c);
+		}
 		return cars;	
 	}
 	
@@ -338,9 +348,9 @@ public class Controller{
 	}
 	
 	/**
-	 * Returns the list of garages that are more popular 
+	 * Returns the statistics of all garages 
 	 * 
-	 * @return 
+	 * @return List of garages and its statistics
 	 * @throws RemoteException
 	 */
 	public Object[][] garagePopularity() throws RemoteException{
@@ -355,11 +365,8 @@ public class Controller{
 			garagePopularity[i][1] =0;	
 			garagePopularity[i][2] =0;	
 		}
-		try {
-			rents= this.getRents();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		rents= this.getRents();
+		
 		for(Rent rent: rents) {
 			String rentGarageOrigin =rent.getGarageOrigin();
 			for(int i=0; i<garagePopularity.length; i++) {
@@ -378,12 +385,23 @@ public class Controller{
 				}	
 			}
 		}
+		
+		for(int i=0; i<garagePopularity.length; i++) {
+			for(int j=0; j<garagePopularity[i].length; j++) {
+				System.out.println(garagePopularity[i][j]);
+			}
+		}
 
 		return garagePopularity;
 	}
 	
 	
 	//TODO
+	/**
+	 * Returns the statistics of the different payment methods
+	 * @return List with the usage of each payment method
+	 * @throws RemoteException
+	 */
 	public Object[][] paymentPopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<String> paymentTypes = new ArrayList<>();
@@ -409,10 +427,20 @@ public class Controller{
 				}	
 			}
 		}
+		
+		for(int i = 0; i < 2; i++) {
+			System.out.println(paymentPop[i][0]);
+			System.out.println(paymentPop[i][1]);
+		}
 		return paymentPop;	
 	}
 	
 	//TODO
+	/**
+	 * Statistics of the car models
+	 * @return List of the statistics of the car models
+	 * @throws RemoteException
+	 */
 	public Object[][] carModelPopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<Car> cars = new ArrayList<>();
@@ -429,13 +457,9 @@ public class Controller{
 			carModelPopularity[i][0] =(Object)models.get(i);
 			carModelPopularity[i][1] =0;	
 		}
-		
-		try {
-			rents= this.getRents();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
+
+		rents= this.getRents();
+				
 		for(Rent rent: rents) {
 			Car car= this.getCar(rent.getNumberPlate());
 			for(int i=0; i<carModelPopularity.length; i++) {
@@ -444,10 +468,21 @@ public class Controller{
 				}	
 			}
 		}
+		
+		for(int i = 0; i < carModelPopularity.length; i++) {
+			for(int j = 0; j < 2; j++) {
+				System.out.println(carModelPopularity[i][j]);
+			}
+		}
 
 		return carModelPopularity;	
 	}
 	
+	/**
+	 * Gets the statistics of the car brands
+	 * @return List of the brands of the cars
+	 * @throws RemoteException
+	 */
 	public Object[][] carBrandPopularity() throws RemoteException{
 		ArrayList<Rent> rents = new ArrayList<>();
 		ArrayList<Car> cars = this.getAllCars();
@@ -464,11 +499,8 @@ public class Controller{
 			carBrandPopularity[i][1] =0;	
 		}
 		
-		try {
-			rents= this.getRents();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		rents= this.getRents();
+	
 		
 		for(Rent rent: rents) {
 			Car car= this.getCar(rent.getNumberPlate());
@@ -478,7 +510,14 @@ public class Controller{
 					
 				}	
 			}
-		}		
+		}
+		for(int i=0; i<carBrandPopularity.length; i++) {
+			for(int j=0; j<carBrandPopularity[i].length; j++) {
+				System.out.println(carBrandPopularity[i][j]);
+			}
+		}
+		
+		//TODO  BORRAR
 		return carBrandPopularity;	
 	}
 	
@@ -489,6 +528,12 @@ public class Controller{
 	 * 
 	 * @param numPlate number plate that wants to be checked if it already exists or not
 	 * @return True if the number plate doesn't exist, False otherwise
+	 * @throws RemoteException
+	 */
+	/**
+	 * Checks if the given number plate is free to use
+	 * @param numPlate
+	 * @return true if it's free, false of otherwise
 	 * @throws RemoteException
 	 */
 	public boolean numberPlateAvailable(String numPlate) throws RemoteException {
@@ -515,7 +560,9 @@ public class Controller{
 		ArrayList<String> locations= new ArrayList<>();
 		locations= this.getGarages();
 		for(String loc : locations){
+			System.out.println("This location" + loc + "is not the same as" + location);
 			if(loc.equals(location)) {
+				//System.out.println(loc+ " = " + location);
 				locationOK=false;
 			}
 		}
@@ -539,6 +586,10 @@ public class Controller{
 		return myBundle;
 	}
 	
+	/**
+	 * Sets the locale to the given parameter
+	 * @param locale
+	 */
 	public void setLocale(String locale){
 			if(locale.equals("en")){
 				currentLocale = new Locale("en", "US");
@@ -550,16 +601,36 @@ public class Controller{
 		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
 	}
 	
-	
+	/**
+	 * Changes one car to another garage
+	 * @param numberPlate Number plate of the car
+	 * @param newGarage New garage to move the car
+	 * @throws RemoteException
+	 */
 	public void updateGarage(String numberPlate, String newGarage) throws RemoteException {
 		Car car= this.getCar(numberPlate);
 		this.deleteCar(numberPlate);
 		this.storeCar(newGarage, car.getNumPlate(), car.getBrand(), car.getModel(), car.getPricePerDay());
 	}
 	
+	/**
+	 * Deletes one rent
+	 * @param numPlate Number plate of the car
+	 * @param date Date of the start of the rent
+	 * @throws RemoteException
+	 */
+	public void deleteRent(String numPlate, Date date) throws RemoteException {
+		RMIServiceLocator.getService().deleteRent(numPlate, date);
+	}
 
 	
-	
+	/**
+	 * Main method of the client and starting point of the program
+	 * @param args
+	 * @throws RemoteException
+	 * @throws MalformedURLException
+	 * @throws NotBoundException
+	 */
 	public static void main(String[] args) throws RemoteException, MalformedURLException, NotBoundException {
 		new Controller(args);
 	}

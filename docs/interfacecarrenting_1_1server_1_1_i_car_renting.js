@@ -2,7 +2,6 @@ var interfacecarrenting_1_1server_1_1_i_car_renting =
 [
     [ "deleteCar", "interfacecarrenting_1_1server_1_1_i_car_renting.html#ac3730576a7df8ac11f89d1cc9ad4158a", null ],
     [ "deleteGarage", "interfacecarrenting_1_1server_1_1_i_car_renting.html#a962ebc71ee856ffdda808876d3a26e79", null ],
-    [ "getAllCars", "interfacecarrenting_1_1server_1_1_i_car_renting.html#aac16e69b3c3a38a4d8d844af603ece6a", null ],
     [ "getCar", "interfacecarrenting_1_1server_1_1_i_car_renting.html#aa4d89c769e75b73df2a85805ea90bb49", null ],
     [ "getCars", "interfacecarrenting_1_1server_1_1_i_car_renting.html#aeaa26a483ce5e53faab84b0e3be0f7c9", null ],
     [ "getGarages", "interfacecarrenting_1_1server_1_1_i_car_renting.html#a3192598ccc120a739ca168df03c23681", null ],

@@ -36,6 +36,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return logger;
 	}
 
+	/**
+	 * Asks the DAO for all the staff members
+	 * @return List with all the staff
+	 */
 	private ArrayList<Staff>getAllStaff(){
 		staffs = DataDAO.getInstance().getStaff();
 		return staffs;
@@ -49,6 +53,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		this.pm = pmf.getPersistenceManager();
 		this.tx = pm.currentTransaction();
+	}
+	
+	public void deleteRent(String numPlate, Date date) {
+		DataDAO.getInstance().deleteRent(numPlate, date);
 	}
 	
 	/**
@@ -173,7 +181,10 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		return true;	
 	}
 
-
+	/**
+	 * Asks the DAO for the list of all the cars
+	 * @return List of all cars in the DB
+	 */
 	@Override
 	public ArrayList<Car> getAllCars() throws RemoteException {
 		return DataDAO.getInstance().getAllCars();

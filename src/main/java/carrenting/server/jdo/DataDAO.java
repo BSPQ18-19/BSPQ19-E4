@@ -22,14 +22,14 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 import carrenting.server.CarRenting;
 
 
-public class DataDAO{
+	public class DataDAO{
 
 	private static DataDAO instance = new DataDAO();
 	private static PersistenceManagerFactory pmf;
 	private Garage garage1= new Garage("Madrid");
 	private Garage garage2= new Garage("Barcelona");
 	private Garage garage3= new Garage("Bilbao");
-	private Date date= new Date(System.currentTimeMillis());  
+	//private Date date= new Date(System.currentTimeMillis());  
 	private Date datePast1=new GregorianCalendar(2018, Calendar.AUGUST, 20).getTime();
 	private Date datePast2=new GregorianCalendar(2018, Calendar.AUGUST, 13).getTime();
 	private Date datePast3=new GregorianCalendar(2018, Calendar.AUGUST, 11).getTime();
@@ -81,11 +81,11 @@ public class DataDAO{
 		storeRent("12365678A", "0987KJH",date6,date5, garage3.getLocation(), garage3.getLocation(), "Visa", 500);
 		storeRent("12365678A", "0352HTQ",date6,date5, garage3.getLocation(), garage3.getLocation(), "Visa", 500);
 		storeRent("12365678A", "0252HJH",date4,date3, garage3.getLocation(), garage2.getLocation(), "Paypal", 500);
-		storeRent("12365678A", "1234QWE",date,date5,garage1.getLocation(), garage2.getLocation(), "Paypal", 500);
+	//	storeRent("12365678A", "1234QWE",date,date5,garage1.getLocation(), garage2.getLocation(), "Paypal", 500);
 		
 		//Current rents
-		storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "Paypal", 500);
-		storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "Paypal", 500);
+	//	storeRent("12365678A", "0987KJH",datePast1,date, garage3.getLocation(), garage3.getLocation(), "Paypal", 500);
+	//	storeRent("12365678A", "0352HTQ",date,date, garage3.getLocation(), garage1.getLocation(), "Paypal", 500);
 		 
 	}
 	
@@ -271,6 +271,30 @@ public class DataDAO{
 	}
 	
 	/**
+	 * Deletes the rent that coincides with the date and the numPlate
+	 * @param numPlate Number plate of the car
+	 * @param date date of the start of the rent
+	 */
+	public synchronized void deleteRent(String numPlate, Date date) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query<Rent> query = pm.newQuery(Rent.class);
+			query.setUnique(true);
+			query.setFilter("numberplate=='" + numPlate + "' AND startingdate=='"+ date +"'");
+			Rent rentToDelete = (Rent) query.execute();
+			pm.deletePersistent(rentToDelete);
+			tx.commit();
+		}catch (Exception ex){
+			CarRenting.getLogger().error("Error retrieving data from the database:" +ex.getMessage());
+		}finally {
+			CarRenting.getLogger().debug("DELETED RENT");
+			pm.close();
+		}
+	}
+	
+	/**
 	 * Deletes a garage from the DB
 	 * @param garage Name of the garage to be deleted
 	 */
@@ -327,32 +351,6 @@ public class DataDAO{
 			
 		}
 		return allCars;
-	}
-	
-	
-	
-	/**
-	 * Deletes a garage from the DB
-	 * @param garage Name of the garage to be deleted
-	 */
-	public synchronized void deleteGarageAndCars(String garage) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			
-			Query<Garage> query = pm.newQuery(Garage.class);
-			query.setUnique(true);
-			Garage garageToDelete = (Garage) pm.getObjectById(Garage.class, garage);
-			pm.deletePersistent(garageToDelete);
-			
-			tx.commit();
-		}catch (Exception ex){
-			CarRenting.getLogger().error("Error deleting data from the database:" +ex.getMessage());
-		}finally {
-			CarRenting.getLogger().debug("DELETED GARAGE" + garage);
-			pm.close();
-		}
 	}
 	
 	
