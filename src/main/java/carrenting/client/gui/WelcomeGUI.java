@@ -81,6 +81,8 @@ public class WelcomeGUI extends JFrame {
 		lblWelcomeToCar.setBounds(253, 51, 230, 22);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
+		
+		
 		JLabel lblStaffArea = new JLabel(controller.getResourcebundle().getString("staff_area"));
 		lblStaffArea.addMouseListener(new MouseAdapter() {
 			@Override

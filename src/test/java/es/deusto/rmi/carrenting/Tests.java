@@ -294,7 +294,7 @@ public class Tests {
 		result[2][2] = 2;
 		result[3][2] = 0;
 		
-		Object[][] garagePopularity = c.garageOriginPopularity();
+		Object[][] garagePopularity = c.garagePopularity();
 		
 		
 		for(int i=0; i<result.length; i++) {

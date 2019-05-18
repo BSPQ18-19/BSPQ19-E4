@@ -576,15 +576,18 @@ public class StaffPanelGUI extends JFrame {
 		panelDeleteGarage.add(btnDeleteGarage);
 		
 		JPanel panelStatistics = new JPanel();
-		tabbedPane.addTab("New tab", null, panelStatistics, null);
+		//TODO
+		tabbedPane.addTab("Statistics", null, panelStatistics, null);
 		panelStatistics.setLayout(null);
 		JLabel lblGaragePopularity= new JLabel(controller.getResourcebundle().getString("garage_popularity"));
 		lblGaragePopularity.setBounds(39, 50, 283, 14);
 		panelStatistics.add(lblGaragePopularity);
 		
-		JScrollPane scrollPaneStatistics = new JScrollPane();
-		scrollPaneStatistics.setBounds(37, 75, 307, 178);
-		panelStatistics.add(scrollPaneStatistics);
+		JScrollPane scrollPaneStatisticsGarages = new JScrollPane();
+		scrollPaneStatisticsGarages.setBounds(37, 75, 307, 129);
+		panelStatistics.add(scrollPaneStatisticsGarages);
+		
+       
 		
 		tableGarages = new JTable();
 		tableGarages.setModel(new DefaultTableModel(
@@ -599,7 +602,26 @@ public class StaffPanelGUI extends JFrame {
 		tableGarages.setEnabled(false);
 		tableGarages.setShowVerticalLines(false);
 		tableGarages.setRowSelectionAllowed(false);
-		scrollPaneStatistics.setViewportView(tableGarages);
+		
+		 Object garagePopularity[][] = controller.garagePopularity();
+	        
+		 
+		 //TODO
+//	        System.out.println("NUM GARAGES" + garagePopularity.length);
+//	        System.out.println("NUM COLS"  + garagePopularity[0].length);
+//	        System.out.println("Debería ser Barcelona" + garagePopularity[0][0]);
+//	        System.out.println("Deberia ser 0 " + garagePopularity[0][1]);
+	        Object rowGaragePop[] = new Object[3];
+	        for(int j = 0; j < garagePopularity.length ; j++)
+	        {
+	        	for(int i=0; i<garagePopularity[0].length; i++) {
+		        	rowGaragePop[i] = garagePopularity[j][i];
+	        	}
+	        	((DefaultTableModel) tableGarages.getModel()).addRow(rowGaragePop);
+	        }
+		
+		
+		scrollPaneStatisticsGarages.setViewportView(tableGarages);
 		
 		JLabel labelStatistics = new JLabel(controller.getResourcebundle().getString("statistics"));
 		labelStatistics.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
@@ -610,11 +632,12 @@ public class StaffPanelGUI extends JFrame {
 		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
 		panelStatistics.add(lblPaymentSystemPopularity);
 		
-		JScrollPane scrollPaneStatistics_1 = new JScrollPane();
-		scrollPaneStatistics_1.setBounds(39, 300, 307, 128);
-		panelStatistics.add(scrollPaneStatistics_1);
+		JScrollPane scrollPaneStatisticsPayment = new JScrollPane();
+		scrollPaneStatisticsPayment.setBounds(39, 300, 307, 84);
+		panelStatistics.add(scrollPaneStatisticsPayment);
 		
 		tablePaySys = new JTable();
+		tablePaySys.setEnabled(false);
 		tablePaySys.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -623,25 +646,70 @@ public class StaffPanelGUI extends JFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, false
+				false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
 		tablePaySys.getColumnModel().getColumn(0).setPreferredWidth(110);
-		scrollPaneStatistics_1.setViewportView(tablePaySys);
+		Object paymentPopularity[][] = controller.paymentPopularity();
+
+	        Object rowPaymentPopularity[] = new Object[2];
+	        for(int j = 0; j < paymentPopularity.length ; j++)
+	        {
+	        	for(int i=0; i<paymentPopularity[0].length; i++) {
+		        	rowPaymentPopularity[i] = paymentPopularity[j][i];
+	        	}
+	        	((DefaultTableModel) tablePaySys.getModel()).addRow(rowPaymentPopularity);
+	        }
+		scrollPaneRemoveCars.setViewportView(tableRemoveCars);	
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		scrollPaneStatisticsPayment.setViewportView(tablePaySys);
 		
 		JLabel lblCarPopularity = new JLabel(controller.getResourcebundle().getString("car_popularity"));
-		lblCarPopularity.setBounds(399, 50, 248, 14);
+		lblCarPopularity.setBounds(548, 50, 248, 14);
 		panelStatistics.add(lblCarPopularity);
 		
-		JScrollPane scrollPaneStatistics_2 = new JScrollPane();
-		scrollPaneStatistics_2.setBounds(400, 75, 457, 250);
-		panelStatistics.add(scrollPaneStatistics_2);
+		JScrollPane scrollPaneStatisticsCars = new JScrollPane();
+		scrollPaneStatisticsCars.setBounds(548, 75, 457, 250);
+		panelStatistics.add(scrollPaneStatisticsCars);
 		
 		tableCars = new JTable();
-		scrollPaneStatistics_2.setViewportView(tableCars);
+		tableCars.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Times rented", "Model", "Brand"
+			}
+		));
+		tableCars.setRowSelectionAllowed(false);
+		tableCars.setEnabled(false);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		scrollPaneStatisticsCars.setViewportView(tableCars);
 		
 
 		
