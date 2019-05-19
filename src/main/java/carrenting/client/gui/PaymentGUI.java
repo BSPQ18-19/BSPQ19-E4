@@ -104,6 +104,7 @@ public class PaymentGUI extends JFrame {
 				panelPaypal.setVisible(false);
 				panelVisa.setVisible(true);
 				btnFinishAndPay.setBounds(261, 315, 181, 23);
+				buttonBack.setBounds(106, 315, 124, 23);
 				frame.setBounds(100, 100, 468, 385);
 				paymentType="visa";
 			}
@@ -121,6 +122,7 @@ public class PaymentGUI extends JFrame {
 				panelPaypal.setVisible(true);
 				panelVisa.setVisible(false);
 				btnFinishAndPay.setBounds(261,205,181,23);
+				buttonBack.setBounds(106, 205, 124, 23);
 				frame.setBounds(100, 100, 468, 300);
 				paymentType="paypal";
 
