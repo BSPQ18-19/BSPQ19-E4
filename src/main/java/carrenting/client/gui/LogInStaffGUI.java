@@ -17,6 +17,8 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 
@@ -50,6 +52,7 @@ public class LogInStaffGUI extends JFrame {
 	 */
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 385, 400);
 		contentPane = new JPanel();
@@ -146,8 +149,15 @@ public class LogInStaffGUI extends JFrame {
 
 		btnCancel.setBounds(21, 327, 128, 23);
 		contentPane.add(btnCancel);
-		JLabel lblImage=new JLabel(new ImageIcon("img/login.png"));
-		lblImage.setBounds(216, 133, 46, 14);
-		contentPane.add(lblImage);
+		
+
+		ImageIcon imageLogInIcon = new ImageIcon("img/login.png"); // load the imageLogIn to a imageLogInIcon
+		Image imageLogIn = imageLogInIcon.getImage(); // transform it 
+		Image newimgLogIn = imageLogIn.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageLogInIcon = new ImageIcon(newimgLogIn);  // transform it back
+		JLabel lblImgLogIn=new JLabel();
+		lblImgLogIn.setIcon(imageLogInIcon);
+		lblImgLogIn.setBounds(216, 118, 119, 123);
+		contentPane.add(lblImgLogIn);
 	}
 }

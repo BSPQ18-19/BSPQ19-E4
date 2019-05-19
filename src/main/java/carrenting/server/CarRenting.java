@@ -174,10 +174,8 @@ public class CarRenting extends UnicastRemoteObject implements ICarRenting{
 		
 	}
 	
-	public boolean paymentSystem(String payentSystem, int price) {
-		
-		logger.info("Payment succesfull through "+ payentSystem +" by the quantity of "+ price +"€");		
-		
+	public boolean paymentSystem(String payentSystem, double price) {
+		logger.info("Payment succesfull through "+ payentSystem +" by the quantity of "+ price +" euros ");		
 		return true;	
 	}
 

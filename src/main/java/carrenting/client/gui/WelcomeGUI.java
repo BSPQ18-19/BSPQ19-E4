@@ -36,10 +36,6 @@ import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 
 
-/*TODO
- * Make the dates only selectable from today's date. And make sure return is after start
- * 
- */
 @SuppressWarnings("serial")
 public class WelcomeGUI extends JFrame {
 
@@ -80,7 +76,7 @@ public class WelcomeGUI extends JFrame {
 		
 		JLabel lblWelcomeToCar = new JLabel(controller.getResourcebundle().getString("welcome_car_msg"));
 		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 20));
-		lblWelcomeToCar.setBounds(211, 33, 284, 43);
+		lblWelcomeToCar.setBounds(267, 33, 284, 43);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
 		

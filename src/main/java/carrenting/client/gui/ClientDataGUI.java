@@ -1,6 +1,7 @@
 package carrenting.client.gui;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -8,6 +9,7 @@ import java.sql.Date;
 import java.util.Calendar;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ import com.toedter.calendar.JDateChooser;
 
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
+import java.awt.Color;
 
 
 @SuppressWarnings("serial")
@@ -66,6 +69,7 @@ public class ClientDataGUI extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 481, 416);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode(controller.getBackgroundColor()));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -110,6 +114,7 @@ public class ClientDataGUI extends JFrame {
 		contentPane.add(lblPersonalDetails);
 		
 		JRadioButton rdbtnPerson = new JRadioButton(controller.getResourcebundle().getString("person"));
+		rdbtnPerson.setBackground(Color.decode(controller.getBackgroundColor()));
 		rdbtnPerson.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -131,6 +136,7 @@ public class ClientDataGUI extends JFrame {
 		contentPane.add(rdbtnPerson);
 		
 		JRadioButton rdbtnCompany = new JRadioButton(controller.getResourcebundle().getString("company"));
+		rdbtnCompany.setBackground(Color.decode(controller.getBackgroundColor()));
 		rdbtnCompany.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -142,12 +148,13 @@ public class ClientDataGUI extends JFrame {
 			}
 		});
 		buttonGroupClient.add(rdbtnCompany);
-		rdbtnCompany.setBounds(257, 54, 142, 23);
+		rdbtnCompany.setBounds(257, 54, 112, 23);
 		contentPane.add(rdbtnCompany);
 		
 		JLabel lblIAmA = new JLabel(controller.getResourcebundle().getString("i_am_an"));
 		lblIAmA.setBounds(37, 58, 88, 14);
 		contentPane.add(lblIAmA);
+		panelPerson.setBackground(Color.decode(controller.getBackgroundColor()));
 		panelPerson.setBounds(25, 97, 434, 238);
 		contentPane.add(panelPerson);
 		panelPerson.setLayout(null);
@@ -177,7 +184,7 @@ public class ClientDataGUI extends JFrame {
 		//dateChooserFinish.setMaxSelectableDate(date);
 		dateChooserBirth.setMaxSelectableDate(date);
 		
-		dateChooserBirth.setBounds(200, 67, 95, 20);
+		dateChooserBirth.setBounds(200, 67, 149, 20);
 		panelPerson.add(dateChooserBirth);
 		
 		JLabel lblDateOfBirth = new JLabel(controller.getResourcebundle().getString("date_birth"));
@@ -198,7 +205,7 @@ public class ClientDataGUI extends JFrame {
 		panelPerson.add(lblId);
 		
 		personID = new JTextField();
-		personID.setBounds(200, 132, 121, 20);
+		personID.setBounds(200, 132, 149, 20);
 		panelPerson.add(personID);
 		personID.setColumns(10);
 		
@@ -207,7 +214,7 @@ public class ClientDataGUI extends JFrame {
 		panelPerson.add(lblPhone);
 		
 		personPhone = new JTextField();
-		personPhone.setBounds(200, 157, 121, 20);
+		personPhone.setBounds(200, 157, 149, 20);
 		panelPerson.add(personPhone);
 		personPhone.setColumns(10);
 		
@@ -216,9 +223,10 @@ public class ClientDataGUI extends JFrame {
 		panelPerson.add(lblEmailAddress);
 		
 		personEmail = new JTextField();
-		personEmail.setBounds(200, 188, 121, 20);
+		personEmail.setBounds(200, 188, 149, 20);
 		panelPerson.add(personEmail);
 		personEmail.setColumns(10);
+		panelCompany.setBackground(Color.decode(controller.getBackgroundColor()));
 		panelCompany.setBounds(25, 97, 434, 138);
 		contentPane.add(panelCompany);
 		panelCompany.setVisible(false);
@@ -260,6 +268,17 @@ public class ClientDataGUI extends JFrame {
 		emailCompany.setColumns(10);
 		emailCompany.setBounds(185, 98, 121, 20);
 		panelCompany.add(emailCompany);
+		
+
+		
+		ImageIcon imageIcon = new ImageIcon("img/details.png"); // load the image to a imageIcon
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(78, 87,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);  // transform it back
+		JLabel lbldetails=new JLabel();
+		lbldetails.setIcon(imageIcon);
+		lbldetails.setBounds(373, 11, 102, 87);
+		contentPane.add(lbldetails);
 		
 
 		

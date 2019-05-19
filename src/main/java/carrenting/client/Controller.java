@@ -75,10 +75,11 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-//		new WelcomeGUI(this, this.rent);
+//		this.checkPayment("VISA", 12.5);
+		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-		new StaffPanelGUI(this, "admin", this.rent);
+//		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -605,12 +606,14 @@ public class Controller{
 		return backgroundColor;
 	}
 	
-
-	
 	public String getPanelColor() {
 		return panelColor;
 	}
 
+	public boolean checkPayment(String paymentSystem, double price) throws RemoteException {
+		return RMIServiceLocator.getService().paymentSystem(paymentSystem,price);
+	}
+	
 	/**
 	 * Main method of the client and starting point of the program
 	 * @param args

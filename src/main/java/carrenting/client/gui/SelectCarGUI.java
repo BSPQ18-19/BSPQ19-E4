@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import carrenting.client.Controller;
 import carrenting.server.jdo.Car;
 import carrenting.server.jdo.Rent;
 
-
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -51,27 +52,28 @@ public class SelectCarGUI extends JFrame {
 	public void initialize () throws RemoteException {
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 556, 332);
+		frame.setBounds(100, 100, 594, 390);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode(controller.getBackgroundColor()));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		ArrayList<Car> carsAvailable =controller.getCarsAvailable(rent.getGarageOrigin(), rent.getStartingDate(), rent.getFinishingDate());
 		JLabel lblSelectACar = new JLabel(controller.getResourcebundle().getString("select_car"));
 		lblSelectACar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblSelectACar.setBounds(97, 22, 363, 22);
+		lblSelectACar.setBounds(132, 28, 363, 22);
 		frame.getContentPane().add(lblSelectACar);
 		
 		JLabel lblTotalPrice = new JLabel(controller.getResourcebundle().getString("total_price"));
-		lblTotalPrice.setBounds(28, 223, 156, 14);
+		lblTotalPrice.setBounds(28, 278, 156, 14);
 		frame.getContentPane().add(lblTotalPrice);
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
-		textPane.setBounds(158, 217, 107, 20);
+		textPane.setBounds(153, 272, 107, 20);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 53, 471, 139);
+		scrollPane.setBounds(51, 79, 471, 167);
 		frame.getContentPane().add(scrollPane);
 		
 		tableCars = new JTable();
@@ -135,7 +137,7 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnBack.setBounds(294, 240, 89, 23);
+		btnBack.setBounds(301, 303, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnNext = new JButton(controller.getResourcebundle().getString("next"));
@@ -154,7 +156,19 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnNext.setBounds(393, 240, 137, 23);
+		btnNext.setBounds(419, 303, 137, 23);
 		frame.getContentPane().add(btnNext);
+		
+
+
+		
+		ImageIcon imageIcon = new ImageIcon("img/carrenting3.png"); // load the image to a imageIcon
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(594, 390,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);  // transform it back
+		JLabel lblImage=new JLabel();
+		lblImage.setIcon(imageIcon);
+		lblImage.setBounds(0, 0, 578, 351);
+		contentPane.add(lblImage);
 	}
 }
