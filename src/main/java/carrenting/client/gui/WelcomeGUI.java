@@ -68,17 +68,19 @@ public class WelcomeGUI extends JFrame {
 	 */
 	public void initialize() throws RemoteException {
 		welcomeFrame = new JFrame();
+		welcomeFrame.setResizable(false);
 		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		welcomeFrame.setBounds(100, 100, 752, 442);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode(controller.getBackgroundColor()));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		welcomeFrame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		
 		JLabel lblWelcomeToCar = new JLabel(controller.getResourcebundle().getString("welcome_car_msg"));
-		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		lblWelcomeToCar.setBounds(253, 51, 230, 22);
+		lblWelcomeToCar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 20));
+		lblWelcomeToCar.setBounds(211, 33, 284, 43);
 		welcomeFrame.getContentPane().add(lblWelcomeToCar);
 		
 		
@@ -101,15 +103,15 @@ public class WelcomeGUI extends JFrame {
 		welcomeFrame.getContentPane().add(lblStaffArea);
 		
 		JLabel lblSelectAGarage = new JLabel(controller.getResourcebundle().getString("Select_garage_origin"));
-		lblSelectAGarage.setBounds(88, 106, 230, 14);
+		lblSelectAGarage.setBounds(88, 87, 230, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage);
 		
 		JLabel lblSelectAGarage_1 = new JLabel(controller.getResourcebundle().getString("Select_garage_destination"));
-		lblSelectAGarage_1.setBounds(390, 106, 183, 14);
+		lblSelectAGarage_1.setBounds(390, 87, 183, 14);
 		welcomeFrame.getContentPane().add(lblSelectAGarage_1);
 		
 		JScrollPane scrollPaneOrigin = new JScrollPane();
-		scrollPaneOrigin.setBounds(88, 131, 185, 80);
+		scrollPaneOrigin.setBounds(88, 112, 185, 80);
 		contentPane.add(scrollPaneOrigin);
 		
 		JList<Object> listGarageOrigin = new JList<Object>();
@@ -128,7 +130,7 @@ public class WelcomeGUI extends JFrame {
 		listGarageOrigin.setSelectedIndex(0);
 		
 		scrollPaneDestination = new JScrollPane();
-		scrollPaneDestination.setBounds(390, 131, 194, 77);
+		scrollPaneDestination.setBounds(390, 112, 194, 77);
 		contentPane.add(scrollPaneDestination);
 		
 		JList<String> listGarageDestination = new JList<String>();
@@ -155,7 +157,7 @@ public class WelcomeGUI extends JFrame {
 				dateChooserStart.setMaxSelectableDate(dateChooserFinish.getDate());
 			}
 		});
-		dateChooserStart.setBounds(88, 286, 151, 20);
+		dateChooserStart.setBounds(85, 240, 151, 20);
 		contentPane.add(dateChooserStart);
 
 		dateChooserFinish.getCalendarButton().addMouseListener(new MouseAdapter() {
@@ -166,15 +168,15 @@ public class WelcomeGUI extends JFrame {
 			}
 		});
 
-		dateChooserFinish.setBounds(390, 286, 151, 20);
+		dateChooserFinish.setBounds(387, 240, 151, 20);
 		contentPane.add(dateChooserFinish);
 		
 		JLabel lblSelectAS = new JLabel(controller.getResourcebundle().getString("Select_starting_date"));
-		lblSelectAS.setBounds(88, 265, 216, 14);
+		lblSelectAS.setBounds(85, 219, 216, 14);
 		contentPane.add(lblSelectAS);
 		
 		JLabel lblSelectFinishingDate = new JLabel(controller.getResourcebundle().getString("Select_finishing_date"));
-		lblSelectFinishingDate.setBounds(390, 265, 293, 14);
+		lblSelectFinishingDate.setBounds(387, 219, 293, 14);
 		contentPane.add(lblSelectFinishingDate);
 		
 		JButton btnContinue = new JButton(controller.getResourcebundle().getString("next"));
@@ -216,10 +218,11 @@ public class WelcomeGUI extends JFrame {
 				}
 			}
 		});
-		btnContinue.setBounds(537, 353, 151, 23);
+		btnContinue.setBounds(575, 356, 151, 23);
 		contentPane.add(btnContinue);
 		
 		JCheckBox chckbxSameGarage = new JCheckBox(controller.getResourcebundle().getString("same_as_garage_of_origin"));
+		chckbxSameGarage.setBackground(Color.decode(controller.getBackgroundColor()));
 		chckbxSameGarage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -294,17 +297,11 @@ public class WelcomeGUI extends JFrame {
 		lblEnglish.setForeground(Color.BLUE);
 		lblEnglish.setBounds(146, 15, 46, 14);
 		contentPane.add(lblEnglish);
-//		JLabel lblImage=new JLabel(new ImageIcon("img/carrenting.png"));
-//	    ImageIcon background=new ImageIcon("img/carrenting.png");
-//	    Image img=background.getImage();
-//	    Image temp=img.getScaledInstance(500,600,Image.SCALE_SMOOTH);
-//	    background=new ImageIcon(temp);
-//	    JLabel back=new JLabel(background);
-//	    back.setLayout(null);
-//	    back.setBounds(0,0,500,600);
-//		welcomeFrame.getContentPane().add(lblImage);
-//		lblImage.setBounds(352, 0, 221, 95);
-//		contentPane.add(lblImage);
+		JLabel lblImage=new JLabel(new ImageIcon("img/carrenting3.png"));
+
+		welcomeFrame.getContentPane().add(lblImage);
+		lblImage.setBounds(10, 0, 729, 403);
+		contentPane.add(lblImage);
 
 
 	}

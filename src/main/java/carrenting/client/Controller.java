@@ -40,6 +40,8 @@ public class Controller{
 	private ArrayList<Rent> rents = new ArrayList<>();
 	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
+	private String backgroundColor = "#FCFEFF";
+
 
 
 	/**
@@ -623,6 +625,10 @@ public class Controller{
 		RMIServiceLocator.getService().deleteRent(numPlate, date);
 	}
 
+//TODO
+	public String getBackgroundColor() {
+		return backgroundColor;
+	}
 	
 	/**
 	 * Main method of the client and starting point of the program
