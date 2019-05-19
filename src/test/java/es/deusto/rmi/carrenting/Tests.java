@@ -120,13 +120,15 @@ public class Tests {
 	@Rule
 	public ContiPerfRule t = new ContiPerfRule();
 	@Test
-	@PerfTest(invocations = 5, threads = 5)
+	@PerfTest(invocations = 50, threads = 5)
 	@Required(max = 1500, average = 1000, throughput = 5)
 	public void testLoginStaff() throws RemoteException {
 		assertEquals(c.loginStaff("admin1", "admin1", "administrator"), true);
 	}
 	
 	@Test
+	@PerfTest(invocations = 50, threads = 5)
+	@Required(max = 1500, average = 1000, throughput = 5)
 	public void testLoginStaffError() throws RemoteException {
 		assertFalse(c.loginStaff("admin1", "admin3", "administrator"));
 	}
@@ -184,6 +186,8 @@ public class Tests {
 	}
 	
 	@Test
+	@PerfTest(invocations = 50, threads = 5)
+	@Required(max = 1500, average = 1000, throughput = 5)
 	public void checkExistingGarageTrueTest() throws RemoteException {
 		assertFalse(c.newGarageAvailable("Bilbao"));
 	}
