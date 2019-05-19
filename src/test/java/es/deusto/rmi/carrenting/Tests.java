@@ -238,8 +238,6 @@ public class Tests {
 	public void testDaysBetween() {
 		Date date1=new GregorianCalendar(2019, Calendar.MAY, 11).getTime();
 		Date date2=new GregorianCalendar(2019, Calendar.MAY, 13).getTime();
-		
-		System.out.println(c.daysBetween(date1, date2));
 		assertEquals(c.daysBetween(date1, date2), 3);
 	}
 	
@@ -423,17 +421,14 @@ public class Tests {
 	public void testSetLocale() throws RemoteException {
 		c.setLocale("en");
 		if(!c.getResourcebundle().getLocale().equals(new Locale("en", "US"))){
-			System.out.println("en");
 			assert(false);
 		}
 		c.setLocale("es");
 		if(!c.getResourcebundle().getLocale().equals(new Locale("es", "ES"))){
-			System.out.println("es");
 			assert(false);
 		}
 		c.setLocale("eu");
 		if(!c.getResourcebundle().getLocale().equals(new Locale("eu", "ES"))){
-			System.out.println("eu");
 			assert(false);
 		}
 		

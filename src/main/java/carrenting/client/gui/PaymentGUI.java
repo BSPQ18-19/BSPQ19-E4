@@ -1,14 +1,13 @@
 package carrenting.client.gui;
 
 import java.awt.Font;
-
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.sql.Date;
-import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,13 +24,13 @@ import com.toedter.calendar.JDateChooser;
 import carrenting.client.Controller;
 import carrenting.server.jdo.Rent;
 import java.awt.Color;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class PaymentGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldEmail;
-	private JTextField textFieldPassword;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textFieldCardNumber;
 	private JTextField textFieldNameCard;
@@ -44,6 +43,8 @@ public class PaymentGUI extends JFrame {
 	private JButton btnFinishAndPay;
 	private String paymentType="visa";
 	private JDateChooser dateChooserExpirationDate;
+	private JButton buttonBack;
+	private JPasswordField textFieldPassword;
 
 
 
@@ -87,10 +88,9 @@ public class PaymentGUI extends JFrame {
 		lblPassword.setBounds(10, 64, 109, 14);
 		panelPaypal.add(lblPassword);
 		
-		textFieldPassword = new JTextField();
-		textFieldPassword.setBounds(129, 61, 184, 20);
+		textFieldPassword = new JPasswordField();
+		textFieldPassword.setBounds(131, 61, 182, 20);
 		panelPaypal.add(textFieldPassword);
-		textFieldPassword.setColumns(10);
 		
 		JLabel lblPaymentType = new JLabel(controller.getResourcebundle().getString("payment_type"));
 		lblPaymentType.setBounds(46, 65, 141, 18);
@@ -143,22 +143,22 @@ public class PaymentGUI extends JFrame {
 						JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("all_fields_filled"), controller.getResourcebundle().getString("careful"), JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-							try {
-								System.out.println(controller.checkPayment(paymentType, rent.getTotalPrice()));
-							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
+						try {
+							if(controller.checkPayment(paymentType, rent.getTotalPrice())) {
+								rent.setPaymentSystem(paymentType);
+								try {
+									JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("rent_successful"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
+									frame.dispose();
+								} catch (RemoteException e) {
+									e.printStackTrace();
+								}
+								controller.getLogger().debug(rent.toString());
 							}
-							rent.setPaymentSystem(paymentType);
-							try {
-								controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
-								System.out.println(rent);
+						} catch (RemoteException e) {
+							e.printStackTrace();
+						}
 
-							} catch (RemoteException e) {
-								
-								e.printStackTrace();
-							}
-							controller.getLogger().debug(rent.toString());
 						
 					}
 				}else if(paymentType.equalsIgnoreCase("visa")) {
@@ -168,28 +168,42 @@ public class PaymentGUI extends JFrame {
 					}
 					else {
 						try {
-							System.out.println(controller.checkPayment(paymentType, rent.getTotalPrice()));
-						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-							rent.setPaymentSystem(paymentType);
-							controller.getLogger().debug(rent.toString());
-							try {
-								
-								JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("rent_successful"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
-								controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
-							} catch (RemoteException e) {
-								e.printStackTrace();
+							if(controller.checkPayment(paymentType, rent.getTotalPrice())) {
+								rent.setPaymentSystem(paymentType);
+								controller.getLogger().debug(rent.toString());
+								try {
+									JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("rent_successful"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									controller.storeRent(rent.getUserId(),rent.getNumberPlate(), rent.getStartingDate(), rent.getFinishingDate(), rent.getGarageOrigin(), rent.getGarageDestination(), rent.getPaymentSystem(), rent.getTotalPrice());
+									frame.dispose();
+								} catch (RemoteException e) {
+									e.printStackTrace();
+								}
 							}
-						
-						
+						} catch (HeadlessException | RemoteException e) {
+							e.printStackTrace();
+						}	
 					}
 				}
 			}
 		});
 		btnFinishAndPay.setBounds(261, 312, 181, 23);
 		frame.getContentPane().add(btnFinishAndPay);
+		
+		buttonBack = new JButton(controller.getResourcebundle().getString("back"));
+		buttonBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new ClientDataGUI(controller, rent);
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		buttonBack.setBounds(106, 312, 124, 23);
+		contentPane.add(buttonBack);
 		
 		panelVisa = new JPanel();
 		panelVisa.setBackground(Color.decode(controller.getBackgroundColor()));

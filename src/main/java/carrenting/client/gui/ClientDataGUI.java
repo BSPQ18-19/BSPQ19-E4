@@ -67,15 +67,30 @@ public class ClientDataGUI extends JFrame {
 		frame=new JFrame();
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 481, 416);
+		frame.setBounds(100, 100, 485, 434);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.decode(controller.getBackgroundColor()));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JButton buttonBack =new JButton(controller.getResourcebundle().getString("back"));
+		buttonBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				try {
+					new SelectCarGUI(controller, rent);
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		buttonBack.setBounds(154, 371, 124, 23);
+		contentPane.add(buttonBack);
+		
 		JButton buttonNext = new JButton(controller.getResourcebundle().getString("next"));
-		buttonNext.setBounds(295, 346, 160, 23);
+		buttonNext.setBounds(299, 371, 160, 23);
 		contentPane.add(buttonNext);
 		buttonNext.addMouseListener(new MouseAdapter() {
 			@Override
@@ -122,6 +137,7 @@ public class ClientDataGUI extends JFrame {
 				panelPerson.setVisible(true);
 				frame.setBounds(100, 100, 481, 416);
 				buttonNext.setBounds(295, 346, 160, 23);
+				buttonBack.setBounds(154, 346, 124, 23);
 				clientType="person";
 				
 			
@@ -143,7 +159,8 @@ public class ClientDataGUI extends JFrame {
 				panelPerson.setVisible(false);
 				panelCompany.setVisible(true);
 				frame.setBounds(100, 100, 481, 319);
-				buttonNext.setBounds(264, 232, 160, 23);
+				buttonNext.setBounds(295, 232, 160, 23);
+				buttonBack.setBounds(154, 232, 124, 23);
 				clientType="company";	
 			}
 		});
@@ -155,7 +172,7 @@ public class ClientDataGUI extends JFrame {
 		lblIAmA.setBounds(37, 58, 88, 14);
 		contentPane.add(lblIAmA);
 		panelPerson.setBackground(Color.decode(controller.getBackgroundColor()));
-		panelPerson.setBounds(25, 97, 434, 238);
+		panelPerson.setBounds(25, 97, 434, 221);
 		contentPane.add(panelPerson);
 		panelPerson.setLayout(null);
 		
@@ -258,7 +275,7 @@ public class ClientDataGUI extends JFrame {
 		
 		companyPhone = new JTextField();
 		companyPhone.setColumns(10);
-		companyPhone.setBounds(185, 67, 121, 20);
+		companyPhone.setBounds(185, 67, 149, 20);
 		panelCompany.add(companyPhone);
 		
 		JLabel label_3 = new JLabel(controller.getResourcebundle().getString("email_address"));
@@ -266,7 +283,7 @@ public class ClientDataGUI extends JFrame {
 		panelCompany.add(label_3);
 		emailCompany = new JTextField();
 		emailCompany.setColumns(10);
-		emailCompany.setBounds(185, 98, 121, 20);
+		emailCompany.setBounds(185, 98, 149, 20);
 		panelCompany.add(emailCompany);
 		
 

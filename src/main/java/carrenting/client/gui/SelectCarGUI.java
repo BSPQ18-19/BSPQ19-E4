@@ -148,7 +148,6 @@ public class SelectCarGUI extends JFrame {
 				try {
 					numberPlate=carsAvailable.get(tableCars.getSelectedRow()).getNumPlate();
 					rent.setNumberPlate(numberPlate);
-					System.out.println("Selected car "+numberPlate);
 					rent.setTotalPrice(totalPrice);
 					new ClientDataGUI(controller,rent);
 				} catch (RemoteException e1) {
@@ -161,7 +160,7 @@ public class SelectCarGUI extends JFrame {
 		
 
 
-		
+
 		ImageIcon imageIcon = new ImageIcon("img/carrenting3.png"); // load the image to a imageIcon
 		Image image = imageIcon.getImage(); // transform it 
 		Image newimg = image.getScaledInstance(594, 390,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  

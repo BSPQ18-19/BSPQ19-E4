@@ -23,6 +23,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 
 import java.awt.Color;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class LogInStaffGUI extends JFrame {
@@ -31,10 +32,10 @@ public class LogInStaffGUI extends JFrame {
 	private Controller controller;
 	private JFrame frame;
 	private JTextField tfUsername;
-	private JTextField tfPassword;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private Rent rent;
 	private String type;
+	private JPasswordField tfPassword;
 	/**
 	 * Launch the application.
 	 */
@@ -67,11 +68,6 @@ public class LogInStaffGUI extends JFrame {
 		tfUsername.setBounds(21, 143, 164, 20);
 		frame.getContentPane().add(tfUsername);
 		tfUsername.setColumns(10);
-		
-		tfPassword = new JTextField();
-		tfPassword.setBounds(21, 199, 164, 20);
-		frame.getContentPane().add(tfPassword);
-		tfPassword.setColumns(10);
 		
 		JLabel lblUsername = new JLabel(controller.getResourcebundle().getString("username"));
 		lblUsername.setBounds(21, 118, 164, 14);
@@ -159,5 +155,9 @@ public class LogInStaffGUI extends JFrame {
 		lblImgLogIn.setIcon(imageLogInIcon);
 		lblImgLogIn.setBounds(216, 118, 119, 123);
 		contentPane.add(lblImgLogIn);
+		
+		tfPassword = new JPasswordField();
+		tfPassword.setBounds(21, 199, 164, 23);
+		contentPane.add(tfPassword);
 	}
 }

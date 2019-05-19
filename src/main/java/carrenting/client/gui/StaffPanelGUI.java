@@ -302,7 +302,6 @@ public class StaffPanelGUI extends JFrame {
 							try {
 								controller.deleteCar(cars.get(tableRemoveCars.getSelectedRow()).getNumPlate());
 							} catch (RemoteException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 							cars.remove(tableRemoveCars.getSelectedRow());
@@ -326,10 +325,7 @@ public class StaffPanelGUI extends JFrame {
 				panelRelocation.setLayout(null);
 				
 				JButton btnRelocateCar = new JButton(controller.getResourcebundle().getString("relocate_car"));
-				btnRelocateCar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					}
-				});
+
 				btnRelocateCar.setBounds(58, 243, 146, 23);
 				panelRelocation.add(btnRelocateCar);
 				
@@ -376,9 +372,10 @@ public class StaffPanelGUI extends JFrame {
 								modelRemoveCars.fireTableDataChanged();
 								tableRemoveCars.addNotify();
 								tableRemoveCars.repaint();
+								
 
 							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
+
 								e1.printStackTrace();
 							}						
 						}
@@ -401,10 +398,10 @@ public class StaffPanelGUI extends JFrame {
 								allOK=false;
 							}
 						} catch (HeadlessException e2) {
-							// TODO Auto-generated catch block
+							
 							e2.printStackTrace();
 						} catch (RemoteException e2) {
-							// TODO Auto-generated catch block
+							
 							e2.printStackTrace();
 						}
 						pricePerDay= Double.parseDouble(textFieldPpd.getText());
@@ -418,11 +415,10 @@ public class StaffPanelGUI extends JFrame {
 						}
 						if(allOK) {
 								try {
-									//TODO
 									JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("car_added_successfuly"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 									Car addedCar= new Car(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
 									controller.storeCar(comboBoxGarages.getSelectedItem().toString(), textFieldNumPlate.getText(), textFieldBrand.getText(), textFieldModel.getText(), (int) pricePerDay);
-									//TODO
+									
 									controller.getLogger().debug("Added car" + controller.getCar(textFieldNumPlate.getText()).toString());
 									cars.add(addedCar);
 
@@ -441,7 +437,7 @@ public class StaffPanelGUI extends JFrame {
 									
 									
 								} catch (RemoteException e1) {
-									// TODO Auto-generated catch block
+	
 									e1.printStackTrace();
 								}
 						}
@@ -513,10 +509,6 @@ public class StaffPanelGUI extends JFrame {
 						
 						
 						JButton btnDeleteGarageCars = new JButton(controller.getResourcebundle().getString("delete_garage_cars"));
-						btnDeleteGarageCars.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-							}
-						});
 						btnDeleteGarageCars.addMouseListener(new MouseAdapter() {
 							boolean deleteGarageOk;
 							@Override
@@ -558,7 +550,7 @@ public class StaffPanelGUI extends JFrame {
 											comboBoxGarages.removeItem(textFieldLocation.getText());
 
 										} catch (RemoteException e1) {
-											// TODO Auto-generated catch block
+			
 											e1.printStackTrace();
 										}
 									}
@@ -582,10 +574,11 @@ public class StaffPanelGUI extends JFrame {
 										controller.deleteGarage(listDeleteGarage.getSelectedValue().toString());
 										modelDeleteGarages.removeElementAt(listDeleteGarage.getSelectedIndex());
 										comboBoxGarages.removeItem(textFieldLocation.getText());
+										listGarages.setModel(modelDeleteGarages);
+
 										
 										
 									} catch (RemoteException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
 								}
@@ -625,20 +618,18 @@ public class StaffPanelGUI extends JFrame {
 								}
 								try {
 									if(!controller.newGarageAvailable(textFieldLocation.getText())){
-										//TODO
 										JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("already_exist_garage"), controller.getResourcebundle().getString("error"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 										allGaragesOk=false;
 									}
 								} catch (RemoteException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}if(allGaragesOk) {
 									try {
 										controller.storeGarage(textFieldLocation.getText());
-										//TODO
 										JOptionPane.showConfirmDialog(null, controller.getResourcebundle().getString("garage_added_successfuly"), controller.getResourcebundle().getString("successful"), JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 										comboBoxGarages.addItem(textFieldLocation.getText());
 										modelDeleteGarages.addElement(textFieldLocation.getText());
+										modelGarages.addElement(textFieldLocation.getText());
 										
 									} catch (RemoteException e1) {
 										e1.printStackTrace();

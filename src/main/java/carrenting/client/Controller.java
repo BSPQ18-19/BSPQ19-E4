@@ -59,8 +59,6 @@ public class Controller{
 	 * @throws NotBoundException
 	 */
 	public Controller(String[] args) throws RemoteException, MalformedURLException, NotBoundException{
-		
-		//asigno la variable currentLocale a uno de los idiomas que tenemos
 		if(args[3].equals("en")){
 			currentLocale = new Locale("en", "US");
 		}else if(args[3].equals("es")){
@@ -68,24 +66,11 @@ public class Controller{
 		}else if(args[3].equals("eu")){
 			currentLocale = new Locale("eu", "ES");
 		}
-		//le paso la ruta donde se encuentran los archivos de los idiomas y el currentLocale
 		myBundle = ResourceBundle.getBundle("lang/translations", currentLocale);
-		
-		
-		
+
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-//		this.checkPayment("VISA", 12.5);
 		new WelcomeGUI(this, this.rent);
-//		new ClientDataGUI(this, this.rent);
-//		new PaymentGUI(this, this.rent);
-//		new StaffPanelGUI(this, "admin", this.rent);
-//		new RemoveCarGUI(this, "admin", this.rent);
-//		new AddCarGUI(this, "admin", this.rent);
-//		deleteCar("8765BCN");
-//		garagesWithCars();
-//		this.garagePopularity();
-//		this.carBrandPopularity();
 
 	}
 	
@@ -137,15 +122,8 @@ public class Controller{
 	 */
 	public void deleteGarageAndItsCars(String garage) throws RemoteException {
 		ArrayList<Car>carsToDelete= this.getCars(garage);
-		System.out.println("The cars to be deleted are: ");
 		for (Car c: carsToDelete) {
-			System.out.println(c);
-		}
-		System.out.println("\n");
-		for (Car c: carsToDelete) {
-			this.deleteCar(c.getNumPlate());
-			System.out.println("deleting:   " + c   );
-			
+			this.deleteCar(c.getNumPlate());	
 		}
 		RMIServiceLocator.getService().deleteGarage(garage);
 	}
@@ -601,7 +579,6 @@ public class Controller{
 		RMIServiceLocator.getService().deleteRent(numPlate, date);
 	}
 
-//TODO
 	public String getBackgroundColor() {
 		return backgroundColor;
 	}
@@ -613,6 +590,7 @@ public class Controller{
 	public boolean checkPayment(String paymentSystem, double price) throws RemoteException {
 		return RMIServiceLocator.getService().paymentSystem(paymentSystem,price);
 	}
+	
 	
 	/**
 	 * Main method of the client and starting point of the program
