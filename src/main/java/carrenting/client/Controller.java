@@ -41,6 +41,10 @@ public class Controller{
 	private Date date6 = new GregorianCalendar(2019, Calendar.AUGUST, 21).getTime();
 	private Date date5 = new GregorianCalendar(2019, Calendar.AUGUST, 26).getTime();
 	private String backgroundColor = "#FCFEFF";
+	private String panelColor= "#F7FFFF";
+//	private String backgroundColor = "#FABADA";
+
+
 
 
 
@@ -71,10 +75,10 @@ public class Controller{
 		
 		RMIServiceLocator.setService(args[0], args[1], args[2]);
 		this.getRents();
-		new WelcomeGUI(this, this.rent);
+//		new WelcomeGUI(this, this.rent);
 //		new ClientDataGUI(this, this.rent);
 //		new PaymentGUI(this, this.rent);
-//		new StaffPanelGUI(this, "admin", this.rent);
+		new StaffPanelGUI(this, "admin", this.rent);
 //		new RemoveCarGUI(this, "admin", this.rent);
 //		new AddCarGUI(this, "admin", this.rent);
 //		deleteCar("8765BCN");
@@ -630,6 +634,12 @@ public class Controller{
 		return backgroundColor;
 	}
 	
+
+	
+	public String getPanelColor() {
+		return panelColor;
+	}
+
 	/**
 	 * Main method of the client and starting point of the program
 	 * @param args

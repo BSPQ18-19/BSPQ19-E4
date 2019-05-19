@@ -262,7 +262,7 @@ public class WelcomeGUI extends JFrame {
 		lblSpanish.setBounds(20, 15, 51, 14);
 		contentPane.add(lblSpanish);
 		
-		JLabel lblBasque = new JLabel("<html><u>Euskal");
+		JLabel lblBasque = new JLabel("<html><u>Euskara");
 		lblBasque.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

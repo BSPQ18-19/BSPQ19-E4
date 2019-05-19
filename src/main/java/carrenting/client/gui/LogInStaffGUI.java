@@ -18,6 +18,9 @@ import java.rmi.RemoteException;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class LogInStaffGUI extends JFrame {
@@ -50,6 +53,7 @@ public class LogInStaffGUI extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 385, 400);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode(controller.getBackgroundColor()));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		frame.getContentPane().setLayout(null);
@@ -75,11 +79,13 @@ public class LogInStaffGUI extends JFrame {
 		frame.getContentPane().add(lblPassword);
 		
 		JRadioButton rdbtnAdministrator = new JRadioButton(controller.getResourcebundle().getString("admin"));
+		rdbtnAdministrator.setBackground(Color.decode(controller.getBackgroundColor()));
 		buttonGroup.add(rdbtnAdministrator);
 		rdbtnAdministrator.setBounds(26, 84, 145, 23);
 		contentPane.add(rdbtnAdministrator);
 		
 		JRadioButton rdbtnEmployee = new JRadioButton(controller.getResourcebundle().getString("employee"));
+		rdbtnEmployee.setBackground(Color.decode(controller.getBackgroundColor()));
 		rdbtnEmployee.setSelected(true);
 		buttonGroup.add(rdbtnEmployee);
 		rdbtnEmployee.setBounds(173, 84, 135, 23);
@@ -140,5 +146,8 @@ public class LogInStaffGUI extends JFrame {
 
 		btnCancel.setBounds(21, 327, 128, 23);
 		contentPane.add(btnCancel);
+		JLabel lblImage=new JLabel(new ImageIcon("img/login.png"));
+		lblImage.setBounds(216, 133, 46, 14);
+		contentPane.add(lblImage);
 	}
 }

@@ -135,7 +135,7 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnBack.setBounds(310, 240, 89, 23);
+		btnBack.setBounds(294, 240, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
 		JButton btnNext = new JButton(controller.getResourcebundle().getString("next"));
@@ -154,7 +154,7 @@ public class SelectCarGUI extends JFrame {
 				}
 			}
 		});
-		btnNext.setBounds(420, 240, 89, 23);
+		btnNext.setBounds(393, 240, 137, 23);
 		frame.getContentPane().add(btnNext);
 	}
 }

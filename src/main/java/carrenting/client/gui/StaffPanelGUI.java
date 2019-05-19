@@ -37,6 +37,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class StaffPanelGUI extends JFrame {
@@ -93,6 +95,8 @@ public class StaffPanelGUI extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 1170, 591);
 		contentPane = new JPanel();
+	
+		contentPane.setBackground((Color.decode("#EDFCFC")));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		frame.setContentPane(contentPane);
@@ -114,27 +118,30 @@ public class StaffPanelGUI extends JFrame {
 		ArrayList<Rent> rents = controller.getRents();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 1154, 480);
+		tabbedPane.setBounds(0, 0, 1154, 495);
 		contentPane.add(tabbedPane);
 		
 		JPanel panelrent = new JPanel();
+		panelrent.setBackground((Color.decode(controller.getBackgroundColor())));
 		tabbedPane.addTab(controller.getResourcebundle().getString("rents"), null, panelrent, null);
 		panelrent.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 44, 1100, 377);
+		scrollPane.setBounds(24, 44, 1100, 377);
 		panelrent.add(scrollPane);
 		
 
 		
 		table = new JTable();
+		table.setBackground(Color.WHITE);
 		table.setRowSelectionAllowed(false);
 		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>", "<dynamic>"
+					controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("starting_date"), controller.getResourcebundle().getString("finishing_date"), controller.getResourcebundle().getString("garage_origin"),
+					controller.getResourcebundle().getString("garage_destination"), controller.getResourcebundle().getString("payment_system"), controller.getResourcebundle().getString("total_price"), controller.getResourcebundle().getString("user_ID")
 			}
 		));
 		table.getColumnModel().getColumn(1).setPreferredWidth(140);
@@ -162,10 +169,14 @@ public class StaffPanelGUI extends JFrame {
 			lblRents.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
 		
 				JPanel panelManageCars = new JPanel();
-				tabbedPane.addTab(controller.getResourcebundle().getString("add_car"), null, panelManageCars, null);
+				panelManageCars.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+				panelManageCars.setBackground(Color.WHITE);
+				tabbedPane.addTab(controller.getResourcebundle().getString("car_management"), null, panelManageCars, null);
 				panelManageCars.setLayout(null);
 				
 				JPanel panelAddCars = new JPanel();
+				panelAddCars.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+				panelAddCars.setBackground(Color.WHITE);
 				panelAddCars.setBounds(37, 33, 295, 408);
 				panelManageCars.add(panelAddCars);
 				panelAddCars.setLayout(null);
@@ -213,7 +224,7 @@ public class StaffPanelGUI extends JFrame {
 				comboBoxGarages.setModel(comboBoxGaragesModel);
 				
 				JLabel labelPricePerDsy = new JLabel(controller.getResourcebundle().getString("price_per_day"));
-				labelPricePerDsy.setBounds(10, 271, 98, 14);
+				labelPricePerDsy.setBounds(10, 271, 117, 14);
 				panelAddCars.add(labelPricePerDsy);
 				textFieldPpd.setBounds(127, 268, 147, 20);
 				panelAddCars.add(textFieldPpd);
@@ -224,6 +235,8 @@ public class StaffPanelGUI extends JFrame {
 				panelAddCars.add(buttonAdd);
 				
 				JPanel panelRemoveCars= new JPanel();
+				panelRemoveCars.setBackground(Color.WHITE);
+				panelRemoveCars.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 				panelRemoveCars.setBounds(364, 33, 538, 408);
 				panelManageCars.add(panelRemoveCars);
 				panelRemoveCars.setLayout(null);
@@ -238,23 +251,18 @@ public class StaffPanelGUI extends JFrame {
 				panelRemoveCars.add(scrollPaneRemoveCars);
 				
 				tableRemoveCars = new JTable();
+				tableRemoveCars.setBackground(Color.WHITE);
 				tableRemoveCars.setShowVerticalLines(false);
 				tableRemoveCars.setModel(new DefaultTableModel(
 					new Object[][] {
 					},
 					new String[] {
-						controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"), controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
+							controller.getResourcebundle().getString("number_plate"), controller.getResourcebundle().getString("brand"),
+							controller.getResourcebundle().getString("garage"), controller.getResourcebundle().getString("model"), controller.getResourcebundle().getString("price_per_day")
 					}
-				) {
-					boolean[] columnEditableRemoveCarss = new boolean[] {
-						false, false, false, false, false
-					};
-					@SuppressWarnings("unused")
-					public boolean isCellEditableRemoveCars(int row, int column) {
-						return columnEditableRemoveCarss[column];
-					}
-				});
+				));
 				tableRemoveCars.getColumnModel().getColumn(0).setPreferredWidth(90);
+				tableRemoveCars.getColumnModel().getColumn(4).setPreferredWidth(105);
 				DefaultTableModel modelRemoveCars = (DefaultTableModel) tableRemoveCars.getModel();
 				cars = controller.getAllCars();
 		
@@ -295,6 +303,8 @@ public class StaffPanelGUI extends JFrame {
 				panelRemoveCars.add(buttonRemoveCar);
 				
 				JPanel panelRelocation = new JPanel();
+				panelRelocation.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+				panelRelocation.setBackground(Color.WHITE);
 				panelRelocation.setBounds(912, 33, 227, 408);
 				panelManageCars.add(panelRelocation);
 				panelRelocation.setLayout(null);
@@ -439,10 +449,14 @@ public class StaffPanelGUI extends JFrame {
 
 		
 		JPanel panelManageGarages = new JPanel();
+		panelManageGarages.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelManageGarages.setBackground(Color.WHITE);
 		tabbedPane.addTab(controller.getResourcebundle().getString("garage_management"), null, panelManageGarages, null);
 		panelManageGarages.setLayout(null);
 		
 		JPanel panelAddGarage = new JPanel();
+		panelAddGarage.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelAddGarage.setBackground(Color.WHITE);
 		panelAddGarage.setBounds(40, 62, 410, 200);
 		panelManageGarages.add(panelAddGarage);
 		panelAddGarage.setLayout(null);
@@ -466,6 +480,8 @@ public class StaffPanelGUI extends JFrame {
 		panelAddGarage.add(btnAddGarage);
 		
 		JPanel panelDeleteGarage = new JPanel();
+		panelDeleteGarage.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelDeleteGarage.setBackground(Color.WHITE);
 		panelDeleteGarage.setBounds(558, 62, 510, 298);
 		panelManageGarages.add(panelDeleteGarage);
 		panelDeleteGarage.setLayout(null);
@@ -580,14 +596,15 @@ public class StaffPanelGUI extends JFrame {
 		panelDeleteGarage.add(btnDeleteGarage);
 		
 		JPanel panelStatistics = new JPanel();
+		panelStatistics.setBackground(Color.WHITE);
 		tabbedPane.addTab(controller.getResourcebundle().getString("statistics"), null, panelStatistics, null);
 		panelStatistics.setLayout(null);
 		JLabel lblGaragePopularity= new JLabel(controller.getResourcebundle().getString("garage_popularity"));
-		lblGaragePopularity.setBounds(39, 50, 283, 14);
+		lblGaragePopularity.setBounds(107, 51, 283, 14);
 		panelStatistics.add(lblGaragePopularity);
 		
 		JScrollPane scrollPaneStatisticsGarages = new JScrollPane();
-		scrollPaneStatisticsGarages.setBounds(37, 75, 331, 129);
+		scrollPaneStatisticsGarages.setBounds(105, 76, 331, 129);
 		panelStatistics.add(scrollPaneStatisticsGarages);
 		
        
@@ -629,15 +646,15 @@ public class StaffPanelGUI extends JFrame {
 		
 		JLabel labelStatistics = new JLabel(controller.getResourcebundle().getString("statistics"));
 		labelStatistics.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 17));
-		labelStatistics.setBounds(389, 11, 194, 22);
+		labelStatistics.setBounds(448, 11, 194, 22);
 		panelStatistics.add(labelStatistics);
 		
 		JLabel lblPaymentSystemPopularity = new JLabel(controller.getResourcebundle().getString("payment_system_popularity"));
-		lblPaymentSystemPopularity.setBounds(40, 275, 282, 14);
+		lblPaymentSystemPopularity.setBounds(108, 253, 282, 14);
 		panelStatistics.add(lblPaymentSystemPopularity);
 		
 		JScrollPane scrollPaneStatisticsPayment = new JScrollPane();
-		scrollPaneStatisticsPayment.setBounds(39, 300, 329, 84);
+		scrollPaneStatisticsPayment.setBounds(107, 278, 329, 84);
 		panelStatistics.add(scrollPaneStatisticsPayment);
 		
 		tablePaySys = new JTable();
@@ -677,11 +694,11 @@ public class StaffPanelGUI extends JFrame {
 		scrollPaneStatisticsPayment.setViewportView(tablePaySys);
 		
 		JLabel lblCarPopularity = new JLabel(controller.getResourcebundle().getString("car_popularity"));
-		lblCarPopularity.setBounds(548, 50, 248, 14);
+		lblCarPopularity.setBounds(708, 50, 248, 14);
 		panelStatistics.add(lblCarPopularity);
 		
 		JScrollPane scrollPaneStatisticsModelCars = new JScrollPane();
-		scrollPaneStatisticsModelCars.setBounds(548, 75, 283, 155);
+		scrollPaneStatisticsModelCars.setBounds(708, 75, 283, 155);
 		panelStatistics.add(scrollPaneStatisticsModelCars);
 		
 		tableModelCars = new JTable();
@@ -707,7 +724,7 @@ public class StaffPanelGUI extends JFrame {
 		scrollPaneStatisticsModelCars.setViewportView(tableModelCars);
 		
 		JScrollPane scrollPaneStatisticsBrandCars = new JScrollPane();
-		scrollPaneStatisticsBrandCars.setBounds(548, 275, 283, 129);
+		scrollPaneStatisticsBrandCars.setBounds(708, 275, 283, 129);
 		panelStatistics.add(scrollPaneStatisticsBrandCars);
 		
 		tableBrandCars = new JTable();
