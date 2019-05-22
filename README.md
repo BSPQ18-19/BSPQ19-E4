@@ -3,10 +3,8 @@
 > Car Renting is a tool desingned to rent and manage the cars and rents as easily as possible. Users can rent cars by imputing the garages of origin and destination and the starting and ending dates of the rent. Also, administrator members can edit all the information regarding garages and cars and see statistics of the renting services. Finally, employees can see all the rents. 
  
 ## Documentation
-Full documentation of the project in:
-```
-[https://bspq18-19.github.io/BSPQ19-E4/](https://bspq18-19.github.io/BSPQ19-E4/)
-```
+
+Full documentation of the project in: [https://bspq18-19.github.io/BSPQ19-E4/](https://bspq18-19.github.io/BSPQ19-E4/)
 
 ## Usage
 
